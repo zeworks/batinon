@@ -1,0 +1,75 @@
+/* Barra cookies */
+
+.cookies-bar {
+	display: none;
+	position: fixed;
+	bottom: 30px;
+	left: 30px;
+	right: 0;
+	z-index: 99999;
+	background-color: $cookies-bgColor;
+	width: 400px;
+	box-shadow: 0px 0px 25px 3px rgba(0, 0, 0, .2);
+	border-radius: 7px;
+	* {
+		box-sizing: border-box;
+	}
+}
+
+.cookies-bar-inner {
+	padding: 20px;
+	display: block;
+}
+
+.cookies-bar-message {
+	display: block;
+	width: auto;
+	color: $cookies-textColor;
+	font-size: $cookies-fontSize;
+	line-height: 26px;
+}
+
+.cookies-bar-buttons {
+	display: block;
+	float: right;
+}
+
+.cookies-bar-know-more {
+	display: block;
+	width: auto;
+	float: left;
+	font-size: $cookies-fontSize;
+	font-weight: 500;
+	text-transform: none;
+	padding: 5px 10px;
+}
+
+.cookies-bar-accept {
+	display: inline-block;
+	margin-left: 10px;
+	font-size: $cookies-fontSize;
+	font-weight: 500;
+	text-transform: none;
+	padding: 5px 10px;
+}
+
+@include max-sm {
+	.cookies-bar {
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		border-radius: 0;
+	}
+	.cookies-bar-inner {
+		padding: 10px;
+	}
+	.cookies-bar-message {
+		height: auto;
+		line-height: normal;
+	}
+	.cookies-bar-buttons {
+		margin-top: 10px;
+	}
+}
+
+/* Barra cookies END */

@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -8,6 +7,8 @@
 import './bootstrap';
 import Vue from 'vue';
 import DashboardComponent from './components/DashboardComponent.vue';
+import PagesComponent from './components/PagesComponent.vue';
+import PagesformComponent from './components/PagesformComponent.vue';
 
 
 /**
@@ -16,9 +17,12 @@ import DashboardComponent from './components/DashboardComponent.vue';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-new Vue({
+var app = new Vue({
     el: '#app',
     components: {
-        DashboardComponent
+        DashboardComponent,
+        PagesComponent,
+        PagesformComponent,
     }
 });
+

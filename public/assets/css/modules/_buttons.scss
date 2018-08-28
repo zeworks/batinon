@@ -1,0 +1,140 @@
+.btn, .swiper-container a {
+    padding: 10px 20px;
+    transition: all .2s ease-in-out;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 14px;
+    display: inline-block;
+    background: transparent;
+    border: $btnDefault-border $btnDefault-borderColor;
+    @include max-xs {
+        font-size: 12px;
+    }
+    &:hover {
+        background: #f2f2f2;
+    }
+    &:hover,
+    &:visited,
+    &:focus,
+    &:active {
+        text-decoration: none;
+    }
+}
+
+.btn-default {
+    border: $btnDefault-border $btnDefault-borderColor;
+    color: $btnDefault-textColor;
+    background-color: $btnDefault-bgColor;
+    &:hover {
+        border-color: $btnDefault-borderColor-hover;
+        color: $btnDefault-textColor-hover;
+        background-color: $btnDefault-bgColor-hover;
+    }
+    &:active,
+    &:focus,
+    &:visited {
+        color: $btnDefault-textColor;
+    }
+    &:active:hover,
+    &:focus:hover,
+    &:visited:hover {
+        color: $btnDefault-textColor-hover;
+    }
+}
+
+.btn-primary, .swiper-container a {
+    border: $btnHightlight-border $btnHightlight-borderColor;
+    background-color: $btnHightlight-bgColor;
+    color: $btnHightlight-textColor;
+    &:hover {
+        border-color: $btnHightlight-borderColor-hover;
+        background-color: $btnHightlight-bgColor-hover;
+        color: $btnHightlight-textColor-hover;
+    }
+    &:active,
+    &:focus,
+    &:visited {
+        color: $btnHightlight-textColor;
+    }
+    &:active:hover,
+    &:focus:hover,
+    &:visited:hover {
+        color: $btnHightlight-textColor-hover;
+    }
+}
+
+.btn-viewmore {
+    display: table;
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    font-size: 22px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    margin-bottom: 20px;
+    
+    &:hover {
+        border-color: #f2f2f2;
+        background-color: transparent;
+
+        i{
+            color: $btnHightlight-bgColor;
+        }
+    }
+}
+
+.btn-viewmore i {
+    color: #000;
+    font-size: 35px;
+    transition: color 200ms ease;
+}
+
+.btn-menu {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: 0;
+    width: $navbarHM;
+    height: $navbarHM;
+    outline-color: transparent;
+    &.active {
+        /* general style to iconbar items */
+        >.icon-bar{
+            position: absolute;
+        }
+        >.icon-bar:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: 0;
+            transform: translate(-50%, -50%);
+        }
+        /* hidding the second icon bar on button */
+        >.icon-bar:nth-child(2):before {
+            opacity: 0;
+            visibility: hidden;
+        }
+        /* changing position of icon bar items */
+        >.icon-bar:first-child:before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        >.icon-bar:last-child:before {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+    >.icon-bar {
+        position: relative;
+    }
+    >.icon-bar:before {
+        content: '';
+        width: 30px;
+        height: 2px;
+        background-color: #333;
+        display: block;
+        margin: 5px auto;
+        transition: transform 300ms ease;
+    }
+}

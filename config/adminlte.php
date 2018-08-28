@@ -110,18 +110,33 @@ return [
     'menu' => [
         'MAIN NAVIGATION',
         [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            // 'can'  => 'manage-blog',
+            'text' => 'Dashboard',
+            'url'  => 'admin/home',
+            'icon' => 'dashboard'
         ],
-        // [
-        //     'text'        => 'Pages',
-        //     'url'         => 'admin/pages',
-        //     'icon'        => 'file',
-        //     'label'       => 4,
-        //     'label_color' => 'success',
-        // ],
-        'ACCOUNT SETTINGS',
+        'PAGES',
+        [
+            'text'        => 'Pages',
+            'url'         => 'admin/pages',
+            'icon'        => 'file',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
+        'NEWS',
+        [
+            'text'        => 'News',
+            'url'         => 'admin/news',
+            'icon'        => 'globe',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
+        'COSTUMIZE',
+        [
+            'text' => 'Menu',
+            'url'  => 'admin/menu',
+            'icon' => 'gear'
+        ],
+        'ACCOUNT',
         [
             'text' => 'Profile',
             'url'  => 'admin/settings',
@@ -129,8 +144,18 @@ return [
         ],
         [
             'text' => 'Change Password',
-            'url'  => 'admin/settings',
+            'url'  => 'admin/password',
             'icon' => 'lock',
+        ],
+        [
+            'text' => 'Inbox',
+            'url'  => 'admin/inbox',
+            'icon' => 'envelope',
+        ],
+        [
+            'text' => 'Notifications',
+            'url'  => 'admin/notifications',
+            'icon' => 'bell'
         ],
         [
             'text'    => 'Multilevel',
@@ -182,7 +207,7 @@ return [
         [
             'text'       => 'Information',
             'icon_color' => 'aqua',
-        ],
+        ]
     ],
 
     /*
@@ -203,7 +228,6 @@ return [
         JeroenNoten\LaravelAdminLte\Menu\Filters\SubmenuFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
-        // MyApp\MyMenuFilter::class,
     ],
 
     /*

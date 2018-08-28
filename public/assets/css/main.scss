@@ -1,0 +1,45 @@
+
+
+/* ===== BASE STYLES ===== */
+
+
+@import 'base/variables';
+@import 'bootstrap/bootstrap'; // bootstrap framework
+@import 'base/mixins';
+@import 'base/icons';
+@import 'base/fonts';
+@import 'base/base';
+
+
+/* ===== REUSABLE BLOCKS OF CODE ===== */
+
+@import 'modules/buttons';
+@import 'modules/cookies';
+@import 'modules/sliders';
+@import 'modules/article';
+@import 'modules/cart';
+@import 'modules/breadcrumb';
+@import 'modules/product-card';
+@import 'modules/tabs';
+@import 'modules/form';
+@import 'modules/footer';
+@import 'modules/testimonials';
+@import 'modules/search';
+
+
+
+/* ===== SPECIFIC PAGE LAYOUT AND NON-REUSABLE STYLES ===== */
+
+// @import 'layout/filename';
+
+
+
+/* ===== DEBUG HTML/CSS ===== */
+
+@import 'layout/debug';
+@import 'layout/product';
+@import 'layout/checkout';
+@import 'layout/contact';
+@import 'layout/account';
+
+

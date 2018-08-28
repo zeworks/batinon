@@ -1,0 +1,371 @@
+input[type="radio"]:not(.radio) {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.radio {
+    position: relative;
+    display: inline-block;
+    float: left;
+    margin-right: 5px;
+    top: 3px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.show-more {
+    background: transparent; // border: 1px solid $border-color;
+    font-size: 25px;
+    color: $text-color;
+    display: table;
+    margin: 0 auto;
+    transition: all 200ms ease;
+    padding: 0px 10px;
+    &:hover {
+        // background-color: $border-color;
+        color: white;
+    }
+}
+
+.empty-space-20 {
+    padding-bottom: 20px;
+}
+
+.empty-space-80 {
+    padding-bottom: 80px;
+    @include max-xs {
+        padding-bottom: 20px;
+    }
+}
+
+hr {
+    border-color: #f2f2f2;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    background-color: $header-backgroundColor;
+    min-height: $navbarH;
+    padding: 10px 0;
+    @include max-xs {
+        min-height: $navbarHM;
+        background-color: rgba($color: #fff, $alpha: 1);
+        padding: 5px 0;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1400px) {
+        min-height: 80px;
+    }
+    &.open .menu {
+        display: flex !important;
+    }
+}
+
+main {
+    margin-top: 117px;
+    @include max-xs {
+        margin-top: 61px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1400px) {
+        margin-top: 100px;
+    }
+}
+
+table {
+    width: 100%;
+    th {
+        padding: $table-padding;
+        font-weight: $table-fontWeightTH;
+        color: $table-textColorTH;
+        text-align: left;
+        text-transform: uppercase;
+    }
+    td {
+        vertical-align: top;
+        padding: 10px;
+    }
+    tr {
+        border-bottom: 1px solid #ddd;
+        &:last-child {
+            border: 0;
+        }
+    }
+    &.cart-table {
+        @include max-xs {
+            display: inline-block;
+            white-space: nowrap;
+            clear: both;
+            overflow-x: scroll;
+        }
+        td {
+            vertical-align: middle;
+        }
+        img {
+            width: 50px;
+        }
+        .cart-qty--large .cart-qty__btn {
+            padding: 4px 7px;
+        }
+        .cart-qty--large .cart-qty__input {
+            width: 35px;
+            padding: 4px 0;
+        }
+    }
+}
+
+.menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: right;
+    @include max-xs {
+        float: none;
+        position: fixed;
+        top: $navbarHM;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #fff, $alpha: .9);
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+
+.menu__item {
+    vertical-align: middle;
+    display: inline-block;
+    line-height: $navbarH;
+    margin: 0 2.5px;
+    @include max-xs {
+        line-height: normal;
+        display: table;
+        margin: 20px auto;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1400px) {
+        line-height: 80px;
+    }
+}
+
+.menu__item__link {
+    display: block;
+    padding: 0 10px;
+    font-family: $font;
+    font-weight: 700;
+    color: $menu-link-textColor;
+    text-transform: uppercase;
+    position: relative;
+    &:hover {
+        text-decoration: none;
+        color: $menu-link-textColor-hover;
+    }
+    &:active,
+    &:focus,
+    &:visited {
+        text-decoration: none;
+        color: $menu-link-textColor;
+    }
+    &:active:hover,
+    &:focus:hover,
+    &:visited:hover {
+        color: $menu-link-textColor-hover;
+    }
+    @include max-xs {
+        font-size: 19px;
+    }
+}
+
+.logo-link {
+    display: block;
+}
+
+.logo-image {
+    height: auto;
+    width: 100px;
+    @media screen and (min-width: 768px) and (max-width: 1400px) {
+        width: 80px;
+    }
+}
+
+@include max-xs {
+    .menu .menu__item__link--icon {
+        display: none
+    }
+    /* in mobile set the image logo responsive */
+    .logo-image {
+        display: block;
+        max-width: 100%;
+        height: 50px;
+        width: auto;
+    }
+}
+
+.menu__item__link:not(.menu__item__link--icon):hover:after {
+    width: 50%;
+}
+
+.menu__item__link:not(.menu__item__link--icon)::after {
+    content: '';
+    position: absolute;
+    top: calc(50% + 13px);
+    transform: translateY(-50%);
+    left: 10px;
+    display: inline-block;
+    background-color: $menu-link-textColor-hover;
+    ;
+    width: 0px;
+    height: 2px;
+    transition: width .2s ease;
+}
+
+.menu__item__link i {
+    font-size: 16px;
+}
+
+/* menu mobile device */
+
+.menu--mobile {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: right;
+}
+
+.menu--mobile .menu__item {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+}
+
+.menu--mobile .menu__item__link {
+    padding: 0 7px;
+}
+
+/* menu mobile device ends */
+
+.fleft {
+    float: left;
+    @include max-xs {
+        float: none;
+    }
+}
+
+.fright {
+    float: right;
+    @include max-xs {
+        float: none;
+    }
+}
+
+.share {
+    margin: 20px 0;
+}
+
+.share-item {
+    display: $share-display;
+    font-size: $share-fontSize;
+    color: $share-textColor;
+    transition: all .2s ease;
+    margin: $share-margin;
+    &:hover {
+        color: $share-textColor-hover;
+    }
+}
+
+.payment-methods,
+.payment-methods--cart,
+.way-delivery {
+    list-style: none;
+    padding: 0 !important;
+    margin: 0;
+    display: inline-block;
+}
+
+.payment-methods--cart li {
+    padding: 10px 10px 10px 80px;
+    position: relative;
+    transition: all .1s ease-in-out;
+    margin: 0 0 10px 0;
+    display: block;
+    &:hover,
+    &.active {
+        background-color: #f2f2f2;
+    }
+}
+
+.payment-methods li {
+    padding: 10px 10px 10px 80px;
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    float: left;
+    @include max-xs {
+        width: 100%;
+        float: none;
+    }
+}
+
+.way-delivery li {
+    padding: 10px 10px 10px 80px;
+    position: relative;
+    display: block;
+}
+
+.payment-methods--cart li label {
+    width: 100%;
+    display: inline-block;
+}
+
+.payment-methods--cart li img,
+.payment-methods li img,
+.way-delivery li img {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.payment-methods li p,
+.payment-methods--cart li p,
+.way-delivery li p,
+    {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* esta class serve para dar uma linha em volta do item que queremos, neste caso uso nas imagens */
+
+.bordered-image {
+    position: relative;
+}
+
+.bordered-image::before {
+    content: '';
+    width: $images-borderWidth;
+    height: $images-borderHeight;
+    border: $images-border;
+    position: $images-borderPosition;
+    top: $images-borderPositionTop;
+    bottom: $images-borderPositionBottom;
+    left: $images-borderPositionLeft;
+    right: $images-borderPositionRight;
+    z-index: -1;
+    @include max-xs {
+        display: none;
+    }
+}

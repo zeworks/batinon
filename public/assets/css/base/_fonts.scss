@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900');
+@import url('https://fonts.googleapis.com/css?family=Oleo+Script');
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p, .btn {
+    font-family: $font;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    color: $head-title;
+}
+h1{
+    font-size: 50px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    
+    @include max-lg{
+        font-size: 45px;
+    }
+
+    @include max-md{
+        font-size: 40px;
+    }
+
+    @include max-sm{
+        font-size: 35px;
+    }
+    
+    @include max-xs{
+        font-size: 29px;
+    }
+}
+h2{
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 45px;
+
+    @include max-xs{
+        font-size: 25px;
+    }
+}
+
+p{
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 24px;
+    color: $text-color;
+    @include max-xs{
+        font-size: 15px;
+        line-height: 22px;
+    }
+}

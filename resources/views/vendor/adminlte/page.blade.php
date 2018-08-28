@@ -19,6 +19,7 @@
                     </button>
                 </div>
 
+
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -175,10 +176,7 @@
                                         <div class="pull-right">
                                             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">Sign out</a>
                                             <form id="logout-form" action="{{ url(config('adminlte.logout_url', 'auth/logout')) }}" method="POST" style="display: none;">
-                                                @if(config('adminlte.logout_method'))
-                                                    {{ method_field(config('adminlte.logout_method')) }}
-                                                @endif
-                                                {{ csrf_field() }}
+                                                @if(config('adminlte.logout_method')) {{ method_field(config('adminlte.logout_method')) }} @endif {{ csrf_field() }}
                                             </form>
                                         </div>
                                     </li>
@@ -196,7 +194,28 @@
 
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
-
+            <!-- user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="https://dummyimage.com/160x160/888/000" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>Alexander Pierce</p>
+                    <a href="#">
+                        <i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+            <!-- search form -->
+            <form action="#" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu" data-widget="tree">
                 @each('adminlte::partials.menu-item', $adminlte->menu(), 'item')
@@ -212,7 +231,7 @@
     <div class="content-wrapper">
         @if(config('adminlte.layout') == 'top-nav')
         <div class="container">
-        @endif
+            @endif
 
             <!-- Content Header (Page header) -->
             <section class="content-header">
@@ -233,13 +252,11 @@
 
     </div>
     <!-- /.content-wrapper -->
-    <footer></footer>
-</div>
+    </div>
     <!-- ./wrapper -->
     @stop @section('adminlte_js')
     <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
-    @stack('js') 
-    @yield('js')
+    @stack('js') @yield('js')
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/batinon.js') }}" defer></script>
 

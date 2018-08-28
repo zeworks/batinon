@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(UsersTableSeeder::class);
+        $this->call(AdminSettingsTableSeeder::class);
+        // $this->call(TemplateTypeTableSeeder::class);
     }
 }
 
@@ -32,3 +34,38 @@ class UsersTableSeeder extends Seeder
         ]);
     }
 }
+
+class AdminSettingsTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('admin_settings')->insert([
+            'website_name' => 'Just For you',
+            'website_account_email' => 'info@justforyou.pt',
+            'website_legal_name' => 'Just For You',
+            'website_desc' => 'Just For You',
+        ]);
+    }
+}
+
+// class TemplateTypeTableSeeder extends Seeder
+// {
+//     /**
+//      * Run the database seeds.
+//      *
+//      * @return void
+//      */
+//     public function run()
+//     {
+//         DB::table('Templates')->insert(
+//             [
+//                 ['template_name' => 'institucional'],['template_name' => 'produtos'],['template_name' => 'blog'],['template_name' => 'contactos']
+//             ]
+//         );
+//     }
+// }

@@ -1,20 +1,3 @@
-:root {
-    --bodyBackground: #ecf0f5;
-    --containerPadding: 0 10px;
-    --rowMargin: -10px;
-    --colPadding: 10px;
-    /* header */
-    --headerBackground: #FFF;
-    --headerHeight: 50px;
-    /* content header */
-    --contentHeaderPadding: 20px 20px 0 20px;
-    --contentPadding: 20px 20px 0 20px;
-    /* footer */
-    --footerBackground: #fff;
-    --footerHeight: 60px;
-    --footerPadding: 10px;
-}
-
 * {
     box-sizing: border-box;
 }
@@ -22,10 +5,9 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: normal;
-    background-color: var(--bodyBackground);
+    background-color: #ecf0f5;
     opacity: 0;
     transition: opacity 0.3s ease-out;
 }
@@ -34,76 +16,24 @@ body.body-loaded{
     opacity: 1;
 }
 
-.container-fluid {
+.container{
     width: 100%;
 }
 
-.container {
-    width: 100%;
-    margin: 0 auto;
-    padding: var(--containerPadding);
+.wrapper{
+    overflow: initial !important;
 }
 
-.row {
-    position: relative;
-    width: 100%;
+hr{
+    border-color: #ddd;
+    margin-top: 10px;
 }
 
-.container>.row {
-    margin-left: var(--rowMargin);
-    margin-right: var(--rowMargin);
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td{
+    vertical-align: middle;
 }
-
-.row::after {
-    content: '';
-    clear: both;
-    display: block;
-    width: 100%;
-}
-
-/* HEADER */
-
-header {
-    background-color: var(--headerBackground);
-    position: relative;
-}
-
-/* END HEADER */
-
-/* CONTENT HEADER */
-
-.content-header {
-    padding: var(--contentHeaderPadding);
-}
-
-/* /CONTENT HEADER */
-
-/* CONTENT  */
-
-.content {
-    padding: var(--contentPadding);
-}
-
-/* /CONTENT  */
-
-/* MAIN */
-
-main {
-    width: calc(100% - var(--asideWidth));
-    float: right;
-}
-
-/* /MAIN */
-
-/* FOOTER */
-
-footer {
-    background-color: var(--footerBackground);
-    width: 100%;
-    height: var(--footerHeight);
-    padding: var(--footerPadding);
-    float: right;
-    position: relative;
-}
-
-/* /FOOTER */

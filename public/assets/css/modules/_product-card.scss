@@ -1,0 +1,62 @@
+.product-card {
+    position: relative;
+    margin-bottom: 30px;
+    height: 100%;
+    @include max-xs {
+        text-align: center;
+        margin-bottom: 20px;
+        img {
+            margin: 0 auto;
+            width: 100%;
+        }
+    }
+}
+
+.product-card .btn {
+    display: inline-block;
+    margin: 30px 0 30px 10px;
+    float: right;
+    @include max-xs{
+        float: none;
+    }
+}
+
+.product-card a:hover,
+.product-card a:active:hover,
+.product-card a:focus:hover,
+.product-card a:visited:hover,
+.product-card a:active,
+.product-card a:focus,
+.product-card a:visited {
+    text-decoration: none;
+}
+
+.product-card__category {
+    margin: $productCard-marginCategory;
+    font-size: $productCard-fontSizeCategory;
+    font-weight: $productCard-fontWeightCategory;
+    color: $productCard-colorCategory;
+    display: block;
+}
+
+.product-card__title {
+    margin: $productCard-marginTitle;
+    font-size: $productCard-fontSizeTitle;
+    font-weight: $productCard-fontWeightTitle;
+    color: $productCard-colorTitle;
+    text-transform: uppercase;
+}
+
+.product-card__price {
+    margin: $productCard-marginPrice;
+    font-size: $productCard-fontSizePrice;
+    font-weight: $productCard-fontWeightPrice;
+    color: $productCard-colorPrice;
+}
+
+.product-card__oldprice {
+    color: $productCard-colorOldPrice;
+    font-weight: $productCard-fontWeightOldPrice;
+    font-size: $productCard-fontSizeOldPrice;
+    text-decoration: line-through;
+}
