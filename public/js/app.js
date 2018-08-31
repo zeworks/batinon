@@ -48214,49 +48214,47 @@ var render = function() {
                 _vm._v(
                   "\n                            Status\n                            "
                 ),
-                _vm.page.status
-                  ? _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.page.status,
-                          expression: "page.status"
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.page.status,
+                      expression: "page.status"
+                    }
+                  ],
+                  staticClass: "custom-control-input",
+                  attrs: { type: "checkbox" },
+                  domProps: {
+                    checked: Array.isArray(_vm.page.status)
+                      ? _vm._i(_vm.page.status, null) > -1
+                      : _vm.page.status
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.page.status,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(_vm.page, "status", $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.page,
+                              "status",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
-                      ],
-                      staticClass: "custom-control-input",
-                      attrs: { type: "checkbox" },
-                      domProps: {
-                        checked: Array.isArray(_vm.page.status)
-                          ? _vm._i(_vm.page.status, null) > -1
-                          : _vm.page.status
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$a = _vm.page.status,
-                            $$el = $event.target,
-                            $$c = $$el.checked ? true : false
-                          if (Array.isArray($$a)) {
-                            var $$v = null,
-                              $$i = _vm._i($$a, $$v)
-                            if ($$el.checked) {
-                              $$i < 0 &&
-                                _vm.$set(_vm.page, "status", $$a.concat([$$v]))
-                            } else {
-                              $$i > -1 &&
-                                _vm.$set(
-                                  _vm.page,
-                                  "status",
-                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                )
-                            }
-                          } else {
-                            _vm.$set(_vm.page, "status", $$c)
-                          }
-                        }
+                      } else {
+                        _vm.$set(_vm.page, "status", $$c)
                       }
-                    })
-                  : _vm._e(),
+                    }
+                  }
+                }),
                 _vm._v(" "),
                 _c("span", { staticClass: "custom-control-indicator" })
               ])

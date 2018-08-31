@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label class="custom-control custom-checkbox">
                                 Status
-                                <input type="checkbox" class="custom-control-input" v-if="page.status" v-model="page.status">
+                                <input type="checkbox" class="custom-control-input" v-model="page.status">
                                 <span class="custom-control-indicator"></span>
                             </label>
                         </div>
