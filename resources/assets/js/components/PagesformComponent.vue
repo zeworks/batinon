@@ -23,7 +23,15 @@
             </div>
             <div class="col-sm-3">
                 <div class="box box-primary">
-                    <div class="box-body"></div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label class="custom-control custom-checkbox">
+                                Status
+                                <input type="checkbox" class="custom-control-input" v-if="page.status" v-model="page.status">
+                                <span class="custom-control-indicator"></span>
+                            </label>
+                        </div>
+                    </div>
                     <div class="box-footer">
                         <div class="pull-right">
                             <button type="button" class="btn btn-default" @click="back">Cancel</button>

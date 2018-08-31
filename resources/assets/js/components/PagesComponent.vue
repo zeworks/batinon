@@ -69,6 +69,7 @@
                 .then( response => response.data)
                 .then( data => {
                     this.pages = data;
+                    
                 });
             }
         }
