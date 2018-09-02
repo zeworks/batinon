@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="box-footer clearfix">
-                <a :href="('./pages/new')" class="btn btn-sm btn-info btn-flat pull-right">Create New</a>
+                <a :href="('./pages/new')" class="btn btn-sm btn-success btn-flat pull-right">Create New</a>
             </div>
         </div>
     </div>

@@ -14,50 +14,44 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(page,index) in pages" :key="index">
-                                <td>
-                                    #{{page.id}}
-                                </td>
-                                <td><a :href="('./pages/edit/'+page.id)">{{page.name}}</a></td>
-                                <td>{{page.slug}}</td>
-                                <td>
-                                    <span class="label" :class="{'label-success' : page.status == '1', 'label-danger' : page.status == '0'}">
-                                        <span v-if="page.status == 1">
-                                            Active
-                                        </span>
-                                        <span v-if="page.status == 0">
-                                            Inactive
-                                        </span>
-                                    </span>
-                                </td>
-                                <td>{{page.creation_date}}</td>
-                                <td>
-                                    <div class="pull-right">
-                                        <a :href="('./pages/edit/'+page.id)" class="btn btn-warning" >Edit</a>
-                                        <a href="" class="btn btn-danger">Delete</a>
-                                    </div>
-                                </td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="box-footer clearfix">
-                <a :href="('./pages/new')" class="btn btn-sm btn-info btn-flat pull-right">Create New</a>
+                <button class="btn btn-sm btn-success btn-flat pull-right" @click="showModal = true">Send File</button>
             </div>
         </div>
+        <modal v-if="showModal" @close="showModal = false" @submit="saveData">
+            <h3 slot="header">Send New File</h3>
+            <div slot="body">
+                <div class="form-group">
+                  <label for="exampleInputFile">File input</label>
+                  <input type="file" id="exampleInputFile">
+
+                  <p class="help-block">Example block-level help text here.</p>
+                </div>
+            </div>
+        </modal>
     </div>
 </template>
 
 <script>
     import Vue from 'vue';
     import axios from 'axios';
+    import modal from './ModalComponent.vue';
+
 
     export default {
         data() {
             return {
                 pages : [],
+                showModal : false,
             }
+        },
+        components: {
+            modal
         },
         created(){
             this.fetchPages();
@@ -68,10 +62,15 @@
                 .then( response => response.data)
                 .then( data => {
                     this.pages = data;
-                    
                 });
+            },
+            saveData(){
+                console.log('saved!');
             }
         }
     }
 </script>
+
+
+
 

@@ -118,17 +118,15 @@ return [
         [
             'text'        => 'Pages',
             'url'         => 'admin/pages',
-            'icon'        => 'file',
-            // 'label'       => 4,
+            'icon'        => 'desktop',
+            // 'label'       => '',
             // 'label_color' => 'success',
         ],
-        'NEWS',
+        'FILES',
         [
-            'text'        => 'News',
-            'url'         => 'admin/news',
-            'icon'        => 'globe',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
+            'text'        => 'Files',
+            'url'         => 'admin/files',
+            'icon'        => 'file',
         ],
         'COSTUMIZE',
         [

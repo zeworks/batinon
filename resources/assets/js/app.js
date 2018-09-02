@@ -11,7 +11,6 @@ import PagesComponent from './components/PagesComponent.vue';
 import PagesformComponent from './components/PagesformComponent.vue';
 import FilesComponent from './components/FilesComponent.vue';
 
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding  components to this application
