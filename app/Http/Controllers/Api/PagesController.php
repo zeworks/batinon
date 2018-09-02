@@ -19,4 +19,6 @@ class PagesController extends Controller
         $page = Pages::where('id',$id)->get();
         return $page;
     }
+
+    
 }

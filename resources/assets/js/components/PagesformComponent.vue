@@ -35,7 +35,7 @@
                     <div class="box-footer">
                         <div class="pull-right">
                             <button type="button" class="btn btn-default" @click="back">Cancel</button>
-                            <button type="button" class="btn btn-primary" @click="saveData">Save</button>
+                            <button type="submit" class="btn btn-primary" @click="saveData">Save</button>
                         </div>
                     </div>
                 </div>
@@ -76,6 +76,10 @@
             },
             saveData(){
                 console.log(this.page);
+                // axios.post('/api/pages/edit/'+this.id)
+                // .then(response => response.data)
+                // .then( data => {
+                // });
             },
             sanitizeTitle(title) {
                 var slug = "";

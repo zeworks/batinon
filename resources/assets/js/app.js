@@ -9,6 +9,7 @@ import Vue from 'vue';
 import DashboardComponent from './components/DashboardComponent.vue';
 import PagesComponent from './components/PagesComponent.vue';
 import PagesformComponent from './components/PagesformComponent.vue';
+import FilesComponent from './components/FilesComponent.vue';
 
 
 /**
@@ -23,6 +24,7 @@ var app = new Vue({
         DashboardComponent,
         PagesComponent,
         PagesformComponent,
+        FilesComponent,
     }
 });
 

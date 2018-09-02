@@ -240,6 +240,11 @@
 
             <!-- Main content -->
             <section class="content">
+                @if(session()->has('message'))
+                <div class="alert alert-{{session()->get('type')}}">
+                    {{ session()->get('message') }}
+                </div>
+                @endif 
                 <div id="app">
                     @yield('content')
                 </div>

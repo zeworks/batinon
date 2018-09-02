@@ -22,6 +22,9 @@ Route::prefix('admin')->group(function(){
     Route::get('/pages/new','Admin\PagesController@new')->name('page_new');
     Route::get('/pages/edit/{id}','Admin\PagesController@edit')->name('page_edit');
 
+    // FILES
+    Route::get('/files','Admin\FilesController@index');
+
 });
 
 
