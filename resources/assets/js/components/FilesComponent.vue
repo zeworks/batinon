@@ -3,37 +3,56 @@
         <div class="box box-success">
             <div class="box-body">
                 <div class="table-responsive">
+                    <!-- files list -->
                     <table class="table no-margin">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>File Name</th>
-                                <th>URL File</th>
                                 <th>Date</th>
+                                <th>URL File</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            <tr>
+                                <td>#1</td>
+                                <td>data</td>
+                                <td><input type="text" disabled value="https://dummyimage.com/836x525/000/fff" class="form-control"></td>
+                                <td><button class="btn btn-danger pull-right"><i class="fa fa-trash-o"></i></button></td>
+                            </tr>
                         </tbody>
                     </table>
+                    <!-- \files list -->
                 </div>
             </div>
             <div class="box-footer clearfix">
-                <button class="btn btn-sm btn-success btn-flat pull-right" @click="showModal = true">Send File</button>
+                <div class="pull-right">
+                    <button class="btn btn-sm btn-success btn-flat" @click="showModal = true">Send File</button>
+                    &nbsp;
+                    <button class="btn btn-sm btn-default btn-flat" @click="showModalLibrary = true">Show All</button>
+                </div>
             </div>
         </div>
+        <!-- modal send file -->
         <modal v-if="showModal" @close="showModal = false" @submit="saveData">
             <h3 slot="header">Send New File</h3>
             <div slot="body">
                 <div class="form-group">
                   <label for="exampleInputFile">File input</label>
                   <input type="file" id="exampleInputFile">
-
-                  <p class="help-block">Example block-level help text here.</p>
+                  <p class="help-block">This file will be visible on the <b>files</b> list.</p>
                 </div>
             </div>
         </modal>
+        <!-- \modal send file -->
+        <!-- modal library file -->
+        <modal v-if="showModalLibrary" @close="showModalLibrary = false" @submit="saveData">
+            <h3 slot="header">Files Libray</h3>
+            <div slot="body">
+                <p>Libray here!</p>
+            </div>
+        </modal>
+        <!-- \modal library file -->
     </div>
 </template>
 
@@ -48,6 +67,7 @@
             return {
                 pages : [],
                 showModal : false,
+                showModalLibrary : false,
             }
         },
         components: {

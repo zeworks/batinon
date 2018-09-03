@@ -29,6 +29,12 @@ hr {
     margin-top: 10px;
 }
 
+input,
+textarea,
+select {
+    border-radius: 5px !important;
+}
+
 input[type="checkbox"] {
     position: absolute;
     opacity: 0;

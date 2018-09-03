@@ -24960,7 +24960,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(52);
+module.exports = __webpack_require__(60);
 
 
 /***/ }),
@@ -48316,7 +48316,7 @@ var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(50)
 /* template */
-var __vue_template__ = __webpack_require__(51)
+var __vue_template__ = __webpack_require__(59)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48364,8 +48364,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ModalComponent_vue__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ModalComponent_vue__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ModalComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__ModalComponent_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48414,7 +48433,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             pages: [],
-            showModal: false
+            showModal: false,
+            showModalLibrary: false
         };
     },
 
@@ -48445,115 +48465,94 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "box box-success" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "box-footer clearfix" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-sm btn-success btn-flat pull-right",
-              on: {
-                click: function($event) {
-                  _vm.showModal = true
-                }
-              }
-            },
-            [_vm._v("Send File")]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _vm.showModal
-        ? _c(
-            "modal",
-            {
-              on: {
-                close: function($event) {
-                  _vm.showModal = false
-                },
-                submit: _vm.saveData
-              }
-            },
-            [
-              _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
-                _vm._v("Send New File")
-              ]),
-              _vm._v(" "),
-              _c("div", { attrs: { slot: "body" }, slot: "body" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "exampleInputFile" } }, [
-                    _vm._v("File input")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    attrs: { type: "file", id: "exampleInputFile" }
-                  }),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "help-block" }, [
-                    _vm._v("Example block-level help text here.")
-                  ])
-                ])
-              ])
-            ]
-          )
-        : _vm._e()
-    ],
-    1
-  )
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(52)
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-body" }, [
-      _c("div", { staticClass: "table-responsive" }, [
-        _c("table", { staticClass: "table no-margin" }, [
-          _c("thead", [
-            _c("tr", [
-              _c("th", [_vm._v("ID")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("File Name")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("URL File")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Date")]),
-              _vm._v(" "),
-              _c("th")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tbody")
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(57)
+/* template */
+var __vue_template__ = __webpack_require__(58)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\ModalComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
   module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-57f1487d", module.exports)
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0a46dff2", Component.options)
+  } else {
+    hotAPI.reload("data-v-0a46dff2", Component.options)
   }
-}
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
 
 /***/ }),
 /* 52 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(53);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(55)("f2500264", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0a46dff2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ModalComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0a46dff2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ModalComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ }),
-/* 53 */,
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(54)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.modal-mask {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container {\n    min-width: 500px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 4px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n    display: table;\n}\n@media (max-width: 768px){\n.modal-container{\n    min-width: 100%;\n}\n}\n.modal-header h3 {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body {\n    margin: 20px 0;\n}\n\n/*\n  * The following styles are auto-applied to elements with\n  * transition=\"modal\" when their visibility is toggled\n  * by Vue.js.\n  *\n  * You can easily play with the modal transition by editing\n  * these styles.\n*/\n.modal-enter {\n    opacity: 0;\n}\n.modal-leave-active {\n    opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
 /* 54 */
 /***/ (function(module, exports) {
 
@@ -48636,14 +48635,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 55 */,
-/* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -48662,7 +48654,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(63)
+var listToStyles = __webpack_require__(56)
 
 /*
 type StyleObject = {
@@ -48871,7 +48863,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 63 */
+/* 56 */
 /***/ (function(module, exports) {
 
 /**
@@ -48904,64 +48896,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(74)
-}
-var normalizeComponent = __webpack_require__(3)
-/* script */
-var __vue_script__ = __webpack_require__(71)
-/* template */
-var __vue_template__ = __webpack_require__(73)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\ModalComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0a46dff2", Component.options)
-  } else {
-    hotAPI.reload("data-v-0a46dff2", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 69 */,
-/* 70 */,
-/* 71 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49015,8 +48950,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 72 */,
-/* 73 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -49091,44 +49025,176 @@ if (false) {
 }
 
 /***/ }),
-/* 74 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(75);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(62)("f2500264", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0a46dff2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ModalComponent.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0a46dff2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ModalComponent.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "box box-success" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "box-footer clearfix" }, [
+          _c("div", { staticClass: "pull-right" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-sm btn-success btn-flat",
+                on: {
+                  click: function($event) {
+                    _vm.showModal = true
+                  }
+                }
+              },
+              [_vm._v("Send File")]
+            ),
+            _vm._v("\n                 \n                "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-sm btn-default btn-flat",
+                on: {
+                  click: function($event) {
+                    _vm.showModalLibrary = true
+                  }
+                }
+              },
+              [_vm._v("Show All")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm.showModal
+        ? _c(
+            "modal",
+            {
+              on: {
+                close: function($event) {
+                  _vm.showModal = false
+                },
+                submit: _vm.saveData
+              }
+            },
+            [
+              _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
+                _vm._v("Send New File")
+              ]),
+              _vm._v(" "),
+              _c("div", { attrs: { slot: "body" }, slot: "body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "exampleInputFile" } }, [
+                    _vm._v("File input")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    attrs: { type: "file", id: "exampleInputFile" }
+                  }),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "help-block" }, [
+                    _vm._v("This file will be visible on the "),
+                    _c("b", [_vm._v("files")]),
+                    _vm._v(" list.")
+                  ])
+                ])
+              ])
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.showModalLibrary
+        ? _c(
+            "modal",
+            {
+              on: {
+                close: function($event) {
+                  _vm.showModalLibrary = false
+                },
+                submit: _vm.saveData
+              }
+            },
+            [
+              _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
+                _vm._v("Files Libray")
+              ]),
+              _vm._v(" "),
+              _c("div", { attrs: { slot: "body" }, slot: "body" }, [
+                _c("p", [_vm._v("Libray here!")])
+              ])
+            ]
+          )
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-body" }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c("table", { staticClass: "table no-margin" }, [
+          _c("thead", [
+            _c("tr", [
+              _c("th", [_vm._v("ID")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Date")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("URL File")]),
+              _vm._v(" "),
+              _c("th")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tbody", [
+            _c("tr", [
+              _c("td", [_vm._v("#1")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("data")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    disabled: "",
+                    value: "https://dummyimage.com/836x525/000/fff"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c("button", { staticClass: "btn btn-danger pull-right" }, [
+                  _c("i", { staticClass: "fa fa-trash-o" })
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-57f1487d", module.exports)
+  }
 }
 
 /***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 60 */
+/***/ (function(module, exports) {
 
-exports = module.exports = __webpack_require__(54)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.modal-mask {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container {\n    min-width: 500px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n    display: table;\n}\n@media (max-width: 768px){\n.modal-container{\n    min-width: 100%;\n}\n}\n.modal-header h3 {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body {\n    margin: 20px 0;\n}\n\n/*\n  * The following styles are auto-applied to elements with\n  * transition=\"modal\" when their visibility is toggled\n  * by Vue.js.\n  *\n  * You can easily play with the modal transition by editing\n  * these styles.\n*/\n.modal-enter {\n    opacity: 0;\n}\n.modal-leave-active {\n    opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n", ""]);
-
-// exports
-
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
