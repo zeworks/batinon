@@ -48424,6 +48424,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -48434,7 +48450,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             pages: [],
             showModal: false,
-            showModalLibrary: false
+            showModalLibrary: false,
+            showModalRemove: false
         };
     },
 
@@ -49036,7 +49053,38 @@ var render = function() {
     "div",
     [
       _c("div", { staticClass: "box box-success" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "box-body" }, [
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("table", { staticClass: "table no-margin" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("tbody", [
+                _c("tr", [
+                  _c("td", [_vm._v("#1")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("data")]),
+                  _vm._v(" "),
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger pull-right",
+                        on: {
+                          click: function($event) {
+                            _vm.showModalRemove = true
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fa fa-trash-o" })]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "box-footer clearfix" }, [
           _c("div", { staticClass: "pull-right" }, [
@@ -49127,6 +49175,63 @@ var render = function() {
               ])
             ]
           )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.showModalRemove
+        ? _c(
+            "modal",
+            {
+              on: {
+                close: function($event) {
+                  _vm.showModalRemove = false
+                },
+                submit: _vm.saveData
+              }
+            },
+            [
+              _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
+                _vm._v("Remove File")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "text-center",
+                  attrs: { slot: "body" },
+                  slot: "body"
+                },
+                [_c("h3", [_vm._v("Do you really want to delete this file?")])]
+              ),
+              _vm._v(" "),
+              _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-flat btn-success",
+                    on: {
+                      click: function($event) {
+                        _vm.$emit("submit")
+                      }
+                    }
+                  },
+                  [_vm._v("\n            Delete\n            ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-flat btn-default",
+                    on: {
+                      click: function($event) {
+                        _vm.$emit("close")
+                      }
+                    }
+                  },
+                  [_vm._v("\n            Close\n            ")]
+                )
+              ])
+            ]
+          )
         : _vm._e()
     ],
     1
@@ -49137,47 +49242,31 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-body" }, [
-      _c("div", { staticClass: "table-responsive" }, [
-        _c("table", { staticClass: "table no-margin" }, [
-          _c("thead", [
-            _c("tr", [
-              _c("th", [_vm._v("ID")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Date")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("URL File")]),
-              _vm._v(" "),
-              _c("th")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c("td", [_vm._v("#1")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("data")]),
-              _vm._v(" "),
-              _c("td", [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    disabled: "",
-                    value: "https://dummyimage.com/836x525/000/fff"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("button", { staticClass: "btn btn-danger pull-right" }, [
-                  _c("i", { staticClass: "fa fa-trash-o" })
-                ])
-              ])
-            ])
-          ])
-        ])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Date")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("URL File")]),
+        _vm._v(" "),
+        _c("th")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          disabled: "",
+          value: "https://dummyimage.com/836x525/000/fff"
+        }
+      })
     ])
   }
 ]

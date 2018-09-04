@@ -18,7 +18,7 @@
                                 <td>#1</td>
                                 <td>data</td>
                                 <td><input type="text" disabled value="https://dummyimage.com/836x525/000/fff" class="form-control"></td>
-                                <td><button class="btn btn-danger pull-right"><i class="fa fa-trash-o"></i></button></td>
+                                <td><button class="btn btn-danger pull-right" @click="showModalRemove = true"><i class="fa fa-trash-o"></i></button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -53,6 +53,22 @@
             </div>
         </modal>
         <!-- \modal library file -->
+        <!-- modal remove file -->
+        <modal v-if="showModalRemove" @close="showModalRemove = false" @submit="saveData">
+            <h3 slot="header">Remove File</h3>
+            <div slot="body" class="text-center">
+                <h3>Do you really want to delete this file?</h3>
+            </div>
+            <div slot="footer">
+                <button class="btn btn-flat btn-success" @click="$emit('submit')">
+                Delete
+                </button>
+                <button class="btn btn-flat btn-default" @click="$emit('close')">
+                Close
+                </button>
+            </div>
+        </modal>
+        <!-- \modal remove file -->
     </div>
 </template>
 
@@ -68,6 +84,7 @@
                 pages : [],
                 showModal : false,
                 showModalLibrary : false,
+                showModalRemove : false,
             }
         },
         components: {

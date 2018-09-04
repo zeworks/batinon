@@ -1,7 +1,7 @@
 @extends('adminlte::master')
 
 @section('adminlte_css')
-    <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/iCheck/square/blue.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/iCheck/square/green.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/auth.css') }}">
     @yield('css')
 @stop
@@ -39,7 +39,6 @@
                         </span>
                     @endif
                 </div>
-                <div class="container">
                     <div class="row">
                         <div class="col-xs-8">
                             <div class="checkbox icheck">
@@ -51,11 +50,10 @@
                         <!-- /.col -->
                         <div class="col-xs-4">
                             <button type="submit"
-                                    class="btn btn-primary btn-block btn-flat">{{ trans('adminlte::adminlte.sign_in') }}</button>
+                                    class="btn btn-success btn-block btn-flat">{{ trans('adminlte::adminlte.sign_in') }}</button>
                         </div>
                         <!-- /.col -->
                     </div>
-                </div>
             </form>
             <div class="auth-links">
                 <a href="{{ url(config('adminlte.password_reset_url', 'password/reset')) }}"
@@ -78,8 +76,8 @@
     <script>
         $(function () {
             $('input').iCheck({
-                checkboxClass: 'icheckbox_square-blue',
-                radioClass: 'iradio_square-blue',
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
                 increaseArea: '20%' // optional
             });
         });
