@@ -20,15 +20,6 @@
             <div class="modal-footer">
               <slot name="footer">
                 <!-- default footer -->
-                <div class="clearfix"></div>
-                <div class="pull-right">
-                  <button class="btn btn-flat btn-success" @click="$emit('submit')">
-                    Save
-                  </button>
-                  <button class="btn btn-flat btn-default" @click="$emit('close')">
-                    Close
-                  </button>
-                </div>
               </slot>
             </div>
           </div>

@@ -34,7 +34,7 @@
             </div>
         </div>
         <!-- modal send file -->
-        <modal v-if="showModal" @close="showModal = false" @submit="saveData">
+        <modal v-if="showModal">
             <h3 slot="header">Send New File</h3>
             <div slot="body">
                 <div class="form-group">
@@ -43,29 +43,42 @@
                   <p class="help-block">This file will be visible on the <b>files</b> list.</p>
                 </div>
             </div>
+            <div slot="footer">
+                <div class="clearfix"></div>
+                <div class="pull-right">
+                    <button @click="saveData" class="btn btn-success">Send</button>
+                    <button @click="showModal = false" class="btn btn-default">Cancel</button>
+                </div>
+            </div>
         </modal>
         <!-- \modal send file -->
         <!-- modal library file -->
-        <modal v-if="showModalLibrary" @close="showModalLibrary = false" @submit="saveData">
+        <modal v-if="showModalLibrary">
             <h3 slot="header">Files Libray</h3>
             <div slot="body">
                 <p>Libray here!</p>
             </div>
+            <div slot="footer">
+                <div class="clearfix"></div>
+                <div class="pull-right">
+                    <button @click="saveData" class="btn btn-success">Send</button>
+                    <button @click="showModalLibrary = false" class="btn btn-default">Cancel</button>
+                </div>
+            </div>
         </modal>
         <!-- \modal library file -->
         <!-- modal remove file -->
-        <modal v-if="showModalRemove" @close="showModalRemove = false" @submit="saveData">
+        <modal v-if="showModalRemove">
             <h3 slot="header">Remove File</h3>
             <div slot="body" class="text-center">
                 <h3>Do you really want to delete this file?</h3>
             </div>
             <div slot="footer">
-                <button class="btn btn-flat btn-success" @click="$emit('submit')">
-                Delete
-                </button>
-                <button class="btn btn-flat btn-default" @click="$emit('close')">
-                Close
-                </button>
+                <div class="clearfix"></div>
+                <div class="pull-right">
+                    <button @click="saveData" class="btn btn-success">Yes</button>
+                    <button @click="showModalRemove = false" class="btn btn-default">No</button>
+                </div>
             </div>
         </modal>
         <!-- \modal remove file -->

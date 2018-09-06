@@ -48440,6 +48440,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -48950,15 +48963,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -48985,44 +48989,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [_vm._t("body")], 2),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "modal-footer" },
-                [
-                  _vm._t("footer", [
-                    _c("div", { staticClass: "clearfix" }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "pull-right" }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-flat btn-success",
-                          on: {
-                            click: function($event) {
-                              _vm.$emit("submit")
-                            }
-                          }
-                        },
-                        [_vm._v("\n                  Save\n                ")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-flat btn-default",
-                          on: {
-                            click: function($event) {
-                              _vm.$emit("close")
-                            }
-                          }
-                        },
-                        [_vm._v("\n                  Close\n                ")]
-                      )
-                    ])
-                  ])
-                ],
-                2
-              )
+              _c("div", { staticClass: "modal-footer" }, [_vm._t("footer")], 2)
             ])
           ])
         ])
@@ -49118,120 +49085,143 @@ var render = function() {
       ]),
       _vm._v(" "),
       _vm.showModal
-        ? _c(
-            "modal",
-            {
-              on: {
-                close: function($event) {
-                  _vm.showModal = false
-                },
-                submit: _vm.saveData
-              }
-            },
-            [
-              _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
-                _vm._v("Send New File")
-              ]),
-              _vm._v(" "),
-              _c("div", { attrs: { slot: "body" }, slot: "body" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "exampleInputFile" } }, [
-                    _vm._v("File input")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    attrs: { type: "file", id: "exampleInputFile" }
-                  }),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "help-block" }, [
-                    _vm._v("This file will be visible on the "),
-                    _c("b", [_vm._v("files")]),
-                    _vm._v(" list.")
-                  ])
+        ? _c("modal", [
+            _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
+              _vm._v("Send New File")
+            ]),
+            _vm._v(" "),
+            _c("div", { attrs: { slot: "body" }, slot: "body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "exampleInputFile" } }, [
+                  _vm._v("File input")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  attrs: { type: "file", id: "exampleInputFile" }
+                }),
+                _vm._v(" "),
+                _c("p", { staticClass: "help-block" }, [
+                  _vm._v("This file will be visible on the "),
+                  _c("b", [_vm._v("files")]),
+                  _vm._v(" list.")
                 ])
               ])
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.showModalLibrary
-        ? _c(
-            "modal",
-            {
-              on: {
-                close: function($event) {
-                  _vm.showModalLibrary = false
-                },
-                submit: _vm.saveData
-              }
-            },
-            [
-              _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
-                _vm._v("Files Libray")
-              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
+              _c("div", { staticClass: "clearfix" }),
               _vm._v(" "),
-              _c("div", { attrs: { slot: "body" }, slot: "body" }, [
-                _c("p", [_vm._v("Libray here!")])
-              ])
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.showModalRemove
-        ? _c(
-            "modal",
-            {
-              on: {
-                close: function($event) {
-                  _vm.showModalRemove = false
-                },
-                submit: _vm.saveData
-              }
-            },
-            [
-              _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
-                _vm._v("Remove File")
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "text-center",
-                  attrs: { slot: "body" },
-                  slot: "body"
-                },
-                [_c("h3", [_vm._v("Do you really want to delete this file?")])]
-              ),
-              _vm._v(" "),
-              _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
+              _c("div", { staticClass: "pull-right" }, [
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-flat btn-success",
-                    on: {
-                      click: function($event) {
-                        _vm.$emit("submit")
-                      }
-                    }
+                    staticClass: "btn btn-success",
+                    on: { click: _vm.saveData }
                   },
-                  [_vm._v("\n            Delete\n            ")]
+                  [_vm._v("Send")]
                 ),
                 _vm._v(" "),
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-flat btn-default",
+                    staticClass: "btn btn-default",
                     on: {
                       click: function($event) {
-                        _vm.$emit("close")
+                        _vm.showModal = false
                       }
                     }
                   },
-                  [_vm._v("\n            Close\n            ")]
+                  [_vm._v("Cancel")]
                 )
               ])
-            ]
-          )
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.showModalLibrary
+        ? _c("modal", [
+            _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
+              _vm._v("Files Libray")
+            ]),
+            _vm._v(" "),
+            _c("div", { attrs: { slot: "body" }, slot: "body" }, [
+              _c("p", [_vm._v("Libray here!")])
+            ]),
+            _vm._v(" "),
+            _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
+              _c("div", { staticClass: "clearfix" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "pull-right" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    on: { click: _vm.saveData }
+                  },
+                  [_vm._v("Send")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default",
+                    on: {
+                      click: function($event) {
+                        _vm.showModalLibrary = false
+                      }
+                    }
+                  },
+                  [_vm._v("Cancel")]
+                )
+              ])
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.showModalRemove
+        ? _c("modal", [
+            _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
+              _vm._v("Remove File")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "text-center",
+                attrs: { slot: "body" },
+                slot: "body"
+              },
+              [_c("h3", [_vm._v("Do you really want to delete this file?")])]
+            ),
+            _vm._v(" "),
+            _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
+              _c("div", { staticClass: "clearfix" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "pull-right" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    on: { click: _vm.saveData }
+                  },
+                  [_vm._v("Yes")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default",
+                    on: {
+                      click: function($event) {
+                        _vm.showModalRemove = false
+                      }
+                    }
+                  },
+                  [_vm._v("No")]
+                )
+              ])
+            ])
+          ])
         : _vm._e()
     ],
     1
