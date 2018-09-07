@@ -7,7 +7,8 @@
                     <table class="table no-margin">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th width="60">ID</th>
+                                <th width="100"></th>
                                 <th>Date</th>
                                 <th>URL File</th>
                                 <th></th>
@@ -16,6 +17,7 @@
                         <tbody>
                             <tr>
                                 <td>#1</td>
+                                <td><img src="https://dummyimage.com/70x50/000/fff" alt="dummy image"></td>
                                 <td>data</td>
                                 <td><input type="text" disabled value="https://dummyimage.com/836x525/000/fff" class="form-control"></td>
                                 <td><button class="btn btn-danger pull-right" @click="showModalRemove = true"><i class="fa fa-trash-o"></i></button></td>
@@ -76,7 +78,7 @@
             <div slot="footer">
                 <div class="clearfix"></div>
                 <div class="pull-right">
-                    <button @click="saveData" class="btn btn-success">Yes</button>
+                    <button @click="removeFile" class="btn btn-success">Yes</button>
                     <button @click="showModalRemove = false" class="btn btn-default">No</button>
                 </div>
             </div>
@@ -86,7 +88,6 @@
 </template>
 
 <script>
-    import Vue from 'vue';
     import axios from 'axios';
     import modal from './ModalComponent.vue';
 
@@ -116,6 +117,10 @@
             },
             saveData(){
                 console.log('saved!');
+            },
+            removeFile(){
+                this.showModalRemove = false;
+                swal('Sucesso!','Ficheiro removido','success');
             }
         }
     }

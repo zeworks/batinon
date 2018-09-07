@@ -6,6 +6,7 @@
 
 import './bootstrap';
 import Vue from 'vue';
+import VueSwal from 'vue-swal';
 import DashboardComponent from './components/DashboardComponent.vue';
 import PagesComponent from './components/PagesComponent.vue';
 import PagesformComponent from './components/PagesformComponent.vue';
@@ -16,6 +17,9 @@ import FilesComponent from './components/FilesComponent.vue';
  * the page. Then, you may begin adding  components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+Vue.use(VueSwal)
+
 
 var app = new Vue({
     el: '#app',
