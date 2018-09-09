@@ -17,7 +17,11 @@
                         <tbody>
                             <tr>
                                 <td>#1</td>
-                                <td><img src="https://dummyimage.com/70x50/000/fff" alt="dummy image"></td>
+                                <td>
+                                    <div class="image-to-preview">
+                                        <img src="https://dummyimage.com/70x50/000/fff" alt="dummy image">
+                                    </div>
+                                </td>
                                 <td>data</td>
                                 <td><input type="text" disabled value="https://dummyimage.com/836x525/000/fff" class="form-control"></td>
                                 <td><button class="btn btn-danger pull-right" @click="showModalRemove = true"><i class="fa fa-trash-o"></i></button></td>
