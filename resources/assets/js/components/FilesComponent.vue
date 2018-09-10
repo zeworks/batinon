@@ -15,15 +15,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>#1</td>
+                            <tr v-for="(file,index) in files" :key="index">
+                                <td>#{{file.id}}</td>
                                 <td>
-                                    <div class="image-to-preview">
+                                    <div class="image-to-preview" v-if="file.name">
                                         <img src="https://dummyimage.com/70x50/000/fff" alt="dummy image">
                                     </div>
                                 </td>
                                 <td>data</td>
-                                <td><input type="text" disabled value="https://dummyimage.com/836x525/000/fff" class="form-control"></td>
+                                <td><input type="text" disabled v-model="file.name" class="form-control"></td>
                                 <td><button class="btn btn-danger pull-right" @click="showModalRemove = true"><i class="fa fa-trash-o"></i></button></td>
                             </tr>
                         </tbody>
@@ -44,8 +44,8 @@
             <h3 slot="header">Send New File</h3>
             <div slot="body">
                 <div class="form-group">
-                  <label for="exampleInputFile">File input</label>
-                  <input type="file" id="exampleInputFile">
+                  <label for="file_input">File input</label>
+                  <input type="file" id="file_input">
                   <p class="help-block">This file will be visible on the <b>files</b> list.</p>
                 </div>
             </div>
@@ -98,7 +98,8 @@
     export default {
         data() {
             return {
-                pages : [],
+                files : [],
+                fileName : '',
                 showModal : false,
                 showModalLibrary : false,
                 showModalRemove : false,
@@ -108,18 +109,27 @@
             modal
         },
         created(){
-            this.fetchPages();
+            this.fetchFiles();
         },
         methods: {
-            fetchPages(){
-                axios.get('/api/pages')
+            fetchFiles(){
+                axios.get('/api/files')
                 .then( response => response.data)
                 .then( data => {
-                    this.pages = data;
+                    this.files = data;
                 });
             },
             saveData(){
                 this.showModal = false;
+                axios.post('/api/files/add', {
+                    name : $('#file_input').val() 
+                })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
                 // success alert
                 swal('Sucesso!','File Sent','success');
             },

@@ -17,5 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//pages
 Route::get('pages','Api\PagesController@index');
 Route::get('pages/edit/{id}','Api\PagesController@edit');
+//files
+Route::get('files','Api\FilesController@index');
+Route::post('files/add','Api\FilesController@add');
