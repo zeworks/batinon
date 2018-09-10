@@ -35,6 +35,10 @@ select {
     border-radius: 5px !important;
 }
 
+textarea{
+    resize: vertical;
+}
+
 input[type="checkbox"] {
     position: absolute;
     opacity: 0;
@@ -69,7 +73,7 @@ input[type="checkbox"] {
     -webkit-transition: background .3s ease;
     transition: background .3s ease;
     vertical-align: middle;
-    margin: 0 16px;
+    margin: 0;
     box-shadow: none;
 }
 
@@ -104,9 +108,6 @@ input[type="checkbox"] {
 }
 
 /* ENDS CHECKBOX */
-.login-page {
-    /* background-color: #38c172 !important; */
-}
 
 .login-box-body {
     box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.1);

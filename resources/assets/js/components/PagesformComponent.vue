@@ -20,17 +20,55 @@
                         </div>
                     </div>
                 </div>
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <div class="box-title">Page Blocks</div>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="block_title">Block Title</label>
+                            <input type="text" id="block_title" name="block_title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="block_summary">Block Summary</label>
+                            <vueEditor id="block_summary" v-model="block_summary"></vueEditor>
+                        </div>
+                        <div class="form-group">
+                            <label for="block_description">Block Description</label>
+                            <vueEditor id="block_description" v-model="block_description"></vueEditor>
+                        </div>
+                        <div class="form-group">
+                            <label for="block_files">Block Image(s)</label>
+                            <input type="file" name="block_files[]" id="block_files" multiple @change="onFileChange">
+                            <p class="help-block">Choose wich images you want to display into this block</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-sm-3">
                 <div class="box box-primary">
+                    <div class="box-header">
+                        <div class="box-title">
+                            Status
+                        </div>
+                    </div>
                     <div class="box-body">
                         <div class="form-group">
                             <label class="custom-control custom-checkbox">
-                                Status
                                 <input type="checkbox" class="custom-control-input" v-model="page.status">
                                 <span class="custom-control-indicator"></span>
                             </label>
                         </div>
+                    </div>
+                    <hr>
+                    <div class="box-header">
+                        <div class="box-title">
+                            Featured Image
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <input type="file" name="image" id="image">
+                        <p class="help-block">This image will appear on top of your page</p>
                     </div>
                     <div class="box-footer">
                         <div class="pull-right">
@@ -56,7 +94,9 @@
         },
         data() {
             return {
-                page : [],
+                page              : [],
+                block_summary     : '',
+                block_description : '',
             }
         },
         created(){
@@ -79,6 +119,22 @@
                 // .then(response => response.data)
                 // .then( data => {
                 // });
+            },
+            onFileChange(e) {
+                var files = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                this.createImage(files[0]);
+            },
+            createImage(file) {
+                var image = new Image();
+                var reader = new FileReader();
+                var vm = this;
+
+                reader.onload = (e) => {
+                    vm.image = e.target.result;
+                };
+                reader.readAsDataURL(file);
             },
             sanitizeTitle(title) {
                 var slug = "";

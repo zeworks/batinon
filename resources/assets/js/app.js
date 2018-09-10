@@ -7,6 +7,7 @@
 import './bootstrap';
 import Vue from 'vue';
 import VueSwal from 'vue-swal';
+import VueEditor from 'vue2-editor';
 import DashboardComponent from './components/DashboardComponent.vue';
 import PagesComponent from './components/PagesComponent.vue';
 import PagesformComponent from './components/PagesformComponent.vue';
@@ -19,6 +20,7 @@ import FilesComponent from './components/FilesComponent.vue';
  */
 
 Vue.use(VueSwal)
+Vue.use(VueEditor)
 
 
 var app = new Vue({

@@ -75,7 +75,7 @@
         <!-- \modal library file -->
         <!-- modal remove file -->
         <modal v-if="showModalRemove">
-            <h3 slot="header">Remove File</h3>
+            <h3 slot="header">Delete File</h3>
             <div slot="body" class="text-center">
                 <h3>Do you really want to delete this file?</h3>
             </div>
@@ -94,7 +94,6 @@
 <script>
     import axios from 'axios';
     import modal from './ModalComponent.vue';
-
 
     export default {
         data() {
@@ -120,11 +119,15 @@
                 });
             },
             saveData(){
-                console.log('saved!');
+                this.showModal = false;
+                // success alert
+                swal('Sucesso!','File Sent','success');
             },
             removeFile(){
+                // hide remove modal
                 this.showModalRemove = false;
-                swal('Sucesso!','Ficheiro removido','success');
+                // success alert
+                swal('Sucesso!','File Deleted','success');
             }
         }
     }

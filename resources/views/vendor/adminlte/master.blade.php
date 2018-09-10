@@ -48,7 +48,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
     <link rel="stylesheet" href="{{ asset('css/batinon.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/batinon_responsive.css') }}">
 
 </head>
 <body class="hold-transition @yield('body_class')">
@@ -59,7 +58,6 @@
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <!-- axios -->
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 @if(config('adminlte.plugins.select2'))
     <!-- Select2 -->

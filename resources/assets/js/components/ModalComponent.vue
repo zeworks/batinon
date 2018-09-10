@@ -27,7 +27,6 @@
       </div>
     </transition>
   </div>
-    
 </template>
 
 <script>
@@ -38,7 +37,8 @@ export default {
 }
 </script>
 
-<style >
+<style>
+
   .modal-mask {
       position: fixed;
       z-index: 9998;
@@ -105,4 +105,5 @@ export default {
       -webkit-transform: scale(1.1);
       transform: scale(1.1);
   }
+
 </style>
