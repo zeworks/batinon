@@ -49092,6 +49092,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -49100,7 +49101,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             files: [],
-            fileName: '',
+            image: '',
             showModal: false,
             showModalLibrary: false,
             showModalRemove: false
@@ -49124,23 +49125,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.files = data;
             });
         },
-        saveData: function saveData() {
-            this.showModal = false;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/add', {
-                name: $('#file_input').val()
-            }).then(function (response) {
-                console.log(response);
-            }).catch(function (error) {
-                console.log(error);
-            });
-            // success alert
-            swal('Sucesso!', 'File Sent', 'success');
-        },
         removeFile: function removeFile() {
             // hide remove modal
             this.showModalRemove = false;
             // success alert
             swal('Sucesso!', 'File Deleted', 'success');
+        },
+        uploadImage: function uploadImage() {
+            this.showModal = false;
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/add').then(function (response) {
+                console.log(response);
+                swal('Sucesso!', 'File sent', 'success');
+            }).catch(function () {
+                swal('Erro!', 'File not sent', 'error');
+            });
         }
     }
 });
@@ -49266,47 +49264,67 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { attrs: { slot: "body" }, slot: "body" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "file_input" } }, [
-                  _vm._v("File input")
-                ]),
-                _vm._v(" "),
-                _c("input", { attrs: { type: "file", id: "file_input" } }),
-                _vm._v(" "),
-                _c("p", { staticClass: "help-block" }, [
-                  _vm._v("This file will be visible on the "),
-                  _c("b", [_vm._v("files")]),
-                  _vm._v(" list.")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
-              _c("div", { staticClass: "clearfix" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "pull-right" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-success",
-                    on: { click: _vm.saveData }
-                  },
-                  [_vm._v("Send")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default",
-                    on: {
-                      click: function($event) {
-                        _vm.showModal = false
-                      }
+              _c(
+                "form",
+                {
+                  attrs: { action: "", method: "post" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.uploadImage($event)
                     }
-                  },
-                  [_vm._v("Cancel")]
-                )
-              ])
+                  }
+                },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "file_input" } }, [
+                      _vm._v("File input")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: {
+                        type: "file",
+                        id: "file_input",
+                        name: "file_input"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "help-block" }, [
+                      _vm._v("This file will be visible on the "),
+                      _c("b", [_vm._v("files")]),
+                      _vm._v(" list.")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "clearfix" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "pull-right" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Send")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-default",
+                        on: {
+                          click: function($event) {
+                            _vm.showModal = false
+                          }
+                        }
+                      },
+                      [_vm._v("Cancel")]
+                    )
+                  ])
+                ]
+              )
             ])
           ])
         : _vm._e(),

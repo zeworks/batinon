@@ -43,18 +43,19 @@
         <modal v-if="showModal">
             <h3 slot="header">Send New File</h3>
             <div slot="body">
-                <div class="form-group">
-                  <label for="file_input">File input</label>
-                  <input type="file" id="file_input">
-                  <p class="help-block">This file will be visible on the <b>files</b> list.</p>
-                </div>
-            </div>
-            <div slot="footer">
-                <div class="clearfix"></div>
-                <div class="pull-right">
-                    <button @click="saveData" class="btn btn-success">Send</button>
-                    <button @click="showModal = false" class="btn btn-default">Cancel</button>
-                </div>
+                <form action="" @submit.prevent="uploadImage" method="post">
+                    <div class="form-group">
+                        <label for="file_input">File input</label>
+                        <input type="file" id="file_input" name="file_input">
+                        <p class="help-block">This file will be visible on the <b>files</b> list.</p>
+                    </div>
+                    <hr>
+                    <div class="clearfix"></div>
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-success">Send</button>
+                        <button @click="showModal = false" class="btn btn-default">Cancel</button>
+                    </div>
+                </form>
             </div>
         </modal>
         <!-- \modal send file -->
@@ -99,7 +100,7 @@
         data() {
             return {
                 files : [],
-                fileName : '',
+                image: '',
                 showModal : false,
                 showModalLibrary : false,
                 showModalRemove : false,
@@ -119,25 +120,22 @@
                     this.files = data;
                 });
             },
-            saveData(){
-                this.showModal = false;
-                axios.post('/api/files/add', {
-                    name : $('#file_input').val() 
-                })
-                .then(function (response) {
-                    console.log(response);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-                // success alert
-                swal('Sucesso!','File Sent','success');
-            },
             removeFile(){
                 // hide remove modal
                 this.showModalRemove = false;
                 // success alert
                 swal('Sucesso!','File Deleted','success');
+            },
+            
+            uploadImage(){
+                this.showModal = false;
+                axios.post('/api/files/add')
+                .then(response => {
+                    console.log(response);
+                    swal('Sucesso!','File sent','success');
+                }).catch(function(){
+                    swal('Erro!','File not sent','error');
+                });
             }
         }
     }
