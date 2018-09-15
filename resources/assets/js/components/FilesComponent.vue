@@ -19,11 +19,11 @@
                                 <td>#{{file.id}}</td>
                                 <td>
                                     <div class="image-to-preview" v-if="file.name">
-                                        <img src="https://dummyimage.com/70x50/000/fff" alt="dummy image">
+                                        <img width="50" :src="origin+image_path+file.name" alt="dummy image">
                                     </div>
                                 </td>
                                 <td>data</td>
-                                <td><input type="text" disabled v-model="file.name" class="form-control"></td>
+                                <td><input type="text" disabled  :value="origin+image_path+file.name" class="form-control"></td>
                                 <td><button class="btn btn-danger pull-right" @click="showModalRemove = true"><i class="fa fa-trash-o"></i></button></td>
                             </tr>
                         </tbody>
@@ -43,17 +43,17 @@
         <modal v-if="showModal">
             <h3 slot="header">Send New File</h3>
             <div slot="body">
-                <form action="" @submit.prevent="uploadImage" method="post">
+                <form @submit.prevent="uploadImage">
                     <div class="form-group">
                         <label for="file_input">File input</label>
-                        <input type="file" id="file_input" name="file_input">
+                        <input type="file" id="file_input" @change="onImageChange" name="file_input">
                         <p class="help-block">This file will be visible on the <b>files</b> list.</p>
                     </div>
                     <hr>
                     <div class="clearfix"></div>
                     <div class="pull-right">
                         <button type="submit" class="btn btn-success">Send</button>
-                        <button @click="showModal = false" class="btn btn-default">Cancel</button>
+                        <button type="button" @click="showModal = false" class="btn btn-default">Cancel</button>
                     </div>
                 </form>
             </div>
@@ -62,13 +62,17 @@
         <!-- modal library file -->
         <modal v-if="showModalLibrary">
             <h3 slot="header">Files Libray</h3>
-            <div slot="body">
+            <div slot="body" class="clearfix">
                 <p>Libray here!</p>
+                <div v-for="(file,index) in files" :key="index">
+                    <div class="col-sm-4">
+                        <img class="img-responsive" :src="origin+image_path+file.name" :alt="file.name">
+                    </div>
+                </div>
             </div>
             <div slot="footer">
                 <div class="clearfix"></div>
                 <div class="pull-right">
-                    <button @click="saveData" class="btn btn-success">Send</button>
                     <button @click="showModalLibrary = false" class="btn btn-default">Cancel</button>
                 </div>
             </div>
@@ -100,7 +104,9 @@
         data() {
             return {
                 files : [],
-                image: '',
+                image: {},
+                origin : window.location.origin+'/',
+                image_path : 'storage/images/',
                 showModal : false,
                 showModalLibrary : false,
                 showModalRemove : false,
@@ -110,6 +116,8 @@
             modal
         },
         created(){
+            // console.log();
+            
             this.fetchFiles();
         },
         methods: {
@@ -126,13 +134,19 @@
                 // success alert
                 swal('Sucesso!','File Deleted','success');
             },
-            
-            uploadImage(){
+            onImageChange(e) {
+                this.image = document.querySelector('#file_input').files[0];
+            },
+            uploadImage(event){
                 this.showModal = false;
-                axios.post('/api/files/add')
+
+                const formData = new FormData();
+                formData.append( 'image', this.image );
+                
+                axios.post('/api/files/add', formData)
                 .then(response => {
-                    console.log(response);
                     swal('Sucesso!','File sent','success');
+                    this.fetchFiles();
                 }).catch(function(){
                     swal('Erro!','File not sent','error');
                 });

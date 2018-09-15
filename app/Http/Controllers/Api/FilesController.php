@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Files;
 
+
 class FilesController extends Controller
 {
     //
@@ -16,16 +17,17 @@ class FilesController extends Controller
     }
 
     public function add(Request $request){
-        dd($request);
-    //     if($request->get('image'))
-    //     {
-    //       $image = $request->get('image');
-    //       $name = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-    //       \Image::make($request->get('image'))->save(storage_path('public\images', $name));
-    //     }
+        if($request->file('image'))
+        {
+          $image = $request->file('image');
+          $image_extension = $request->file('image')->getClientOriginalExtension();
+          $name = $image->getClientOriginalName();
+          $name_encoded = base64_encode($name).'.'.$image_extension;
+          $image->storeAs('public/images', $name_encoded);
+        }
 
-    //    $image= new Files();
-    //    $image->name = $name;
-    //    $image->save();
+       $image= new Files();
+       $image->name = $name_encoded;
+       $image->save();
     }
 }

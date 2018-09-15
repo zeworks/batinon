@@ -47791,7 +47791,7 @@ exports = module.exports = __webpack_require__(50)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-mask {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container {\n    min-width: 500px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 4px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n    display: table;\n}\n@media (max-width: 768px){\n.modal-container{\n    min-width: 100%;\n}\n}\n.modal-header h3 {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body {\n    margin: 20px 0;\n}\n\n/*\n  * The following styles are auto-applied to elements with\n  * transition=\"modal\" when their visibility is toggled\n  * by Vue.js.\n  *\n  * You can easily play with the modal transition by editing\n  * these styles.\n*/\n.modal-enter {\n    opacity: 0;\n}\n.modal-leave-active {\n    opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n\n", ""]);
+exports.push([module.i, "\n.modal-mask {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container {\n    max-width: 500px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 4px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n    display: table;\n    width: 100%;\n}\n@media (max-width: 768px){\n.modal-container{\n    min-width: 100%;\n}\n}\n.modal-header h3 {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body {\n    margin: 20px 0;\n}\n\n/*\n  * The following styles are auto-applied to elements with\n  * transition=\"modal\" when their visibility is toggled\n  * by Vue.js.\n  *\n  * You can easily play with the modal transition by editing\n  * these styles.\n*/\n.modal-enter {\n    opacity: 0;\n}\n.modal-leave-active {\n    opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n\n", ""]);
 
 // exports
 
@@ -49093,6 +49093,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -49101,7 +49105,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             files: [],
-            image: '',
+            image: {},
+            origin: window.location.origin + '/',
+            image_path: 'storage/images/',
             showModal: false,
             showModalLibrary: false,
             showModalRemove: false
@@ -49112,6 +49118,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         modal: __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue___default.a
     },
     created: function created() {
+        // console.log();
+
         this.fetchFiles();
     },
 
@@ -49131,11 +49139,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             // success alert
             swal('Sucesso!', 'File Deleted', 'success');
         },
-        uploadImage: function uploadImage() {
+        onImageChange: function onImageChange(e) {
+            this.image = document.querySelector('#file_input').files[0];
+        },
+        uploadImage: function uploadImage(event) {
+            var _this2 = this;
+
             this.showModal = false;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/add').then(function (response) {
-                console.log(response);
+
+            var formData = new FormData();
+            formData.append('image', this.image);
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/add', formData).then(function (response) {
                 swal('Sucesso!', 'File sent', 'success');
+                _this2.fetchFiles();
             }).catch(function () {
                 swal('Erro!', 'File not sent', 'error');
             });
@@ -49171,7 +49188,8 @@ var render = function() {
                         ? _c("div", { staticClass: "image-to-preview" }, [
                             _c("img", {
                               attrs: {
-                                src: "https://dummyimage.com/70x50/000/fff",
+                                width: "50",
+                                src: _vm.origin + _vm.image_path + file.name,
                                 alt: "dummy image"
                               }
                             })
@@ -49183,24 +49201,10 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [
                       _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: file.name,
-                            expression: "file.name"
-                          }
-                        ],
                         staticClass: "form-control",
                         attrs: { type: "text", disabled: "" },
-                        domProps: { value: file.name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(file, "name", $event.target.value)
-                          }
+                        domProps: {
+                          value: _vm.origin + _vm.image_path + file.name
                         }
                       })
                     ]),
@@ -49267,7 +49271,6 @@ var render = function() {
               _c(
                 "form",
                 {
-                  attrs: { action: "", method: "post" },
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
@@ -49286,7 +49289,8 @@ var render = function() {
                         type: "file",
                         id: "file_input",
                         name: "file_input"
-                      }
+                      },
+                      on: { change: _vm.onImageChange }
                     }),
                     _vm._v(" "),
                     _c("p", { staticClass: "help-block" }, [
@@ -49314,6 +49318,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-default",
+                        attrs: { type: "button" },
                         on: {
                           click: function($event) {
                             _vm.showModal = false
@@ -49335,23 +49340,37 @@ var render = function() {
               _vm._v("Files Libray")
             ]),
             _vm._v(" "),
-            _c("div", { attrs: { slot: "body" }, slot: "body" }, [
-              _c("p", [_vm._v("Libray here!")])
-            ]),
+            _c(
+              "div",
+              {
+                staticClass: "clearfix",
+                attrs: { slot: "body" },
+                slot: "body"
+              },
+              [
+                _c("p", [_vm._v("Libray here!")]),
+                _vm._v(" "),
+                _vm._l(_vm.files, function(file, index) {
+                  return _c("div", { key: index }, [
+                    _c("div", { staticClass: "col-sm-4" }, [
+                      _c("img", {
+                        staticClass: "img-responsive",
+                        attrs: {
+                          src: _vm.origin + _vm.image_path + file.name,
+                          alt: file.name
+                        }
+                      })
+                    ])
+                  ])
+                })
+              ],
+              2
+            ),
             _vm._v(" "),
             _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
               _c("div", { staticClass: "clearfix" }),
               _vm._v(" "),
               _c("div", { staticClass: "pull-right" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-success",
-                    on: { click: _vm.saveData }
-                  },
-                  [_vm._v("Send")]
-                ),
-                _vm._v(" "),
                 _c(
                   "button",
                   {

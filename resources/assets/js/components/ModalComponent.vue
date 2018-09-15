@@ -57,7 +57,7 @@ export default {
   }
 
   .modal-container {
-      min-width: 500px;
+      max-width: 500px;
       margin: 0px auto;
       padding: 20px 30px;
       background-color: #fff;
@@ -66,6 +66,7 @@ export default {
       transition: all .3s ease;
       font-family: Helvetica, Arial, sans-serif;
       display: table;
+      width: 100%;
   }
   
   @media (max-width: 768px){
