@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "jquery-match-height": "^0.7.2",
     "vue-swal": "^0.1.0",
     "vue2-editor": "^2.6.6"
   }

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div :id="id" class="row">
+        <form @submit.prevent="saveData" :id="id" class="row">
             <div class="col-sm-9">
                 <div class="box box-primary">
                     <div class="box-body">
@@ -14,7 +14,7 @@
                             <div class="col-sm-5">
                                 <div class="form-group">
                                     <label for="slug">Page Slug</label>
-                                    <input type="text" id="slug" name="slug" class="form-control" disabled v-if="page.slug" v-model="slug">
+                                    <input type="text" id="slug" name="slug" class="form-control" disabled v-model="page.slug">
                                 </div>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-group">
                             <label for="block_files">Block Image(s)</label>
-                            <input type="file" name="block_files[]" id="block_files" multiple @change="onFileChange">
+                            <input type="file" name="block_files[]" id="block_files" multiple>
                             <p class="help-block">Choose wich images you want to display into this block</p>
                         </div>
                     </div>
@@ -72,13 +72,16 @@
                     </div>
                     <div class="box-footer">
                         <div class="pull-right">
-                            <button type="button" class="btn btn-default" @click="back">Cancel</button>
-                            <button type="submit" class="btn btn-primary" @click="saveData">Save</button>
+                            <a class="btn btn-default" href="/admin/pages">Cancel</a>
+                            <!-- edit button -->
+                            <button type="submit" v-if="id" class="btn btn-primary">Save</button>
+                            <!-- new button -->
+                            <button type="submit" v-else class="btn btn-primary">Save</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </template>
 
@@ -94,6 +97,7 @@
         },
         data() {
             return {
+                data              : [],
                 page              : [],
                 block_summary     : '',
                 block_description : '',
@@ -103,9 +107,6 @@
             this.fetchPages();
         },
         methods: {
-            back(){
-                window.history.back();
-            },
             fetchPages(){
                 axios.get('/api/pages/edit/'+this.id)
                 .then(response => response.data)
@@ -114,27 +115,17 @@
                 });
             },
             saveData(){
-                console.log(this.page);
-                // axios.post('/api/pages/edit/'+this.id)
-                // .then(response => response.data)
-                // .then( data => {
-                // });
-            },
-            onFileChange(e) {
-                var files = e.target.files || e.dataTransfer.files;
-                if (!files.length)
-                    return;
-                this.createImage(files[0]);
-            },
-            createImage(file) {
-                var image = new Image();
-                var reader = new FileReader();
-                var vm = this;
-
-                reader.onload = (e) => {
-                    vm.image = e.target.result;
-                };
-                reader.readAsDataURL(file);
+                
+                if(this.id > 0){
+                    console.log('editar');
+                    
+                }else{
+                    console.log('criar');
+                    // axios.post('/api/pages/add',{data : this.data})
+                    // .then(response => response.data)
+                    // .then( data => {
+                    // });
+                }
             },
             sanitizeTitle(title) {
                 var slug = "";

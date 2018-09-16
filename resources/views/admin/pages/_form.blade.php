@@ -1,8 +1,5 @@
-<form action="">
-    @csrf
-    @if(!empty($id))
-        <pagesform-component :id="{{$id}}"></pagesform-component>
-    @else
-        <pagesform-component></pagesform-component>
-    @endif
-</form>
+@if(!empty($id))
+    <pagesform-component :id="{{$id}}"></pagesform-component>
+@else
+    <pagesform-component></pagesform-component>
+@endif

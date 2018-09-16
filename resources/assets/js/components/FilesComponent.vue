@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="box box-success">
+        <div class="box box-danger">
             <div class="box-body">
                 <div class="table-responsive">
                     <!-- files list -->
@@ -18,9 +18,9 @@
                             <tr v-for="(file,index) in files" :key="index">
                                 <td>#{{file.id}}</td>
                                 <td>
-                                    <div class="image-to-preview" v-if="file.name">
+                                    <a href="#" @click="showModalPreview = true" class="image-to-preview" v-if="file.name">
                                         <img width="50" :src="origin+image_path+file.name" alt="dummy image">
-                                    </div>
+                                    </a>
                                 </td>
                                 <td>data</td>
                                 <td><input type="text" disabled  :value="origin+image_path+file.name" class="form-control"></td>
@@ -93,6 +93,16 @@
             </div>
         </modal>
         <!-- \modal remove file -->
+        <!-- modal preview image -->
+        <modal v-if="showModalPreview">
+            <div slot="body">
+                <!-- image goes here -->
+            </div>
+            <div slot="footer">
+                <button @click="showModalPreview = false" class="btn btn-default">Ok</button>
+            </div>
+        </modal>
+        <!-- \modal preview image -->
     </div>
 </template>
 
@@ -103,21 +113,20 @@
     export default {
         data() {
             return {
-                files : [],
-                image: {},
-                origin : window.location.origin+'/',
-                image_path : 'storage/images/',
-                showModal : false,
+                files            : [],
+                image            : {},
+                origin           : window.location.origin+'/',
+                image_path       : 'storage/images/',
+                showModal        : false,
                 showModalLibrary : false,
-                showModalRemove : false,
+                showModalRemove  : false,
+                showModalPreview : false,
             }
         },
         components: {
             modal
         },
         created(){
-            // console.log();
-            
             this.fetchFiles();
         },
         methods: {
@@ -146,10 +155,14 @@
                 axios.post('/api/files/add', formData)
                 .then(response => {
                     swal('Sucesso!','File sent','success');
+                    // reload files
                     this.fetchFiles();
                 }).catch(function(){
                     swal('Erro!','File not sent','error');
                 });
+            },
+            imagePreview(){
+                this.showModalPreview = false;
             }
         }
     }

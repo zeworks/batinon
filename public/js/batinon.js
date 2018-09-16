@@ -4,9 +4,6 @@ $(document).ready(function(){
 
     onInit();
 
-
-    // $(".select2").select2();
-
 });
 
 

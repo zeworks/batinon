@@ -48551,6 +48551,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -48563,6 +48566,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
+            data: [],
             page: [],
             block_summary: '',
             block_description: ''
@@ -48573,9 +48577,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        back: function back() {
-            window.history.back();
-        },
         fetchPages: function fetchPages() {
             var _this = this;
 
@@ -48586,26 +48587,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         saveData: function saveData() {
-            console.log(this.page);
-            // axios.post('/api/pages/edit/'+this.id)
-            // .then(response => response.data)
-            // .then( data => {
-            // });
-        },
-        onFileChange: function onFileChange(e) {
-            var files = e.target.files || e.dataTransfer.files;
-            if (!files.length) return;
-            this.createImage(files[0]);
-        },
-        createImage: function createImage(file) {
-            var image = new Image();
-            var reader = new FileReader();
-            var vm = this;
 
-            reader.onload = function (e) {
-                vm.image = e.target.result;
-            };
-            reader.readAsDataURL(file);
+            if (this.id > 0) {
+                console.log('editar');
+            } else {
+                console.log('criar');
+                // axios.post('/api/pages/add',{data : this.data})
+                // .then(response => response.data)
+                // .then( data => {
+                // });
+            }
         },
         sanitizeTitle: function sanitizeTitle(title) {
             var slug = "";
@@ -48642,240 +48633,240 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "row", attrs: { id: _vm.id } }, [
-      _c("div", { staticClass: "col-sm-9" }, [
-        _c("div", { staticClass: "box box-primary" }, [
-          _c("div", { staticClass: "box-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-sm-7" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "title" } }, [
-                    _vm._v("Page Name")
+    _c(
+      "form",
+      {
+        staticClass: "row",
+        attrs: { id: _vm.id },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.saveData($event)
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "col-sm-9" }, [
+          _c("div", { staticClass: "box box-primary" }, [
+            _c("div", { staticClass: "box-body" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-7" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "title" } }, [
+                      _vm._v("Page Name")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.page.name,
+                          expression: "page.name"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "title", name: "title" },
+                      domProps: { value: _vm.page.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.page, "name", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-5" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "slug" } }, [
+                      _vm._v("Page Slug")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.page.slug,
+                          expression: "page.slug"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "slug",
+                        name: "slug",
+                        disabled: ""
+                      },
+                      domProps: { value: _vm.page.slug },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.page, "slug", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "box box-primary" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "box-body" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-group" },
+                [
+                  _c("label", { attrs: { for: "block_summary" } }, [
+                    _vm._v("Block Summary")
                   ]),
                   _vm._v(" "),
+                  _c("vueEditor", {
+                    attrs: { id: "block_summary" },
+                    model: {
+                      value: _vm.block_summary,
+                      callback: function($$v) {
+                        _vm.block_summary = $$v
+                      },
+                      expression: "block_summary"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-group" },
+                [
+                  _c("label", { attrs: { for: "block_description" } }, [
+                    _vm._v("Block Description")
+                  ]),
+                  _vm._v(" "),
+                  _c("vueEditor", {
+                    attrs: { id: "block_description" },
+                    model: {
+                      value: _vm.block_description,
+                      callback: function($$v) {
+                        _vm.block_description = $$v
+                      },
+                      expression: "block_description"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm._m(2)
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-3" }, [
+          _c("div", { staticClass: "box box-primary" }, [
+            _vm._m(3),
+            _vm._v(" "),
+            _c("div", { staticClass: "box-body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { staticClass: "custom-control custom-checkbox" }, [
                   _c("input", {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.page.name,
-                        expression: "page.name"
+                        value: _vm.page.status,
+                        expression: "page.status"
                       }
                     ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "title", name: "title" },
-                    domProps: { value: _vm.page.name },
+                    staticClass: "custom-control-input",
+                    attrs: { type: "checkbox" },
+                    domProps: {
+                      checked: Array.isArray(_vm.page.status)
+                        ? _vm._i(_vm.page.status, null) > -1
+                        : _vm.page.status
+                    },
                     on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.page, "name", $event.target.value)
-                      }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-5" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "slug" } }, [
-                    _vm._v("Page Slug")
-                  ]),
-                  _vm._v(" "),
-                  _vm.page.slug
-                    ? _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.slug,
-                            expression: "slug"
+                      change: function($event) {
+                        var $$a = _vm.page.status,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(_vm.page, "status", $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.page,
+                                "status",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
                           }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          id: "slug",
-                          name: "slug",
-                          disabled: ""
-                        },
-                        domProps: { value: _vm.slug },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.slug = $event.target.value
-                          }
-                        }
-                      })
-                    : _vm._e()
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "box box-primary" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "box-body" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "form-group" },
-              [
-                _c("label", { attrs: { for: "block_summary" } }, [
-                  _vm._v("Block Summary")
-                ]),
-                _vm._v(" "),
-                _c("vueEditor", {
-                  attrs: { id: "block_summary" },
-                  model: {
-                    value: _vm.block_summary,
-                    callback: function($$v) {
-                      _vm.block_summary = $$v
-                    },
-                    expression: "block_summary"
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "form-group" },
-              [
-                _c("label", { attrs: { for: "block_description" } }, [
-                  _vm._v("Block Description")
-                ]),
-                _vm._v(" "),
-                _c("vueEditor", {
-                  attrs: { id: "block_description" },
-                  model: {
-                    value: _vm.block_description,
-                    callback: function($$v) {
-                      _vm.block_description = $$v
-                    },
-                    expression: "block_description"
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "block_files" } }, [
-                _vm._v("Block Image(s)")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                attrs: {
-                  type: "file",
-                  name: "block_files[]",
-                  id: "block_files",
-                  multiple: ""
-                },
-                on: { change: _vm.onFileChange }
-              }),
-              _vm._v(" "),
-              _c("p", { staticClass: "help-block" }, [
-                _vm._v("Choose wich images you want to display into this block")
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("div", { staticClass: "box box-primary" }, [
-          _vm._m(2),
-          _vm._v(" "),
-          _c("div", { staticClass: "box-body" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { staticClass: "custom-control custom-checkbox" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.page.status,
-                      expression: "page.status"
-                    }
-                  ],
-                  staticClass: "custom-control-input",
-                  attrs: { type: "checkbox" },
-                  domProps: {
-                    checked: Array.isArray(_vm.page.status)
-                      ? _vm._i(_vm.page.status, null) > -1
-                      : _vm.page.status
-                  },
-                  on: {
-                    change: function($event) {
-                      var $$a = _vm.page.status,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = null,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 &&
-                            _vm.$set(_vm.page, "status", $$a.concat([$$v]))
                         } else {
-                          $$i > -1 &&
-                            _vm.$set(
-                              _vm.page,
-                              "status",
-                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                            )
+                          _vm.$set(_vm.page, "status", $$c)
                         }
-                      } else {
-                        _vm.$set(_vm.page, "status", $$c)
                       }
                     }
-                  }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-control-indicator" })
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "custom-control-indicator" })
+                ])
               ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _vm._m(3),
-          _vm._v(" "),
-          _vm._m(4),
-          _vm._v(" "),
-          _c("div", { staticClass: "box-footer" }, [
-            _c("div", { staticClass: "pull-right" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  attrs: { type: "button" },
-                  on: { click: _vm.back }
-                },
-                [_vm._v("Cancel")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { type: "submit" },
-                  on: { click: _vm.saveData }
-                },
-                [_vm._v("Save")]
-              )
+            ]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _vm._m(4),
+            _vm._v(" "),
+            _vm._m(5),
+            _vm._v(" "),
+            _c("div", { staticClass: "box-footer" }, [
+              _c("div", { staticClass: "pull-right" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-default",
+                    attrs: { href: "/admin/pages" }
+                  },
+                  [_vm._v("Cancel")]
+                ),
+                _vm._v(" "),
+                _vm.id
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Save")]
+                    )
+                  : _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Save")]
+                    )
+              ])
             ])
           ])
         ])
-      ])
-    ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -48898,6 +48889,29 @@ var staticRenderFns = [
         staticClass: "form-control",
         attrs: { type: "text", id: "block_title", name: "block_title" }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "block_files" } }, [
+        _vm._v("Block Image(s)")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        attrs: {
+          type: "file",
+          name: "block_files[]",
+          id: "block_files",
+          multiple: ""
+        }
+      }),
+      _vm._v(" "),
+      _c("p", { staticClass: "help-block" }, [
+        _vm._v("Choose wich images you want to display into this block")
+      ])
     ])
   },
   function() {
@@ -49097,6 +49111,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -49110,7 +49134,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             image_path: 'storage/images/',
             showModal: false,
             showModalLibrary: false,
-            showModalRemove: false
+            showModalRemove: false,
+            showModalPreview: false
         };
     },
 
@@ -49118,8 +49143,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         modal: __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue___default.a
     },
     created: function created() {
-        // console.log();
-
         this.fetchFiles();
     },
 
@@ -49152,10 +49175,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/add', formData).then(function (response) {
                 swal('Sucesso!', 'File sent', 'success');
+                // reload files
                 _this2.fetchFiles();
             }).catch(function () {
                 swal('Erro!', 'File not sent', 'error');
             });
+        },
+        imagePreview: function imagePreview() {
+            this.showModalPreview = false;
         }
     }
 });
@@ -49171,7 +49198,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "box box-success" }, [
+      _c("div", { staticClass: "box box-danger" }, [
         _c("div", { staticClass: "box-body" }, [
           _c("div", { staticClass: "table-responsive" }, [
             _c("table", { staticClass: "table no-margin" }, [
@@ -49185,15 +49212,27 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [
                       file.name
-                        ? _c("div", { staticClass: "image-to-preview" }, [
-                            _c("img", {
-                              attrs: {
-                                width: "50",
-                                src: _vm.origin + _vm.image_path + file.name,
-                                alt: "dummy image"
+                        ? _c(
+                            "a",
+                            {
+                              staticClass: "image-to-preview",
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  _vm.showModalPreview = true
+                                }
                               }
-                            })
-                          ])
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  width: "50",
+                                  src: _vm.origin + _vm.image_path + file.name,
+                                  alt: "dummy image"
+                                }
+                              })
+                            ]
+                          )
                         : _vm._e()
                     ]),
                     _vm._v(" "),
@@ -49430,6 +49469,27 @@ var render = function() {
                   [_vm._v("No")]
                 )
               ])
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.showModalPreview
+        ? _c("modal", [
+            _c("div", { attrs: { slot: "body" }, slot: "body" }),
+            _vm._v(" "),
+            _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  on: {
+                    click: function($event) {
+                      _vm.showModalPreview = false
+                    }
+                  }
+                },
+                [_vm._v("Ok")]
+              )
             ])
           ])
         : _vm._e()

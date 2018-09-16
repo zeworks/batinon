@@ -9,13 +9,13 @@ use App\Files;
 
 class FilesController extends Controller
 {
-    //
+    // INDEX
     public function index(){
 
         $files = Files::get();
         return $files;
     }
-
+    // ADD NEW FILE
     public function add(Request $request){
         if($request->file('image'))
         {
