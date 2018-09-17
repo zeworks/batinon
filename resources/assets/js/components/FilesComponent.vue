@@ -18,7 +18,7 @@
                             <tr v-for="(file,index) in files" :key="index">
                                 <td>#{{file.id}}</td>
                                 <td>
-                                    <a href="#" @click="showModalPreview = true" class="image-to-preview" v-if="file.name">
+                                    <a href="#" @click="imagePreview(origin+image_path+file.name)" class="image-to-preview" v-if="file.name">
                                         <img width="50" :src="origin+image_path+file.name" alt="dummy image">
                                     </a>
                                 </td>
@@ -96,7 +96,7 @@
         <!-- modal preview image -->
         <modal v-if="showModalPreview">
             <div slot="body">
-                <!-- image goes here -->
+                <img :src="imageToPreview" class="preview-image">
             </div>
             <div slot="footer">
                 <button @click="showModalPreview = false" class="btn btn-default">Ok</button>
@@ -117,6 +117,7 @@
                 image            : {},
                 origin           : window.location.origin+'/',
                 image_path       : 'storage/images/',
+                imageToPreview   : '',
                 showModal        : false,
                 showModalLibrary : false,
                 showModalRemove  : false,
@@ -161,8 +162,9 @@
                     swal('Erro!','File not sent','error');
                 });
             },
-            imagePreview(){
-                this.showModalPreview = false;
+            imagePreview(file){
+                this.showModalPreview = true;
+                this.imageToPreview = file;
             }
         }
     }

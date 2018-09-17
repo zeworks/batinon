@@ -49132,6 +49132,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             image: {},
             origin: window.location.origin + '/',
             image_path: 'storage/images/',
+            imageToPreview: '',
             showModal: false,
             showModalLibrary: false,
             showModalRemove: false,
@@ -49181,8 +49182,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 swal('Erro!', 'File not sent', 'error');
             });
         },
-        imagePreview: function imagePreview() {
-            this.showModalPreview = false;
+        imagePreview: function imagePreview(file) {
+            this.showModalPreview = true;
+            this.imageToPreview = file;
         }
     }
 });
@@ -49219,7 +49221,9 @@ var render = function() {
                               attrs: { href: "#" },
                               on: {
                                 click: function($event) {
-                                  _vm.showModalPreview = true
+                                  _vm.imagePreview(
+                                    _vm.origin + _vm.image_path + file.name
+                                  )
                                 }
                               }
                             },
@@ -49475,7 +49479,12 @@ var render = function() {
       _vm._v(" "),
       _vm.showModalPreview
         ? _c("modal", [
-            _c("div", { attrs: { slot: "body" }, slot: "body" }),
+            _c("div", { attrs: { slot: "body" }, slot: "body" }, [
+              _c("img", {
+                staticClass: "preview-image",
+                attrs: { src: _vm.imageToPreview }
+              })
+            ]),
             _vm._v(" "),
             _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
               _c(
