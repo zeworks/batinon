@@ -49118,6 +49118,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['removeId'],
     data: function data() {
         return {
             files: [],
@@ -49149,11 +49150,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.files = data;
             });
         },
-        removeFile: function removeFile() {
+        openModalDelete: function openModalDelete(id) {
             // hide remove modal
-            this.showModalRemove = false;
-            // success alert
-            swal('Sucesso!', 'File Deleted', 'success');
+            this.showModalRemove = true;
+
+            this.removeId = id;
+        },
+        removeFile: function removeFile() {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/delete/' + this.removeId).then(function (response) {
+                // success alert
+                swal('Sucesso!', 'File Deleted', 'success');
+            });
         },
         onImageChange: function onImageChange(e) {
             this.image = document.querySelector('#file_input').files[0];
@@ -49167,9 +49174,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             formData.append('image', this.image);
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/add', formData).then(function (response) {
-                swal('Sucesso!', 'File sent', 'success');
-                // reload files
-                _this2.fetchFiles();
+                if (response.data.success) {
+                    swal('Sucesso!', 'File saved', 'success');
+                    // reload files
+                    _this2.fetchFiles();
+                } else {
+                    swal('Erro!', 'File not saved, file too large [2MB Max]', 'error');
+                }
             }).catch(function () {
                 swal('Erro!', 'File not sent', 'error');
             });
@@ -49232,7 +49243,7 @@ var render = function() {
                         : _vm._e()
                     ]),
                     _vm._v(" "),
-                    _c("td", [_vm._v("data")]),
+                    _c("td", [_vm._v(_vm._s(file.created_at))]),
                     _vm._v(" "),
                     _c("td", [
                       _c("input", {
@@ -49251,7 +49262,7 @@ var render = function() {
                           staticClass: "btn btn-danger pull-right",
                           on: {
                             click: function($event) {
-                              _vm.showModalRemove = true
+                              _vm.openModalDelete(file.id)
                             }
                           }
                         },
@@ -49424,7 +49435,7 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _vm.showModalRemove
-        ? _c("modal", [
+        ? _c("modal", { attrs: { removeid: _vm.removeId } }, [
             _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
               _vm._v("Delete File")
             ]),
@@ -49509,7 +49520,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { width: "100" } }),
         _vm._v(" "),
-        _c("th", [_vm._v("Date")]),
+        _c("th", { attrs: { width: "200" } }, [_vm._v("Date")]),
         _vm._v(" "),
         _c("th", [_vm._v("URL File")]),
         _vm._v(" "),

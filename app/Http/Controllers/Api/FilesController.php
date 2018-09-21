@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Files;
 
+use Illuminate\Support\Facades\Storage;
+
 
 class FilesController extends Controller
 {
@@ -26,8 +28,21 @@ class FilesController extends Controller
           $image->storeAs('public/images', $name_encoded);
         }
 
-       $image= new Files();
-       $image->name = $name_encoded;
-       $image->save();
-    }
+      
+		// if uploaded successfullly
+		if($request->file('image')->isValid()){
+
+			$image= new Files();
+			$image->name = $name_encoded;
+			$image->save();
+			
+			return ['success' => true];
+		}else{
+			return ['success' => false];
+		}
+	}
+	
+	public function delete($id){
+		echo $id;
+	}
 }

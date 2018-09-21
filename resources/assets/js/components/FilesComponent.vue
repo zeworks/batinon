@@ -9,7 +9,7 @@
                             <tr>
                                 <th width="60">ID</th>
                                 <th width="100"></th>
-                                <th>Date</th>
+                                <th width="200">Date</th>
                                 <th>URL File</th>
                                 <th></th>
                             </tr>
@@ -22,9 +22,9 @@
                                         <img width="50" :src="origin+image_path+file.name" alt="dummy image">
                                     </a>
                                 </td>
-                                <td>data</td>
+                                <td>{{file.created_at}}</td>
                                 <td><input type="text" disabled  :value="origin+image_path+file.name" class="form-control"></td>
-                                <td><button class="btn btn-danger pull-right" @click="showModalRemove = true"><i class="fa fa-trash-o"></i></button></td>
+                                <td><button class="btn btn-danger pull-right" @click="openModalDelete(file.id)"><i class="fa fa-trash-o"></i></button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -79,7 +79,7 @@
         </modal>
         <!-- \modal library file -->
         <!-- modal remove file -->
-        <modal v-if="showModalRemove">
+        <modal v-if="showModalRemove" :removeid="removeId">
             <h3 slot="header">Delete File</h3>
             <div slot="body" class="text-center">
                 <h3>Do you really want to delete this file?</h3>
@@ -111,6 +111,7 @@
     import modal from './ModalComponent.vue';
 
     export default {
+        props:['removeId'],
         data() {
             return {
                 files            : [],
@@ -138,11 +139,19 @@
                     this.files = data;
                 });
             },
-            removeFile(){
+            openModalDelete(id){
                 // hide remove modal
-                this.showModalRemove = false;
-                // success alert
-                swal('Sucesso!','File Deleted','success');
+                this.showModalRemove = true;
+                
+                this.removeId = id;
+                
+            },
+            removeFile(){
+                axios.post('/api/files/delete/'+this.removeId)
+                .then( response => {
+                    // success alert
+                    swal('Sucesso!','File Deleted','success');
+                })
             },
             onImageChange(e) {
                 this.image = document.querySelector('#file_input').files[0];
@@ -155,9 +164,13 @@
                 
                 axios.post('/api/files/add', formData)
                 .then(response => {
-                    swal('Sucesso!','File sent','success');
-                    // reload files
-                    this.fetchFiles();
+                    if(response.data.success){
+                        swal('Sucesso!','File saved','success');
+                        // reload files
+                        this.fetchFiles();
+                    }else{
+                        swal('Erro!','File not saved, file too large [2MB Max]','error');
+                    }
                 }).catch(function(){
                     swal('Erro!','File not sent','error');
                 });
