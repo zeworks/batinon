@@ -57,7 +57,7 @@ export default {
   }
 
   .modal-container {
-      max-width: 500px;
+      max-width: 1000px;
       margin: 0px auto;
       padding: 20px 30px;
       background-color: #fff;
@@ -65,8 +65,8 @@ export default {
       box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
       transition: all .3s ease;
       font-family: Helvetica, Arial, sans-serif;
-      display: table;
       width: 100%;
+      overflow: hidden;
   }
   
   @media (max-width: 768px){
@@ -82,6 +82,9 @@ export default {
 
   .modal-body {
       margin: 20px 0;
+      max-height: 600px;
+      overflow-y: auto;
+      display: block;
   }
 
   /*

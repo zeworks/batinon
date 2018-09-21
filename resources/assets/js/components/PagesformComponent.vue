@@ -14,7 +14,7 @@
                             <div class="col-sm-5">
                                 <div class="form-group">
                                     <label for="slug">Page Slug</label>
-                                    <input type="text" id="slug" name="slug" class="form-control" disabled v-model="page.slug">
+                                    <input type="text" id="slug" name="slug" class="form-control" v-model="slug">
                                 </div>
                             </div>
                         </div>
