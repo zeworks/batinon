@@ -18,4 +18,8 @@ class PagesController extends Controller
         $page = Pages::where('id',$id)->get();
         return $page;
     }
+
+    public function editPage(Request $request){
+        return ['success' => true];
+    }
 }

@@ -14,18 +14,22 @@
 Auth::routes();
 
 // back
-Route::prefix('admin')->group(function(){
-    Route::get('/home', 'Admin\HomeController@index');
-
-    // PAGES
-    Route::get('/pages','Admin\PagesController@index');
-    Route::get('/pages/new','Admin\PagesController@new')->name('page_new');
-    Route::get('/pages/edit/{id}','Admin\PagesController@edit')->name('page_edit');
-
-    // FILES
-    Route::get('/files','Admin\FilesController@index');
-
+Route::group(['middleware' => ['auth']], function() {
+    Route::prefix('admin')->group(function(){
+        Route::get('/home', 'Admin\HomeController@index');
+    
+        // PAGES
+        Route::get('/pages','Admin\PagesController@index');
+        Route::get('/pages/new','Admin\PagesController@new')->name('page_new');
+        Route::get('/pages/edit/{id}','Admin\PagesController@edit')->name('page_edit');
+        Route::post('/pages/edit/{id}','Admin\PagesController@editPage');
+    
+        // FILES
+        Route::get('/files','Admin\FilesController@index');
+    
+    });
 });
+
 
 
 // front get

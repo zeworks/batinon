@@ -48552,17 +48552,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id'],
     computed: {
-        slug: function slug() {
-            var slug = this.sanitizeTitle(this.page.name);
-            return slug;
-        }
+        // slug() {
+        //     if(this.page.slug != ""){
+        //         var slug = this.sanitizeTitle(this.page.name);
+        //         return slug;
+        //     }
+        // }
     },
     data: function data() {
         return {
@@ -48573,7 +48573,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     created: function created() {
-        this.fetchPages();
+        if (this.id) {
+            this.fetchPages();
+        }
     },
 
     methods: {
@@ -48589,13 +48591,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         saveData: function saveData() {
 
             if (this.id > 0) {
-                console.log('editar');
+                axios.post('/api/pages/edit/' + this.id, {
+                    id: this.id,
+                    title: this.page.name
+                }).then(function (response) {
+                    if (response.data.success) swal('Sucesso!', 'Page saved', 'success');else swal('Erro!', 'Page not saved', 'error');
+                });
             } else {
                 console.log('criar');
-                // axios.post('/api/pages/add',{data : this.data})
-                // .then(response => response.data)
-                // .then( data => {
-                // });
+
+                // const formData = new FormData();
+                // formData.append( 'image', this.image );
+
+                // // axios.post('/api/pages/add',{data : this.data})
+                // // .then(response => response.data)
+                // // .then( data => {
+                // // });
             }
         },
         sanitizeTitle: function sanitizeTitle(title) {
@@ -48656,59 +48667,36 @@ var render = function() {
                       _vm._v("Page Name")
                     ]),
                     _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.page.name,
-                          expression: "page.name"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "title", name: "title" },
-                      domProps: { value: _vm.page.name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                    _vm.page.name
+                      ? _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.page.name,
+                              expression: "page.name"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", id: "title", name: "title" },
+                          domProps: { value: _vm.page.name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.page, "name", $event.target.value)
+                            }
                           }
-                          _vm.$set(_vm.page, "name", $event.target.value)
-                        }
-                      }
-                    })
+                        })
+                      : _c("input", {
+                          staticClass: "form-control",
+                          attrs: { type: "text", id: "title", name: "title" }
+                        })
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-sm-5" }, [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "slug" } }, [
-                      _vm._v("Page Slug")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.slug,
-                          expression: "slug"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "slug", name: "slug" },
-                      domProps: { value: _vm.slug },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.slug = $event.target.value
-                        }
-                      }
-                    })
-                  ])
-                ])
+                _c("div", { staticClass: "col-sm-5" })
               ])
             ])
           ]),
@@ -48775,47 +48763,56 @@ var render = function() {
             _c("div", { staticClass: "box-body" }, [
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { staticClass: "custom-control custom-checkbox" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.page.status,
-                        expression: "page.status"
-                      }
-                    ],
-                    staticClass: "custom-control-input",
-                    attrs: { type: "checkbox" },
-                    domProps: {
-                      checked: Array.isArray(_vm.page.status)
-                        ? _vm._i(_vm.page.status, null) > -1
-                        : _vm.page.status
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.page.status,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = null,
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(_vm.page, "status", $$a.concat([$$v]))
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.page,
-                                "status",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
+                  _vm.page.status
+                    ? _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.page.status,
+                            expression: "page.status"
                           }
-                        } else {
-                          _vm.$set(_vm.page, "status", $$c)
+                        ],
+                        staticClass: "custom-control-input",
+                        attrs: { type: "checkbox" },
+                        domProps: {
+                          checked: Array.isArray(_vm.page.status)
+                            ? _vm._i(_vm.page.status, null) > -1
+                            : _vm.page.status
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.page.status,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = null,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  _vm.$set(
+                                    _vm.page,
+                                    "status",
+                                    $$a.concat([$$v])
+                                  )
+                              } else {
+                                $$i > -1 &&
+                                  _vm.$set(
+                                    _vm.page,
+                                    "status",
+                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                  )
+                              }
+                            } else {
+                              _vm.$set(_vm.page, "status", $$c)
+                            }
+                          }
                         }
-                      }
-                    }
-                  }),
+                      })
+                    : _c("input", {
+                        staticClass: "custom-control-input",
+                        attrs: { type: "checkbox" }
+                      }),
                   _vm._v(" "),
                   _c("span", { staticClass: "custom-control-indicator" })
                 ])

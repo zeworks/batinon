@@ -17,7 +17,4 @@ class PagesController extends Controller
     public function edit($id){
         return view('admin.pages._edit', compact('id'));
     }
-    public function update($id){
-        // return redirect()->back()->with(["message" => "Updated with success!", "type" => "success"]);
-    }
 }
