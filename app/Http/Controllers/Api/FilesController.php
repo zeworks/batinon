@@ -42,7 +42,13 @@ class FilesController extends Controller
 		}
 	}
 	
-	public function delete($id){
-		echo $id;
+	public function delete(Request $request){
+        $files = Files::where('id',$request->data)->get();
+        foreach ($files as $file) {
+            Storage::delete('public/images/'.$file->name);
+            $file->delete();
+        }
+        
+        return ['success' => true];
 	}
 }

@@ -96,7 +96,7 @@
         <!-- modal preview image -->
         <modal v-if="showModalPreview">
             <div slot="body">
-                <img :src="imageToPreview" class="preview-image">
+                <img :src="imageToPreview" class="preview-image img-responsive">
             </div>
             <div slot="footer">
                 <button @click="showModalPreview = false" class="btn btn-default">Ok</button>
@@ -111,9 +111,9 @@
     import modal from './ModalComponent.vue';
 
     export default {
-        props:['removeId'],
         data() {
             return {
+                removeId         : '',
                 files            : [],
                 image            : {},
                 origin           : window.location.origin+'/',
@@ -147,10 +147,12 @@
                 
             },
             removeFile(){
-                axios.post('/api/files/delete/'+this.removeId)
+                axios.post('/api/files/delete',{data: this.removeId})
                 .then( response => {
                     // success alert
                     swal('Sucesso!','File Deleted','success');
+                    this.fetchFiles();
+                    this.showModalRemove = false;
                 })
             },
             onImageChange(e) {

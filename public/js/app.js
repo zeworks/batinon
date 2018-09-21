@@ -49118,9 +49118,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['removeId'],
     data: function data() {
         return {
+            removeId: '',
             files: [],
             image: {},
             origin: window.location.origin + '/',
@@ -49157,16 +49157,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.removeId = id;
         },
         removeFile: function removeFile() {
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/delete/' + this.removeId).then(function (response) {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/delete', { data: this.removeId }).then(function (response) {
                 // success alert
                 swal('Sucesso!', 'File Deleted', 'success');
+                _this2.fetchFiles();
+                _this2.showModalRemove = false;
             });
         },
         onImageChange: function onImageChange(e) {
             this.image = document.querySelector('#file_input').files[0];
         },
         uploadImage: function uploadImage(event) {
-            var _this2 = this;
+            var _this3 = this;
 
             this.showModal = false;
 
@@ -49177,7 +49181,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (response.data.success) {
                     swal('Sucesso!', 'File saved', 'success');
                     // reload files
-                    _this2.fetchFiles();
+                    _this3.fetchFiles();
                 } else {
                     swal('Erro!', 'File not saved, file too large [2MB Max]', 'error');
                 }
@@ -49484,7 +49488,7 @@ var render = function() {
         ? _c("modal", [
             _c("div", { attrs: { slot: "body" }, slot: "body" }, [
               _c("img", {
-                staticClass: "preview-image",
+                staticClass: "preview-image img-responsive",
                 attrs: { src: _vm.imageToPreview }
               })
             ]),
