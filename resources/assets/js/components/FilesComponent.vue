@@ -99,7 +99,7 @@
                 <img :src="imageToPreview" class="preview-image img-responsive">
             </div>
             <div slot="footer">
-                <button @click="showModalPreview = false" class="btn btn-default">Ok</button>
+                <button @click="showModalPreview = false" class="btn btn-default">Close</button>
             </div>
         </modal>
         <!-- \modal preview image -->
@@ -150,7 +150,7 @@
                 axios.post('/api/files/delete',{data: this.removeId})
                 .then( response => {
                     // success alert
-                    swal('Sucesso!','File Deleted','success');
+                    swal('Success!','File Deleted','success');
                     this.fetchFiles();
                     this.showModalRemove = false;
                 })
@@ -167,14 +167,14 @@
                 axios.post('/api/files/add', formData)
                 .then(response => {
                     if(response.data.success){
-                        swal('Sucesso!','File saved','success');
+                        swal('Success!','File saved','success');
                         // reload files
                         this.fetchFiles();
                     }else{
-                        swal('Erro!','File not saved, file too large [2MB Max]','error');
+                        swal('Error!','File not saved, file too large [2MB Max]','error');
                     }
                 }).catch(function(){
-                    swal('Erro!','File not sent','error');
+                    swal('Error!','File not sent','error');
                 });
             },
             imagePreview(file){

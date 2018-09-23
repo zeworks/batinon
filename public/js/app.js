@@ -47564,12 +47564,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            // user: ''
+            subscribers: 2
         };
     }
 });
@@ -47582,9 +47593,36 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c("div", { staticClass: "info-box" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "info-box-content" }, [
+            _c("span", { staticClass: "info-box-text" }, [
+              _vm._v("New Subscribers")
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "info-box-number" }, [
+              _vm._v(_vm._s(_vm.subscribers))
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "info-box-icon bg-red" }, [
+      _c("i", { staticClass: "ion ion-ios-people-outline" })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -49161,7 +49199,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/delete', { data: this.removeId }).then(function (response) {
                 // success alert
-                swal('Sucesso!', 'File Deleted', 'success');
+                swal('Success!', 'File Deleted', 'success');
                 _this2.fetchFiles();
                 _this2.showModalRemove = false;
             });
@@ -49179,14 +49217,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/add', formData).then(function (response) {
                 if (response.data.success) {
-                    swal('Sucesso!', 'File saved', 'success');
+                    swal('Success!', 'File saved', 'success');
                     // reload files
                     _this3.fetchFiles();
                 } else {
-                    swal('Erro!', 'File not saved, file too large [2MB Max]', 'error');
+                    swal('Error!', 'File not saved, file too large [2MB Max]', 'error');
                 }
             }).catch(function () {
-                swal('Erro!', 'File not sent', 'error');
+                swal('Error!', 'File not sent', 'error');
             });
         },
         imagePreview: function imagePreview(file) {
@@ -49504,7 +49542,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Ok")]
+                [_vm._v("Close")]
               )
             ])
           ])
