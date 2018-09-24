@@ -48590,17 +48590,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id'],
     computed: {
-        // slug() {
-        //     if(this.page.slug != ""){
-        //         var slug = this.sanitizeTitle(this.page.name);
-        //         return slug;
-        //     }
-        // }
+        slug: function slug() {
+            if (this.page.slug != "") {
+                var slug = this.sanitizeTitle(this.page.name);
+                return slug;
+            }
+        }
     },
     data: function data() {
         return {
@@ -48631,20 +48635,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.id > 0) {
                 axios.post('/api/pages/edit/' + this.id, {
                     id: this.id,
-                    title: this.page.name
+                    title: this.page.name,
+                    status: this.page.status
                 }).then(function (response) {
                     if (response.data.success) swal('Sucesso!', 'Page saved', 'success');else swal('Erro!', 'Page not saved', 'error');
                 });
             } else {
                 console.log('criar');
-
-                // const formData = new FormData();
-                // formData.append( 'image', this.image );
-
-                // // axios.post('/api/pages/add',{data : this.data})
-                // // .then(response => response.data)
-                // // .then( data => {
-                // // });
             }
         },
         sanitizeTitle: function sanitizeTitle(title) {
@@ -48734,7 +48731,37 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-sm-5" })
+                _c("div", { staticClass: "col-sm-5" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "slug" } }, [
+                      _vm._v("Page Slug")
+                    ]),
+                    _vm._v(" "),
+                    _vm.page.slug
+                      ? _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.slug,
+                              expression: "slug"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", id: "slug", name: "slug" },
+                          domProps: { value: _vm.slug },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.slug = $event.target.value
+                            }
+                          }
+                        })
+                      : _vm._e()
+                  ])
+                ])
               ])
             ])
           ]),
@@ -48812,7 +48839,7 @@ var render = function() {
                           }
                         ],
                         staticClass: "custom-control-input",
-                        attrs: { type: "checkbox" },
+                        attrs: { type: "checkbox", name: "status" },
                         domProps: {
                           checked: Array.isArray(_vm.page.status)
                             ? _vm._i(_vm.page.status, null) > -1
@@ -48849,7 +48876,7 @@ var render = function() {
                       })
                     : _c("input", {
                         staticClass: "custom-control-input",
-                        attrs: { type: "checkbox" }
+                        attrs: { type: "checkbox", name: "status" }
                       }),
                   _vm._v(" "),
                   _c("span", { staticClass: "custom-control-indicator" })

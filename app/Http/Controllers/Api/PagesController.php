@@ -20,6 +20,13 @@ class PagesController extends Controller
     }
 
     public function editPage(Request $request){
+        
+        $data = [
+            "name" => $request->input('title'),
+            "status" => $request->input('status')
+        ];
+
+        Pages::where('id',$request->id)->update($data);
         return ['success' => true];
     }
 }

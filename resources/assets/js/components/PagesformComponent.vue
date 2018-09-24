@@ -13,6 +13,10 @@
                                 </div>
                             </div>
                             <div class="col-sm-5">
+                                <div class="form-group">
+                                    <label for="slug">Page Slug</label>
+                                    <input type="text" id="slug" name="slug" class="form-control" v-if="page.slug" v-model="slug">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -52,8 +56,8 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" v-if="page.status" v-model="page.status">
-                                <input type="checkbox" class="custom-control-input" v-else>
+                                <input type="checkbox" class="custom-control-input" name="status" v-if="page.status" v-model="page.status">
+                                <input type="checkbox" class="custom-control-input" name="status" v-else>
                                 <span class="custom-control-indicator"></span>
                             </label>
                         </div>
@@ -88,12 +92,12 @@
     export default {
         props: ['id'],
         computed: {
-            // slug() {
-            //     if(this.page.slug != ""){
-            //         var slug = this.sanitizeTitle(this.page.name);
-            //         return slug;
-            //     }
-            // }
+            slug() {
+                if(this.page.slug != ""){
+                    var slug = this.sanitizeTitle(this.page.name);
+                    return slug;
+                }
+            }
         },
         data() {
             return {
@@ -122,6 +126,7 @@
                     axios.post('/api/pages/edit/'+this.id,{
                         id    : this.id,
                         title : this.page.name,
+                        status : this.page.status
                     })
                     .then(response => {
                         if(response.data.success)
@@ -131,14 +136,6 @@
                     });
                 }else{
                     console.log('criar');
-
-                    // const formData = new FormData();
-                    // formData.append( 'image', this.image );
-
-                    // // axios.post('/api/pages/add',{data : this.data})
-                    // // .then(response => response.data)
-                    // // .then( data => {
-                    // // });
                 }
             },
             sanitizeTitle(title) {
