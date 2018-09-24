@@ -19,8 +19,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //pages
 Route::get('pages','Api\PagesController@index');
+Route::post('pages/add','Api\PagesController@add');
 Route::get('pages/edit/{id}','Api\PagesController@edit');
 Route::post('pages/edit/{id}','Api\PagesController@editPage');
+Route::post('pages/delete','Api\PagesController@delete');
+
 //files
 Route::get('files','Api\FilesController@index');
 Route::post('files/add','Api\FilesController@add');

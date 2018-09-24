@@ -13,6 +13,26 @@ class PagesController extends Controller
         $pages = Pages::get();
         return $pages;
     }
+
+    public function add(Request $request){
+        
+        if($request->status == ''){
+            $status = 0;
+        }else{
+            $status = 1;
+        }
+
+        $data = [
+            "title" => $request->title,
+            "slug" => $request->slug,
+            "status" => $status,
+        ];
+
+        Pages::create($data);
+        
+        return ['success' => true];
+    }
+
     // EDIT PAGE (DISPLAY)
     public function edit($id){
         $page = Pages::where('id',$id)->get();
@@ -21,12 +41,25 @@ class PagesController extends Controller
 
     public function editPage(Request $request){
         
+        if($request->status == ''){
+            $status = 0;
+        }else{
+            $status = 1;
+        }
+
         $data = [
-            "name" => $request->input('title'),
-            "status" => $request->input('status')
+            "title" => $request->title,
+            "slug" => $request->slug,
+            "status" => $status,
         ];
 
         Pages::where('id',$request->id)->update($data);
         return ['success' => true];
     }
+
+    public function delete(Request $request){
+        Pages::where('id',$request->data)->delete();
+        
+        return ['success' => true];
+	}
 }

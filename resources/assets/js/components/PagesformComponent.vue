@@ -8,14 +8,13 @@
                             <div class="col-sm-7">
                                 <div class="form-group">
                                     <label for="title">Page Name</label>
-                                    <input type="text" id="title" name="title" class="form-control" v-if="page.name" v-model="page.name">
-                                    <input type="text" id="title" name="title" class="form-control" v-else>
+                                    <input type="text" id="title" name="title" class="form-control" v-model="page.title">
                                 </div>
                             </div>
                             <div class="col-sm-5">
                                 <div class="form-group">
                                     <label for="slug">Page Slug</label>
-                                    <input type="text" id="slug" name="slug" class="form-control" v-if="page.slug" v-model="slug">
+                                    <input disabled type="text" id="slug" name="slug" class="form-control" :slug="slug" v-model="page.slug">
                                 </div>
                             </div>
                         </div>
@@ -56,8 +55,7 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" name="status" v-if="page.status" v-model="page.status">
-                                <input type="checkbox" class="custom-control-input" name="status" v-else>
+                                <input type="checkbox" class="custom-control-input" name="status" v-model="page.status" true-value="1" false-value="0">
                                 <span class="custom-control-indicator"></span>
                             </label>
                         </div>
@@ -93,16 +91,19 @@
         props: ['id'],
         computed: {
             slug() {
-                if(this.page.slug != ""){
-                    var slug = this.sanitizeTitle(this.page.name);
-                    return slug;
-                }
+                var slug = this.sanitizeTitle(this.page.title);
+                return slug;
             }
         },
         data() {
             return {
-                data              : [],
-                page              : [],
+                page              : [
+                    {
+                        status : false,
+                        name  : '', 
+                        slug  : '',
+                    }
+                ],
                 block_summary     : '',
                 block_description : '',
             }
@@ -124,9 +125,10 @@
                 
                 if(this.id > 0){
                     axios.post('/api/pages/edit/'+this.id,{
-                        id    : this.id,
-                        title : this.page.name,
-                        status : this.page.status
+                        id     : this.id,
+                        title  : this.page.title,
+                        status : this.page.status,
+                        slug   : this.page.slug,
                     })
                     .then(response => {
                         if(response.data.success)
@@ -136,30 +138,43 @@
                     });
                 }else{
                     console.log('criar');
+                    axios.post('/api/pages/add',{
+                        title : this.page.title,
+                        status : this.page.status,
+                        slug   : this.page.slug,
+                    })
+                    .then(response => {
+                        if(response.data.success)
+                            swal('Sucesso!','Page saved','success');
+                        else
+                            swal('Erro!','Page not saved','error');
+                    });
                 }
             },
             sanitizeTitle(title) {
                 var slug = "";
                 // Change to lower case
-                var titleLower = title.toLowerCase();
-                // Letter "e"
-                slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e');
-                // Letter "a"
-                slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a');
-                // Letter "o"
-                slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o');
-                // Letter "u"
-                slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u');
-                // Letter "d"
-                slug = slug.replace(/đ/gi, 'd');
-                // Trim the last whitespace
-                slug = slug.replace(/\s*$/g, '');
-                // Change whitespace to "-"
-                slug = slug.replace(/\s+/g, '-');
-                
-                this.page.slug = slug;
-                
-                return (slug != '' ? slug : '')
+                if(title){
+                    var titleLower = title.toLowerCase();
+                    // Letter "e"
+                    slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e');
+                    // Letter "a"
+                    slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a');
+                    // Letter "o"
+                    slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o');
+                    // Letter "u"
+                    slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u');
+                    // Letter "d"
+                    slug = slug.replace(/đ/gi, 'd');
+                    // Trim the last whitespace
+                    slug = slug.replace(/\s*$/g, '');
+                    // Change whitespace to "-"
+                    slug = slug.replace(/\s+/g, '-');
+                    
+                    this.page.slug = slug;
+                    
+                    return (slug != '' ? slug : '')
+                }
             }
         }
     }

@@ -19,7 +19,7 @@
                                 <td>
                                     #{{page.id}}
                                 </td>
-                                <td><a :href="('./pages/edit/'+page.id)">{{page.name}}</a></td>
+                                <td><a :href="('./pages/edit/'+page.id)">{{page.title}}</a></td>
                                 <td>{{page.slug}}</td>
                                 <td>
                                     <span class="label" :class="{'label-success' : page.status == '1', 'label-danger' : page.status == '0'}">
@@ -35,7 +35,7 @@
                                 <td>
                                     <div class="pull-right">
                                         <a :href="('./pages/edit/'+page.id)" class="btn btn-warning" ><i class="fa fa-edit"></i></a>
-                                        <button class="btn btn-danger" @click="showModalRemove = true"><i class="fa fa-trash-o"></i></button>
+                                        <button class="btn btn-danger" @click="openModalDelete(page.id)"><i class="fa fa-trash-o"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -48,7 +48,7 @@
             </div>
         </div>
         <!-- modal remove file -->
-        <modal v-if="showModalRemove">
+        <modal v-if="showModalRemove" :removeid="removeId">
             <h3 slot="header">Delete Page</h3>
             <div slot="body" class="text-center">
                 <h3>Do you really want to delete this page?</h3>
@@ -72,7 +72,8 @@
     export default {
         data() {
             return {
-                pages : [],
+                removeId        : '',
+                pages           : [],
                 showModalRemove : false,
             }
         },
@@ -91,12 +92,20 @@
                     
                 });
             },
-            removeFile(){
+            openModalDelete(id){
                 // hide remove modal
-                this.showModalRemove = false;
-                // success alert
-                swal('Success!','Page Deleted','success');
-            }
+                this.showModalRemove = true;
+                this.removeId = id;
+            },
+            removeFile(){
+                axios.post('/api/pages/delete',{data: this.removeId})
+                .then( response => {
+                    // success alert
+                    swal('Success!','Page Deleted','success');
+                    this.fetchPages();
+                    this.showModalRemove = false;
+                })
+            },
         }
     }
 </script>

@@ -47763,6 +47763,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
+            removeId: '',
             pages: [],
             showModalRemove: false
         };
@@ -47785,11 +47786,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.pages = data;
             });
         },
-        removeFile: function removeFile() {
+        openModalDelete: function openModalDelete(id) {
             // hide remove modal
-            this.showModalRemove = false;
-            // success alert
-            swal('Success!', 'Page Deleted', 'success');
+            this.showModalRemove = true;
+            this.removeId = id;
+        },
+        removeFile: function removeFile() {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/pages/delete', { data: this.removeId }).then(function (response) {
+                // success alert
+                swal('Success!', 'Page Deleted', 'success');
+                _this2.fetchPages();
+                _this2.showModalRemove = false;
+            });
         }
     }
 });
@@ -48290,7 +48300,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [
                       _c("a", { attrs: { href: "./pages/edit/" + page.id } }, [
-                        _vm._v(_vm._s(page.name))
+                        _vm._v(_vm._s(page.title))
                       ])
                     ]),
                     _vm._v(" "),
@@ -48345,7 +48355,7 @@ var render = function() {
                             staticClass: "btn btn-danger",
                             on: {
                               click: function($event) {
-                                _vm.showModalRemove = true
+                                _vm.openModalDelete(page.id)
                               }
                             }
                           },
@@ -48373,7 +48383,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _vm.showModalRemove
-        ? _c("modal", [
+        ? _c("modal", { attrs: { removeid: _vm.removeId } }, [
             _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
               _vm._v("Delete Page")
             ]),
@@ -48592,24 +48602,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id'],
     computed: {
         slug: function slug() {
-            if (this.page.slug != "") {
-                var slug = this.sanitizeTitle(this.page.name);
-                return slug;
-            }
+            var slug = this.sanitizeTitle(this.page.title);
+            return slug;
         }
     },
     data: function data() {
         return {
-            data: [],
-            page: [],
+            page: [{
+                status: false,
+                name: '',
+                slug: ''
+            }],
             block_summary: '',
             block_description: ''
         };
@@ -48635,37 +48644,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.id > 0) {
                 axios.post('/api/pages/edit/' + this.id, {
                     id: this.id,
-                    title: this.page.name,
-                    status: this.page.status
+                    title: this.page.title,
+                    status: this.page.status,
+                    slug: this.page.slug
                 }).then(function (response) {
                     if (response.data.success) swal('Sucesso!', 'Page saved', 'success');else swal('Erro!', 'Page not saved', 'error');
                 });
             } else {
                 console.log('criar');
+                axios.post('/api/pages/add', {
+                    title: this.page.title,
+                    status: this.page.status,
+                    slug: this.page.slug
+                }).then(function (response) {
+                    if (response.data.success) swal('Sucesso!', 'Page saved', 'success');else swal('Erro!', 'Page not saved', 'error');
+                });
             }
         },
         sanitizeTitle: function sanitizeTitle(title) {
             var slug = "";
             // Change to lower case
-            var titleLower = title.toLowerCase();
-            // Letter "e"
-            slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e');
-            // Letter "a"
-            slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a');
-            // Letter "o"
-            slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o');
-            // Letter "u"
-            slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u');
-            // Letter "d"
-            slug = slug.replace(/đ/gi, 'd');
-            // Trim the last whitespace
-            slug = slug.replace(/\s*$/g, '');
-            // Change whitespace to "-"
-            slug = slug.replace(/\s+/g, '-');
+            if (title) {
+                var titleLower = title.toLowerCase();
+                // Letter "e"
+                slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e');
+                // Letter "a"
+                slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a');
+                // Letter "o"
+                slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o');
+                // Letter "u"
+                slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u');
+                // Letter "d"
+                slug = slug.replace(/đ/gi, 'd');
+                // Trim the last whitespace
+                slug = slug.replace(/\s*$/g, '');
+                // Change whitespace to "-"
+                slug = slug.replace(/\s+/g, '-');
 
-            this.page.slug = slug;
+                this.page.slug = slug;
 
-            return slug != '' ? slug : '';
+                return slug != '' ? slug : '';
+            }
         }
     }
 });
@@ -48702,32 +48721,27 @@ var render = function() {
                       _vm._v("Page Name")
                     ]),
                     _vm._v(" "),
-                    _vm.page.name
-                      ? _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.page.name,
-                              expression: "page.name"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "text", id: "title", name: "title" },
-                          domProps: { value: _vm.page.name },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.page, "name", $event.target.value)
-                            }
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.page.title,
+                          expression: "page.title"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "title", name: "title" },
+                      domProps: { value: _vm.page.title },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
                           }
-                        })
-                      : _c("input", {
-                          staticClass: "form-control",
-                          attrs: { type: "text", id: "title", name: "title" }
-                        })
+                          _vm.$set(_vm.page, "title", $event.target.value)
+                        }
+                      }
+                    })
                   ])
                 ]),
                 _vm._v(" "),
@@ -48737,29 +48751,33 @@ var render = function() {
                       _vm._v("Page Slug")
                     ]),
                     _vm._v(" "),
-                    _vm.page.slug
-                      ? _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.slug,
-                              expression: "slug"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "text", id: "slug", name: "slug" },
-                          domProps: { value: _vm.slug },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.slug = $event.target.value
-                            }
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.page.slug,
+                          expression: "page.slug"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        disabled: "",
+                        type: "text",
+                        id: "slug",
+                        name: "slug",
+                        slug: _vm.slug
+                      },
+                      domProps: { value: _vm.page.slug },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
                           }
-                        })
-                      : _vm._e()
+                          _vm.$set(_vm.page, "slug", $event.target.value)
+                        }
+                      }
+                    })
                   ])
                 ])
               ])
@@ -48828,56 +48846,52 @@ var render = function() {
             _c("div", { staticClass: "box-body" }, [
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { staticClass: "custom-control custom-checkbox" }, [
-                  _vm.page.status
-                    ? _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.page.status,
-                            expression: "page.status"
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.page.status,
+                        expression: "page.status"
+                      }
+                    ],
+                    staticClass: "custom-control-input",
+                    attrs: {
+                      type: "checkbox",
+                      name: "status",
+                      "true-value": "1",
+                      "false-value": "0"
+                    },
+                    domProps: {
+                      checked: Array.isArray(_vm.page.status)
+                        ? _vm._i(_vm.page.status, null) > -1
+                        : _vm._q(_vm.page.status, "1")
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.page.status,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? "1" : "0"
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(_vm.page, "status", $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.page,
+                                "status",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
                           }
-                        ],
-                        staticClass: "custom-control-input",
-                        attrs: { type: "checkbox", name: "status" },
-                        domProps: {
-                          checked: Array.isArray(_vm.page.status)
-                            ? _vm._i(_vm.page.status, null) > -1
-                            : _vm.page.status
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$a = _vm.page.status,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = null,
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 &&
-                                  _vm.$set(
-                                    _vm.page,
-                                    "status",
-                                    $$a.concat([$$v])
-                                  )
-                              } else {
-                                $$i > -1 &&
-                                  _vm.$set(
-                                    _vm.page,
-                                    "status",
-                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                  )
-                              }
-                            } else {
-                              _vm.$set(_vm.page, "status", $$c)
-                            }
-                          }
+                        } else {
+                          _vm.$set(_vm.page, "status", $$c)
                         }
-                      })
-                    : _c("input", {
-                        staticClass: "custom-control-input",
-                        attrs: { type: "checkbox", name: "status" }
-                      }),
+                      }
+                    }
+                  }),
                   _vm._v(" "),
                   _c("span", { staticClass: "custom-control-indicator" })
                 ])
