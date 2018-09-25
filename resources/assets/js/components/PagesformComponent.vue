@@ -27,15 +27,15 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label for="block_title">Block Title</label>
-                            <input type="text" id="block_title" name="block_title" class="form-control">
+                            <input type="text" id="block_title" name="block_title" class="form-control" v-model="page.block_title">
                         </div>
                         <div class="form-group">
                             <label for="block_summary">Block Summary</label>
-                            <vueEditor id="block_summary" v-model="block_summary"></vueEditor>
+                            <vueEditor id="block_summary" name="block_summary" v-model="page.block_summary"></vueEditor>
                         </div>
                         <div class="form-group">
                             <label for="block_description">Block Description</label>
-                            <vueEditor id="block_description" v-model="block_description"></vueEditor>
+                            <vueEditor id="block_description" name="block_description" v-model="page.block_description"></vueEditor>
                         </div>
                         <div class="form-group">
                             <label for="block_files">Block Image(s)</label>
@@ -97,15 +97,16 @@
         },
         data() {
             return {
-                page              : [
+                page : [
                     {
-                        status : false,
-                        name  : '', 
-                        slug  : '',
+                        status           : false,
+                        name             : '', 
+                        slug             : '',
+                        block_title      : '',
+                        block_summary    : '',
+                        block_description : '',
                     }
                 ],
-                block_summary     : '',
-                block_description : '',
             }
         },
         created(){
@@ -122,13 +123,15 @@
                 });
             },
             saveData(){
-                
                 if(this.id > 0){
                     axios.post('/api/pages/edit/'+this.id,{
-                        id     : this.id,
-                        title  : this.page.title,
-                        status : this.page.status,
-                        slug   : this.page.slug,
+                        id               : this.id,
+                        title            : this.page.title,
+                        status           : this.page.status,
+                        slug             : this.page.slug,
+                        block_title      : this.page.block_title,
+                        block_summary    : this.page.block_summary,
+                        block_description : this.page.block_description,
                     })
                     .then(response => {
                         if(response.data.success)
@@ -137,11 +140,13 @@
                             swal('Erro!','Page not saved','error');
                     });
                 }else{
-                    console.log('criar');
                     axios.post('/api/pages/add',{
-                        title : this.page.title,
-                        status : this.page.status,
-                        slug   : this.page.slug,
+                        title            : this.page.title,
+                        status           : this.page.status,
+                        slug             : this.page.slug,
+                        block_title      : this.page.block_title,
+                        block_summary    : this.page.block_summary,
+                        block_description : this.page.block_description,
                     })
                     .then(response => {
                         if(response.data.success)

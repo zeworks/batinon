@@ -47839,7 +47839,7 @@ exports = module.exports = __webpack_require__(50)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-mask {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container {\n    max-width: 1000px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 4px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n    width: 100%;\n    overflow: hidden;\n}\n@media (max-width: 768px){\n.modal-container{\n    min-width: 100%;\n}\n}\n.modal-header h3 {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body {\n    margin: 20px 0;\n    max-height: 600px;\n    overflow-y: auto;\n    display: block;\n}\n\n/*\n  * The following styles are auto-applied to elements with\n  * transition=\"modal\" when their visibility is toggled\n  * by Vue.js.\n  *\n  * You can easily play with the modal transition by editing\n  * these styles.\n*/\n.modal-enter {\n    opacity: 0;\n}\n.modal-leave-active {\n    opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n\n", ""]);
+exports.push([module.i, "\n.modal-mask {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container {\n    max-width: 1000px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 4px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n    width: 100%;\n    overflow: hidden;\n}\n@media (max-width: 768px){\n.modal-container{\n    min-width: 100%;\n}\n}\n.modal-header h3 {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body {\n    margin: 20px 0;\n    max-height: 600px;\n    overflow-y: auto;\n    display: block;\n}\n.modal-enter {\n    opacity: 0;\n}\n.modal-leave-active {\n    opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n\n", ""]);
 
 // exports
 
@@ -48336,7 +48336,7 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(page.creation_date))]),
+                    _c("td", [_vm._v(_vm._s(page.created_at))]),
                     _vm._v(" "),
                     _c("td", [
                       _c("div", { staticClass: "pull-right" }, [
@@ -48617,10 +48617,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             page: [{
                 status: false,
                 name: '',
-                slug: ''
-            }],
-            block_summary: '',
-            block_description: ''
+                slug: '',
+                block_title: '',
+                block_summary: '',
+                block_description: ''
+            }]
         };
     },
     created: function created() {
@@ -48640,22 +48641,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         saveData: function saveData() {
-
             if (this.id > 0) {
                 axios.post('/api/pages/edit/' + this.id, {
                     id: this.id,
                     title: this.page.title,
                     status: this.page.status,
-                    slug: this.page.slug
+                    slug: this.page.slug,
+                    block_title: this.page.block_title,
+                    block_summary: this.page.block_summary,
+                    block_description: this.page.block_description
                 }).then(function (response) {
                     if (response.data.success) swal('Sucesso!', 'Page saved', 'success');else swal('Erro!', 'Page not saved', 'error');
                 });
             } else {
-                console.log('criar');
                 axios.post('/api/pages/add', {
                     title: this.page.title,
                     status: this.page.status,
-                    slug: this.page.slug
+                    slug: this.page.slug,
+                    block_title: this.page.block_title,
+                    block_summary: this.page.block_summary,
+                    block_description: this.page.block_description
                 }).then(function (response) {
                     if (response.data.success) swal('Sucesso!', 'Page saved', 'success');else swal('Erro!', 'Page not saved', 'error');
                 });
@@ -48788,7 +48793,37 @@ var render = function() {
             _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "box-body" }, [
-              _vm._m(1),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "block_title" } }, [
+                  _vm._v("Block Title")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.page.block_title,
+                      expression: "page.block_title"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "block_title",
+                    name: "block_title"
+                  },
+                  domProps: { value: _vm.page.block_title },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.page, "block_title", $event.target.value)
+                    }
+                  }
+                })
+              ]),
               _vm._v(" "),
               _c(
                 "div",
@@ -48799,13 +48834,13 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("vueEditor", {
-                    attrs: { id: "block_summary" },
+                    attrs: { id: "block_summary", name: "block_summary" },
                     model: {
-                      value: _vm.block_summary,
+                      value: _vm.page.block_summary,
                       callback: function($$v) {
-                        _vm.block_summary = $$v
+                        _vm.$set(_vm.page, "block_summary", $$v)
                       },
-                      expression: "block_summary"
+                      expression: "page.block_summary"
                     }
                   })
                 ],
@@ -48821,27 +48856,30 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("vueEditor", {
-                    attrs: { id: "block_description" },
+                    attrs: {
+                      id: "block_description",
+                      name: "block_description"
+                    },
                     model: {
-                      value: _vm.block_description,
+                      value: _vm.page.block_description,
                       callback: function($$v) {
-                        _vm.block_description = $$v
+                        _vm.$set(_vm.page, "block_description", $$v)
                       },
-                      expression: "block_description"
+                      expression: "page.block_description"
                     }
                   })
                 ],
                 1
               ),
               _vm._v(" "),
-              _vm._m(2)
+              _vm._m(1)
             ])
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-sm-3" }, [
           _c("div", { staticClass: "box box-primary" }, [
-            _vm._m(3),
+            _vm._m(2),
             _vm._v(" "),
             _c("div", { staticClass: "box-body" }, [
               _c("div", { staticClass: "form-group" }, [
@@ -48900,9 +48938,9 @@ var render = function() {
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
-            _vm._m(4),
+            _vm._m(3),
             _vm._v(" "),
-            _vm._m(5),
+            _vm._m(4),
             _vm._v(" "),
             _c("div", { staticClass: "box-footer" }, [
               _c("div", { staticClass: "pull-right" }, [
@@ -48947,19 +48985,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box-header" }, [
       _c("div", { staticClass: "box-title" }, [_vm._v("Page Blocks")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "block_title" } }, [_vm._v("Block Title")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", id: "block_title", name: "block_title" }
-      })
     ])
   },
   function() {

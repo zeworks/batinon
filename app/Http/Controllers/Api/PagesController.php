@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Pages;
+use App\Blocks;
 
 class PagesController extends Controller
 {
@@ -53,7 +54,26 @@ class PagesController extends Controller
             "status" => $status,
         ];
 
+        $block = [
+            "title" => $request->block_title,
+            "summary" => $request->block_summary,
+            "description" => $request->block_description,
+            "page_id" => $request->id,
+        ];
+
         Pages::where('id',$request->id)->update($data);
+        
+        // validar se ja existem blocos
+        $validation = Blocks::where('page_id',$request->id)->get();
+        
+        if($validation -> isEmpty()){
+            // se nao existir
+            Blocks::create($block);
+        }else{
+            // se existir
+            Blocks::where('page_id',$request->id)->update($block);
+        }
+        
         return ['success' => true];
     }
 

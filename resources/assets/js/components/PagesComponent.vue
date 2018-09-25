@@ -31,7 +31,7 @@
                                         </span>
                                     </span>
                                 </td>
-                                <td>{{page.creation_date}}</td>
+                                <td>{{page.created_at}}</td>
                                 <td>
                                     <div class="pull-right">
                                         <a :href="('./pages/edit/'+page.id)" class="btn btn-warning" ><i class="fa fa-edit"></i></a>
