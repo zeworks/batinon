@@ -27,15 +27,15 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label for="block_title">Block Title</label>
-                            <input type="text" id="block_title" name="block_title" class="form-control" v-model="page.block_title">
+                            <input type="text" id="block_title" name="block_title" class="form-control" v-model="page.b_title">
                         </div>
                         <div class="form-group">
                             <label for="block_summary">Block Summary</label>
-                            <vueEditor id="block_summary" name="block_summary" v-model="page.block_summary"></vueEditor>
+                            <vueEditor id="block_summary" name="block_summary" v-model="page.b_summary"></vueEditor>
                         </div>
                         <div class="form-group">
                             <label for="block_description">Block Description</label>
-                            <vueEditor id="block_description" name="block_description" v-model="page.block_description"></vueEditor>
+                            <vueEditor id="block_description" name="block_description" v-model="page.b_description"></vueEditor>
                         </div>
                         <div class="form-group">
                             <label for="block_files">Block Image(s)</label>
@@ -102,7 +102,7 @@
                         status           : false,
                         name             : '', 
                         slug             : '',
-                        block_title      : '',
+                        b_title      : '',
                         block_summary    : '',
                         block_description : '',
                     }
@@ -129,9 +129,9 @@
                         title            : this.page.title,
                         status           : this.page.status,
                         slug             : this.page.slug,
-                        block_title      : this.page.block_title,
-                        block_summary    : this.page.block_summary,
-                        block_description : this.page.block_description,
+                        b_title          : this.page.b_title,
+                        b_summary        : this.page.b_summary,
+                        b_description    : this.page.b_description,
                     })
                     .then(response => {
                         if(response.data.success)
@@ -144,9 +144,9 @@
                         title            : this.page.title,
                         status           : this.page.status,
                         slug             : this.page.slug,
-                        block_title      : this.page.block_title,
-                        block_summary    : this.page.block_summary,
-                        block_description : this.page.block_description,
+                        b_title          : this.page.b_title,
+                        b_summary        : this.page.b_summary,
+                        b_description    : this.page.b_description,
                     })
                     .then(response => {
                         if(response.data.success)

@@ -48618,7 +48618,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 status: false,
                 name: '',
                 slug: '',
-                block_title: '',
+                b_title: '',
                 block_summary: '',
                 block_description: ''
             }]
@@ -48647,9 +48647,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     title: this.page.title,
                     status: this.page.status,
                     slug: this.page.slug,
-                    block_title: this.page.block_title,
-                    block_summary: this.page.block_summary,
-                    block_description: this.page.block_description
+                    b_title: this.page.b_title,
+                    b_summary: this.page.b_summary,
+                    b_description: this.page.b_description
                 }).then(function (response) {
                     if (response.data.success) swal('Sucesso!', 'Page saved', 'success');else swal('Erro!', 'Page not saved', 'error');
                 });
@@ -48658,9 +48658,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     title: this.page.title,
                     status: this.page.status,
                     slug: this.page.slug,
-                    block_title: this.page.block_title,
-                    block_summary: this.page.block_summary,
-                    block_description: this.page.block_description
+                    b_title: this.page.b_title,
+                    b_summary: this.page.b_summary,
+                    b_description: this.page.b_description
                 }).then(function (response) {
                     if (response.data.success) swal('Sucesso!', 'Page saved', 'success');else swal('Erro!', 'Page not saved', 'error');
                 });
@@ -48803,8 +48803,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.page.block_title,
-                      expression: "page.block_title"
+                      value: _vm.page.b_title,
+                      expression: "page.b_title"
                     }
                   ],
                   staticClass: "form-control",
@@ -48813,13 +48813,13 @@ var render = function() {
                     id: "block_title",
                     name: "block_title"
                   },
-                  domProps: { value: _vm.page.block_title },
+                  domProps: { value: _vm.page.b_title },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.page, "block_title", $event.target.value)
+                      _vm.$set(_vm.page, "b_title", $event.target.value)
                     }
                   }
                 })
@@ -48836,11 +48836,11 @@ var render = function() {
                   _c("vueEditor", {
                     attrs: { id: "block_summary", name: "block_summary" },
                     model: {
-                      value: _vm.page.block_summary,
+                      value: _vm.page.b_summary,
                       callback: function($$v) {
-                        _vm.$set(_vm.page, "block_summary", $$v)
+                        _vm.$set(_vm.page, "b_summary", $$v)
                       },
-                      expression: "page.block_summary"
+                      expression: "page.b_summary"
                     }
                   })
                 ],
@@ -48861,11 +48861,11 @@ var render = function() {
                       name: "block_description"
                     },
                     model: {
-                      value: _vm.page.block_description,
+                      value: _vm.page.b_description,
                       callback: function($$v) {
-                        _vm.$set(_vm.page, "block_description", $$v)
+                        _vm.$set(_vm.page, "b_description", $$v)
                       },
-                      expression: "page.block_description"
+                      expression: "page.b_description"
                     }
                   })
                 ],
