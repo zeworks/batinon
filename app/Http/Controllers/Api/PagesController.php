@@ -19,7 +19,7 @@ class PagesController extends Controller
         if($request->status == ''){
             $status = 0;
         }else{
-            $status = 1;
+            $status = $request->status;
         }
 
         $data = [
@@ -48,7 +48,7 @@ class PagesController extends Controller
         if($request->status == ''){
             $status = 0;
         }else{
-            $status = 1;
+            $status = $request->status;
         }
 
         $data = [

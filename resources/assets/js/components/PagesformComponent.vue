@@ -7,8 +7,8 @@
                         <div class="row">
                             <div class="col-sm-7">
                                 <div class="form-group">
-                                    <label for="title">Page Name</label>
-                                    <input type="text" id="title" name="title" class="form-control" v-model="page.title">
+                                    <label for="title">Page Name*</label>
+                                    <input type="text" id="title" name="title" class="form-control" v-model="page.title" required>
                                 </div>
                             </div>
                             <div class="col-sm-5">
@@ -26,8 +26,8 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="block_title">Block Title</label>
-                            <input type="text" id="block_title" name="block_title" class="form-control" v-model="page.b_title">
+                            <label for="block_title">Block Title*</label>
+                            <input type="text" id="block_title" name="block_title" class="form-control" v-model="page.b_title" required>
                         </div>
                         <div class="form-group">
                             <label for="block_summary">Block Summary</label>
@@ -153,6 +153,9 @@
                             swal('Sucesso!','Page saved','success');
                         else
                             swal('Erro!','Page not saved','error');
+                    })
+                    .catch(error => {
+                        swal('Erro!','Please fill all the required fields.','error');
                     });
                 }
             },

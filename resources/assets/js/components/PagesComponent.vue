@@ -14,7 +14,7 @@
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody v-if="pages[0] != null">
                             <tr v-for="(page,index) in pages" :key="index">
                                 <td>
                                     #{{page.id}}
@@ -36,6 +36,15 @@
                                     <div class="pull-right">
                                         <a :href="('./pages/edit/'+page.id)" class="btn btn-warning" ><i class="fa fa-edit"></i></a>
                                         <button class="btn btn-danger" @click="openModalDelete(page.id)"><i class="fa fa-trash-o"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody v-else>
+                            <tr>
+                                <td colspan="5">
+                                    <div class="text-center">
+                                        <small>You have no pages created yet!</small>
                                     </div>
                                 </td>
                             </tr>

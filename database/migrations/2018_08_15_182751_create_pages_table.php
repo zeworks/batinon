@@ -18,8 +18,8 @@ class CreatePagesTable extends Migration
             $table->string('title',500);
             $table->string('slug',500);
             $table->string('b_title',500);
-            $table->longtext('b_summary');
-            $table->longtext('b_description');
+            $table->longtext('b_summary')->nullable();
+            $table->longtext('b_description')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
         });

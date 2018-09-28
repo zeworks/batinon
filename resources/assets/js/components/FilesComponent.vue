@@ -14,7 +14,7 @@
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody v-if="files[0] != null">
                             <tr v-for="(file,index) in files" :key="index">
                                 <td>#{{file.id}}</td>
                                 <td>
@@ -25,6 +25,15 @@
                                 <td>{{file.created_at}}</td>
                                 <td><input type="text" disabled  :value="origin+image_path+file.name" class="form-control"></td>
                                 <td><button class="btn btn-danger pull-right" @click="openModalDelete(file.id)"><i class="fa fa-trash-o"></i></button></td>
+                            </tr>
+                        </tbody>
+                        <tbody v-else>
+                            <tr>
+                                <td colspan="5">
+                                    <div class="text-center">
+                                        <small>You have no files saved yet!</small>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

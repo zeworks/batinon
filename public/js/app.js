@@ -47756,6 +47756,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -48286,86 +48295,90 @@ var render = function() {
             _c("table", { staticClass: "table no-margin" }, [
               _vm._m(0),
               _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.pages, function(page, index) {
-                  return _c("tr", { key: index }, [
-                    _c("td", [
-                      _vm._v(
-                        "\n                                #" +
-                          _vm._s(page.id) +
-                          "\n                            "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("a", { attrs: { href: "./pages/edit/" + page.id } }, [
-                        _vm._v(_vm._s(page.title))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(page.slug))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "label",
-                          class: {
-                            "label-success": page.status == "1",
-                            "label-danger": page.status == "0"
-                          }
-                        },
-                        [
-                          page.status == 1
-                            ? _c("span", [
-                                _vm._v(
-                                  "\n                                        Active\n                                    "
-                                )
-                              ])
-                            : _vm._e(),
-                          _vm._v(" "),
-                          page.status == 0
-                            ? _c("span", [
-                                _vm._v(
-                                  "\n                                        Inactive\n                                    "
-                                )
-                              ])
-                            : _vm._e()
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(page.created_at))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("div", { staticClass: "pull-right" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-warning",
-                            attrs: { href: "./pages/edit/" + page.id }
-                          },
-                          [_c("i", { staticClass: "fa fa-edit" })]
-                        ),
+              _vm.pages[0] != null
+                ? _c(
+                    "tbody",
+                    _vm._l(_vm.pages, function(page, index) {
+                      return _c("tr", { key: index }, [
+                        _c("td", [
+                          _vm._v(
+                            "\n                                #" +
+                              _vm._s(page.id) +
+                              "\n                            "
+                          )
+                        ]),
                         _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-danger",
-                            on: {
-                              click: function($event) {
-                                _vm.openModalDelete(page.id)
+                        _c("td", [
+                          _c(
+                            "a",
+                            { attrs: { href: "./pages/edit/" + page.id } },
+                            [_vm._v(_vm._s(page.title))]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(page.slug))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "span",
+                            {
+                              staticClass: "label",
+                              class: {
+                                "label-success": page.status == "1",
+                                "label-danger": page.status == "0"
                               }
-                            }
-                          },
-                          [_c("i", { staticClass: "fa fa-trash-o" })]
-                        )
+                            },
+                            [
+                              page.status == 1
+                                ? _c("span", [
+                                    _vm._v(
+                                      "\n                                        Active\n                                    "
+                                    )
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              page.status == 0
+                                ? _c("span", [
+                                    _vm._v(
+                                      "\n                                        Inactive\n                                    "
+                                    )
+                                  ])
+                                : _vm._e()
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(page.created_at))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("div", { staticClass: "pull-right" }, [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-warning",
+                                attrs: { href: "./pages/edit/" + page.id }
+                              },
+                              [_c("i", { staticClass: "fa fa-edit" })]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-danger",
+                                on: {
+                                  click: function($event) {
+                                    _vm.openModalDelete(page.id)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fa fa-trash-o" })]
+                            )
+                          ])
+                        ])
                       ])
-                    ])
-                  ])
-                })
-              )
+                    })
+                  )
+                : _c("tbody", [_vm._m(1)])
             ])
           ])
         ]),
@@ -48449,6 +48462,18 @@ var staticRenderFns = [
         _c("th", [_vm._v("Date")]),
         _vm._v(" "),
         _c("th")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", { attrs: { colspan: "5" } }, [
+        _c("div", { staticClass: "text-center" }, [
+          _c("small", [_vm._v("You have no pages created yet!")])
+        ])
       ])
     ])
   }
@@ -48663,6 +48688,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     b_description: this.page.b_description
                 }).then(function (response) {
                     if (response.data.success) swal('Sucesso!', 'Page saved', 'success');else swal('Erro!', 'Page not saved', 'error');
+                }).catch(function (error) {
+                    swal('Erro!', 'Please fill all the required fields.', 'error');
                 });
             }
         },
@@ -48723,7 +48750,7 @@ var render = function() {
                 _c("div", { staticClass: "col-sm-7" }, [
                   _c("div", { staticClass: "form-group" }, [
                     _c("label", { attrs: { for: "title" } }, [
-                      _vm._v("Page Name")
+                      _vm._v("Page Name*")
                     ]),
                     _vm._v(" "),
                     _c("input", {
@@ -48736,7 +48763,12 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", id: "title", name: "title" },
+                      attrs: {
+                        type: "text",
+                        id: "title",
+                        name: "title",
+                        required: ""
+                      },
                       domProps: { value: _vm.page.title },
                       on: {
                         input: function($event) {
@@ -48795,7 +48827,7 @@ var render = function() {
             _c("div", { staticClass: "box-body" }, [
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "block_title" } }, [
-                  _vm._v("Block Title")
+                  _vm._v("Block Title*")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -48811,7 +48843,8 @@ var render = function() {
                   attrs: {
                     type: "text",
                     id: "block_title",
-                    name: "block_title"
+                    name: "block_title",
+                    required: ""
                   },
                   domProps: { value: _vm.page.b_title },
                   on: {
@@ -49217,6 +49250,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -49317,69 +49359,72 @@ var render = function() {
             _c("table", { staticClass: "table no-margin" }, [
               _vm._m(0),
               _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.files, function(file, index) {
-                  return _c("tr", { key: index }, [
-                    _c("td", [_vm._v("#" + _vm._s(file.id))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      file.name
-                        ? _c(
-                            "a",
+              _vm.files[0] != null
+                ? _c(
+                    "tbody",
+                    _vm._l(_vm.files, function(file, index) {
+                      return _c("tr", { key: index }, [
+                        _c("td", [_vm._v("#" + _vm._s(file.id))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          file.name
+                            ? _c(
+                                "a",
+                                {
+                                  staticClass: "image-to-preview",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.imagePreview(
+                                        _vm.origin + _vm.image_path + file.name
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      width: "50",
+                                      src:
+                                        _vm.origin + _vm.image_path + file.name,
+                                      alt: "dummy image"
+                                    }
+                                  })
+                                ]
+                              )
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(file.created_at))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: { type: "text", disabled: "" },
+                            domProps: {
+                              value: _vm.origin + _vm.image_path + file.name
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "button",
                             {
-                              staticClass: "image-to-preview",
-                              attrs: { href: "#" },
+                              staticClass: "btn btn-danger pull-right",
                               on: {
                                 click: function($event) {
-                                  _vm.imagePreview(
-                                    _vm.origin + _vm.image_path + file.name
-                                  )
+                                  _vm.openModalDelete(file.id)
                                 }
                               }
                             },
-                            [
-                              _c("img", {
-                                attrs: {
-                                  width: "50",
-                                  src: _vm.origin + _vm.image_path + file.name,
-                                  alt: "dummy image"
-                                }
-                              })
-                            ]
+                            [_c("i", { staticClass: "fa fa-trash-o" })]
                           )
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(file.created_at))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: { type: "text", disabled: "" },
-                        domProps: {
-                          value: _vm.origin + _vm.image_path + file.name
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-danger pull-right",
-                          on: {
-                            click: function($event) {
-                              _vm.openModalDelete(file.id)
-                            }
-                          }
-                        },
-                        [_c("i", { staticClass: "fa fa-trash-o" })]
-                      )
-                    ])
-                  ])
-                })
-              )
+                        ])
+                      ])
+                    })
+                  )
+                : _c("tbody", [_vm._m(1)])
             ])
           ])
         ]),
@@ -49633,6 +49678,18 @@ var staticRenderFns = [
         _c("th", [_vm._v("URL File")]),
         _vm._v(" "),
         _c("th")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", { attrs: { colspan: "5" } }, [
+        _c("div", { staticClass: "text-center" }, [
+          _c("small", [_vm._v("You have no files saved yet!")])
+        ])
       ])
     ])
   }
