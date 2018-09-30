@@ -135,3 +135,9 @@ input[type="checkbox"] {
 .swal-overlay{
     overflow-y: auto !important;
 }
+
+.logo-lg img{
+    max-height: 40px;
+    top: 5px;
+    position: relative;
+}
