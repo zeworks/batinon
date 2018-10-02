@@ -48627,6 +48627,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -48645,7 +48651,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 slug: '',
                 b_title: '',
                 block_summary: '',
-                block_description: ''
+                block_description: '',
+                image: ''
             }]
         };
     },
@@ -48674,7 +48681,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     slug: this.page.slug,
                     b_title: this.page.b_title,
                     b_summary: this.page.b_summary,
-                    b_description: this.page.b_description
+                    b_description: this.page.b_description,
+                    image: this.page.image
                 }).then(function (response) {
                     if (response.data.success) swal('Sucesso!', 'Page saved', 'success');else swal('Erro!', 'Page not saved', 'error');
                 });
@@ -48685,7 +48693,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     slug: this.page.slug,
                     b_title: this.page.b_title,
                     b_summary: this.page.b_summary,
-                    b_description: this.page.b_description
+                    b_description: this.page.b_description,
+                    image: this.page.image
                 }).then(function (response) {
                     if (response.data.success) swal('Sucesso!', 'Page saved', 'success');else swal('Erro!', 'Page not saved', 'error');
                 }).catch(function (error) {
@@ -48763,12 +48772,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        id: "title",
-                        name: "title",
-                        required: ""
-                      },
+                      attrs: { type: "text", id: "title", name: "title" },
                       domProps: { value: _vm.page.title },
                       on: {
                         input: function($event) {
@@ -48843,8 +48847,7 @@ var render = function() {
                   attrs: {
                     type: "text",
                     id: "block_title",
-                    name: "block_title",
-                    required: ""
+                    name: "block_title"
                   },
                   domProps: { value: _vm.page.b_title },
                   on: {
@@ -48973,7 +48976,44 @@ var render = function() {
             _vm._v(" "),
             _vm._m(3),
             _vm._v(" "),
-            _vm._m(4),
+            _c("div", { staticClass: "box-body" }, [
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.page.image,
+                      expression: "page.image"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", name: "url_text", id: "url_text" },
+                  domProps: { value: _vm.page.image },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.page, "image", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(4)
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _vm.page.image
+                ? _c("div", [
+                    _c("img", {
+                      staticClass: "img-responsive",
+                      attrs: { src: _vm.page.image, alt: "" }
+                    })
+                  ])
+                : _vm._e()
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "box-footer" }, [
               _c("div", { staticClass: "pull-right" }, [
@@ -49067,12 +49107,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-body" }, [
-      _c("input", { attrs: { type: "file", name: "image", id: "image" } }),
-      _vm._v(" "),
-      _c("p", { staticClass: "help-block" }, [
-        _vm._v("This image will appear on top of your page")
-      ])
+    return _c("p", { staticClass: "help-block" }, [
+      _vm._v("Paste your "),
+      _c("b", [_vm._v("URL")]),
+      _vm._v(" here (This image will appear on top of your page)")
     ])
   }
 ]
@@ -49142,7 +49180,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue__);
-//
 //
 //
 //
@@ -49546,24 +49583,19 @@ var render = function() {
                 attrs: { slot: "body" },
                 slot: "body"
               },
-              [
-                _c("p", [_vm._v("Libray here!")]),
-                _vm._v(" "),
-                _vm._l(_vm.files, function(file, index) {
-                  return _c("div", { key: index }, [
-                    _c("div", { staticClass: "col-sm-4" }, [
-                      _c("img", {
-                        staticClass: "img-responsive",
-                        attrs: {
-                          src: _vm.origin + _vm.image_path + file.name,
-                          alt: file.name
-                        }
-                      })
-                    ])
+              _vm._l(_vm.files, function(file, index) {
+                return _c("div", { key: index }, [
+                  _c("div", { staticClass: "col-sm-4" }, [
+                    _c("img", {
+                      staticClass: "img-responsive",
+                      attrs: {
+                        src: _vm.origin + _vm.image_path + file.name,
+                        alt: file.name
+                      }
+                    })
                   ])
-                })
-              ],
-              2
+                ])
+              })
             ),
             _vm._v(" "),
             _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [

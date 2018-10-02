@@ -72,7 +72,6 @@
         <modal v-if="showModalLibrary">
             <h3 slot="header">Files Libray</h3>
             <div slot="body" class="clearfix">
-                <p>Libray here!</p>
                 <div v-for="(file,index) in files" :key="index">
                     <div class="col-sm-4">
                         <img class="img-responsive" :src="origin+image_path+file.name" :alt="file.name">

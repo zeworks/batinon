@@ -29,6 +29,7 @@ class PagesController extends Controller
             "b_title" => $request->b_title,
             "b_summary" => $request->b_summary,
             "b_description" => $request->b_description,
+            "image" => $request->image,
         ];
 
 
@@ -58,6 +59,7 @@ class PagesController extends Controller
             "b_title" => $request->b_title,
             "b_summary" => $request->b_summary,
             "b_description" => $request->b_description,
+            "image" => $request->image,
         ];
 
         Pages::where('id',$request->id)->update($data);

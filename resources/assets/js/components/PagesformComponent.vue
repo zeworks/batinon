@@ -8,7 +8,7 @@
                             <div class="col-sm-7">
                                 <div class="form-group">
                                     <label for="title">Page Name*</label>
-                                    <input type="text" id="title" name="title" class="form-control" v-model="page.title" required>
+                                    <input type="text" id="title" name="title" class="form-control" v-model="page.title">
                                 </div>
                             </div>
                             <div class="col-sm-5">
@@ -27,7 +27,7 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label for="block_title">Block Title*</label>
-                            <input type="text" id="block_title" name="block_title" class="form-control" v-model="page.b_title" required>
+                            <input type="text" id="block_title" name="block_title" class="form-control" v-model="page.b_title">
                         </div>
                         <div class="form-group">
                             <label for="block_summary">Block Summary</label>
@@ -67,8 +67,14 @@
                         </div>
                     </div>
                     <div class="box-body">
-                        <input type="file" name="image" id="image">
-                        <p class="help-block">This image will appear on top of your page</p>
+                        <div>
+                            <input type="text" name="url_text" id="url_text" class="form-control" v-model="page.image">
+                            <p class="help-block">Paste your <b>URL</b> here (This image will appear on top of your page)</p>
+                        </div>
+                        <br>
+                         <div v-if="page.image">
+                            <img :src="page.image" alt class="img-responsive">
+                        </div>
                     </div>
                     <div class="box-footer">
                         <div class="pull-right">
@@ -86,7 +92,7 @@
 </template>
 
 <script>
-
+   
     export default {
         props: ['id'],
         computed: {
@@ -102,9 +108,10 @@
                         status           : false,
                         name             : '', 
                         slug             : '',
-                        b_title      : '',
+                        b_title          : '',
                         block_summary    : '',
                         block_description : '',
+                        image            : '',
                     }
                 ],
             }
@@ -132,6 +139,7 @@
                         b_title          : this.page.b_title,
                         b_summary        : this.page.b_summary,
                         b_description    : this.page.b_description,
+                        image            : this.page.image,
                     })
                     .then(response => {
                         if(response.data.success)
@@ -147,6 +155,7 @@
                         b_title          : this.page.b_title,
                         b_summary        : this.page.b_summary,
                         b_description    : this.page.b_description,
+                        image            : this.page.image,
                     })
                     .then(response => {
                         if(response.data.success)

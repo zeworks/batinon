@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => '<img class="img-responsive" alt="batinon" src="../logo.png" />',
+    'logo' => 'Batinon', //'<img class="img-responsive" alt="batinon" src="/logo.png" />',
 
     'logo_mini' => '<b>B</b>ON',
 
