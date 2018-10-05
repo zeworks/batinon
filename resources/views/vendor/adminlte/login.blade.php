@@ -9,7 +9,7 @@
 @section('body_class', 'login-page')
 
 @section('body')
-    <div class="login-box">
+    <div class="login-box skin-custom">
         <div class="login-logo">
             <a href="{{ url(config('adminlte.dashboard_url', 'admin/home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
         </div>
@@ -50,7 +50,7 @@
                         <!-- /.col -->
                         <div class="col-xs-4">
                             <button type="submit"
-                                    class="btn btn-success btn-block btn-flat">{{ trans('adminlte::adminlte.sign_in') }}</button>
+                                    class="btn btn-primary btn-block btn-flat">{{ trans('adminlte::adminlte.sign_in') }}</button>
                         </div>
                         <!-- /.col -->
                     </div>
