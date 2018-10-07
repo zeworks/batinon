@@ -20,84 +20,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="box box-primary">
-                    <div class="box-header">
-                        <div class="box-title">Page Blocks</div>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label for="block_title">Block Title*</label>
-                            <input type="text" id="block_title" name="block_title" class="form-control" v-model="page.b_title">
-                        </div>
-                        <div class="form-group">
-                            <label for="block_summary">Block Summary</label>
-                            <vueEditor id="block_summary" name="block_summary" v-model="page.b_summary"></vueEditor>
-                        </div>
-                        <div class="form-group">
-                            <label for="block_description">Block Description</label>
-                            <vueEditor id="block_description" name="block_description" v-model="page.b_description"></vueEditor>
-                        </div>
-                        <div class="form-group">
-                            <label for="block_files">Block Image(s)</label>
-                            <input type="file" name="block_files[]" id="block_files" multiple>
-                            <p class="help-block">Choose wich images you want to display into this block</p>
-                        </div>
-                    </div>
-                </div>
+                <pageBlocks :page="page"/>
             </div>
             <div class="col-sm-3">
                 <div class="box box-primary">
-                    <div class="box-header">
-                        <div class="box-title">
-                            Status
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" name="status" v-model="page.status" true-value="1" false-value="0">
-                                <span class="custom-control-indicator"></span>
-                            </label>
-                        </div>
-                    </div>
+                    <statusComponent :item="page"/>
                     <hr>
-                    <div class="box-header">
-                        <div class="box-title">
-                            Featured Image
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <div>
-                            <input type="text" name="url_text" id="url_text" class="form-control" v-model="page.image">
-                            <p class="help-block">Paste your <b>URL</b> here (This image will appear on top of your page)</p>
-                        </div>
-                        <br>
-                         <div v-if="page.image">
-                            <img :src="page.image" alt class="img-responsive">
-                        </div>
-                    </div>
-                    <div class="box-footer">
-                        <div class="pull-right">
-                            <a class="btn btn-default" href="/admin/pages">Cancel</a>
-                            <!-- edit button -->
-                            <button type="submit" v-if="id" class="btn btn-primary">Save</button>
-                            <!-- new button -->
-                            <button type="submit" v-else class="btn btn-primary">Save</button>
-                        </div>
-                    </div>
+                    <featuredImageComponent :item="page"/>
+                    <submitComponent :id="id"/>
                 </div>
+                <!-- <pageSummary :item="page" :id="id"/> -->
             </div>
         </form>
     </div>
 </template>
 
 <script>
-   
+    import pageBlocks from './PagesBlocksComponent.vue';
+    import submitComponent from './SubmitComponent.vue';
+    import statusComponent from './StatusComponent.vue';
+    import featuredImageComponent from './FeaturedImageComponent.vue';
+
     export default {
         props: ['id'],
         computed: {
@@ -105,6 +48,12 @@
                 var slug = this.sanitizeTitle(this.page.title);
                 return slug;
             }
+        },
+        components:{
+            pageBlocks,
+            submitComponent,
+            statusComponent,
+            featuredImageComponent
         },
         data() {
             return {

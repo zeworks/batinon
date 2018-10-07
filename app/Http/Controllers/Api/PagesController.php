@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Pages;
+use App\Files;
 
 class PagesController extends Controller
 {
@@ -38,8 +39,8 @@ class PagesController extends Controller
         return ['success' => true];
     }
 
-    // EDIT PAGE (DISPLAY)
-    public function edit($id){
+    // GET PAGE (DISPLAY)
+    public function get($id){
         $page = Pages::where('id',$id)->get();
         return $page;
     }

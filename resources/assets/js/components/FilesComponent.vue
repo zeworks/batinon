@@ -138,6 +138,14 @@
         },
         created(){
             this.fetchFiles();
+            document.body.addEventListener('keyup', e => {
+                if (e.keyCode === 27) {
+                    this.showModal = false;
+                    this.showModalPreview = false;
+                    this.showModalRemove = false;
+                    this.showModalLibrary = false;
+                }
+            })
         },
         methods: {
             fetchFiles(){
