@@ -21,6 +21,7 @@ class CreatePagesTable extends Migration
             $table->string('b_title',500);
             $table->longtext('b_summary')->nullable();
             $table->longtext('b_description')->nullable();
+            $table->string('b_image',500)->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
         });

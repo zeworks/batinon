@@ -30,6 +30,7 @@ class PagesController extends Controller
             "b_title" => $request->b_title,
             "b_summary" => $request->b_summary,
             "b_description" => $request->b_description,
+            "b_image" => $request->b_image,
             "image" => $request->image,
         ];
 
@@ -60,6 +61,7 @@ class PagesController extends Controller
             "b_title" => $request->b_title,
             "b_summary" => $request->b_summary,
             "b_description" => $request->b_description,
+            "b_image" => $request->b_image,
             "image" => $request->image,
         ];
 

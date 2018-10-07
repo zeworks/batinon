@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 </div>
-                <pageBlocks :page="page"/>
+                <blocksComponent :item="page"/>
             </div>
             <div class="col-sm-3">
                 <div class="box box-primary">
@@ -29,14 +29,13 @@
                     <featuredImageComponent :item="page"/>
                     <submitComponent :id="id"/>
                 </div>
-                <!-- <pageSummary :item="page" :id="id"/> -->
             </div>
         </form>
     </div>
 </template>
 
 <script>
-    import pageBlocks from './PagesBlocksComponent.vue';
+    import blocksComponent from './BlocksComponent.vue';
     import submitComponent from './SubmitComponent.vue';
     import statusComponent from './StatusComponent.vue';
     import featuredImageComponent from './FeaturedImageComponent.vue';
@@ -50,7 +49,7 @@
             }
         },
         components:{
-            pageBlocks,
+            blocksComponent,
             submitComponent,
             statusComponent,
             featuredImageComponent
@@ -63,8 +62,8 @@
                         name             : '', 
                         slug             : '',
                         b_title          : '',
-                        block_summary    : '',
-                        block_description : '',
+                        b_summary    : '',
+                        b_description : '',
                         image            : '',
                     }
                 ],
@@ -93,6 +92,7 @@
                         b_title          : this.page.b_title,
                         b_summary        : this.page.b_summary,
                         b_description    : this.page.b_description,
+                        b_image          : this.page.b_image,
                         image            : this.page.image,
                     })
                     .then(response => {
@@ -109,6 +109,7 @@
                         b_title          : this.page.b_title,
                         b_summary        : this.page.b_summary,
                         b_description    : this.page.b_description,
+                        b_image          : this.page.b_image,
                         image            : this.page.image,
                     })
                     .then(response => {
