@@ -28,3 +28,6 @@ Route::post('pages/delete','Api\PagesController@delete');
 Route::get('files','Api\FilesController@index');
 Route::post('files/add','Api\FilesController@add');
 Route::post('files/delete','Api\FilesController@delete');
+
+//blogs
+Route::get('blogs','Api\BlogController@index');

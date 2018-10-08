@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 </div>
-                <blocksComponent :item="page"/>
+                <blocksComponent :item="page" :title="'Page Blocks'"/>
             </div>
             <div class="col-sm-3">
                 <div class="box box-primary">

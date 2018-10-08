@@ -2,7 +2,7 @@
     <div>
         <div class="box box-primary">
             <div class="box-header">
-                <div class="box-title">Page Blocks</div>
+                <div class="box-title">{{title}}</div>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                     </button>
@@ -23,14 +23,14 @@
                     <vueEditor id="block_description" name="block_description" v-model="item.b_description"></vueEditor>
                 </div>
                 <div class="form-group">
-                    <label>Block Image(s)</label>
-                    <p class="help-block">Choose wich images you want to display into this block</p>
+                    <label>Block Image</label>
+                    <p class="help-block">Choose wich image you want to display into this block</p>
                     <br>
                     <div v-if="item.b_image" class="block-image">
                         <img :src="item.b_image" alt class="img-responsive">
                         <br>
                     </div>
-                    <button type="button" class="btn btn-primary" @click="fetchBlockImages">Choose Images</button>
+                    <button type="button" class="btn btn-primary" @click="fetchBlockImages">Choose Image</button>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
     import modal from './ModalComponent.vue';
 
     export default {
-        props: ['item'],
+        props: ['item','title'],
         components: {
             modal
         },

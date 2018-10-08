@@ -26,6 +26,10 @@ Route::group(['middleware' => ['auth']], function() {
     
         // FILES
         Route::get('/files','Admin\FilesController@index');
+
+        // BLOG
+        Route::get('/blog','Admin\BlogController@index');
+
     
     });
 });

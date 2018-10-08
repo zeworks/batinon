@@ -122,6 +122,14 @@ return [
             // 'label'       => '',
             // 'label_color' => 'success',
         ],
+        'BLOG',
+        [
+            'text'        => 'Blog',
+            'url'         => 'admin/blog',
+            'icon'        => 'commenting-o',
+            // 'label'       => '',
+            // 'label_color' => 'success',
+        ],
         'FILES',
         [
             'text'        => 'Files',

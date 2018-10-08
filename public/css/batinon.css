@@ -29,11 +29,11 @@ hr {
     margin-top: 10px;
 }
 
-input,
+/* input,
 textarea,
 select {
-    border-radius: 5px !important;
-}
+   border-radius: 5px !important;
+} */
 
 textarea{
     resize: vertical;
