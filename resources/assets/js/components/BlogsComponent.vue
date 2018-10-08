@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="box box-success">
+        <div class="box box-default">
             <div class="box-body">
                 <div class="table-responsive">
                     <table class="table no-margin">

@@ -2,7 +2,7 @@
     <div>
         <form @submit.prevent="saveData" :id="id" class="row">
             <div class="col-sm-9">
-                <div class="box box-primary">
+                <div class="box box-default">
                     <div class="box-body">
                         <div class="row">
                             <div class="col-sm-7">
@@ -23,7 +23,7 @@
                 <blocksComponent :item="page" :title="'Page Blocks'"/>
             </div>
             <div class="col-sm-3">
-                <div class="box box-primary">
+                <div class="box box-default">
                     <statusComponent :item="page"/>
                     <hr>
                     <featuredImageComponent :item="page"/>

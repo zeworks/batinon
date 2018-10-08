@@ -5,7 +5,7 @@
                 <blocksComponent :item="blog"/>
             </div>
             <div class="col-sm-3">
-                <div class="box box-primary">
+                <div class="box box-default">
                     <statusComponent :item="blog"/>
                     <hr>
                     <featuredImageComponent :item="blog"/>
@@ -24,12 +24,6 @@
 
     export default {
         props: ['id'],
-        // computed: {
-        //     slug() {
-        //         var slug = this.sanitizeTitle(this.blog.b_title);
-        //         return slug;
-        //     }
-        // },
         components:{
             blocksComponent,
             submitComponent,

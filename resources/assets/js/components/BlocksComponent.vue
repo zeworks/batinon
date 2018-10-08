@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="box box-primary">
+        <div class="box box-default">
             <div class="box-header">
                 <div class="box-title">{{title}}</div>
                 <div class="box-tools pull-right">

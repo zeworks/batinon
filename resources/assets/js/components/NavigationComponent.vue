@@ -43,7 +43,7 @@
                         </table>
                     </div>
                     <div class="box-footer">
-                        <a href="" class="btn btn-md btn-success btn-flat pull-right">Add New</a>
+                        <a href="" class="btn btn-md btn-success pull-right">Add New</a>
                     </div>
                 </div>
             </div>
