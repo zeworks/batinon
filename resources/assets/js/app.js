@@ -8,7 +8,6 @@ import './bootstrap';
 import Vue from 'vue';
 import VueSwal from 'vue-swal';
 import VueEditor from 'vue2-editor';
-import axios from 'axios';
 // home dashboard
 import DashboardComponent from './components/DashboardComponent.vue';
 // pages
@@ -19,6 +18,10 @@ import PagesformComponent from './components/PagesformComponent.vue';
 import FilesComponent from './components/FilesComponent.vue';
 // blogs
 import BlogsComponent from './components/BlogsComponent.vue';
+// blog form
+import BlogsformComponent from './components/BlogsFormComponent.vue';
+// navigation
+import NavigationComponent from './components/NavigationComponent.vue';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -26,7 +29,6 @@ import BlogsComponent from './components/BlogsComponent.vue';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.use(axios)
 Vue.use(VueSwal)
 Vue.use(VueEditor)
 
@@ -39,6 +41,8 @@ var app = new Vue({
         PagesformComponent,
         FilesComponent,
         BlogsComponent,
+        BlogsformComponent,
+        NavigationComponent
     }
 });
 

@@ -19,7 +19,7 @@
                                 <td>
                                     #{{blog.id}}
                                 </td>
-                                <td><a :href="('./blogs/edit/'+blog.id)">{{blog.title}}</a></td>
+                                <td><a :href="('./blog/edit/'+blog.id)">{{blog.b_title}}</a></td>
                                 <td>{{blog.slug}}</td>
                                 <td>
                                     <span class="label" :class="{'label-success' : blog.status == '1', 'label-danger' : blog.status == '0'}">
@@ -34,7 +34,7 @@
                                 <td>{{blog.created_at}}</td>
                                 <td>
                                     <div class="pull-right">
-                                        <a :href="('./blogs/edit/'+blog.id)" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                        <a :href="('./blog/edit/'+blog.id)" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                         <button class="btn btn-danger" @click="openModalDelete(blog.id)"><i class="fa fa-trash-o"></i></button>
                                     </div>
                                 </td>
@@ -53,14 +53,14 @@
                 </div>
             </div>
             <div class="box-footer clearfix">
-                <a :href="('./blogs/new')" class="btn btn-sm btn-success btn-flat pull-right">Create New</a>
+                <a :href="('./blog/new')" class="btn btn-sm btn-success btn-flat pull-right">Create New</a>
             </div>
         </div>
         <!-- modal remove Blog -->
         <modal v-if="showModalRemove" :removeid="removeId">
             <h3 slot="header">Delete blog</h3>
             <div slot="body" class="text-center">
-                <h3>Do you really want to delete this blog?</h3>
+                <h3>Do you really want to delete this blog post?</h3>
             </div>
             <div slot="footer">
                 <div class="clearfix"></div>
@@ -75,6 +75,7 @@
 </template>
 
 <script>
+    import axios from 'axios';
     import modal from './ModalComponent.vue';
 
     export default {
@@ -98,7 +99,21 @@
                 .then( data => {
                     this.blogs = data;
                 });
-            }
+            },
+            openModalDelete(id){
+                // hide remove modal
+                this.showModalRemove = true;
+                this.removeId = id;
+            },
+            removeBlog(){
+                axios.post('/api/blogs/delete',{data: this.removeId})
+                .then( response => {
+                    // success alert
+                    swal('Success!','Blog post Deleted','success');
+                    this.fetchBlogs();
+                    this.showModalRemove = false;
+                })
+            },
         }
     }
 </script>

@@ -11,19 +11,19 @@
             </div>
             <div class="box-body">
                 <div class="form-group">
-                    <label for="block_title">Block Title*</label>
+                    <label for="block_title">Title*</label>
                     <input type="text" id="block_title" name="block_title" class="form-control" v-model="item.b_title">
                 </div>
                 <div class="form-group">
-                    <label for="block_summary">Block Summary</label>
+                    <label for="block_summary">Summary</label>
                     <vueEditor id="block_summary" name="block_summary" v-model="item.b_summary"></vueEditor>
                 </div>
                 <div class="form-group">
-                    <label for="block_description">Block Description</label>
+                    <label for="block_description">Description</label>
                     <vueEditor id="block_description" name="block_description" v-model="item.b_description"></vueEditor>
                 </div>
                 <div class="form-group">
-                    <label>Block Image</label>
+                    <label>Image</label>
                     <p class="help-block">Choose wich image you want to display into this block</p>
                     <br>
                     <div v-if="item.b_image" class="block-image">

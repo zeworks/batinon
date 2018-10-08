@@ -75,6 +75,7 @@
 </template>
 
 <script>
+    import axios from 'axios';
     import modal from './ModalComponent.vue';
 
     export default {

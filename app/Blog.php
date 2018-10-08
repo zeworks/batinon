@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     protected $fillable = [
-        'title','slug','status','summary','description','image'
+        'b_title','slug','status','b_summary','b_description','b_image','image'
     ];  
 }

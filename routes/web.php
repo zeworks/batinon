@@ -29,6 +29,12 @@ Route::group(['middleware' => ['auth']], function() {
 
         // BLOG
         Route::get('/blog','Admin\BlogController@index');
+        Route::get('/blog/new','Admin\BlogController@new')->name('blog_new');
+        Route::get('/blog/edit/{id}','Admin\BlogController@edit')->name('blog_edit');
+        Route::post('/blog/edit/{id}','Admin\BlogController@editBlog');
+
+        // NAVIGATION
+        Route::get('/navigation','Admin\NavigationController@index');
 
     
     });

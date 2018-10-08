@@ -31,3 +31,7 @@ Route::post('files/delete','Api\FilesController@delete');
 
 //blogs
 Route::get('blogs','Api\BlogController@index');
+Route::post('blogs/add','Api\BlogController@add');
+Route::get('blogs/edit/{id}','Api\BlogController@get');
+Route::post('blogs/edit/{id}','Api\BlogController@editBlog');
+Route::post('blogs/delete','Api\BlogController@delete');

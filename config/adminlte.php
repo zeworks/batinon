@@ -136,10 +136,10 @@ return [
             'url'         => 'admin/files',
             'icon'        => 'file',
         ],
-        'COSTUMIZE',
+        'PREFERENCES',
         [
-            'text' => 'Menu',
-            'url'  => 'admin/menu',
+            'text' => 'Navigation',
+            'url'  => 'admin/navigation',
             'icon' => 'gear'
         ],
         'ACCOUNT',
