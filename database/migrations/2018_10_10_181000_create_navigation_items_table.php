@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNavigationsTable extends Migration
+class CreateNavigationItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateNavigationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('navigations', function (Blueprint $table) {
+        Schema::create('navigation_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title',500);
+            $table->integer('parent_id')->default(0);
+            $table->string('name',500);
+            $table->string('url',500);
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateNavigationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('navigations');
+        Schema::dropIfExists('navigation_items');
     }
 }

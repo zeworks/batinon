@@ -51375,7 +51375,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51388,6 +51388,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue__);
 //
 //
 //
@@ -51441,12 +51443,81 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        modal: __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue___default.a
+    },
     data: function data() {
-        return {};
+        return {
+            showModal: false,
+            navigation: {
+                title: ''
+            },
+            navigationItem: {
+                name: '',
+                url: ''
+            }
+        };
+    },
+    created: function created() {
+        this.fetchNavigation();
+    },
+
+    methods: {
+        openModal: function openModal() {
+            this.showModal = true;
+        },
+        fetchNavigation: function fetchNavigation() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/navigation').then(function (response) {
+                return response.data;
+            }).then(function (data) {
+                _this.navigation = data.navigations;
+                _this.navigationItem = data.navigationItems;
+            });
+        },
+        saveData: function saveData() {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/navigation/add', {
+                title: this.navigation.title,
+                name: this.navigationItem.name,
+                url: this.navigationItem.url
+            }).then(function (response) {
+                if (response.data.success) {
+                    // success
+                    if (response.data.returnId) {
+                        swal('Sucesso!', 'Page saved', 'success');
+                        _this2.showModal = false;
+                        _this2.fetchNavigation();
+                    }
+                } else swal('Erro!', 'Page not saved', 'error');
+            }).catch(function (error) {
+                swal('Erro!', 'Please fill all the required fields.', 'error');
+            });
+        }
     }
 });
 
@@ -51458,32 +51529,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
+  return _c(
+    "div",
+    [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-6 col-md-offset-1 col-md-3" }, [
-          _c("h1", [_vm._v("Navigation")]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n                Menus, or link lists, help your customers navigate around your online store.\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n                You can also create nested menus to display drop-down menus, and group products or pages together.\n            "
-            )
-          ])
-        ]),
+        _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "col-sm-6 col-md-offset-1 col-md-6" }, [
           _c("br"),
@@ -51493,40 +51543,245 @@ var staticRenderFns = [
           _c("div", { staticClass: "box box-default" }, [
             _c("div", { staticClass: "box-body" }, [
               _c("table", { staticClass: "table no-margin" }, [
-                _c("thead", [
-                  _c("tr", [
-                    _c("th", [_vm._v("Title")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Menu Items")]),
-                    _vm._v(" "),
-                    _c("th")
-                  ])
-                ]),
+                _vm._m(1),
                 _vm._v(" "),
-                _c("tbody", [
-                  _c("tr", [
-                    _c("td", [_vm._v("Menu")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("okokok")]),
-                    _vm._v(" "),
-                    _c("td")
-                  ])
-                ])
+                _c(
+                  "tbody",
+                  _vm._l(_vm.navigation, function(nav, index) {
+                    return _c("tr", { key: index }, [
+                      _c("td", [_vm._v(_vm._s(nav.title))]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        _vm._l(_vm.navigationItem, function(navItem, index) {
+                          return _c("div", { key: index }, [
+                            _vm._v(_vm._s(navItem.name))
+                          ])
+                        })
+                      ),
+                      _vm._v(" "),
+                      _c("td")
+                    ])
+                  })
+                )
               ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "box-footer" }, [
               _c(
-                "a",
+                "button",
                 {
-                  staticClass: "btn btn-md btn-success pull-right",
-                  attrs: { href: "" }
+                  staticClass: "btn btn-primary pull-right",
+                  on: { click: _vm.openModal }
                 },
-                [_vm._v("Add New")]
+                [_vm._v("Add new")]
               )
             ])
           ])
         ])
+      ]),
+      _vm._v(" "),
+      _vm.showModal
+        ? _c("modal", [
+            _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
+              _vm._v("Add new navigation")
+            ]),
+            _vm._v(" "),
+            _c("div", { attrs: { slot: "body" }, slot: "body" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.saveData($event)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "menu_title" } }, [
+                      _vm._v("Title*")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.navigation.title,
+                          expression: "navigation.title"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        required: "",
+                        type: "text",
+                        id: "menu_title",
+                        placeholder: "ex: menu, footer menu, etc.",
+                        name: "menu_title"
+                      },
+                      domProps: { value: _vm.navigation.title },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.navigation, "title", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("h3", [_vm._v("Menu item")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "menu_name" } }, [
+                      _vm._v("Name*")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.navigationItem.name,
+                          expression: "navigationItem.name"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        required: "",
+                        type: "text",
+                        id: "menu_name",
+                        name: "menu_name",
+                        placeholder: "ex: About, etc."
+                      },
+                      domProps: { value: _vm.navigationItem.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.navigationItem,
+                            "name",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "menu_link" } }, [
+                      _vm._v("Link*")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.navigationItem.url,
+                          expression: "navigationItem.url"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        required: "",
+                        type: "text",
+                        id: "menu_link",
+                        name: "menu_link",
+                        placeholder: "ex: /about-us"
+                      },
+                      domProps: { value: _vm.navigationItem.url },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.navigationItem,
+                            "url",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "help-block" }, [
+                      _vm._v("You can copy the slug from the page detail")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "pull-right" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Save")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-default",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.showModal = false
+                          }
+                        }
+                      },
+                      [_vm._v("Cancel")]
+                    )
+                  ])
+                ]
+              )
+            ])
+          ])
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-6 col-md-offset-1 col-md-3" }, [
+      _c("h1", [_vm._v("Navigation")]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "\n                Menus, or link lists, help your customers navigate around your online store.\n            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "\n                You can also create nested menus to display drop-down menus, and group products or pages together.\n            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Title")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Menu Items")]),
+        _vm._v(" "),
+        _c("th")
       ])
     ])
   }

@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Navigation extends Model
+class NavigationItem extends Model
 {
-    //
     protected $fillable = [
-        'title'
+        'name','url','parent_id'
     ];
 }

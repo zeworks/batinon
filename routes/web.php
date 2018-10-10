@@ -35,8 +35,6 @@ Route::group(['middleware' => ['auth']], function() {
 
         // NAVIGATION
         Route::get('/navigation','Admin\NavigationController@index');
-
-    
     });
 });
 

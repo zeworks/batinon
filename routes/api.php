@@ -35,3 +35,7 @@ Route::post('blogs/add','Api\BlogController@add');
 Route::get('blogs/edit/{id}','Api\BlogController@get');
 Route::post('blogs/edit/{id}','Api\BlogController@editBlog');
 Route::post('blogs/delete','Api\BlogController@delete');
+
+//navigation
+Route::get('navigation','Api\NavigationController@index');
+Route::post('navigation/add','Api\NavigationController@add');
