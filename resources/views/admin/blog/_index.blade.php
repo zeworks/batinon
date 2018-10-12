@@ -1,4 +1,4 @@
-@extends('adminlte::page') @section('content_header')
+@extends('layouts.app') @section('content_header')
 <h1>Blog</h1>
 @stop @section('content')
 <blogs-component></blogs-component>

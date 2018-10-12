@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="row">
-            <div class="col-sm-3">
+        <b-row>
+            <b-col sm="3" offset="1">
                 <div class="info-box">
                     <span class="info-box-icon bg-red"><i class="ion ion-ios-people-outline"></i></span>
                     <div class="info-box-content">
@@ -10,8 +10,8 @@
                     </div>
                     <!-- /.info-box-content -->
                 </div>
-            </div>
-        </div>
+            </b-col>
+        </b-row>
     </div>
 </template>
 

@@ -1,4 +1,4 @@
-@extends('adminlte::page') 
+@extends('layouts.app') 
 @section('content_header')
     <h1>Edit Blog Post #{{$id}}</h1>
 @stop 

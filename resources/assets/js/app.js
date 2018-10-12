@@ -4,8 +4,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap';
+
 import Vue from 'vue';
+// bootstrap 4
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 import VueSwal from 'vue-swal';
 import VueEditor from 'vue2-editor';
 // home dashboard
@@ -31,6 +36,7 @@ import NavigationComponent from './components/NavigationComponent.vue';
 
 Vue.use(VueSwal)
 Vue.use(VueEditor)
+Vue.use(BootstrapVue);
 
 
 var app = new Vue({

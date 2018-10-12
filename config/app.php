@@ -108,6 +108,48 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    'menu_home' => [
+        'text' => 'Dashboard',
+        'url'  => 'admin/home',
+        'icon' => 'dashboard',
+    ],
+    
+    'menu_pages' => [
+        'text' => 'Pages',
+        'url'  => 'admin/pages',
+        'icon' => 'desktop',
+    ],
+        // [
+        //     'text' => 'Dashboard',
+        //     'url'  => 'admin/home',
+        //     'icon' => 'dashboard'
+        // ],
+        // [
+        //     'text'        => 'Pages',
+        //     'url'         => 'admin/pages',
+        //     'icon'        => 'desktop',
+        // ],
+        // [
+        //     'text'        => 'Blog',
+        //     'url'         => 'admin/blog',
+        //     'icon'        => 'commenting-o',
+        // ],
+        // [
+        //     'text'        => 'Files',
+        //     'url'         => 'admin/files',
+        //     'icon'        => 'file',
+        // ],
+        // [
+        //     'text' => 'Navigation',
+        //     'url'  => 'admin/navigation',
+        //     'icon' => 'gear'
+        // ],
+        // [
+        //     'text' => 'Profile',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'user',
+        // ],
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

@@ -13,7 +13,7 @@
 
 Auth::routes();
 
-// back
+// back end
 Route::group(['middleware' => ['auth']], function() {
     Route::prefix('admin')->group(function(){
         Route::get('/home', 'Admin\HomeController@index');

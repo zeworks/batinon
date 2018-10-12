@@ -1,4 +1,4 @@
-@extends('adminlte::page') @section('content_header')
+@extends('layouts.app') @section('content_header')
 <h1>New Blog Post</h1>
 @stop @section('content')
 @include('admin.blog._form')
