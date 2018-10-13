@@ -108,17 +108,8 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-    'menu_home' => [
-        'text' => 'Dashboard',
-        'url'  => 'admin/home',
-        'icon' => 'dashboard',
-    ],
     
-    'menu_pages' => [
-        'text' => 'Pages',
-        'url'  => 'admin/pages',
-        'icon' => 'desktop',
-    ],
+    
         // [
         //     'text' => 'Dashboard',
         //     'url'  => 'admin/home',

@@ -38,13 +38,6 @@
         </form>
         @endauth
         <main>
-            @foreach(config("app.menu_home") as $home)
-                {{ $home }}
-            @endforeach
-            @foreach(config("app.menu_pages") as $pages)
-                {{ $pages }}
-            @endforeach
-
             @yield('content')
         </main>
     </div>
