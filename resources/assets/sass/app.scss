@@ -1,14 +1,35 @@
+/* Bootstrap */
+@import '~bootstrap/scss/bootstrap';
+/* Bootstrap end */
 
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
-// Variables
+/* Variables */
 @import 'variables';
+/* Variables end */
 
-// Bootstrap
-// @import '~bootstrap/scss/bootstrap';
+/* Utilities */
+@import 'utilities';
+/* Utilities end */
 
-.navbar-laravel {
-  background-color: $blue;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+/* Mixins */
+@import 'mixins';
+/* Mixins end */
+
+body {
+    background-color: $bodyColor;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+
+    @include media(md) {
+        font-family: $font;
+        font-size: $fontSizeDefault;
+        line-height: $lineHeightDefault;
+    }
+
+    &.in-modal{
+      overflow: hidden;
+    }
+
+    &.body-loaded{
+      opacity: 1;
+    }
 }

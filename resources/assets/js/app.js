@@ -8,7 +8,6 @@
 import Vue from 'vue';
 // bootstrap 4
 import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import VueSwal from 'vue-swal';

@@ -74,7 +74,7 @@
             <div slot="body" class="clearfix">
                 <div v-for="(file,index) in files" :key="index">
                     <div class="col-sm-4">
-                        <img class="img-responsive" :src="origin+image_path+file.name" :alt="file.name">
+                        <img class="u-img-responsive" :src="origin+image_path+file.name" :alt="file.name">
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@
         <!-- modal preview image -->
         <modal v-if="showModalPreview">
             <div slot="body">
-                <img :src="imageToPreview" class="preview-image img-responsive">
+                <img :src="imageToPreview" class="preview-image u-img-responsive">
             </div>
             <div slot="footer">
                 <button @click="showModalPreview = false" class="btn btn-default">Close</button>

@@ -8,7 +8,7 @@
         </div>
         <div class="box-body">
             <div v-if="item.image">
-                <img :src="item.image" alt class="img-responsive">
+                <img :src="item.image" alt class="u-img-responsive">
             </div>
             <br>
             <div>
@@ -21,7 +21,7 @@
             <div slot="body" class="clearfix">
                 <div v-for="(image,index) in images" :key="index" class="modal-image clearfix">
                     <button @click="chooseImage(origin+image_path+image.name)" type="button" class="btn btn--choose">
-                        <img class="img-responsive" :src="origin+image_path+image.name" :alt="image.name">
+                        <img class="u-img-responsive" :src="origin+image_path+image.name" :alt="image.name">
                     </button>
                     <button type="button" @click="removeImage(image.id)" class="btn btn-danger btn--remove">&times;</button>
                 </div>

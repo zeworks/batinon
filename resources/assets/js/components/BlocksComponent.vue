@@ -27,7 +27,7 @@
                     <p class="help-block">Choose wich image you want to display into this block</p>
                     <br>
                     <div v-if="item.b_image" class="block-image">
-                        <img :src="item.b_image" alt class="img-responsive">
+                        <img :src="item.b_image" alt class="u-img-responsive">
                         <br>
                     </div>
                     <button type="button" class="btn btn-primary" @click="fetchBlockImages">Choose Image</button>
@@ -40,7 +40,7 @@
             <div slot="body" class="clearfix">
                 <div v-for="(image,index) in images" :key="index" class="modal-image clearfix">
                     <button @click="chooseImage(origin+image_path+image.name)" type="button" class="btn btn--choose">
-                        <img class="img-responsive" :src="origin+image_path+image.name" :alt="image.name">
+                        <img class="u-img-responsive" :src="origin+image_path+image.name" :alt="image.name">
                     </button>
                     <button type="button" @click="removeBlockImage(image.id)" class="btn btn-danger btn--remove">&times;</button>
                 </div>
