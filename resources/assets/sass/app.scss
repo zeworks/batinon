@@ -6,30 +6,34 @@
 @import 'variables';
 /* Variables end */
 
-/* Utilities */
-@import 'utilities';
-/* Utilities end */
-
 /* Mixins */
 @import 'mixins';
 /* Mixins end */
 
+/* Utilities */
+@import 'utilities';
+/* Utilities end */
+
+/* Components */
+@import 'components';
+/* Components end */
+
 body {
-    background-color: $bodyColor;
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
+  background-color: $bodyColor;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
 
-    @include media(md) {
-        font-family: $font;
-        font-size: $fontSizeDefault;
-        line-height: $lineHeightDefault;
-    }
+  @include media(md) {
+      font-family: $font;
+      font-size: $fontSizeDefault;
+      line-height: $lineHeightDefault;
+  }
 
-    &.in-modal{
-      overflow: hidden;
-    }
+  &.in-modal{
+    overflow: hidden;
+  }
 
-    &.body-loaded{
-      opacity: 1;
-    }
+  &.body-loaded{
+    opacity: 1;
+  }
 }

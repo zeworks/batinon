@@ -10479,6 +10479,10 @@ a.text-dark:focus {
 
 /* Variables end */
 
+/* Mixins */
+
+/* Mixins end */
+
 /* Utilities */
 
 .u-img-responsive {
@@ -10489,9 +10493,25 @@ a.text-dark:focus {
 
 /* Utilities end */
 
-/* Mixins */
+/* Components */
 
-/* Mixins end */
+.c-nav {
+  /* default styles */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #0c0c0c;
+}
+
+@media (min-width: 768px) {
+  .c-nav {
+    height: 100%;
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+/* Components end */
 
 body {
   background-color: #e2e2e2;

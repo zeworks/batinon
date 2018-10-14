@@ -12,6 +12,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import VueSwal from 'vue-swal';
 import VueEditor from 'vue2-editor';
+
+// nav component
+import NavComponent from './components/NavComponent.vue';
 // home dashboard
 import DashboardComponent from './components/DashboardComponent.vue';
 // pages
@@ -41,6 +44,7 @@ Vue.use(BootstrapVue);
 var app = new Vue({
     el: '#app',
     components: {
+        NavComponent,
         DashboardComponent,
         PagesComponent,
         PagesformComponent,
