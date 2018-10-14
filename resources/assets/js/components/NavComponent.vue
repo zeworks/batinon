@@ -1,31 +1,28 @@
 <template>
-    <div>
-        <nav class="c-nav">
-            <div class="c-nav__user">
-                <img :src="userImage" alt="user image">
-                <span class="c-nav__user-name">
-                    {{ username }}
-                </span>
-            </div>
-        </nav>
-    </div>
+    <nav class="c-nav">
+        <div class="c-nav__user">
+            <img :src="userImage" alt="user image">
+            <span class="c-nav__user-name">
+                {{ username }}
+            </span>
+        </div>
+    </nav>
 </template>
 
 <script>
     export default {
         props: ['username'],
-        data(){
-            return{
-                userImage : '/user.png',
+        data() {
+            return {
+                userImage: '/user.png',
             }
         },
-        created(){
-        }
+        created() {}
     }
 </script>
 
 <style scoped>
-    img{
+    img {
         max-width: 50px;
     }
 </style>

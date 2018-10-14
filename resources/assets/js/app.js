@@ -15,6 +15,8 @@ import VueEditor from 'vue2-editor';
 
 // nav component
 import NavComponent from './components/NavComponent.vue';
+// header component
+import HeaderComponent from './components/HeaderComponent.vue';
 // home dashboard
 import DashboardComponent from './components/DashboardComponent.vue';
 // pages
@@ -45,6 +47,7 @@ var app = new Vue({
     el: '#app',
     components: {
         NavComponent,
+        HeaderComponent,
         DashboardComponent,
         PagesComponent,
         PagesformComponent,

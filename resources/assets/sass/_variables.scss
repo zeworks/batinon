@@ -4,12 +4,14 @@ $fontSizeDefault: 15px;
 $lineHeightDefault: 1.4;
 
 // Colors
-$white-light : #e2e2e2;
-$dark        : #0c0c0c;
+$white       : #fff;
+$white-light : #f2f2f2;
+$dark        : #000;
+$dark-light  : #232323;
 
 // Body
 $bodyColor: $white-light;
 
 // NAV
-$navColor: $dark;
+$navColor: $white;
 $navMaxWidth: 250px;
