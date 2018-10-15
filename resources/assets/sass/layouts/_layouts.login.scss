@@ -1,0 +1,42 @@
+.login_page {
+    background-color: $white;
+}
+
+.login{
+
+    &-image {
+        position: relative;
+
+        @include media(xs){
+            display: none;
+        }
+        @include media(sm){
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 50%;
+        }
+        @include media(md) {
+            width: calc(100% - 41.66666667%);
+        }
+    }
+
+    &-form{
+        margin-top: 200px;
+
+        @include media(xs){
+            margin-top: 30px;
+        }
+    }
+
+    &-logo{
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        z-index: 1;
+    }
+}

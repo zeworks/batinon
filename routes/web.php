@@ -38,8 +38,6 @@ Route::group(['middleware' => ['auth']], function() {
     });
 });
 
-
-
 // front get
 Route::get('/', 'Front\HomeController@index');
 

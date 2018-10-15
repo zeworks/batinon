@@ -18,6 +18,10 @@
 @import 'components';
 /* Components end */
 
+/* layouts */
+@import 'layouts/layouts.login';
+/* layouts end */
+
 body {
   background-color: $bodyColor;
   opacity: 0;
@@ -38,6 +42,6 @@ body {
   }
 }
 
-main{
+nav + main{
   padding-left: $navMaxWidth;
 }

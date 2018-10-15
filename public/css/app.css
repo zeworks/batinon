@@ -10528,6 +10528,60 @@ a.text-dark:focus {
 
 /* Components end */
 
+/* layouts */
+
+.login_page {
+  background-color: #fff;
+}
+
+.login-image {
+  position: relative;
+}
+
+@media (max-width: 767px) {
+  .login-image {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .login-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .login-image {
+    width: calc(100% - 41.66666667%);
+  }
+}
+
+.login-form {
+  margin-top: 200px;
+}
+
+@media (max-width: 767px) {
+  .login-form {
+    margin-top: 30px;
+  }
+}
+
+.login-logo {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1;
+}
+
+/* layouts end */
+
 body {
   background-color: #f2f2f2;
   opacity: 0;
@@ -10551,7 +10605,7 @@ body.body-loaded {
   opacity: 1;
 }
 
-main {
+nav + main {
   padding-left: 250px;
 }
 

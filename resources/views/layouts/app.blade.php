@@ -15,9 +15,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 
-<body>
+<body class="@yield('body_class')">
     <div id="app">
     @auth
         <header-component logout="{{ route('logout') }}"></header-component>
@@ -27,9 +28,13 @@
             @yield('content')
         </main>
     </div>
+
+    
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/batinon.js') }}" defer></script>
+
+    @yield('script')
 </body>
 
 </html>
