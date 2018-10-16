@@ -10526,6 +10526,23 @@ a.text-dark:focus {
   background-color: #fff;
 }
 
+/* TABS COMPONENT */
+
+.c-tab {
+  position: relative;
+  border: 1px solid #999;
+}
+
+.c-tab__item {
+  padding: 10px 20px;
+  background-color: #e3e3e3;
+  display: inline-block;
+  max-width: 150px;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 /* Components end */
 
 /* layouts */
@@ -10591,7 +10608,7 @@ body {
 
 @media (min-width: 992px) {
   body {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 15px;
     line-height: 1.4;
   }

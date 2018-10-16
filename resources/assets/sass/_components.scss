@@ -1,5 +1,5 @@
 /* NAV COMPONENT */
-.c-nav{
+.c-nav {
     $class: 'c-nav';
 
     /* default styles */
@@ -8,7 +8,7 @@
     left: 0;
     background-color: $navColor;
 
-    @include media(sm){
+    @include media(sm) {
         height: 100%;
         width: 100%;
         max-width: $navMaxWidth;
@@ -16,8 +16,8 @@
 }
 
 /* HEADER COMPONENT */
-.c-header{
-    $class : 'c-header';
+.c-header {
+    $class: 'c-header';
 
     /* default styles */
     position: fixed;
@@ -27,4 +27,22 @@
     height: 50px;
     z-index: 1;
     background-color: $navColor;
+}
+
+/* TABS COMPONENT */
+.c-tab {
+    $class : 'c-tab';
+
+    position: relative;
+    border: 1px solid #999;
+
+    &__item{
+        padding: 10px 20px;
+        background-color: #e3e3e3;
+        display: inline-block;
+        max-width: 150px;
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
+    }
 }

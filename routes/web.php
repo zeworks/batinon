@@ -16,6 +16,12 @@ Auth::routes();
 // back end
 Route::group(['middleware' => ['auth']], function() {
     Route::prefix('admin')->group(function(){
+        // STYLEGUIDE
+        Route::get('/styleguide', function(){
+            return view('admin.styleguide._index');
+        });
+
+        // HOME
         Route::get('/home', 'Admin\HomeController@index');
     
         // PAGES
