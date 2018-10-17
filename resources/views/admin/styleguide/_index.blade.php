@@ -13,7 +13,8 @@
 
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,200i,300,300i,400,400i,500,600,700,800,900" qrel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,300i,400,400i,500,600,700,800,900" rel="stylesheet">
 
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
@@ -36,7 +37,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <h1><i class="far fa-file-alt"></i> <strong>Batinon Styleguide</strong></h1>
+                    <h1><i class="far fa-file-alt u-icon-before"></i>Batinon Styleguide</h1>
                 </div>
                 <div class="col-sm-6">
                     <div class="float-right">
@@ -45,8 +46,9 @@
                 </div>
             </div>
             <hr>
-            <div class="c-tab">
-                <div class="c-tab__item">Heading</div>
+            <div class="c-tab clearfix">
+                <button type="button" class="c-btn c-tab__item">Heading</button>
+                <button type="button" class="c-btn c-tab__item">Grid System</button>
                 <div class="c-tab__content">
 
                 </div>

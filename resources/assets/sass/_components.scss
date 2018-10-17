@@ -34,15 +34,29 @@
     $class : 'c-tab';
 
     position: relative;
-    border: 1px solid #999;
 
     &__item{
         padding: 10px 20px;
         background-color: #e3e3e3;
-        display: inline-block;
         max-width: 150px;
         width: 100%;
         text-align: center;
-        text-transform: uppercase;
+        border-top-left-radius: 9px;
+        border-top-right-radius: 9px;
+        float: left;
+        font-size: 15px;
+    }
+}
+
+.c-btn{
+    border: 1px solid #cac9c9;
+    &:hover{
+        cursor: pointer;
+        border-color: #333;
+    }
+
+    &:focus{
+        outline: none;
+        border-color: #333;
     }
 }

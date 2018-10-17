@@ -10491,6 +10491,14 @@ a.text-dark:focus {
   height: auto;
 }
 
+.u-icon-before {
+  margin: 0 10px 0 0;
+}
+
+.u-icon-after {
+  margin: 0 0 0 10px;
+}
+
 /* Utilities end */
 
 /* Components */
@@ -10530,20 +10538,51 @@ a.text-dark:focus {
 
 .c-tab {
   position: relative;
-  border: 1px solid #999;
 }
 
 .c-tab__item {
   padding: 10px 20px;
   background-color: #e3e3e3;
-  display: inline-block;
   max-width: 150px;
   width: 100%;
   text-align: center;
-  text-transform: uppercase;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  float: left;
+  font-size: 15px;
+}
+
+.c-btn {
+  border: 1px solid #cac9c9;
+}
+
+.c-btn:hover {
+  cursor: pointer;
+  border-color: #333;
+}
+
+.c-btn:focus {
+  outline: none;
+  border-color: #333;
 }
 
 /* Components end */
+
+/* Fonts */
+
+h1,
+.h1 {
+  font-size: 35px;
+  font-weight: 700;
+  font-family: "Raleway", sans-serif;
+}
+
+strong,
+.strong {
+  font-weight: 700;
+}
+
+/* Fonts end */
 
 /* layouts */
 
@@ -10604,11 +10643,11 @@ body {
   opacity: 0;
   -webkit-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
+  font-family: "Raleway", sans-serif;
 }
 
 @media (min-width: 992px) {
   body {
-    font-family: "Raleway", sans-serif;
     font-size: 15px;
     line-height: 1.4;
   }
