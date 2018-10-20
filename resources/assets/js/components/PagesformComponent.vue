@@ -35,6 +35,7 @@
 </template>
 
 <script>
+    import axios from 'axios';
     import blocksComponent from './BlocksComponent.vue';
     import submitComponent from './SubmitComponent.vue';
     import statusComponent from './StatusComponent.vue';

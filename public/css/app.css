@@ -10581,7 +10581,11 @@ a.text-dark:focus {
   color: #304ffe;
 }
 
-.c-nav__link-icon {
+.c-nav__link:hover .c-nav__icon {
+  color: #304ffe;
+}
+
+.c-nav__icon {
   color: #616161;
 }
 

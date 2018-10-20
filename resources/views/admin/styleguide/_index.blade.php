@@ -30,7 +30,7 @@
         <nav class="c-nav">
             <ul class="u-margin-0 u-padding-0 u-unlist">
                 <li class="c-nav__item">
-                    <a href="#" class="c-nav__link" data-target="1"><i class="fas fa-heading c-nav__link-icon u-icon-before"></i>Heading</a>
+                    <a href="#" class="c-nav__link" data-target="1"><i class="fas fa-heading c-nav__icon u-icon-before"></i>Heading</a>
                 </li>
             </ul>
         </nav>        

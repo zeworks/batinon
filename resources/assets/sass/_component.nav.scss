@@ -18,12 +18,16 @@
 
         &:hover {
             text-decoration: none;
-            background-color: rgba($color: #304ffe, $alpha: .3);
-            color: #304ffe;
-        }
+            background-color: rgba($color: $primary, $alpha: .3);
+            color: $primary;
 
-        &-icon{
-            color: $grey;
+            .#{$class}__icon {
+                color: $primary;
+            }
         }
+    }
+
+    &__icon {
+        color: $grey;
     }
 }
