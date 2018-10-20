@@ -1,0 +1,29 @@
+/* NAV COMPONENT */
+.c-nav {
+    $class: 'c-nav';
+
+    &__item {
+        background-color: $navItemColor;
+        padding: 5px;
+    }
+
+    &__link {
+        color: $navLinkTextColor;
+        font-size: $navLinkFontSize;
+        font-weight: 600;
+        display: block;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+
+        &:hover {
+            text-decoration: none;
+            background-color: rgba($color: #304ffe, $alpha: .3);
+            color: #304ffe;
+        }
+
+        &-icon{
+            color: $grey;
+        }
+    }
+}

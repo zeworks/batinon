@@ -7,12 +7,25 @@ $lineHeightDefault: 1.4;
 // Colors
 $white       : #fff;
 $white-light : #f2f2f2;
-$dark        : #000;
+$dark        : #181818;
 $dark-light  : #232323;
+$blue-grey   : #37474f;
+
+$primary     : #304ffe;
+$grey        : #616161;
 
 // Body
 $bodyColor: $white-light;
 
+// ASIDE
+$asideMaxWidth: 300px;
+$asideColor: $white;
+
 // NAV
 $navColor: $white;
-$navMaxWidth: 250px;
+// _ITEM
+$navItemColor: $white;
+// _LINK
+$navLinkTextColor: $dark;
+$navLinkFontSize: 15px;
+$navLinkColorHover: #3700B3;

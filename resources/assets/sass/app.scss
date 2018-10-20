@@ -16,6 +16,8 @@
 
 /* Components */
 @import 'components';
+@import 'component.nav';
+@import 'component.button';
 /* Components end */
 
 /* Fonts */
@@ -27,25 +29,43 @@
 /* layouts end */
 
 body {
-  background-color: $bodyColor;
-  opacity: 0;
-  transition: opacity 0.3s ease-out;
-  font-family: $font;
+    background-color: $bodyColor;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    font-family: $font;
 
-  @include media(md) {
-      font-size: $fontSizeDefault;
-      line-height: $lineHeightDefault;
-  }
+    @include media(md) {
+        font-size: $fontSizeDefault;
+        line-height: $lineHeightDefault;
+    }
 
-  &.in-modal{
-    overflow: hidden;
-  }
+    &.in-modal {
+        overflow: hidden;
+    }
 
-  &.body-loaded{
-    opacity: 1;
-  }
+    &.body-loaded {
+        opacity: 1;
+    }
 }
 
-nav + main{
-  padding-left: $navMaxWidth;
+aside {
+    width: $asideMaxWidth;
+    background-color: $asideColor;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+aside+main {
+    padding-left: $asideMaxWidth;
+}
+
+[data-scope] {
+    display: none;
+}
+
+.is-active {
+    display: block;
 }

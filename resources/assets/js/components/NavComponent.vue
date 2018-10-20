@@ -1,12 +1,14 @@
 <template>
-    <nav class="c-nav">
-        <div class="c-nav__user">
-            <img :src="userImage" alt="user image">
-            <span class="c-nav__user-name">
-                {{ username }}
-            </span>
-        </div>
-    </nav>
+    <aside>
+        <nav class="c-nav">
+            <div class="c-nav__user">
+                <img :src="userImage" alt="user image">
+                <span class="c-nav__user-name">
+                    {{ username }}
+                </span>
+            </div>
+        </nav>
+    </aside>
 </template>
 
 <script>

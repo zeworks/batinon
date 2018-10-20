@@ -22,16 +22,19 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <style>
-        .grid .col {
-            border: 1px solid #333;
-            padding: 50px;
-        }
-    </style>
 </head>
 
 <body>
+    <aside>
+
+        <nav class="c-nav">
+            <ul class="u-margin-0 u-padding-0 u-unlist">
+                <li class="c-nav__item">
+                    <a href="#" class="c-nav__link" data-target="1"><i class="fas fa-heading c-nav__link-icon u-icon-before"></i>Heading</a>
+                </li>
+            </ul>
+        </nav>        
+    </aside>
     <main>
         <br>
         <div class="container-fluid">
@@ -46,15 +49,15 @@
                 </div>
             </div>
             <hr>
-            <div class="c-tab clearfix">
-                <button type="button" class="c-btn c-tab__item">Heading</button>
-                <button type="button" class="c-btn c-tab__item">Grid System</button>
-                <div class="c-tab__content">
-
-                </div>
+            <div data-scope="1" class="is-active">
+                teste
             </div>
-            <div class="row">
-                <div class="col-sm-12">
+            <!-- <div class="c-tab clearfix">
+                <div class="c-tab__items">
+                    <button data-target="1" type="button" class="c-btn c-tab__button">Heading</button>
+                    <button data-target="2" type="button" class="c-btn c-tab__button">Tab 2</button>
+                </div>
+                <div class="c-tab__content" data-tab="1">
                     <h2>
                         Headings
                     </h2>
@@ -66,110 +69,8 @@
                     <h5>@Heading 5</h5>
                     <h6>@Heading 6</h6>
                 </div>
-            </div>
-            <br>
-            <div class="row grid">
-                <div class="col-sm-12">
-                    <h2>Grid System</h2>
-                    <div class="col"></div>
-                </div>
-            </div>
-            <br>
-            <div class="row grid">
-                <div class="col-sm-6">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="col"></div>
-                </div>
-            </div>
-            <br>
-            <div class="row grid">
-                <div class="col-sm-4">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="col"></div>
-                </div>
-            </div>
-            <br>
-            <div class="row grid">
-                <div class="col-sm-3">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="col"></div>
-                </div>
-            </div>
-            <br>
-            <div class="row grid">
-                <div class="col-sm-2">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="col"></div>
-                </div>
-            </div>
-            <br>
-            <div class="row grid">
-                <div class="col-sm-1">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-1">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-1">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-1">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-1">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-1">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-1">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-1">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-1">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-1">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-1">
-                    <div class="col"></div>
-                </div>
-                <div class="col-sm-1">
-                    <div class="col"></div>
-                </div>
-            </div>
+                <div class="c-tab__content" data-tab="2"></div>
+            </div> -->
             <br>
         </div>
     </main>

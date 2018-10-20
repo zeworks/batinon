@@ -1,0 +1,13 @@
+.c-btn{
+    border: 1px solid #cac9c9;
+
+    &:hover{
+        cursor: pointer;
+        border-color: #333;
+    }
+
+    &:focus{
+        outline: none;
+        border-color: #333;
+    }
+}
