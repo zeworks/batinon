@@ -10519,12 +10519,8 @@ a.text-dark:focus {
 
 .c-header {
   /* default styles */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  display: block;
   height: 50px;
-  z-index: 1;
   background-color: #fff;
 }
 
@@ -10561,13 +10557,22 @@ a.text-dark:focus {
 
 .c-nav__item {
   background-color: #fff;
-  padding: 5px;
+  padding: 0 5px;
+  margin: 5px 0;
+}
+
+.c-nav__item-active .c-nav__link {
+  text-decoration: none;
+  background-color: rgba(48, 79, 254, 0.3);
+  color: #304ffe;
+}
+
+.c-nav__item-active .c-nav__icon {
+  color: #304ffe;
 }
 
 .c-nav__link {
   color: #181818;
-  font-size: 15px;
-  font-weight: 600;
   display: block;
   padding: 10px 20px;
   -webkit-transition: all 0.3s ease;
@@ -10585,22 +10590,102 @@ a.text-dark:focus {
   color: #304ffe;
 }
 
+.c-nav__link.is-active {
+  text-decoration: none;
+  background-color: rgba(48, 79, 254, 0.3);
+  color: #304ffe;
+}
+
+.c-nav__link.is-active .c-nav__icon {
+  color: #304ffe;
+}
+
 .c-nav__icon {
   color: #616161;
 }
 
 .c-btn {
-  border: 1px solid #cac9c9;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 0 16px;
+  border-radius: 5px;
+  border: 0;
+  min-height: 36px;
+  line-height: 36px;
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.29);
+          box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.29);
+  display: inline-block;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
 }
 
 .c-btn:hover {
   cursor: pointer;
-  border-color: #333;
+  -webkit-box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.34);
+          box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.34);
 }
 
 .c-btn:focus {
   outline: none;
-  border-color: #333;
+}
+
+.c-btn--primary {
+  background-color: #304ffe;
+  color: #fff;
+}
+
+.c-btn--primary:hover {
+  background-color: rgba(48, 79, 254, 0.85);
+}
+
+.c-btn--default {
+  color: #181818;
+}
+
+.c-btn--default:hover {
+  color: rgba(24, 24, 24, 0.8);
+}
+
+.c-btn--outline {
+  background-color: transparent;
+  border: 1px solid #d9d9d9;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.c-btn--outline:hover {
+  color: #616161;
+}
+
+.c-btn--text {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #304ffe;
+}
+
+.c-btn--text:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: rgba(48, 79, 254, 0.6);
+}
+
+.c-profile {
+  position: relative;
+  padding: 5px;
+}
+
+.c-profile__name {
+  display: block;
+  font-weight: 600;
+  font-size: 17px;
+  margin: 20px 0 0;
+}
+
+.c-profile__email {
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Components end */
@@ -10609,9 +10694,49 @@ a.text-dark:focus {
 
 h1,
 .h1 {
-  font-size: 35px;
-  font-weight: 700;
-  font-family: "Raleway", sans-serif;
+  font-size: 96px;
+  font-weight: 300;
+}
+
+h2,
+.h2 {
+  font-size: 60px;
+  font-weight: 300;
+}
+
+h3,
+.h3 {
+  font-weight: 400;
+  font-size: 48px;
+}
+
+h4,
+.h4 {
+  font-weight: 400;
+  font-size: 34px;
+}
+
+h5,
+.h5 {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+h6,
+.h6 {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+button {
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
 }
 
 strong,
@@ -10680,7 +10805,7 @@ body {
   opacity: 0;
   -webkit-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
-  font-family: "Raleway", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 @media (min-width: 992px) {
@@ -10707,10 +10832,17 @@ aside {
   height: 100%;
   -webkit-box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  padding: 10px;
 }
 
+header,
 aside + main {
   padding-left: 300px;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 [data-scope] {

@@ -30,8 +30,8 @@
                 <div class="clearfix"></div>
                 <div class="pull-right">
                     <input type="file" @change="onImageChange" id="file_input" name="file_input" class="hidden">
-                    <button type="button" @click="fileClick" class="btn btn-primary">Or Send File...</button>
-                    <button type="button" @click="showModalFeatured = false" class="btn btn-default">Cancel</button>
+                    <button type="button" @click="fileClick" class="c-btn c-btn--primary">Or Send File...</button>
+                    <button type="button" @click="showModalFeatured = false" class="c-btn c-btn--default">Cancel</button>
                 </div>
             </div>
         </modal>

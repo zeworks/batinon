@@ -1,6 +1,6 @@
 // Typography
-$font: "Raleway", sans-serif;
-$font-variant: "Montserrat", sans-serif;
+$font: "Roboto", sans-serif;
+$font-variant: "Raleway", sans-serif;
 $fontSizeDefault: 15px;
 $lineHeightDefault: 1.4;
 
@@ -13,6 +13,7 @@ $blue-grey   : #37474f;
 
 $primary     : #304ffe;
 $grey        : #616161;
+$grey-light  : #d9d9d9;
 
 // Body
 $bodyColor: $white-light;
@@ -27,5 +28,4 @@ $navColor: $white;
 $navItemColor: $white;
 // _LINK
 $navLinkTextColor: $dark;
-$navLinkFontSize: 15px;
 $navLinkColorHover: #3700B3;

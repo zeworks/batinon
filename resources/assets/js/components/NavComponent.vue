@@ -1,12 +1,16 @@
 <template>
     <aside>
+        <div class="c-profile">
+            <img :src="userImage" alt="profile image">
+            <span class="c-profile__name">
+                {{ username }}
+            </span>
+            <span class="c-profile__email">
+                email@email.pt
+            </span>
+        </div>
+        <hr>
         <nav class="c-nav">
-            <div class="c-nav__user">
-                <img :src="userImage" alt="user image">
-                <span class="c-nav__user-name">
-                    {{ username }}
-                </span>
-            </div>
         </nav>
     </aside>
 </template>

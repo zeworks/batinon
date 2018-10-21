@@ -1,13 +1,60 @@
 .c-btn{
-    border: 1px solid #cac9c9;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 0 16px;
+    border-radius: 5px;
+    border: 0;
+    min-height: 36px;
+    line-height: 36px;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.29);
+    display: inline-block;
+    transition: all .3s ease;
 
     &:hover{
         cursor: pointer;
-        border-color: #333;
+        box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.34);
     }
 
     &:focus{
         outline: none;
-        border-color: #333;
+    }
+
+    &--primary{
+        background-color: $primary;
+        color: $white;
+
+        &:hover{
+            background-color: rgba($color: $primary, $alpha: 0.85);
+        }
+    }
+
+    &--default{
+        color: $dark;
+
+        &:hover{
+            color: rgba($color: $dark, $alpha: 0.8);
+        }
+    }
+
+    &--outline{
+        background-color: transparent;
+        border: 1px solid $grey-light;
+        box-shadow: none;
+
+        &:hover{
+            color: $grey;
+        }
+    }
+
+    &--text{
+        background-color: transparent;
+        box-shadow: none;
+        color: $primary;
+
+        &:hover{
+            box-shadow: none;
+            color: rgba($color: $primary, $alpha: 0.6);
+        }
     }
 }

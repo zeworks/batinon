@@ -3,12 +3,8 @@
     $class: 'c-header';
 
     /* default styles */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    display: block;
     height: 50px;
-    z-index: 1;
     background-color: $navColor;
 }
 
