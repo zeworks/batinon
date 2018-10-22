@@ -5,12 +5,12 @@
     &__name{
         display: block;
         font-weight: 600;
-        font-size: 17px;
+        @include font-size(17);
         margin: 20px 0 0;
     }
 
     &__email{
-        font-size: 14px;
+        @include font-size(14);
         font-family: 'Montserrat', sans-serif;
     }
 }

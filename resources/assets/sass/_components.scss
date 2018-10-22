@@ -30,7 +30,7 @@
         width: 100%;
         text-align: center;
         float: left;
-        font-size: 15px;
+        @include font-size(15);
     }
 
     &__content{

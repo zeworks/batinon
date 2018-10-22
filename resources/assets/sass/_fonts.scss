@@ -1,47 +1,47 @@
 h1,
 .h1 {
-    font-size: 96px;
+    @include font-size(96);
     font-weight: 300;
 }
 
 h2,
 .h2 {
-    font-size: 60px;
+    @include font-size(60);
     font-weight: 300;
 }
 
 h3,
 .h3 {
     font-weight: 400;
-    font-size: 48px;
+    @include font-size(48);
 }
 
 h4,
 .h4 {
     font-weight: 400;
-    font-size: 34px;
+    @include font-size(34);
 }
 
 h5,
 .h5 {
     font-weight: 400;
-    font-size: 24px;
+    @include font-size(24);
 }
 
 h6,
 .h6 {
     font-weight: 500;
-    font-size: 20px;
+    @include font-size(20);
 }
 
 button{
     font-weight: 500;
-    font-size: 14px;
+    @include font-size(14);
     text-transform: uppercase;
 }
 
 p{
-    font-size: 16px;
+    @include font-size(16);
     font-weight: 400;
 }
 

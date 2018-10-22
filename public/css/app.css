@@ -10492,11 +10492,11 @@ a.text-dark:focus {
 }
 
 .u-icon-before {
-  margin: 0 20px 0 0;
+  margin: 0 10px 0 0;
 }
 
 .u-icon-after {
-  margin: 0 0 0 20px;
+  margin: 0 0 0 10px;
 }
 
 .u-margin-0 {
@@ -10545,6 +10545,7 @@ a.text-dark:focus {
   text-align: center;
   float: left;
   font-size: 15px;
+  font-size: 0.9375rem;
 }
 
 .c-tab__content {
@@ -10607,6 +10608,7 @@ a.text-dark:focus {
 .c-btn {
   font-weight: 500;
   font-size: 14px;
+  font-size: 0.875rem;
   text-transform: uppercase;
   padding: 0 16px;
   border-radius: 5px;
@@ -10666,9 +10668,14 @@ a.text-dark:focus {
 }
 
 .c-btn--text:hover {
+  background-color: rgba(48, 79, 254, 0.1);
   -webkit-box-shadow: none;
           box-shadow: none;
-  color: rgba(48, 79, 254, 0.6);
+  color: rgba(48, 79, 254, 0.9);
+}
+
+.c-btn--icon * {
+  margin-right: 10px;
 }
 
 .c-profile {
@@ -10680,11 +10687,13 @@ a.text-dark:focus {
   display: block;
   font-weight: 600;
   font-size: 17px;
+  font-size: 1.0625rem;
   margin: 20px 0 0;
 }
 
 .c-profile__email {
   font-size: 14px;
+  font-size: 0.875rem;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -10695,12 +10704,14 @@ a.text-dark:focus {
 h1,
 .h1 {
   font-size: 96px;
+  font-size: 6rem;
   font-weight: 300;
 }
 
 h2,
 .h2 {
   font-size: 60px;
+  font-size: 3.75rem;
   font-weight: 300;
 }
 
@@ -10708,34 +10719,40 @@ h3,
 .h3 {
   font-weight: 400;
   font-size: 48px;
+  font-size: 3rem;
 }
 
 h4,
 .h4 {
   font-weight: 400;
   font-size: 34px;
+  font-size: 2.125rem;
 }
 
 h5,
 .h5 {
   font-weight: 400;
   font-size: 24px;
+  font-size: 1.5rem;
 }
 
 h6,
 .h6 {
   font-weight: 500;
   font-size: 20px;
+  font-size: 1.25rem;
 }
 
 button {
   font-weight: 500;
   font-size: 14px;
+  font-size: 0.875rem;
   text-transform: uppercase;
 }
 
 p {
   font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
 }
 

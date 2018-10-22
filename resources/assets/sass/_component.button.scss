@@ -1,6 +1,6 @@
 .c-btn{
     font-weight: 500;
-    font-size: 14px;
+    @include font-size(14);
     text-transform: uppercase;
     padding: 0 16px;
     border-radius: 5px;
@@ -53,8 +53,15 @@
         color: $primary;
 
         &:hover{
+            background-color: rgba($color: $primary, $alpha: 0.1);
             box-shadow: none;
-            color: rgba($color: $primary, $alpha: 0.6);
+            color: rgba($color: $primary, $alpha: 0.9);
+        }
+    }
+
+    &--icon{
+        *{
+            margin-right: 10px;
         }
     }
 }

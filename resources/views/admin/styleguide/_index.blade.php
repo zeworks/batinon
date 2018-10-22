@@ -36,14 +36,14 @@
                     <a href="#" class="c-nav__link" data-target="2"><i class="fas fa-plus c-nav__icon u-icon-before"></i>Buttons</a>
                 </li>
             </ul>
-        </nav>        
+        </nav>
     </aside>
     <main>
         <br>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-10">
-                    <h2><i class="far fa-file-alt u-icon-before"></i>Batinon Styleguide</h2>
+                    <h3><i class="far fa-file-alt u-icon-before"></i>Batinon Styleguide</h3>
                 </div>
                 <div class="col-sm-2">
                     <div class="float-right">
@@ -53,10 +53,19 @@
             </div>
             <hr>
             <div data-scope="1">
-                teste
+                <h4>Heading</h4>
+                <hr>
+                <div class="col-sm-12">
+                    <h1>Some text 1</h1>
+                    <h2>Some text 1</h2>
+                    <h3>Some text 1</h3>
+                    <h4>Some text 1</h4>
+                    <h5>Some text 1</h5>
+                    <h6>Some text 1</h6>
+                </div>
             </div>
             <div data-scope="2">
-                <h6>Buttons</h6>
+                <h4>Buttons</h4>
                 <hr>
                 <div class="col-sm-12">
                     <p>1. Button Primary <code>btn--primary</code> </p>
@@ -73,7 +82,10 @@
                     <br>
                     <p>4. Button Text <code>btn--text</code> </p>
                     <button class="c-btn c-btn--text">button text</button>
-
+                    <br><br>
+                    <p>5. Button with icon <code>btn--icon</code></p>
+                    <button class="c-btn c-btn--primary c-btn--icon"><i class="fab fa-font-awesome-flag"></i>Button
+                        with icon</button>
                 </div>
             </div>
             <!-- <div class="c-tab clearfix">
