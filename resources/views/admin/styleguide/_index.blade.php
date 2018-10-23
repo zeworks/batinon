@@ -26,14 +26,17 @@
 
 <body>
     <aside>
-
         <nav class="c-nav">
             <ul class="u-margin-0 u-padding-0 u-unlist">
                 <li class="c-nav__item">
-                    <a href="#" class="c-nav__link" data-target="1"><i class="fas fa-heading c-nav__icon u-icon-before"></i>Heading</a>
+                    <a href="#" class="c-nav__link u-icon-before" data-target="1"><i class="fas fa-plus c-nav__icon"></i>Heading</a>
                 </li>
                 <li class="c-nav__item">
-                    <a href="#" class="c-nav__link" data-target="2"><i class="fas fa-plus c-nav__icon u-icon-before"></i>Buttons</a>
+                    <a href="#" class="c-nav__link u-icon-before" data-target="2"><i class="fas fa-plus c-nav__icon"></i>Buttons
+                        & Links</a>
+                </li>
+                <li class="c-nav__item">
+                    <a href="" class="c-nav__link u-icon-before" data-target="3"><i class="fas fa-plus c-nav__icon"></i>Cards</a>
                 </li>
             </ul>
         </nav>
@@ -43,11 +46,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-10">
-                    <h3><i class="far fa-file-alt u-icon-before"></i>Batinon Styleguide</h3>
+                    <h3 class="u-icon-before"><i class="far fa-file-alt"></i>Batinon Styleguide</h3>
                 </div>
                 <div class="col-sm-2">
                     <div class="float-right">
-                        <a href="/admin/home"><i class="fas fa-chevron-left"></i><strong>Go Back</strong></a>
+                        <a href="/admin/home" class="u-icon-before"><i class="fas fa-chevron-left"></i><strong>Go Back</strong></a>
                     </div>
                 </div>
             </div>
@@ -65,27 +68,68 @@
                 </div>
             </div>
             <div data-scope="2">
-                <h4>Buttons</h4>
-                <hr>
-                <div class="col-sm-12">
-                    <p>1. Button Primary <code>btn--primary</code> </p>
-                    <button class="c-btn c-btn--primary">button primary</button>
-                    <br>
-                    <br>
-                    <p>2. Button Default <code>btn--default</code> </p>
-                    <button class="c-btn c-btn--default">button default</button>
-                    <br>
-                    <br>
-                    <p>3. Button Outline <code>btn--outline</code> </p>
-                    <button class="c-btn c-btn--outline">button outline</button>
-                    <br>
-                    <br>
-                    <p>4. Button Text <code>btn--text</code> </p>
-                    <button class="c-btn c-btn--text">button text</button>
-                    <br><br>
-                    <p>5. Button with icon <code>btn--icon</code></p>
-                    <button class="c-btn c-btn--primary c-btn--icon"><i class="fab fa-font-awesome-flag"></i>Button
-                        with icon</button>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4>Buttons</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4>Links</h4>
+                    </div>
+                    <div class="col-sm-12">
+                        <hr>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>1. Button Primary <code>btn--primary</code> </p>
+                        <button class="c-btn c-btn--primary">button primary</button>
+                        <br>
+                        <br>
+                        <p>2. Button Default <code>btn--default</code> </p>
+                        <button class="c-btn c-btn--default">button default</button>
+                        <br>
+                        <br>
+                        <p>3. Button Outline <code>btn--outline</code> </p>
+                        <button class="c-btn c-btn--outline">button outline</button>
+                        <br>
+                        <br>
+                        <p>4. Button Text <code>btn--text</code> </p>
+                        <button class="c-btn c-btn--text">button text</button>
+                        <br><br>
+                        <p>5. Button with icon <code>u-icon-before</code></p>
+                        <button class="c-btn c-btn--primary u-icon-before"><i class="fab fa-font-awesome-flag"></i>Button
+                            with icon</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>6. Link </p>
+                        <a href="#">button text</a>
+                        <br><br>
+                        <p>7. Link with icon</p>
+                        <a class="u-icon-before" href="#"><i class="fab fa-font-awesome-flag"></i>button text</a>
+                    </div>
+                </div>
+            </div>
+            <div data-scope="3">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Card</h4>
+                        <hr>
+                        <div class="c-card">
+                            <div class="c-card__header">
+                                <span class="f-subtitle">Card title</span>
+                            </div>
+                            <div class="c-card__body">
+                                <div class="c-form">
+                                    <label for="" class="c-form__label">Label</label>
+                                    <input type="text" class="c-form__input" placeholder="text placeholder">
+                                </div>
+                            </div>
+                            <div class="c-card__footer clearfix">
+                                <div class="float-right">
+                                    <button class="c-btn c-btn--text">Cancel</button>
+                                    <button class="c-btn c-btn--primary">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- <div class="c-tab clearfix">

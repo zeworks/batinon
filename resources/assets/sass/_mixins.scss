@@ -32,3 +32,10 @@
 	font-size: $sizeValue + px; //fallback for old browsers
 	font-size: (0.0625 * $sizeValue) + rem;
 }
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {@content}
+    &:-moz-placeholder           {@content}
+    &::-moz-placeholder          {@content}
+    &:-ms-input-placeholder      {@content}  
+}

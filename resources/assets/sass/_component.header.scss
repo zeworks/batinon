@@ -1,0 +1,9 @@
+.c-header {
+    $class: 'c-header';
+
+    /* default styles */
+    display: block;
+    height: 50px;
+    background-color: $navColor;
+    box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.23);
+}

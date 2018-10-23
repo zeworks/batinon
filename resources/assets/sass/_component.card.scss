@@ -1,0 +1,21 @@
+.c-card {
+    $class: 'c-card';
+    background-color: $white;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-shadow: 0px 7px 7px -1px rgba(0, 0, 0, 0.23);
+
+    &__header,
+    &__body,
+    &__footer {
+        padding: 10px;
+    }
+
+    &__header {
+        border-bottom: 1px solid $grey-light;
+    }
+
+    &__footer{
+        border-top: 1px solid $grey-light;
+    }
+}

@@ -1,0 +1,31 @@
+.c-form{
+    $class: 'c-form';
+
+    &__input{
+        padding: 0 10px;
+        border-radius: 5px;
+        border: 1px solid $grey-light;
+        line-height: 40px;
+        color: $dark;
+        outline: none;
+        display: inline-block;
+        width: 100%;
+        resize: vertical;
+        margin: 5px 0;
+        @include placeholder{
+            color: $grey;
+        }
+    }
+
+    &__label{
+        @include font-size(13);
+        color: $dark;
+        display: inline-block;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    &__label + &__input{
+        margin: 0 0 10px;
+    }
+}

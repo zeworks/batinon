@@ -15,10 +15,13 @@
 /* Utilities end */
 
 /* Components */
-@import 'components';
-@import 'component.nav';
+@import 'component.header';
 @import 'component.button';
+@import 'component.nav';
 @import 'component.profile';
+@import 'component.card';
+@import 'component.form';
+@import 'component.tab';
 /* Components end */
 
 /* Fonts */
@@ -66,7 +69,13 @@ aside+main {
 }
 
 a{
+    font-weight: 500;
+    @include font-size(14);
+    text-transform: uppercase;
+    display: inline-block;
+    color: $primary;
     &:hover{
+        color: $primary;
         text-decoration: none;
     }
 }

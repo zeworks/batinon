@@ -3,7 +3,7 @@
         <!-- logout form -->
         <form id="logout-form" :action="logout" method="POST">
             <input type="hidden" name="_token" :value="csrf">
-            <button>logout</button>
+            <button class="c-btn c-btn--primary">logout</button>
         </form>
         <!-- logout form ends -->
     </header>

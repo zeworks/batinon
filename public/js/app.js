@@ -32964,7 +32964,9 @@ var render = function() {
           domProps: { value: _vm.csrf }
         }),
         _vm._v(" "),
-        _c("button", [_vm._v("logout")])
+        _c("button", { staticClass: "c-btn c-btn--primary" }, [
+          _vm._v("logout")
+        ])
       ]
     )
   ])

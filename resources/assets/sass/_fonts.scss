@@ -49,3 +49,11 @@ strong,
 .strong {
     font-weight: 700;
 }
+
+.f-subtitle{
+    @include font-size(15);
+    color: $dark;
+    display: inline-block;
+    font-weight: 600;
+    text-transform: uppercase;
+}
