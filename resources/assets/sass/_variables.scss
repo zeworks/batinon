@@ -23,9 +23,11 @@ $asideMaxWidth: 300px;
 $asideColor: $white;
 
 // NAV
-$navColor: rgba( $color: $primary, $alpha: 0.85);
+$navColor: $white;
 // _ITEM
 $navItemColor: $white;
 // _LINK
 $navLinkTextColor: $dark;
 $navLinkColorHover: #3700B3;
+
+$headerHeight: 60px;

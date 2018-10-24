@@ -10518,10 +10518,11 @@ a.text-dark:focus {
 .c-header {
   /* default styles */
   display: block;
-  height: 50px;
-  background-color: rgba(48, 79, 254, 0.85);
-  -webkit-box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.23);
-          box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.23);
+  height: 60px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.1);
+  padding-right: 15px;
 }
 
 .c-btn {
@@ -10553,7 +10554,7 @@ a.text-dark:focus {
 
 .c-btn--primary {
   background-color: #304ffe;
-  color: #fff;
+  color: #fff !important;
 }
 
 .c-btn--primary:hover {
@@ -10755,6 +10756,14 @@ a.text-dark:focus {
   padding: 10px;
 }
 
+.c-table {
+  width: 100%;
+}
+
+.c-table__header {
+  border-bottom: 1px solid #f2f2f2;
+}
+
 /* Components end */
 
 /* Fonts */
@@ -10925,6 +10934,14 @@ aside + main {
   padding-left: 300px;
 }
 
+main {
+  padding: 20px 0;
+}
+
+a:not(.c-btn):hover {
+  color: #304ffe;
+}
+
 a {
   font-weight: 500;
   font-size: 14px;
@@ -10935,8 +10952,7 @@ a {
 }
 
 a:hover {
-  color: #304ffe;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 [data-scope] {

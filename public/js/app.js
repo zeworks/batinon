@@ -32823,6 +32823,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['username'],
@@ -32857,10 +32868,61 @@ var render = function() {
     _vm._v(" "),
     _c("hr"),
     _vm._v(" "),
-    _c("nav", { staticClass: "c-nav" })
+    _vm._m(0)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", { staticClass: "c-nav" }, [
+      _c("ul", { staticClass: "u-margin-0 u-padding-0 u-unlist" }, [
+        _c("li", { staticClass: "c-nav__item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "c-nav__link u-icon-before",
+              attrs: { href: "/admin/home" }
+            },
+            [
+              _c("i", { staticClass: "fas fa-tachometer-alt c-nav__icon" }),
+              _vm._v("Dashboard")
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "c-nav__item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "c-nav__link u-icon-before",
+              attrs: { href: "/admin/pages" }
+            },
+            [
+              _c("i", { staticClass: "fas fa-file c-nav__icon" }),
+              _vm._v("Pages")
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "c-nav__item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "c-nav__link u-icon-before",
+              attrs: { href: "/admin/blog" }
+            },
+            [
+              _c("i", { staticClass: "fab fa-blogger-b c-nav__icon" }),
+              _vm._v("Blog")
+            ]
+          )
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -32875,17 +32937,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(271)
+}
 var normalizeComponent = __webpack_require__(6)
 /* script */
 var __vue_script__ = __webpack_require__(210)
 /* template */
-var __vue_template__ = __webpack_require__(211)
+var __vue_template__ = __webpack_require__(273)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-032be6c9"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -32947,41 +33013,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 211 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("header", { staticClass: "c-header" }, [
-    _c(
-      "form",
-      { attrs: { id: "logout-form", action: _vm.logout, method: "POST" } },
-      [
-        _c("input", {
-          attrs: { type: "hidden", name: "_token" },
-          domProps: { value: _vm.csrf }
-        }),
-        _vm._v(" "),
-        _c("button", { staticClass: "c-btn c-btn--primary" }, [
-          _vm._v("logout")
-        ])
-      ]
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-032be6c9", module.exports)
-  }
-}
-
-/***/ }),
+/* 211 */,
 /* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -33075,7 +33107,7 @@ var render = function() {
       _c(
         "b-row",
         [
-          _c("b-col", { attrs: { sm: "3", offset: "1" } }, [
+          _c("b-col", { attrs: { sm: "3" } }, [
             _c("div", { staticClass: "info-box" }, [
               _c("span", { staticClass: "info-box-icon bg-red" }, [
                 _c("i", { staticClass: "ion ion-ios-people-outline" })
@@ -33242,6 +33274,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -33280,7 +33321,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         removeFile: function removeFile() {
             var _this2 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/pages/delete', { data: this.removeId }).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/pages/delete', {
+                data: this.removeId
+            }).then(function (response) {
                 // success alert
                 swal('Success!', 'Page Deleted', 'success');
                 _this2.fetchPages();
@@ -34321,111 +34364,160 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "box box-default" }, [
-        _c("div", { staticClass: "box-body" }, [
-          _c("div", { staticClass: "table-responsive" }, [
-            _c("table", { staticClass: "table no-margin" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _vm.pages[0] != null
-                ? _c(
-                    "tbody",
-                    _vm._l(_vm.pages, function(page, index) {
-                      return _c("tr", { key: index }, [
-                        _c("td", [
-                          _vm._v(
-                            "\n                                #" +
-                              _vm._s(page.id) +
-                              "\n                            "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c(
-                            "a",
-                            { attrs: { href: "./pages/edit/" + page.id } },
-                            [_vm._v(_vm._s(page.title))]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(page.slug))]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c(
-                            "span",
-                            {
-                              staticClass: "label",
-                              class: {
-                                "label-success": page.status == "1",
-                                "label-danger": page.status == "0"
-                              }
-                            },
-                            [
-                              page.status == 1
-                                ? _c("span", [
-                                    _vm._v(
-                                      "\n                                        Active\n                                    "
-                                    )
-                                  ])
-                                : _vm._e(),
-                              _vm._v(" "),
-                              page.status == 0
-                                ? _c("span", [
-                                    _vm._v(
-                                      "\n                                        Inactive\n                                    "
-                                    )
-                                  ])
-                                : _vm._e()
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(page.created_at))]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c("div", { staticClass: "pull-right" }, [
-                            _c(
-                              "a",
-                              {
-                                staticClass: "btn btn-warning",
-                                attrs: { href: "./pages/edit/" + page.id }
-                              },
-                              [_c("i", { staticClass: "fa fa-edit" })]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-danger",
-                                on: {
-                                  click: function($event) {
-                                    _vm.openModalDelete(page.id)
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fa fa-trash-o" })]
-                            )
-                          ])
-                        ])
-                      ])
-                    })
-                  )
-                : _c("tbody", [_vm._m(1)])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "box-footer clearfix" }, [
+      _c(
+        "b-container",
+        { attrs: { fluid: "" } },
+        [
           _c(
-            "a",
-            {
-              staticClass: "btn btn-sm btn-success btn-flat pull-right",
-              attrs: { href: "./pages/new" }
-            },
-            [_vm._v("Create New")]
+            "b-row",
+            [
+              _c("b-col", { attrs: { sm: "12" } }, [
+                _c("div", { staticClass: "c-card" }, [
+                  _c("div", { staticClass: "c-card__body" }, [
+                    _c("div", { staticClass: "table-responsive" }, [
+                      _c("table", { staticClass: "c-table no-margin" }, [
+                        _c("thead", { staticClass: "c-table__header" }, [
+                          _c("tr", [
+                            _c("th", [_vm._v("ID")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Page Title")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Page Slug")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Status")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Date")]),
+                            _vm._v(" "),
+                            _c("th")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm.pages[0] != null
+                          ? _c(
+                              "tbody",
+                              _vm._l(_vm.pages, function(page, index) {
+                                return _c("tr", { key: index }, [
+                                  _c("td", [
+                                    _vm._v(
+                                      "\n                                            #" +
+                                        _vm._s(page.id) +
+                                        "\n                                        "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _c(
+                                      "a",
+                                      {
+                                        attrs: {
+                                          href: "./pages/edit/" + page.id
+                                        }
+                                      },
+                                      [_vm._v(_vm._s(page.title))]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(page.slug))]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass: "label",
+                                        class: {
+                                          "label-success": page.status == "1",
+                                          "label-danger": page.status == "0"
+                                        }
+                                      },
+                                      [
+                                        page.status == 1
+                                          ? _c("span", [
+                                              _vm._v(
+                                                "\n                                                    Active\n                                                "
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        page.status == 0
+                                          ? _c("span", [
+                                              _vm._v(
+                                                "\n                                                    Inactive\n                                                "
+                                              )
+                                            ])
+                                          : _vm._e()
+                                      ]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(page.created_at))]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _c("div", { staticClass: "pull-right" }, [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "btn btn-warning",
+                                          attrs: {
+                                            href: "./pages/edit/" + page.id
+                                          }
+                                        },
+                                        [_c("i", { staticClass: "fa fa-edit" })]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "btn btn-danger",
+                                          on: {
+                                            click: function($event) {
+                                              _vm.openModalDelete(page.id)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fa fa-trash-o"
+                                          })
+                                        ]
+                                      )
+                                    ])
+                                  ])
+                                ])
+                              })
+                            )
+                          : _c("tbody", [
+                              _c("tr", [
+                                _c("td", { attrs: { colspan: "5" } }, [
+                                  _c("div", { staticClass: "text-center" }, [
+                                    _c("small", [
+                                      _vm._v("You have no pages created yet!")
+                                    ])
+                                  ])
+                                ])
+                              ])
+                            ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "c-card__footer clearfix" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "c-btn c-btn--primary float-right",
+                        attrs: { href: "./pages/new" }
+                      },
+                      [_vm._v("Create New")]
+                    )
+                  ])
+                ])
+              ])
+            ],
+            1
           )
-        ])
-      ]),
+        ],
+        1
+      ),
       _vm._v(" "),
       _vm.showModalRemove
         ? _c("modal", { attrs: { removeid: _vm.removeId } }, [
@@ -34476,40 +34568,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("ID")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Page Title")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Page Slug")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Status")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Date")]),
-        _vm._v(" "),
-        _c("th")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", { attrs: { colspan: "5" } }, [
-        _c("div", { staticClass: "text-center" }, [
-          _c("small", [_vm._v("You have no pages created yet!")])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -36124,7 +36183,7 @@ var render = function() {
       _c("div", { staticClass: "box box-default" }, [
         _c("div", { staticClass: "box-body" }, [
           _c("div", { staticClass: "table-responsive" }, [
-            _c("table", { staticClass: "table no-margin" }, [
+            _c("table", { staticClass: "c-table no-margin" }, [
               _vm._m(0),
               _vm._v(" "),
               _vm.files[0] != null
@@ -37610,6 +37669,85 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 270 */,
+/* 271 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(272);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(22)("be8d3b48", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-032be6c9\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./HeaderComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-032be6c9\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./HeaderComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 272 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(9)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n#logout-form[data-v-032be6c9] {\n    line-height: 60px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 273 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("header", { staticClass: "c-header" }, [
+    _c(
+      "form",
+      {
+        staticClass: "float-right",
+        attrs: { id: "logout-form", action: _vm.logout, method: "POST" }
+      },
+      [
+        _c("input", {
+          attrs: { type: "hidden", name: "_token" },
+          domProps: { value: _vm.csrf }
+        }),
+        _vm._v(" "),
+        _c("button", { staticClass: "c-btn c-btn--primary" }, [
+          _vm._v("logout")
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-032be6c9", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -22,7 +22,7 @@
 
     &--primary{
         background-color: $primary;
-        color: $white;
+        color: $white !important;
 
         &:hover{
             background-color: rgba($color: $primary, $alpha: 0.85);

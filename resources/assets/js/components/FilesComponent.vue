@@ -4,7 +4,7 @@
             <div class="box-body">
                 <div class="table-responsive">
                     <!-- files list -->
-                    <table class="table no-margin">
+                    <table class="c-table no-margin">
                         <thead>
                             <tr>
                                 <th width="60">ID</th>

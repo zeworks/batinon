@@ -14,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:200,200i,300,300i,400,400i,500,600,700,800,900" qrel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,900" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -21,16 +23,16 @@
 
 <body class="@yield('body_class')">
     <div id="app">
-    @auth
+        @auth
         <header-component logout="{{ route('logout') }}"></header-component>
         <nav-component username="{{ Auth::user()->name }}"></nav-component>
-    @endauth
+        @endauth
         <main>
             @yield('content')
         </main>
     </div>
 
-    
+
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/batinon.js') }}" defer></script>

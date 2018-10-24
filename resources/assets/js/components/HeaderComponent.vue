@@ -1,7 +1,7 @@
 <template>
     <header class="c-header">
         <!-- logout form -->
-        <form id="logout-form" :action="logout" method="POST">
+        <form id="logout-form" :action="logout" method="POST" class="float-right">
             <input type="hidden" name="_token" :value="csrf">
             <button class="c-btn c-btn--primary">logout</button>
         </form>
@@ -17,7 +17,12 @@
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             }
         },
-        methods: {
-        }
+        methods: {}
     }
 </script>
+
+<style scoped>
+    #logout-form {
+        line-height: 60px;
+    }
+</style>
