@@ -10621,13 +10621,15 @@ a.text-dark:focus {
   border-radius: 5px;
 }
 
-.c-nav__link:hover {
+.c-nav__link:hover,
+.c-nav__link:focus {
   text-decoration: none;
   background-color: rgba(48, 79, 254, 0.3);
   color: #304ffe;
 }
 
-.c-nav__link:hover .c-nav__icon {
+.c-nav__link:hover .c-nav__icon,
+.c-nav__link:focus .c-nav__icon {
   color: #304ffe;
 }
 

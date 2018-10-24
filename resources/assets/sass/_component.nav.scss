@@ -27,7 +27,8 @@
         transition: all 0.3s ease;
         border-radius: 5px;
 
-        &:hover {
+        &:hover,
+        &:focus {
             text-decoration: none;
             background-color: rgba($color: $primary, $alpha: .3);
             color: $primary;
