@@ -1,4 +1,6 @@
 .c-profile{
+    $class: 'c-profile';
+
     position: relative;
     padding: 5px;
 
@@ -12,5 +14,29 @@
     &__email{
         @include font-size(14);
         font-family: 'Montserrat', sans-serif;
+    }
+
+    // modifier
+    &--header{
+        padding: 0;
+        line-height: $headerHeight;
+        margin: 0 20px;
+
+        .#{$class}__btn{
+            padding: 0;
+            height: $headerHeight;
+            background-color: transparent;
+            border: 0;
+            position: relative;
+            top: -1px;
+            width: 60px;
+
+           &-caret{
+               position: absolute;
+               top: 50%;
+               right: -10px;
+               transform: translateY(-50%);
+           }
+        }
     }
 }

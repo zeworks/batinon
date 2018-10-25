@@ -51,6 +51,18 @@ body {
     &.body-loaded {
         opacity: 1;
     }
+
+    &.is-collapsed {
+
+        header,
+        aside+main {
+            padding-left: $asideMaxWidth;
+        }
+
+        aside {
+            left: 0;
+        }
+    }
 }
 
 aside {
@@ -58,16 +70,18 @@ aside {
     background-color: $asideColor;
     position: fixed;
     top: 0;
-    left: 0;
+    left: -100%;
     height: 100%;
     box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.1);
     z-index: 1;
     padding: 10px;
+    transition: left 0.5s ease-in-out;
 }
 
 header,
-aside+main {
-    padding-left: $asideMaxWidth;
+aside,
+main {
+    transition: all 0.3s ease-in-out;
 }
 
 main {

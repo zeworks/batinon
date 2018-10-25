@@ -6,6 +6,8 @@ $(document).ready(function () {
 
     tabSystem();
 
+    headerSystem();
+
 });
 
 
@@ -14,7 +16,7 @@ function onInit() {
 }
 
 function tabSystem() {
-    if($('[data-target]').length){
+    if ($('[data-target]').length) {
         // on load function
         $('[data-target]:eq(0)').addClass('is-active');
         $('[data-scope]:eq(0)').addClass('is-active');
@@ -25,8 +27,14 @@ function tabSystem() {
         var _target = $(this).attr('data-target');
         $('[data-scope]').removeClass('is-active');
         $('[data-scope="' + _target + '"]').addClass('is-active');
-        
+
         $('[data-target]').removeClass('is-active');
         $(this).addClass('is-active');
+    });
+}
+
+function headerSystem() {
+    $('.js-toggle-aside').on('click', function () {
+        $('body').toggleClass('is-collapsed');
     });
 }

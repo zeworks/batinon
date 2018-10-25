@@ -10666,6 +10666,30 @@ a.text-dark:focus {
   font-family: 'Montserrat', sans-serif;
 }
 
+.c-profile--header {
+  padding: 0;
+  line-height: 60px;
+  margin: 0 20px;
+}
+
+.c-profile--header .c-profile__btn {
+  padding: 0;
+  height: 60px;
+  background-color: transparent;
+  border: 0;
+  position: relative;
+  top: -1px;
+  width: 60px;
+}
+
+.c-profile--header .c-profile__btn-caret {
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
 .c-card {
   background-color: #fff;
   margin: 5px 0;
@@ -10918,22 +10942,35 @@ body.body-loaded {
   opacity: 1;
 }
 
+body.is-collapsed header,
+body.is-collapsed aside + main {
+  padding-left: 300px;
+}
+
+body.is-collapsed aside {
+  left: 0;
+}
+
 aside {
   width: 300px;
   background-color: #fff;
   position: fixed;
   top: 0;
-  left: 0;
+  left: -100%;
   height: 100%;
   -webkit-box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.1);
   z-index: 1;
   padding: 10px;
+  -webkit-transition: left 0.5s ease-in-out;
+  transition: left 0.5s ease-in-out;
 }
 
 header,
-aside + main {
-  padding-left: 300px;
+aside,
+main {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 main {
