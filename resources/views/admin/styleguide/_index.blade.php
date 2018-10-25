@@ -25,6 +25,22 @@
 </head>
 
 <body>
+<header class="c-header">
+        <button class="c-btn c-btn--text js-toggle-aside" id="btn-menu"><i class="fas fa-bars"></i></button>
+
+        <div class="c-profile c-profile--header float-right">
+            <button class="c-profile__btn">
+                <img src="{{ asset('user.png') }}" alt="profile image" width="40">
+                <i class="fas fa-ellipsis-v c-profile__btn-icon"></i>
+            </button>
+        </div>
+        <!-- logout form -->
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="float-right">
+            @csrf
+            <button type="submit" class="c-btn c-btn--primary">logout</button>
+        </form>
+        <!-- logout form ends -->
+    </header>
     <aside>
         <nav class="c-nav">
             <ul class="u-margin-0 u-padding-0 u-unlist">

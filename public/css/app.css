@@ -10522,7 +10522,14 @@ a.text-dark:focus {
   background-color: #fff;
   -webkit-box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.1);
           box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.1);
-  padding-right: 15px;
+}
+
+.c-header__logo {
+  max-width: 100px;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .c-btn {
@@ -10592,6 +10599,37 @@ a.text-dark:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
   color: rgba(48, 79, 254, 0.9);
+}
+
+.c-btn--padding-0 {
+  padding: 0;
+}
+
+.c-btn--lineheight-0 {
+  line-height: normal;
+  min-height: 0;
+}
+
+.c-btn--link {
+  font-weight: 500;
+  font-size: 14px;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  display: inline-block;
+  color: #304ffe;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.c-btn--link:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  text-decoration: none !important;
+}
+
+#btn-menu {
+  margin: 12px 10px 0;
 }
 
 /* NAV COMPONENT */
@@ -10666,9 +10704,67 @@ a.text-dark:focus {
   font-family: 'Montserrat', sans-serif;
 }
 
+.c-profile__card {
+  position: absolute;
+  top: 90%;
+  right: 0;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.29);
+          box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.29);
+  width: 250px;
+  border-radius: 5px;
+  overflow: hidden;
+  opacity: 0;
+  z-index: 1;
+  visibility: hidden;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.c-profile__card-active {
+  visibility: visible;
+  opacity: 1;
+  top: calc(100% + 5px);
+}
+
+.c-profile__item {
+  padding: 5px;
+  margin: 0 0 2px;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.c-profile__item:last-child {
+  border-bottom: 0;
+}
+
+.c-profile__item--disabled {
+  background-color: #f2f2f2;
+}
+
+.c-profile__item-title {
+  display: block;
+  font-size: 13px;
+  font-size: 0.8125rem;
+}
+
+.c-profile__item-subtitle {
+  font-size: 12px;
+  font-size: 0.75rem;
+}
+
+.c-profile__item-link {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  color: #616161;
+  display: block;
+}
+
+.c-profile__img {
+  max-width: 40px;
+}
+
 .c-profile--header {
   padding: 0;
-  line-height: 60px;
   margin: 0 20px;
 }
 
@@ -10679,15 +10775,19 @@ a.text-dark:focus {
   border: 0;
   position: relative;
   top: -1px;
-  width: 60px;
+  width: 90px;
+  outline: none;
 }
 
-.c-profile--header .c-profile__btn-caret {
+.c-profile--header .c-profile__btn-icon {
   position: absolute;
   top: 50%;
-  right: -10px;
+  right: 0;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+  color: #616161;
+  font-size: 15px;
+  font-size: 0.9375rem;
 }
 
 .c-card {

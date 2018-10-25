@@ -24,7 +24,7 @@
 <body class="@yield('body_class')">
     <div id="app">
         @auth
-        <header-component logout="{{ route('logout') }}"></header-component>
+        <header-component username="{{ Auth::user()->name }}" useremail="{{ Auth::user()->email }}" logout="{{ route('logout') }}"></header-component>
         <nav-component username="{{ Auth::user()->name }}"></nav-component>
         @endauth
         <main>

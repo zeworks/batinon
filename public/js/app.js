@@ -33051,7 +33051,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, "\n#logout-form[data-v-032be6c9] {\n    line-height: 60px;\n}\n#btn-menu[data-v-032be6c9] {\n    margin: 12px 10px 0;\n}\nimg[data-v-032be6c9] {\n    max-width: 40px;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -33087,17 +33087,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['logout'],
+    props: ['logout', 'username', 'useremail'],
     data: function data() {
         return {
+            isActive: false,
             userImage: '/user.png',
+            logo: '/logo.png',
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         };
     },
 
-    methods: {}
+    methods: {
+        openProfileCard: function openProfileCard() {
+            this.isActive = !this.isActive;
+        }
+    }
 });
 
 /***/ }),
@@ -33108,51 +33133,141 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("header", { staticClass: "c-header" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "c-profile c-profile--header float-right" }, [
-      _c("button", { staticClass: "c-profile__btn" }, [
-        _c("img", { attrs: { src: _vm.userImage, alt: "profile image" } }),
-        _vm._v(" "),
-        _c("i", { staticClass: "fas fa-angle-down c-profile__btn-caret" })
-      ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "form",
-      {
-        staticClass: "float-right",
-        attrs: { id: "logout-form", action: _vm.logout, method: "POST" }
-      },
-      [
-        _c("input", {
-          attrs: { type: "hidden", name: "_token" },
-          domProps: { value: _vm.csrf }
-        }),
-        _vm._v(" "),
-        _c("button", { staticClass: "c-btn c-btn--primary" }, [
-          _vm._v("logout")
-        ])
-      ]
-    )
-  ])
+  return _c(
+    "header",
+    { staticClass: "c-header" },
+    [
+      _c(
+        "b-container",
+        { attrs: { fluid: "" } },
+        [
+          _c(
+            "b-row",
+            [
+              _c("b-col", { attrs: { sm: "6" } }, [
+                _c("img", {
+                  staticClass: "c-header__logo",
+                  attrs: { src: _vm.logo, alt: "" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "c-btn c-btn--text js-toggle-aside",
+                    attrs: { id: "btn-menu" }
+                  },
+                  [_c("i", { staticClass: "fas fa-bars" })]
+                )
+              ]),
+              _vm._v(" "),
+              _c("b-col", { attrs: { sm: "6" } }, [
+                _c("form", { attrs: { action: "", method: "GET" } }, [
+                  _c(
+                    "div",
+                    { staticClass: "c-profile c-profile--header float-right" },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "c-profile__btn",
+                          on: { click: _vm.openProfileCard }
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "c-profile__img",
+                            attrs: { src: _vm.userImage, alt: "profile image" }
+                          }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-ellipsis-v c-profile__btn-icon"
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "c-profile__card",
+                          class: { "c-profile__card-active": _vm.isActive }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "c-profile__item c-profile__item--disabled"
+                            },
+                            [
+                              _c(
+                                "strong",
+                                { staticClass: "c-profile__item-title" },
+                                [_vm._v(_vm._s(_vm.username))]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "small",
+                                { staticClass: "c-profile__item-subtitle" },
+                                [_vm._v(_vm._s(_vm.useremail))]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "c-profile__item" }, [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "c-profile__item-link",
+                                attrs: { href: "" }
+                              },
+                              [_vm._v("Settings")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "c-profile__item" }, [
+                            _c(
+                              "form",
+                              { attrs: { action: _vm.logout, method: "POST" } },
+                              [
+                                _c("input", {
+                                  attrs: { type: "hidden", name: "_token" },
+                                  domProps: { value: _vm.csrf }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "c-btn c-btn--link c-btn--padding-0 c-btn--lineheight-0"
+                                  },
+                                  [_vm._v("logout")]
+                                )
+                              ]
+                            )
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "c-form float-right" }, [
+                    _c("input", {
+                      staticClass: "c-form__input c-form__input-icon",
+                      attrs: { type: "input", placeholder: "Search", name: "q" }
+                    })
+                  ])
+                ])
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "c-btn c-btn--text js-toggle-aside",
-        attrs: { id: "btn-menu" }
-      },
-      [_c("i", { staticClass: "fas fa-bars" })]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

@@ -1,42 +1,98 @@
-.c-profile{
+.c-profile {
     $class: 'c-profile';
 
     position: relative;
     padding: 5px;
 
-    &__name{
+    &__name {
         display: block;
         font-weight: 600;
         @include font-size(17);
         margin: 20px 0 0;
     }
 
-    &__email{
+    &__email {
         @include font-size(14);
         font-family: 'Montserrat', sans-serif;
     }
 
+    &__card {
+        position: absolute;
+        top: 90%;
+        right: 0;
+        background-color: $white;
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.29);
+        width: 250px;
+        border-radius: $radius;
+        overflow: hidden;
+        opacity: 0;
+        z-index: 1;
+        visibility: hidden;
+        transition: all 0.4s ease-in-out;
+
+        &-active {
+            visibility: visible;
+            opacity: 1;
+            top: calc(100% + 5px);
+        }
+    }
+
+    &__item {
+        padding: 5px;
+        margin: 0 0 2px;
+        border-bottom: 1px solid $white-light;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        &--disabled {
+            background-color: $white-light;
+        }
+
+        &-title {
+            display: block;
+            @include font-size(13);
+        }
+
+        &-subtitle {
+            @include font-size(12);
+        }
+
+        &-link {
+            @include font-size(13);
+            color: $grey;
+            display: block;
+        }
+    }
+
+    &__img{
+        max-width: 40px;
+    }
+
     // modifier
-    &--header{
+    &--header {
         padding: 0;
-        line-height: $headerHeight;
         margin: 0 20px;
 
-        .#{$class}__btn{
+        .#{$class}__btn {
             padding: 0;
             height: $headerHeight;
             background-color: transparent;
             border: 0;
             position: relative;
             top: -1px;
-            width: 60px;
+            width: 90px;
+            outline: none;
 
-           &-caret{
-               position: absolute;
-               top: 50%;
-               right: -10px;
-               transform: translateY(-50%);
-           }
+            &-icon {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+                color: $grey;
+                @include font-size(15);
+            }
         }
     }
 }
