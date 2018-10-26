@@ -1,7 +1,9 @@
-.c-form{
+.c-form {
     $class: 'c-form';
 
-    &__input{
+    position: relative;
+
+    &__input {
         padding: 0 10px;
         border-radius: 5px;
         border: 1px solid $grey-light;
@@ -12,12 +14,13 @@
         width: 100%;
         resize: vertical;
         margin: 5px 0;
-        @include placeholder{
+
+        @include placeholder {
             color: $grey;
         }
     }
 
-    &__label{
+    &__label {
         @include font-size(13);
         color: $dark;
         display: inline-block;
@@ -25,7 +28,52 @@
         text-transform: uppercase;
     }
 
-    &__label + &__input{
+    &__label+&__input {
         margin: 0 0 10px;
+    }
+
+    &__btn {
+        position: relative;
+    }
+
+    &--search {
+        margin: 4px 0 0;
+
+        .#{$class}__input {
+            width: 300px;
+        }
+    }
+
+    &--group {
+        &-left {
+
+            .#{$class}__btn {
+                left: 4px;
+            }
+
+            .#{$class}__input{
+                padding-left: 50px;
+            }
+        }
+
+        &-right {
+
+            .#{$class}__btn {
+                right: 3px;
+            }
+
+            .#{$class}__input{
+                padding-right: 50px;
+            }
+
+        }
+
+        .#{$class}__btn {
+            position: absolute;
+            top: 50%;
+            z-index: 1;
+            transform: translateY(-50%);
+            max-width: 50px;
+        }
     }
 }

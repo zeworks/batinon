@@ -5,57 +5,53 @@
                 <b-col sm="12">
                     <div class="c-card">
                         <div class="c-card__body">
-                            <div class="table-responsive">
-                                <table class="c-table no-margin">
-                                    <thead class="c-table__header">
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Page Title</th>
-                                            <th>Page Slug</th>
-                                            <th>Status</th>
-                                            <th>Date</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody v-if="pages[0] != null">
-                                        <tr v-for="(page,index) in pages" :key="index">
-                                            <td>
-                                                #{{page.id}}
-                                            </td>
-                                            <td><a :href="('./pages/edit/'+page.id)">{{page.title}}</a></td>
-                                            <td>{{page.slug}}</td>
-                                            <td>
-                                                <span class="label" :class="{'label-success' : page.status == '1', 'label-danger' : page.status == '0'}">
-                                                    <span v-if="page.status == 1">
-                                                        Active
-                                                    </span>
-                                                    <span v-if="page.status == 0">
-                                                        Inactive
-                                                    </span>
+                            <table class="c-table no-margin">
+                                <thead class="c-table__header">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Page Title</th>
+                                        <th>Page Slug</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody v-if="pages[0] != null">
+                                    <tr class="c-table__row" v-for="(page,index) in pages" :key="index">
+                                        <td>
+                                            #{{page.id}}
+                                        </td>
+                                        <td><a :href="('./pages/edit/'+page.id)">{{page.title}}</a></td>
+                                        <td>{{page.slug}}</td>
+                                        <td>
+                                            <span class="label" :class="{'label-success' : page.status == '1', 'label-danger' : page.status == '0'}">
+                                                <span v-if="page.status == 1">
+                                                    Active
                                                 </span>
-                                            </td>
-                                            <td>{{page.created_at}}</td>
-                                            <td>
-                                                <div class="pull-right">
-                                                    <a :href="('./pages/edit/'+page.id)" class="btn btn-warning"><i
-                                                            class="fa fa-edit"></i></a>
-                                                    <button class="btn btn-danger" @click="openModalDelete(page.id)"><i
-                                                            class="fa fa-trash-o"></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tbody v-else>
-                                        <tr>
-                                            <td colspan="5">
-                                                <div class="text-center">
-                                                    <small>You have no pages created yet!</small>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                                                <span v-if="page.status == 0">
+                                                    Inactive
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td>{{page.created_at}}</td>
+                                        <td>
+                                            <div class="float-right">
+                                                <a :href="('./pages/edit/'+page.id)" class="c-btn c-btn--primary">Edit</a>
+                                                <button class="c-btn c-btn--link" @click="openModalDelete(page.id)">Delete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody v-else>
+                                    <tr>
+                                        <td colspan="5">
+                                            <div class="text-center">
+                                                <small>You have no pages created yet!</small>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="c-card__footer clearfix">
                             <a :href="('./pages/new')" class="c-btn c-btn--primary float-right">Create New</a>

@@ -1,9 +1,13 @@
-.c-table{
+.c-table {
     $class: 'c-table';
 
     width: 100%;
 
-    &__header{
+    &__header {
         border-bottom: 1px solid $white-light;
+    }
+
+    &__row {
+        vertical-align: middle;
     }
 }
