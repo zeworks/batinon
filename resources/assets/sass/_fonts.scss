@@ -53,7 +53,7 @@ strong,
 .f-subtitle{
     @include font-size(15);
     color: $dark;
-    display: inline-block;
+    display: block;
     font-weight: 600;
     text-transform: uppercase;
 }

@@ -10499,8 +10499,24 @@ a.text-dark:focus {
   margin: 0 0 0 10px;
 }
 
+.u-margin {
+  display: block;
+}
+
 .u-margin-0 {
   margin: 0;
+}
+
+.u-margin-bottom-s {
+  margin-bottom: 10px;
+}
+
+.u-margin-bottom-m {
+  margin-bottom: 20px;
+}
+
+.u-margin-bottom-l {
+  margin-bottom: 30px;
 }
 
 .u-padding-0 {
@@ -10870,6 +10886,72 @@ button:hover {
   position: relative;
 }
 
+.c-form__help {
+  color: #d9d9d9;
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+
+.c-form__checkbox {
+  min-height: 1rem;
+  padding-left: 0;
+  margin-right: 0;
+  cursor: pointer;
+}
+
+.c-form__checkbox-indicator {
+  content: "";
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 15px;
+  background-color: #e5e5e5;
+  border-radius: 15px;
+  margin-right: 10px;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+  vertical-align: middle;
+  margin: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.c-form__checkbox-indicator:after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-color: #f1f1f1;
+  border-radius: 21px;
+  -webkit-box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+  left: -2px;
+  top: -2px;
+  -webkit-transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+  -webkit-transition: left .3s ease, background .3s ease, -webkit-box-shadow .1s ease;
+  transition: left .3s ease, background .3s ease, -webkit-box-shadow .1s ease;
+  transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+  transition: left .3s ease, background .3s ease, box-shadow .1s ease, -webkit-box-shadow .1s ease;
+}
+
+.c-form__input:checked ~ .c-form__checkbox-indicator {
+  background-color: rgba(48, 79, 254, 0.4);
+  background-image: none;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.c-form__input:checked ~ .c-form__checkbox-indicator:after {
+  background-color: #304ffe;
+  left: 25px;
+}
+
+.c-form__input:focus ~ .c-form__checkbox-indicator {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
 .c-form--search {
   margin: 4px 0 0;
 }
@@ -11011,7 +11093,7 @@ strong,
   font-size: 15px;
   font-size: 0.9375rem;
   color: #181818;
-  display: inline-block;
+  display: block;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -11153,5 +11235,11 @@ a:hover {
 
 .is-active {
   display: block;
+}
+
+input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+  width: auto;
 }
 

@@ -7,25 +7,26 @@
                         <div class="c-card__body">
                             <b-row>
                                 <b-col sm="7">
-                                    <div class="form-group">
+                                    <div class="c-form">
                                         <label for="title">Page Name*</label>
-                                        <input type="text" id="title" name="title" class="form-control" v-model="page.title">
+                                        <input type="text" id="title" name="title" class="c-form__input" v-model="page.title">
                                     </div>
                                 </b-col>
                                 <b-col sm="5">
-                                    <div class="form-group">
+                                    <div class="c-form">
                                         <label for="slug">Page Slug</label>
-                                        <input disabled type="text" id="slug" name="slug" class="form-control" :slug="slug"
+                                        <input disabled type="text" id="slug" name="slug" class="c-form__input" :slug="slug"
                                             v-model="page.slug">
                                     </div>
                                 </b-col>
                             </b-row>
                         </div>
                     </div>
+                    <br>
                     <blocksComponent :item="page" :title="'Page Blocks'" />
                 </b-col>
                 <b-col sm="3">
-                    <div class="box box-default">
+                    <div class="c-card">
                         <statusComponent :item="page" />
                         <hr>
                         <featuredImageComponent :item="page" />

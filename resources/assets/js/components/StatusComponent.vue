@@ -1,16 +1,14 @@
 <template>
     <div>
-        <div class="box-header">
-            <div class="box-title">
+        <div class="c-card__body">
+            <div class="f-subtitle">
                 Status
             </div>
-        </div>
-        <div class="box-body">
-            <div class="form-group">
-                <label class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" name="status" v-model="item.status"
+            <div class="c-form">
+                <label class="c-form__checkbox">
+                    <input type="checkbox" class="c-form__input" name="status" v-model="item.status"
                         true-value="1" false-value="0">
-                    <span class="custom-control-indicator"></span>
+                    <span class="c-form__checkbox-indicator"></span>
                 </label>
             </div>
         </div>

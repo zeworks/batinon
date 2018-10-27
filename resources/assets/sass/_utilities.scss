@@ -1,25 +1,41 @@
-.u-img-responsive{
+.u-img-responsive {
     display: block;
     max-width: 100%;
     height: auto;
 }
 
-.u-icon-before *{
+.u-icon-before * {
     margin: 0 10px 0 0;
 }
 
-.u-icon-after *{
+.u-icon-after * {
     margin: 0 0 0 10px;
 }
 
-.u-margin-0{
-    margin: 0;
+.u-margin {
+    display: block;
+
+    &-0 {
+        margin: 0;
+    }
+
+    &-bottom-s {
+        margin-bottom: 10px;
+    }
+
+    &-bottom-m {
+        margin-bottom: 20px;
+    }
+
+    &-bottom-l {
+        margin-bottom: 30px;
+    }
 }
 
-.u-padding-0{
+.u-padding-0 {
     padding: 0;
 }
 
-.u-unlist{
+.u-unlist {
     list-style: none;
 }

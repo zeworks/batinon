@@ -1,18 +1,17 @@
 <template>
     <div>
-        <div class="box-header clearfix">
-            <div class="box-title pull-left">
+        <div class="c-card__body">
+            <div class="f-subtitle u-margin-bottom-s">
                 Featured Image
             </div>
-            <button type="button" class="btn btn-primary pull-right" @click="fetchImages">Choose Image</button>
+            <button type="button" class="c-btn c-btn--primary" @click="fetchImages">Choose Image</button>
         </div>
-        <div class="box-body">
+        <div class="c-card__body">
             <div v-if="item.image">
-                <img :src="item.image" alt class="u-img-responsive">
+                <img :src="item.image" alt class="u-img-responsive  u-margin-bottom-s">
             </div>
-            <br>
             <div>
-                <p class="help-block">This image will appear on top of your page</p>
+                <p class="c-form__help">This image will appear on top of your page</p>
             </div>
         </div>
         <!-- modal library image -->

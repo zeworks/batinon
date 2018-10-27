@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="box-footer">
-            <div class="pull-right">
-                <a class="c-btn c-btn--text" href="/admin/pages">Cancel</a>
+        <div class="c-card__footer clearfix">
+            <div class="float-right">
+                <a class="c-btn c-btn--link" href="/admin/pages">Cancel</a>
                 <!-- edit button -->
                 <button type="submit" v-if="id" class="c-btn c-btn--primary">Save</button>
                 <!-- new button -->

@@ -113,3 +113,9 @@ a {
 .is-active {
     display: block;
 }
+
+input[type="checkbox"]{
+    opacity: 0;
+    position: absolute;
+    width: auto;
+}

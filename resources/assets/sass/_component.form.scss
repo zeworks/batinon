@@ -36,6 +36,65 @@
         position: relative;
     }
 
+    &__help{
+        color: $grey-light;
+        @include font-size(14);
+    }
+
+    &__checkbox{
+        min-height: 1rem;
+        padding-left: 0;
+        margin-right: 0;
+        cursor: pointer;
+        
+        &-indicator {
+            content: "";
+            display: inline-block;
+            position: relative;
+            width: 40px;
+            height: 15px;
+            background-color: #e5e5e5;
+            border-radius: 15px;
+            margin-right: 10px;
+            -webkit-transition: background .3s ease;
+            transition: background .3s ease;
+            vertical-align: middle;
+            margin: 0;
+            box-shadow: none;
+        }
+        
+        &-indicator:after {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-color: #f1f1f1;
+            border-radius: 21px;
+            box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+            left: -2px;
+            top: -2px;
+            -webkit-transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+            transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+        }
+        
+        .#{$class}__input:checked~&-indicator {
+            background-color: rgba($color: $primary, $alpha: 0.4);
+            background-image: none;
+            box-shadow: none !important;
+        }
+        
+        .#{$class}__input:checked~&-indicator:after {
+            background-color: $primary;
+            left: 25px;
+        }
+        
+        .#{$class}__input:focus~&-indicator {
+            box-shadow: none !important;
+        }
+        
+    }
+
     &--search {
         margin: 4px 0 0;
 

@@ -34956,6 +34956,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -35172,8 +35173,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -35266,15 +35265,13 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "box box-default" }, [
-        _c("div", { staticClass: "box-header" }, [
-          _c("div", { staticClass: "box-title" }, [_vm._v(_vm._s(_vm.title))]),
-          _vm._v(" "),
-          _vm._m(0)
+      _c("div", { staticClass: "c-card" }, [
+        _c("div", { staticClass: "c-card__header" }, [
+          _c("span", { staticClass: "f-subtitle" }, [_vm._v(_vm._s(_vm.title))])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "box-body" }, [
-          _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "c-card__body" }, [
+          _c("div", { staticClass: "c-form" }, [
             _c("label", { attrs: { for: "block_title" } }, [_vm._v("Title*")]),
             _vm._v(" "),
             _c("input", {
@@ -35286,7 +35283,7 @@ var render = function() {
                   expression: "item.b_title"
                 }
               ],
-              staticClass: "form-control",
+              staticClass: "c-form__input",
               attrs: { type: "text", id: "block_title", name: "block_title" },
               domProps: { value: _vm.item.b_title },
               on: {
@@ -35302,8 +35299,10 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "form-group" },
+            { staticClass: "c-form" },
             [
+              _c("br"),
+              _vm._v(" "),
               _c("label", { attrs: { for: "block_summary" } }, [
                 _vm._v("Summary")
               ]),
@@ -35324,8 +35323,10 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "form-group" },
+            { staticClass: "c-form" },
             [
+              _c("br"),
+              _vm._v(" "),
               _c("label", { attrs: { for: "block_description" } }, [
                 _vm._v("Description")
               ]),
@@ -35344,10 +35345,12 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
+          _c("div", { staticClass: "c-form" }, [
+            _c("br"),
+            _vm._v(" "),
             _c("label", [_vm._v("Image")]),
             _vm._v(" "),
-            _c("p", { staticClass: "help-block" }, [
+            _c("p", { staticClass: "c-form__help" }, [
               _vm._v("Choose wich image you want to display into this block")
             ]),
             _vm._v(" "),
@@ -35482,32 +35485,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-tools pull-right" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-box-tool",
-          attrs: { type: "button", "data-widget": "collapse" }
-        },
-        [_c("i", { staticClass: "fa fa-minus" })]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-box-tool",
-          attrs: { type: "button", "data-widget": "remove" }
-        },
-        [_c("i", { staticClass: "fa fa-times" })]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -35554,11 +35532,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "box-footer" }, [
-      _c("div", { staticClass: "pull-right" }, [
+    _c("div", { staticClass: "c-card__footer clearfix" }, [
+      _c("div", { staticClass: "float-right" }, [
         _c(
           "a",
-          { staticClass: "c-btn c-btn--text", attrs: { href: "/admin/pages" } },
+          { staticClass: "c-btn c-btn--link", attrs: { href: "/admin/pages" } },
           [_vm._v("Cancel")]
         ),
         _vm._v(" "),
@@ -35616,8 +35594,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['item'],
@@ -35635,11 +35611,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "box-body" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { staticClass: "custom-control custom-checkbox" }, [
+    _c("div", { staticClass: "c-card__body" }, [
+      _c("div", { staticClass: "f-subtitle" }, [
+        _vm._v("\n            Status\n        ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "c-form" }, [
+        _c("label", { staticClass: "c-form__checkbox" }, [
           _c("input", {
             directives: [
               {
@@ -35649,7 +35627,7 @@ var render = function() {
                 expression: "item.status"
               }
             ],
-            staticClass: "custom-control-input",
+            staticClass: "c-form__input",
             attrs: {
               type: "checkbox",
               name: "status",
@@ -35686,24 +35664,13 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("span", { staticClass: "custom-control-indicator" })
+          _c("span", { staticClass: "c-form__checkbox-indicator" })
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-header" }, [
-      _c("div", { staticClass: "box-title" }, [
-        _vm._v("\n            Status\n        ")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -35763,7 +35730,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue__);
-//
 //
 //
 //
@@ -35897,15 +35863,15 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "box-header clearfix" }, [
-        _c("div", { staticClass: "box-title pull-left" }, [
+      _c("div", { staticClass: "c-card__body" }, [
+        _c("div", { staticClass: "f-subtitle u-margin-bottom-s" }, [
           _vm._v("\n            Featured Image\n        ")
         ]),
         _vm._v(" "),
         _c(
           "button",
           {
-            staticClass: "btn btn-primary pull-right",
+            staticClass: "c-btn c-btn--primary",
             attrs: { type: "button" },
             on: { click: _vm.fetchImages }
           },
@@ -35913,17 +35879,15 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "box-body" }, [
+      _c("div", { staticClass: "c-card__body" }, [
         _vm.item.image
           ? _c("div", [
               _c("img", {
-                staticClass: "u-img-responsive",
+                staticClass: "u-img-responsive  u-margin-bottom-s",
                 attrs: { src: _vm.item.image, alt: "" }
               })
             ])
           : _vm._e(),
-        _vm._v(" "),
-        _c("br"),
         _vm._v(" "),
         _vm._m(0)
       ]),
@@ -36035,7 +35999,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [
-      _c("p", { staticClass: "help-block" }, [
+      _c("p", { staticClass: "c-form__help" }, [
         _vm._v("This image will appear on top of your page")
       ])
     ])
@@ -36090,7 +36054,7 @@ var render = function() {
                           "b-row",
                           [
                             _c("b-col", { attrs: { sm: "7" } }, [
-                              _c("div", { staticClass: "form-group" }, [
+                              _c("div", { staticClass: "c-form" }, [
                                 _c("label", { attrs: { for: "title" } }, [
                                   _vm._v("Page Name*")
                                 ]),
@@ -36104,7 +36068,7 @@ var render = function() {
                                       expression: "page.title"
                                     }
                                   ],
-                                  staticClass: "form-control",
+                                  staticClass: "c-form__input",
                                   attrs: {
                                     type: "text",
                                     id: "title",
@@ -36128,7 +36092,7 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("b-col", { attrs: { sm: "5" } }, [
-                              _c("div", { staticClass: "form-group" }, [
+                              _c("div", { staticClass: "c-form" }, [
                                 _c("label", { attrs: { for: "slug" } }, [
                                   _vm._v("Page Slug")
                                 ]),
@@ -36142,7 +36106,7 @@ var render = function() {
                                       expression: "page.slug"
                                     }
                                   ],
-                                  staticClass: "form-control",
+                                  staticClass: "c-form__input",
                                   attrs: {
                                     disabled: "",
                                     type: "text",
@@ -36174,6 +36138,8 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
                   _c("blocksComponent", {
                     attrs: { item: _vm.page, title: "Page Blocks" }
                   })
@@ -36184,7 +36150,7 @@ var render = function() {
               _c("b-col", { attrs: { sm: "3" } }, [
                 _c(
                   "div",
-                  { staticClass: "box box-default" },
+                  { staticClass: "c-card" },
                   [
                     _c("statusComponent", { attrs: { item: _vm.page } }),
                     _vm._v(" "),

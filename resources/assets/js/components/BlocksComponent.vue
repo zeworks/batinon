@@ -1,30 +1,28 @@
 <template>
     <div>
-        <div class="box box-default">
-            <div class="box-header">
-                <div class="box-title">{{title}}</div>
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                </div>
+        <div class="c-card">
+            <div class="c-card__header">
+                <span class="f-subtitle">{{title}}</span>
             </div>
-            <div class="box-body">
-                <div class="form-group">
+            <div class="c-card__body">
+                <div class="c-form">
                     <label for="block_title">Title*</label>
-                    <input type="text" id="block_title" name="block_title" class="form-control" v-model="item.b_title">
+                    <input type="text" id="block_title" name="block_title" class="c-form__input" v-model="item.b_title">
                 </div>
-                <div class="form-group">
+                <div class="c-form">
+                    <br>
                     <label for="block_summary">Summary</label>
                     <vueEditor id="block_summary" name="block_summary" v-model="item.b_summary"></vueEditor>
                 </div>
-                <div class="form-group">
+                <div class="c-form">
+                    <br>
                     <label for="block_description">Description</label>
                     <vueEditor id="block_description" name="block_description" v-model="item.b_description"></vueEditor>
                 </div>
-                <div class="form-group">
+                <div class="c-form">
+                    <br>
                     <label>Image</label>
-                    <p class="help-block">Choose wich image you want to display into this block</p>
+                    <p class="c-form__help">Choose wich image you want to display into this block</p>
                     <br>
                     <div v-if="item.b_image" class="block-image">
                         <img :src="item.b_image" alt class="u-img-responsive">
