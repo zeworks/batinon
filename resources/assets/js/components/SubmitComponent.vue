@@ -2,7 +2,7 @@
     <div>
         <div class="c-card__footer clearfix">
             <div class="float-right">
-                <a class="c-btn c-btn--link" href="/admin/pages">Cancel</a>
+                <button type="button" class="c-btn c-btn--link" @click="goBack">Cancel</button>
                 <!-- edit button -->
                 <button type="submit" v-if="id" class="c-btn c-btn--primary">Save</button>
                 <!-- new button -->
@@ -16,7 +16,14 @@
     export default {
         props: ['id'],
         data() {
-            return {}
+            return {
+                
+            }
+        },
+        methods: {
+            goBack(){
+                 window.history.go(-1);
+            }
         }
     }
 </script>

@@ -93,6 +93,23 @@ button:hover {
             text-decoration: none !important;
         }
     }
+
+    &--rounded{
+        border-radius: 100%;
+        width: 45px;
+        height: 45px;
+        padding: 0;
+        min-height: 0;
+        line-height: normal;
+    }
+
+
+    /* button colors */
+
+    &--danger{
+        background-color: $danger;
+        color: $white;
+    }
 }
 
 #btn-menu {

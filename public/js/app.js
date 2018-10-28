@@ -35520,6 +35520,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['id'],
     data: function data() {
         return {};
+    },
+
+    methods: {
+        goBack: function goBack() {
+            window.history.go(-1);
+        }
     }
 });
 
@@ -35535,8 +35541,12 @@ var render = function() {
     _c("div", { staticClass: "c-card__footer clearfix" }, [
       _c("div", { staticClass: "float-right" }, [
         _c(
-          "a",
-          { staticClass: "c-btn c-btn--link", attrs: { href: "/admin/pages" } },
+          "button",
+          {
+            staticClass: "c-btn c-btn--link",
+            attrs: { type: "button" },
+            on: { click: _vm.goBack }
+          },
           [_vm._v("Cancel")]
         ),
         _vm._v(" "),
@@ -35715,7 +35725,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, "\n.btn--choose[data-v-1a6dcde7] {\n    border: 1px solid #999;\n    background-color: #f2f2f2;\n    width: 210px;\n    height: 210px;\n    float: left;\n    margin: 5px;\n    -webkit-transition: all 0.3s ease;\n    transition: all 0.3s ease;\n}\n.btn--choose[data-v-1a6dcde7]:hover {\n    background-color: #999;\n}\n.btn--choose[data-v-1a6dcde7]:focus {\n    background-color: #999;\n}\n", ""]);
+exports.push([module.i, "\n.btn--choose[data-v-1a6dcde7] {\n    width: 210px;\n    height: 210px;\n    background-position: center;\n    background-size: cover;\n    background-repeat: no-repeat;\n}\n.c-btn--rounded[data-v-1a6dcde7]{\n    font-size: 28px;\n    position: absolute;\n    top: 10px;\n    right: 20px;\n    z-index: 1;\n}\n", ""]);
 
 // exports
 
@@ -35905,15 +35915,21 @@ var render = function() {
                 attrs: { slot: "body" },
                 slot: "body"
               },
-              _vm._l(_vm.images, function(image, index) {
-                return _c(
-                  "div",
-                  { key: index, staticClass: "modal-image clearfix" },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn--choose",
+              [
+                _c(
+                  "b-row",
+                  _vm._l(_vm.images, function(image, index) {
+                    return _c("b-col", { key: index, attrs: { sm: "3" } }, [
+                      _c("button", {
+                        staticClass: "c-btn btn--choose",
+                        style: {
+                          "background-image":
+                            "url(" +
+                            _vm.origin +
+                            _vm.image_path +
+                            image.name +
+                            ")"
+                        },
                         attrs: { type: "button" },
                         on: {
                           click: function($event) {
@@ -35922,34 +35938,26 @@ var render = function() {
                             )
                           }
                         }
-                      },
-                      [
-                        _c("img", {
-                          staticClass: "u-img-responsive",
-                          attrs: {
-                            src: _vm.origin + _vm.image_path + image.name,
-                            alt: image.name
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "c-btn c-btn--rounded c-btn--danger",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              _vm.removeImage(image.id)
+                            }
                           }
-                        })
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger btn--remove",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            _vm.removeImage(image.id)
-                          }
-                        }
-                      },
-                      [_vm._v("×")]
-                    )
-                  ]
+                        },
+                        [_vm._v("×")]
+                      )
+                    ])
+                  })
                 )
-              })
+              ],
+              1
             ),
             _vm._v(" "),
             _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [

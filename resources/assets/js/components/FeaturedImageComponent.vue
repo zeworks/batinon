@@ -18,12 +18,12 @@
         <modal :modal="showModalFeatured" v-if="showModalFeatured">
             <h3 slot="header">Choose your Featured Image</h3>
             <div slot="body" class="clearfix">
-                <div v-for="(image,index) in images" :key="index" class="modal-image clearfix">
-                    <button @click="chooseImage(origin+image_path+image.name)" type="button" class="btn btn--choose">
-                        <img class="u-img-responsive" :src="origin+image_path+image.name" :alt="image.name">
-                    </button>
-                    <button type="button" @click="removeImage(image.id)" class="btn btn-danger btn--remove">&times;</button>
-                </div>
+                <b-row>
+                    <b-col sm="3" v-for="(image,index) in images" :key="index">
+                        <button @click="chooseImage(origin+image_path+image.name)" :style="{ 'background-image': 'url(' + origin+image_path+image.name + ')' }" type="button" class="c-btn btn--choose"></button>
+                        <button type="button" @click="removeImage(image.id)" class="c-btn c-btn--rounded c-btn--danger">&times;</button>
+                    </b-col>
+                </b-row>
             </div>
             <div slot="footer">
                 <div class="clearfix"></div>
@@ -115,20 +115,17 @@
 
 <style scoped>
     .btn--choose {
-        border: 1px solid #999;
-        background-color: #f2f2f2;
         width: 210px;
         height: 210px;
-        float: left;
-        margin: 5px;
-        transition: all 0.3s ease;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
-
-    .btn--choose:hover {
-        background-color: #999;
-    }
-
-    .btn--choose:focus {
-        background-color: #999;
+    .c-btn--rounded{
+        font-size: 28px;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        z-index: 1;
     }
 </style>

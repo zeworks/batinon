@@ -235,11 +235,6 @@ input[type="checkbox"] {
     opacity: 0.8;
 }
 
-.modal-image {
-    position: relative;
-    display: inline-block;
-}
-
 .box.box-primary{
     border-top-color: #25195c;
 }
