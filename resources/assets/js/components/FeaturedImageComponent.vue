@@ -16,11 +16,12 @@
         </div>
         <!-- modal library image -->
         <modal :modal="showModalFeatured" v-if="showModalFeatured">
-            <h3 slot="header">Choose your Featured Image</h3>
+            <div slot="header">Choose your Featured Image</div>
             <div slot="body" class="clearfix">
                 <b-row>
                     <b-col sm="3" v-for="(image,index) in images" :key="index">
-                        <button @click="chooseImage(origin+image_path+image.name)" :style="{ 'background-image': 'url(' + origin+image_path+image.name + ')' }" type="button" class="c-btn btn--choose"></button>
+                        <button @click="chooseImage(origin+image_path+image.name)" :style="{ 'background-image': 'url(' + origin+image_path+image.name + ')' }"
+                            type="button" class="c-btn btn--choose"></button>
                         <button type="button" @click="removeImage(image.id)" class="c-btn c-btn--rounded c-btn--danger">&times;</button>
                     </b-col>
                 </b-row>
@@ -29,8 +30,8 @@
                 <div class="clearfix"></div>
                 <div class="pull-right">
                     <input type="file" @change="onImageChange" id="file_input" name="file_input" class="hidden">
+                    <button type="button" @click="showModalFeatured = false" class="c-btn c-btn--text">Cancel</button>
                     <button type="button" @click="fileClick" class="c-btn c-btn--primary">Or Send File...</button>
-                    <button type="button" @click="showModalFeatured = false" class="c-btn c-btn--default">Cancel</button>
                 </div>
             </div>
         </modal>
@@ -121,7 +122,8 @@
         background-size: cover;
         background-repeat: no-repeat;
     }
-    .c-btn--rounded{
+
+    .c-btn--rounded {
         font-size: 28px;
         position: absolute;
         top: 10px;

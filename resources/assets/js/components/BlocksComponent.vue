@@ -28,7 +28,7 @@
                         <img :src="item.b_image" alt class="u-img-responsive">
                         <br>
                     </div>
-                    <button type="button" class="btn btn-primary" @click="fetchBlockImages">Choose Image</button>
+                    <button type="button" class="c-btn c-btn--primary" @click="fetchBlockImages">Choose Image</button>
                 </div>
             </div>
         </div>
@@ -45,10 +45,10 @@
             </div>
             <div slot="footer">
                 <div class="clearfix"></div>
-                <div class="pull-right">
+                <div class="float-right">
                     <input type="file" @change="onBlockImageChange" id="file_blockImages" name="file_blockImages" class="hidden">
-                    <button type="button" @click="fileClick" class="btn btn-primary">Or Send File...</button>
-                    <button type="button" @click="showModalBlockImages = false" class="btn btn-default">Cancel</button>
+                    <button type="button" @click="showModalBlockImages = false" class="c-btn c-btn--text">Cancel</button>
+                    <button type="button" @click="fileClick" class="c-btn c-btn--primary">Or Send File...</button>
                 </div>
             </div>
         </modal>
@@ -57,23 +57,24 @@
 </template>
 
 <script>
+    import axios from 'axios';
     import modal from './ModalComponent.vue';
 
     export default {
-        props: ['item','title'],
+        props: ['item', 'title'],
         components: {
             modal
         },
         data() {
             return {
-                showModalBlockImages : false,
+                showModalBlockImages: false,
                 origin: window.location.origin + '/',
                 image_path: 'storage/images/',
                 images: [],
                 image: {},
             }
         },
-        methods:{
+        methods: {
             fetchBlockImages() {
                 this.showModalBlockImages = true;
 
@@ -148,7 +149,7 @@
         background-color: #999;
     }
 
-    .block-image{
+    .block-image {
         max-width: 400px;
     }
 </style>

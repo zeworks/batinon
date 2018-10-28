@@ -72,7 +72,6 @@
     .modal-container {
         max-width: 1000px;
         margin: 0px auto;
-        padding: 20px 30px;
         background-color: #fff;
         border-radius: 4px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
@@ -88,9 +87,12 @@
         }
     }
 
-    .modal-header h3 {
+    .modal-header * {
         margin-top: 0;
-        color: #42b983;
+        color: #333;
+        font-size: 21px;
+        text-transform: uppercase;
+        font-weight: 700;
     }
 
     .modal-body {

@@ -36,8 +36,8 @@
                                         <td>{{page.created_at}}</td>
                                         <td>
                                             <div class="float-right">
-                                                <a :href="('./pages/edit/'+page.id)" class="c-btn c-btn--primary">Edit</a>
-                                                <button class="c-btn c-btn--link" @click="openModalDelete(page.id)">Delete</button>
+                                                <a :href="('./pages/edit/'+page.id)" class="c-btn c-btn--primary c-btn--small">Edit</a>
+                                                <button class="c-btn c-btn--link c-btn--small" @click="openModalDelete(page.id)">Delete</button>
                                             </div>
                                         </td>
                                     </tr>
@@ -63,15 +63,15 @@
 
         <!-- modal remove file -->
         <modal v-if="showModalRemove" :removeid="removeId">
-            <h3 slot="header">Delete Page</h3>
+            <div slot="header">Delete Page</div>
             <div slot="body" class="text-center">
-                <h3>Do you really want to delete this page?</h3>
+                <h6>Do you really want to delete this page?</h6>
             </div>
             <div slot="footer">
                 <div class="clearfix"></div>
-                <div class="pull-right">
-                    <button @click="removeFile" class="btn btn-success">Yes</button>
-                    <button @click="showModalRemove = false" class="btn btn-default">No</button>
+                <div class="float-right">
+                    <button @click="showModalRemove = false" class="c-btn c-btn--text">No</button>
+                    <button @click="removeFile" class="c-btn c-btn--primary">Yes</button>
                 </div>
             </div>
         </modal>

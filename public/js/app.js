@@ -34528,7 +34528,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-mask {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container {\n    max-width: 1000px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 4px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n    width: 100%;\n    overflow: hidden;\n}\n@media (max-width: 768px) {\n.modal-container {\n        min-width: 100%;\n}\n}\n.modal-header h3 {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body {\n    margin: 20px 0;\n    max-height: 600px;\n    overflow-y: auto;\n    display: block;\n}\n.modal-enter {\n    opacity: 0;\n}\n.modal-leave-active {\n    opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n", ""]);
+exports.push([module.i, "\n.modal-mask {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container {\n    max-width: 1000px;\n    margin: 0px auto;\n    background-color: #fff;\n    border-radius: 4px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n    width: 100%;\n    overflow: hidden;\n}\n@media (max-width: 768px) {\n.modal-container {\n        min-width: 100%;\n}\n}\n.modal-header * {\n    margin-top: 0;\n    color: #333;\n    font-size: 21px;\n    text-transform: uppercase;\n    font-weight: 700;\n}\n.modal-body {\n    margin: 20px 0;\n    max-height: 600px;\n    overflow-y: auto;\n    display: block;\n}\n.modal-enter {\n    opacity: 0;\n}\n.modal-leave-active {\n    opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n", ""]);
 
 // exports
 
@@ -34736,7 +34736,8 @@ var render = function() {
                                       _c(
                                         "a",
                                         {
-                                          staticClass: "c-btn c-btn--primary",
+                                          staticClass:
+                                            "c-btn c-btn--primary c-btn--small",
                                           attrs: {
                                             href: "./pages/edit/" + page.id
                                           }
@@ -34747,7 +34748,8 @@ var render = function() {
                                       _c(
                                         "button",
                                         {
-                                          staticClass: "c-btn c-btn--link",
+                                          staticClass:
+                                            "c-btn c-btn--link c-btn--small",
                                           on: {
                                             click: function($event) {
                                               _vm.openModalDelete(page.id)
@@ -34797,7 +34799,7 @@ var render = function() {
       _vm._v(" "),
       _vm.showModalRemove
         ? _c("modal", { attrs: { removeid: _vm.removeId } }, [
-            _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
+            _c("div", { attrs: { slot: "header" }, slot: "header" }, [
               _vm._v("Delete Page")
             ]),
             _vm._v(" "),
@@ -34808,26 +34810,17 @@ var render = function() {
                 attrs: { slot: "body" },
                 slot: "body"
               },
-              [_c("h3", [_vm._v("Do you really want to delete this page?")])]
+              [_c("h6", [_vm._v("Do you really want to delete this page?")])]
             ),
             _vm._v(" "),
             _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
               _c("div", { staticClass: "clearfix" }),
               _vm._v(" "),
-              _c("div", { staticClass: "pull-right" }, [
+              _c("div", { staticClass: "float-right" }, [
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-success",
-                    on: { click: _vm.removeFile }
-                  },
-                  [_vm._v("Yes")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default",
+                    staticClass: "c-btn c-btn--text",
                     on: {
                       click: function($event) {
                         _vm.showModalRemove = false
@@ -34835,6 +34828,15 @@ var render = function() {
                     }
                   },
                   [_vm._v("No")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "c-btn c-btn--primary",
+                    on: { click: _vm.removeFile }
+                  },
+                  [_vm._v("Yes")]
                 )
               ])
             ])
@@ -35102,7 +35104,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, "\n.btn--choose[data-v-15e55870] {\n    border: 1px solid #999;\n    background-color: #f2f2f2;\n    width: 210px;\n    height: 210px;\n    float: left;\n    margin: 5px;\n    -webkit-transition: all 0.3s ease;\n    transition: all 0.3s ease;\n}\n.btn--choose[data-v-15e55870]:hover {\n    background-color: #999;\n}\n.btn--choose[data-v-15e55870]:focus {\n    background-color: #999;\n}\n.block-image[data-v-15e55870]{\n    max-width: 400px;\n}\n", ""]);
+exports.push([module.i, "\n.btn--choose[data-v-15e55870] {\n    border: 1px solid #999;\n    background-color: #f2f2f2;\n    width: 210px;\n    height: 210px;\n    float: left;\n    margin: 5px;\n    -webkit-transition: all 0.3s ease;\n    transition: all 0.3s ease;\n}\n.btn--choose[data-v-15e55870]:hover {\n    background-color: #999;\n}\n.btn--choose[data-v-15e55870]:focus {\n    background-color: #999;\n}\n.block-image[data-v-15e55870] {\n    max-width: 400px;\n}\n", ""]);
 
 // exports
 
@@ -35113,8 +35115,10 @@ exports.push([module.i, "\n.btn--choose[data-v-15e55870] {\n    border: 1px soli
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ModalComponent_vue__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ModalComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ModalComponent_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue__);
 //
 //
 //
@@ -35173,13 +35177,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['item', 'title'],
     components: {
-        modal: __WEBPACK_IMPORTED_MODULE_0__ModalComponent_vue___default.a
+        modal: __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue___default.a
     },
     data: function data() {
         return {
@@ -35197,7 +35202,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.showModalBlockImages = true;
 
-            axios.get('/api/files').then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/files').then(function (response) {
                 return response.data;
             }).then(function (data) {
                 _this.images = data; // fill the array with all the images on database
@@ -35226,7 +35231,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var formData = new FormData();
             formData.append('image', this.image);
 
-            axios.post('/api/files/add', formData).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/add', formData).then(function (response) {
                 if (response.data.success) {
                     swal('Success!', 'File saved', 'success');
                     // reload files
@@ -35243,7 +35248,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         removeBlockImage: function removeBlockImage(id) {
             var _this3 = this;
 
-            axios.post('/api/files/delete', {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/delete', {
                 data: id
             }).then(function (response) {
                 // success alert
@@ -35370,7 +35375,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn btn-primary",
+                staticClass: "c-btn c-btn--primary",
                 attrs: { type: "button" },
                 on: { click: _vm.fetchBlockImages }
               },
@@ -35443,7 +35448,7 @@ var render = function() {
             _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
               _c("div", { staticClass: "clearfix" }),
               _vm._v(" "),
-              _c("div", { staticClass: "pull-right" }, [
+              _c("div", { staticClass: "float-right" }, [
                 _c("input", {
                   staticClass: "hidden",
                   attrs: {
@@ -35457,17 +35462,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-primary",
-                    attrs: { type: "button" },
-                    on: { click: _vm.fileClick }
-                  },
-                  [_vm._v("Or Send File...")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default",
+                    staticClass: "c-btn c-btn--text",
                     attrs: { type: "button" },
                     on: {
                       click: function($event) {
@@ -35476,6 +35471,16 @@ var render = function() {
                     }
                   },
                   [_vm._v("Cancel")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "c-btn c-btn--primary",
+                    attrs: { type: "button" },
+                    on: { click: _vm.fileClick }
+                  },
+                  [_vm._v("Or Send File...")]
                 )
               ])
             ])
@@ -35725,7 +35730,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, "\n.btn--choose[data-v-1a6dcde7] {\n    width: 210px;\n    height: 210px;\n    background-position: center;\n    background-size: cover;\n    background-repeat: no-repeat;\n}\n.c-btn--rounded[data-v-1a6dcde7]{\n    font-size: 28px;\n    position: absolute;\n    top: 10px;\n    right: 20px;\n    z-index: 1;\n}\n", ""]);
+exports.push([module.i, "\n.btn--choose[data-v-1a6dcde7] {\n    width: 210px;\n    height: 210px;\n    background-position: center;\n    background-size: cover;\n    background-repeat: no-repeat;\n}\n.c-btn--rounded[data-v-1a6dcde7] {\n    font-size: 28px;\n    position: absolute;\n    top: 10px;\n    right: 20px;\n    z-index: 1;\n}\n", ""]);
 
 // exports
 
@@ -35740,6 +35745,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue__);
+//
 //
 //
 //
@@ -35904,7 +35910,7 @@ var render = function() {
       _vm._v(" "),
       _vm.showModalFeatured
         ? _c("modal", { attrs: { modal: _vm.showModalFeatured } }, [
-            _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
+            _c("div", { attrs: { slot: "header" }, slot: "header" }, [
               _vm._v("Choose your Featured Image")
             ]),
             _vm._v(" "),
@@ -35973,17 +35979,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "c-btn c-btn--primary",
-                    attrs: { type: "button" },
-                    on: { click: _vm.fileClick }
-                  },
-                  [_vm._v("Or Send File...")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "c-btn c-btn--default",
+                    staticClass: "c-btn c-btn--text",
                     attrs: { type: "button" },
                     on: {
                       click: function($event) {
@@ -35992,6 +35988,16 @@ var render = function() {
                     }
                   },
                   [_vm._v("Cancel")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "c-btn c-btn--primary",
+                    attrs: { type: "button" },
+                    on: { click: _vm.fileClick }
+                  },
+                  [_vm._v("Or Send File...")]
                 )
               ])
             ])

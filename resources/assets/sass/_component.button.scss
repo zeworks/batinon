@@ -58,6 +58,11 @@ button:hover {
         }
     }
 
+    &--small{
+        @include font-size(12);
+        line-height: 30px;
+        min-height: 30px;
+    }
     &--text {
         background-color: transparent;
         box-shadow: none;
