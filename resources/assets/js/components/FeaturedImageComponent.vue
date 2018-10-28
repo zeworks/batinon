@@ -127,7 +127,7 @@
         font-size: 28px;
         position: absolute;
         top: 10px;
-        right: 20px;
+        right: 30px;
         z-index: 1;
     }
 </style>

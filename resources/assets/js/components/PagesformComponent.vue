@@ -8,13 +8,13 @@
                             <b-row>
                                 <b-col sm="7">
                                     <div class="c-form">
-                                        <label for="title">Page Name*</label>
+                                        <label for="title" class="c-form__label">Page Name*</label>
                                         <input type="text" id="title" name="title" class="c-form__input" v-model="page.title">
                                     </div>
                                 </b-col>
                                 <b-col sm="5">
                                     <div class="c-form">
-                                        <label for="slug">Page Slug</label>
+                                        <label for="slug" class="c-form__label">Page Slug</label>
                                         <input disabled type="text" id="slug" name="slug" class="c-form__input" :slug="slug"
                                             v-model="page.slug">
                                     </div>

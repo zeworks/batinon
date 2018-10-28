@@ -6,28 +6,29 @@
             </div>
             <div class="c-card__body">
                 <div class="c-form">
-                    <label for="block_title">Title*</label>
+                    <label class="c-form__label" for="block_title">Title*</label>
                     <input type="text" id="block_title" name="block_title" class="c-form__input" v-model="item.b_title">
                 </div>
                 <div class="c-form">
                     <br>
-                    <label for="block_summary">Summary</label>
+                    <label for="block_summary" class="c-form__label">Summary</label>
                     <vueEditor id="block_summary" name="block_summary" v-model="item.b_summary"></vueEditor>
                 </div>
                 <div class="c-form">
                     <br>
-                    <label for="block_description">Description</label>
+                    <label for="block_description" class="c-form__label">Description</label>
                     <vueEditor id="block_description" name="block_description" v-model="item.b_description"></vueEditor>
                 </div>
                 <div class="c-form">
                     <br>
-                    <label>Image</label>
+                    <label class="c-form__label">Image</label>
                     <p class="c-form__help">Choose wich image you want to display into this block</p>
-                    <br>
-                    <div v-if="item.b_image" class="block-image">
-                        <img :src="item.b_image" alt class="u-img-responsive">
-                        <br>
-                    </div>
+                    <b-row>
+                        <b-col sm="4" v-if="item.b_image">
+                            <img :src="item.b_image" alt class="u-img-responsive">
+                            <br>
+                        </b-col>
+                    </b-row>
                     <button type="button" class="c-btn c-btn--primary" @click="fetchBlockImages">Choose Image</button>
                 </div>
             </div>
@@ -35,13 +36,14 @@
         <!-- modal choose block image -->
         <modal v-if="showModalBlockImages">
             <h3 slot="header">Choose your Block Image</h3>
-            <div slot="body" class="clearfix">
-                <div v-for="(image,index) in images" :key="index" class="modal-image clearfix">
-                    <button @click="chooseImage(origin+image_path+image.name)" type="button" class="btn btn--choose">
-                        <img class="u-img-responsive" :src="origin+image_path+image.name" :alt="image.name">
-                    </button>
-                    <button type="button" @click="removeBlockImage(image.id)" class="btn btn-danger btn--remove">&times;</button>
-                </div>
+            <div slot="body">
+                <b-row>
+                    <b-col sm="3" v-for="(image,index) in images" :key="index">
+                        <button @click="chooseImage(origin+image_path+image.name)" :style="{ 'background-image': 'url(' + origin+image_path+image.name + ')' }"
+                            type="button" class="c-btn btn--choose"></button>
+                        <button type="button" @click="removeBlockImage(image.id)" class="c-btn c-btn--rounded c-btn--danger">&times;</button>
+                    </b-col>
+                </b-row>
             </div>
             <div slot="footer">
                 <div class="clearfix"></div>
@@ -132,24 +134,18 @@
 </script>
 <style scoped>
     .btn--choose {
-        border: 1px solid #999;
-        background-color: #f2f2f2;
         width: 210px;
         height: 210px;
-        float: left;
-        margin: 5px;
-        transition: all 0.3s ease;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 
-    .btn--choose:hover {
-        background-color: #999;
-    }
-
-    .btn--choose:focus {
-        background-color: #999;
-    }
-
-    .block-image {
-        max-width: 400px;
+    .c-btn--rounded {
+        font-size: 28px;
+        position: absolute;
+        top: 10px;
+        right: 30px;
+        z-index: 1;
     }
 </style>
