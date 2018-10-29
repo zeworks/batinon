@@ -40,6 +40,23 @@
     list-style: none;
 }
 
+.u-tag{
+    $class:'u-tag';
+
+    padding: 5px 10px;
+    border-radius: $radius;
+    @include font-size(10);
+    text-transform: uppercase;
+    color: $white;
+    &--success{
+        background-color: $success;
+    }
+
+    &--danger{
+        background-color: $danger;
+    }
+}
+
 .hidden {
     display: none;
 }

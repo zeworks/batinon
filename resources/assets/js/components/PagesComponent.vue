@@ -24,7 +24,7 @@
                                         <td><a :href="('./pages/edit/'+page.id)">{{page.title}}</a></td>
                                         <td>{{page.slug}}</td>
                                         <td>
-                                            <span class="label" :class="{'label-success' : page.status == '1', 'label-danger' : page.status == '0'}">
+                                            <span class="u-tag" :class="{'u-tag--success' : page.status == '1', 'u-tag--danger' : page.status == '0'}">
                                                 <span v-if="page.status == 1">
                                                     Active
                                                 </span>
@@ -37,7 +37,7 @@
                                         <td>
                                             <div class="float-right">
                                                 <a :href="('./pages/edit/'+page.id)" class="c-btn c-btn--primary c-btn--small">Edit</a>
-                                                <button class="c-btn c-btn--link c-btn--small" @click="openModalDelete(page.id)">Delete</button>
+                                                <button class="c-btn c-btn--link c-btn--small" @click="remove(page.id)">Delete</button>
                                             </div>
                                         </td>
                                     </tr>
@@ -60,22 +60,6 @@
                 </b-col>
             </b-row>
         </b-container>
-
-        <!-- modal remove file -->
-        <modal v-if="showModalRemove" :removeid="removeId">
-            <div slot="header">Delete Page</div>
-            <div slot="body" class="text-center">
-                <h6>Do you really want to delete this page?</h6>
-            </div>
-            <div slot="footer">
-                <div class="clearfix"></div>
-                <div class="float-right">
-                    <button @click="showModalRemove = false" class="c-btn c-btn--text">No</button>
-                    <button @click="removeFile" class="c-btn c-btn--primary">Yes</button>
-                </div>
-            </div>
-        </modal>
-        <!-- \modal remove file -->
     </div>
 </template>
 
@@ -86,9 +70,7 @@
     export default {
         data() {
             return {
-                removeId: '',
                 pages: [],
-                showModalRemove: false,
             }
         },
         components: {
@@ -106,22 +88,31 @@
 
                     });
             },
-            openModalDelete(id) {
+            remove(id) {
                 // hide remove modal
-                this.showModalRemove = true;
-                this.removeId = id;
-            },
-            removeFile() {
-                axios.post('/api/pages/delete', {
-                        data: this.removeId
+                swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover this content!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
                     })
-                    .then(response => {
-                        // success alert
-                        swal('Success!', 'Page Deleted', 'success');
-                        this.fetchPages();
-                        this.showModalRemove = false;
-                    })
-            },
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            axios.post('/api/pages/delete', {
+                                    data: id
+                                })
+                                .then(response => {
+                                    // success alert
+                                    swal('Success!', 'Page Deleted', 'success');
+                                    this.fetchPages();
+                                    this.showModalRemove = false;
+                                })
+                        } else {
+                            swal.close();
+                        }
+                    });
+            }
         }
     }
 </script>

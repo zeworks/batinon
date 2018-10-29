@@ -33546,22 +33546,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -33569,9 +33553,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            removeId: '',
-            pages: [],
-            showModalRemove: false
+            pages: []
         };
     },
 
@@ -33592,21 +33574,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.pages = data;
             });
         },
-        openModalDelete: function openModalDelete(id) {
-            // hide remove modal
-            this.showModalRemove = true;
-            this.removeId = id;
-        },
-        removeFile: function removeFile() {
+        remove: function remove(id) {
             var _this2 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/pages/delete', {
-                data: this.removeId
-            }).then(function (response) {
-                // success alert
-                swal('Success!', 'Page Deleted', 'success');
-                _this2.fetchPages();
-                _this2.showModalRemove = false;
+            // hide remove modal
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this content!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            }).then(function (willDelete) {
+                if (willDelete) {
+                    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/pages/delete', {
+                        data: id
+                    }).then(function (response) {
+                        // success alert
+                        swal('Success!', 'Page Deleted', 'success');
+                        _this2.fetchPages();
+                        _this2.showModalRemove = false;
+                    });
+                } else {
+                    swal.close();
+                }
             });
         }
     }
@@ -34704,10 +34694,10 @@ var render = function() {
                                     _c(
                                       "span",
                                       {
-                                        staticClass: "label",
+                                        staticClass: "u-tag",
                                         class: {
-                                          "label-success": page.status == "1",
-                                          "label-danger": page.status == "0"
+                                          "u-tag--success": page.status == "1",
+                                          "u-tag--danger": page.status == "0"
                                         }
                                       },
                                       [
@@ -34753,7 +34743,7 @@ var render = function() {
                                             "c-btn c-btn--link c-btn--small",
                                           on: {
                                             click: function($event) {
-                                              _vm.openModalDelete(page.id)
+                                              _vm.remove(page.id)
                                             }
                                           }
                                         },
@@ -34796,53 +34786,7 @@ var render = function() {
           )
         ],
         1
-      ),
-      _vm._v(" "),
-      _vm.showModalRemove
-        ? _c("modal", { attrs: { removeid: _vm.removeId } }, [
-            _c("div", { attrs: { slot: "header" }, slot: "header" }, [
-              _vm._v("Delete Page")
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "text-center",
-                attrs: { slot: "body" },
-                slot: "body"
-              },
-              [_c("h6", [_vm._v("Do you really want to delete this page?")])]
-            ),
-            _vm._v(" "),
-            _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
-              _c("div", { staticClass: "clearfix" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "float-right" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "c-btn c-btn--text",
-                    on: {
-                      click: function($event) {
-                        _vm.showModalRemove = false
-                      }
-                    }
-                  },
-                  [_vm._v("No")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "c-btn c-btn--primary",
-                    on: { click: _vm.removeFile }
-                  },
-                  [_vm._v("Yes")]
-                )
-              ])
-            ])
-          ])
-        : _vm._e()
+      )
     ],
     1
   )

@@ -10527,6 +10527,23 @@ a.text-dark:focus {
   list-style: none;
 }
 
+.u-tag {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.u-tag--success {
+  background-color: #00c853;
+}
+
+.u-tag--danger {
+  background-color: #d32f2f;
+}
+
 .hidden {
   display: none;
 }
