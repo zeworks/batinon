@@ -6,6 +6,7 @@
 
 
 import Vue from 'vue';
+
 // bootstrap 4
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -43,6 +44,7 @@ Vue.use(VueEditor)
 Vue.use(BootstrapVue);
 
 
+
 var app = new Vue({
     el: '#app',
     components: {
@@ -55,6 +57,5 @@ var app = new Vue({
         BlogsComponent,
         BlogsformComponent,
         NavigationComponent
-    }
+    },
 });
-

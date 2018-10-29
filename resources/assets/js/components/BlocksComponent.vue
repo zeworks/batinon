@@ -37,7 +37,10 @@
         <modal v-if="showModalBlockImages">
             <h3 slot="header">Choose your Block Image</h3>
             <div slot="body">
-                <b-row>
+                <div v-if="images==0" class="text-center">
+                    <span>No files in storage yet!</span>
+                </div>
+                <b-row v-else>
                     <b-col sm="3" v-for="(image,index) in images" :key="index">
                         <button @click="chooseImage(origin+image_path+image.name)" :style="{ 'background-image': 'url(' + origin+image_path+image.name + ')' }"
                             type="button" class="c-btn btn--choose"></button>
@@ -120,14 +123,27 @@
             },
             // remove image
             removeBlockImage(id) {
-                axios.post('/api/files/delete', {
-                        data: id
-                    })
-                    .then(response => {
-                        // success alert
-                        swal('Success!', 'File Deleted', 'success');
-                        this.fetchBlockImages();
-                    })
+               swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this imaginary file!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        axios.post('/api/files/delete', {
+                                data: id
+                            })
+                            .then(response => {
+                                // success alert
+                                swal('Success!', 'File Deleted', 'success');
+                                this.fetchImages();
+                            })
+                    } else {
+                        swal.close();
+                    }
+                });
             }
         }
     }

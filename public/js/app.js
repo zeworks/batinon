@@ -10373,6 +10373,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 
+
 // bootstrap 4
 
 
@@ -35179,6 +35180,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -35250,12 +35254,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         removeBlockImage: function removeBlockImage(id) {
             var _this3 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/delete', {
-                data: id
-            }).then(function (response) {
-                // success alert
-                swal('Success!', 'File Deleted', 'success');
-                _this3.fetchBlockImages();
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            }).then(function (willDelete) {
+                if (willDelete) {
+                    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/delete', {
+                        data: id
+                    }).then(function (response) {
+                        // success alert
+                        swal('Success!', 'File Deleted', 'success');
+                        _this3.fetchImages();
+                    });
+                } else {
+                    swal.close();
+                }
             });
         }
     }
@@ -35420,46 +35436,50 @@ var render = function() {
               "div",
               { attrs: { slot: "body" }, slot: "body" },
               [
-                _c(
-                  "b-row",
-                  _vm._l(_vm.images, function(image, index) {
-                    return _c("b-col", { key: index, attrs: { sm: "3" } }, [
-                      _c("button", {
-                        staticClass: "c-btn btn--choose",
-                        style: {
-                          "background-image":
-                            "url(" +
-                            _vm.origin +
-                            _vm.image_path +
-                            image.name +
-                            ")"
-                        },
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            _vm.chooseImage(
-                              _vm.origin + _vm.image_path + image.name
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "c-btn c-btn--rounded c-btn--danger",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.removeBlockImage(image.id)
-                            }
-                          }
-                        },
-                        [_vm._v("×")]
-                      )
+                _vm.images == 0
+                  ? _c("div", { staticClass: "text-center" }, [
+                      _c("span", [_vm._v("No files in storage yet!")])
                     ])
-                  })
-                )
+                  : _c(
+                      "b-row",
+                      _vm._l(_vm.images, function(image, index) {
+                        return _c("b-col", { key: index, attrs: { sm: "3" } }, [
+                          _c("button", {
+                            staticClass: "c-btn btn--choose",
+                            style: {
+                              "background-image":
+                                "url(" +
+                                _vm.origin +
+                                _vm.image_path +
+                                image.name +
+                                ")"
+                            },
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.chooseImage(
+                                  _vm.origin + _vm.image_path + image.name
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "c-btn c-btn--rounded c-btn--danger",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.removeBlockImage(image.id)
+                                }
+                              }
+                            },
+                            [_vm._v("×")]
+                          )
+                        ])
+                      })
+                    )
               ],
               1
             ),
@@ -35805,6 +35825,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -35876,12 +35899,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         removeImage: function removeImage(id) {
             var _this3 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/delete', {
-                data: id
-            }).then(function (response) {
-                // success alert
-                swal('Success!', 'File Deleted', 'success');
-                _this3.fetchImages();
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            }).then(function (willDelete) {
+                if (willDelete) {
+                    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/delete', {
+                        data: id
+                    }).then(function (response) {
+                        // success alert
+                        swal('Success!', 'File Deleted', 'success');
+                        _this3.fetchImages();
+                    });
+                } else {
+                    swal.close();
+                }
             });
         }
     }
@@ -35941,46 +35976,50 @@ var render = function() {
                 slot: "body"
               },
               [
-                _c(
-                  "b-row",
-                  _vm._l(_vm.images, function(image, index) {
-                    return _c("b-col", { key: index, attrs: { sm: "3" } }, [
-                      _c("button", {
-                        staticClass: "c-btn btn--choose",
-                        style: {
-                          "background-image":
-                            "url(" +
-                            _vm.origin +
-                            _vm.image_path +
-                            image.name +
-                            ")"
-                        },
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            _vm.chooseImage(
-                              _vm.origin + _vm.image_path + image.name
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "c-btn c-btn--rounded c-btn--danger",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.removeImage(image.id)
-                            }
-                          }
-                        },
-                        [_vm._v("×")]
-                      )
+                _vm.images == 0
+                  ? _c("div", { staticClass: "text-center" }, [
+                      _c("span", [_vm._v("No files in storage yet!")])
                     ])
-                  })
-                )
+                  : _c(
+                      "b-row",
+                      _vm._l(_vm.images, function(image, index) {
+                        return _c("b-col", { key: index, attrs: { sm: "3" } }, [
+                          _c("button", {
+                            staticClass: "c-btn btn--choose",
+                            style: {
+                              "background-image":
+                                "url(" +
+                                _vm.origin +
+                                _vm.image_path +
+                                image.name +
+                                ")"
+                            },
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.chooseImage(
+                                  _vm.origin + _vm.image_path + image.name
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "c-btn c-btn--rounded c-btn--danger",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.removeImage(image.id)
+                                }
+                              }
+                            },
+                            [_vm._v("×")]
+                          )
+                        ])
+                      })
+                    )
               ],
               1
             ),
