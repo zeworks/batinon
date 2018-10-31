@@ -62,3 +62,9 @@
 .hidden {
     display: none;
 }
+
+@each $color in $colors {
+    .color-#{$color} {
+      color: #{$color};
+    }
+  }

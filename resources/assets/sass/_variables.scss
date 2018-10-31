@@ -11,14 +11,39 @@ $dark        : #181818;
 $dark-light  : #232323;
 $blue-grey   : #37474f;
 
-$primary     : #304ffe;
 $grey        : #616161;
 $grey-light  : #d9d9d9;
 
-$danger      : #d32f2f;
-$success     : #00c853;
-$warning     : #ffc400;
-$info        : #3d5afe;
+$primary: #2962FF;
+$secondary: #e57373;
+$accent: #9c27b0;
+$danger: #f44336;
+$warning: #ffeb3b;
+$info: #2196f3;
+$success: #4caf50;
+
+$colors : (
+    primary: "#2962FF",
+    secondary: "#e57373",
+    accent: "#9c27b0",
+    error: "#f44336",
+    warning: "#ffeb3b",
+    info: "#2196f3",
+    success: "#4caf50"
+);
+/*
+
+{
+  primary: "#2962FF",
+  secondary: "#e57373",
+  accent: "#9c27b0",
+  error: "#f44336",
+  warning: "#ffeb3b",
+  info: "#2196f3",
+  success: "#4caf50"
+}
+
+*/
 
 // Body
 $bodyColor: $white-light;

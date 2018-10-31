@@ -10477,6 +10477,20 @@ a.text-dark:focus {
 
 /* Variables */
 
+/*
+
+{
+  primary: "#2962FF",
+  secondary: "#e57373",
+  accent: "#9c27b0",
+  error: "#f44336",
+  warning: "#ffeb3b",
+  info: "#2196f3",
+  success: "#4caf50"
+}
+
+*/
+
 /* Variables end */
 
 /* Mixins */
@@ -10538,15 +10552,43 @@ a.text-dark:focus {
 }
 
 .u-tag--success {
-  background-color: #00c853;
+  background-color: #4caf50;
 }
 
 .u-tag--danger {
-  background-color: #d32f2f;
+  background-color: #f44336;
 }
 
 .hidden {
   display: none;
+}
+
+.color-primary #2962FF {
+  color: primary #2962FF;
+}
+
+.color-secondary #e57373 {
+  color: secondary #e57373;
+}
+
+.color-accent #9c27b0 {
+  color: accent #9c27b0;
+}
+
+.color-error #f44336 {
+  color: error #f44336;
+}
+
+.color-warning #ffeb3b {
+  color: warning #ffeb3b;
+}
+
+.color-info #2196f3 {
+  color: info #2196f3;
+}
+
+.color-success #4caf50 {
+  color: success #4caf50;
 }
 
 /* Utilities end */
@@ -10607,12 +10649,12 @@ button:hover {
 }
 
 .c-btn--primary {
-  background-color: #304ffe;
+  background-color: #2962FF;
   color: #fff !important;
 }
 
 .c-btn--primary:hover {
-  background-color: rgba(48, 79, 254, 0.85);
+  background-color: rgba(41, 98, 255, 0.85);
 }
 
 .c-btn--default {
@@ -10645,14 +10687,14 @@ button:hover {
   background-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
-  color: #304ffe;
+  color: #2962FF;
 }
 
 .c-btn--text:hover {
-  background-color: rgba(48, 79, 254, 0.1);
+  background-color: rgba(41, 98, 255, 0.1);
   -webkit-box-shadow: none;
           box-shadow: none;
-  color: rgba(48, 79, 254, 0.9);
+  color: rgba(41, 98, 255, 0.9);
 }
 
 .c-btn--padding-0 {
@@ -10670,7 +10712,7 @@ button:hover {
   font-size: 0.875rem;
   text-transform: uppercase;
   display: inline-block;
-  color: #304ffe;
+  color: #2962FF;
   background-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -10692,7 +10734,7 @@ button:hover {
 }
 
 .c-btn--danger {
-  background-color: #d32f2f;
+  background-color: #f44336;
   color: #fff;
 }
 
@@ -10710,12 +10752,12 @@ button:hover {
 
 .c-nav__item-active .c-nav__link {
   text-decoration: none;
-  background-color: rgba(48, 79, 254, 0.3);
-  color: #304ffe;
+  background-color: rgba(41, 98, 255, 0.3);
+  color: #2962FF;
 }
 
 .c-nav__item-active .c-nav__icon {
-  color: #304ffe;
+  color: #2962FF;
 }
 
 .c-nav__link {
@@ -10730,23 +10772,23 @@ button:hover {
 .c-nav__link:hover,
 .c-nav__link:focus {
   text-decoration: none;
-  background-color: rgba(48, 79, 254, 0.3);
-  color: #304ffe;
+  background-color: rgba(41, 98, 255, 0.3);
+  color: #2962FF;
 }
 
 .c-nav__link:hover .c-nav__icon,
 .c-nav__link:focus .c-nav__icon {
-  color: #304ffe;
+  color: #2962FF;
 }
 
 .c-nav__link.is-active {
   text-decoration: none;
-  background-color: rgba(48, 79, 254, 0.3);
-  color: #304ffe;
+  background-color: rgba(41, 98, 255, 0.3);
+  color: #2962FF;
 }
 
 .c-nav__link.is-active .c-nav__icon {
-  color: #304ffe;
+  color: #2962FF;
 }
 
 .c-nav__icon {
@@ -10980,14 +11022,14 @@ button:hover {
 }
 
 .c-form__input:checked ~ .c-form__checkbox-indicator {
-  background-color: rgba(48, 79, 254, 0.4);
+  background-color: rgba(41, 98, 255, 0.4);
   background-image: none;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
 }
 
 .c-form__input:checked ~ .c-form__checkbox-indicator:after {
-  background-color: #304ffe;
+  background-color: #2962FF;
   left: 25px;
 }
 
@@ -11268,7 +11310,7 @@ main {
 }
 
 a:not(.c-btn):hover {
-  color: #304ffe;
+  color: #2962FF;
 }
 
 a {
@@ -11277,7 +11319,7 @@ a {
   font-size: 0.875rem;
   text-transform: uppercase;
   display: inline-block;
-  color: #304ffe;
+  color: #2962FF;
 }
 
 a:hover {
