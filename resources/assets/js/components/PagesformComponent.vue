@@ -1,6 +1,7 @@
 <template>
     <form @submit.prevent="saveData" :id="id">
         <b-container fluid>
+            <a href="/admin/pages" class="c-btn c-btn--default u-icon-before u-margin-bottom-s"><i class="fas fa-chevron-left"></i>return</a>
             <b-row>
                 <b-col sm="9">
                     <div class="c-card">

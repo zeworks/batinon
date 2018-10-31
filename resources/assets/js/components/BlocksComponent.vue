@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="c-card">
-            <div class="c-card__header">
+            <div class="c-card__header" v-if="title">
                 <span class="f-subtitle">{{title}}</span>
             </div>
             <div class="c-card__body">
@@ -118,7 +118,7 @@
                             swal('Error!', 'File not saved, file too large [2MB Max]', 'error');
                         }
                     }).catch(function () {
-                        swal('Error!', 'File not sent', 'error');
+                        swal('Error!', 'File not sent, file too large [2MB Max]', 'error');
                     });
             },
             // remove image
@@ -138,7 +138,7 @@
                             .then(response => {
                                 // success alert
                                 swal('Success!', 'File Deleted', 'success');
-                                this.fetchImages();
+                                this.fetchBlockImages();
                             })
                     } else {
                         swal.close();

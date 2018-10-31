@@ -1,118 +1,104 @@
 <template>
     <div>
-        <div class="box box-default">
-            <div class="box-body">
-                <div class="table-responsive">
-                    <table class="table no-margin">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Blog Title</th>
-                                <th>Blog Slug</th>
-                                <th>Status</th>
-                                <th>Date</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody v-if="blogs[0] != null">
-                            <tr v-for="(blog,index) in blogs" :key="index">
-                                <td>
-                                    #{{blog.id}}
-                                </td>
-                                <td><a :href="('./blog/edit/'+blog.id)">{{blog.b_title}}</a></td>
-                                <td>{{blog.slug}}</td>
-                                <td>
-                                    <span class="label" :class="{'label-success' : blog.status == '1', 'label-danger' : blog.status == '0'}">
-                                        <span v-if="blog.status == 1">
-                                            Active
-                                        </span>
-                                        <span v-if="blog.status == 0">
-                                            Inactive
-                                        </span>
+        <div class="c-card">
+            <div class="c-card__body">
+                <table class="c-table no-margin">
+                    <thead class="c-table__header">
+                        <tr>
+                            <th>ID</th>
+                            <th>Blog Title</th>
+                            <th>Blog Slug</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody v-if="blogs[0] != null">
+                        <tr class="c-table__row" v-for="(blog,index) in blogs" :key="index">
+                            <td>
+                                #{{blog.id}}
+                            </td>
+                            <td><a :href="('./blog/edit/'+blog.id)">{{blog.b_title}}</a></td>
+                            <td>{{blog.slug}}</td>
+                            <td>
+                                <div class="u-tag" :class="{'u-tag--success' : blog.status == '1', 'u-tag--danger' : blog.status == '0'}">
+                                    <span v-if="blog.status == 1">
+                                        Active
                                     </span>
-                                </td>
-                                <td>{{blog.created_at}}</td>
-                                <td>
-                                    <div class="pull-right">
-                                        <a :href="('./blog/edit/'+blog.id)" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                        <button class="btn btn-danger" @click="openModalDelete(blog.id)"><i class="fa fa-trash-o"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tbody v-else>
-                            <tr>
-                                <td colspan="5">
-                                    <div class="text-center">
-                                        <small>You have no blogs created yet!</small>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                                    <span v-if="blog.status == 0">
+                                        Inactive
+                                    </span>
+                                </div>
+                            </td>
+                            <td>{{blog.created_at}}</td>
+                            <td>
+                                <div class="pull-right">
+                                    <a :href="('./blog/edit/'+blog.id)" class="c-btn c-btn--primary c-btn--small">Edit</a>
+                                    <button class="c-btn c-btn--link" @click="remove(blog.id)">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody v-else>
+                        <tr>
+                            <td colspan="5">
+                                <div class="text-center">
+                                    <small>You have no blogs created yet!</small>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="box-footer clearfix">
-                <a :href="('./blog/new')" class="btn btn-sm btn-success btn-flat pull-right">Create New</a>
+            <div class="c-card__footer clearfix">
+                <a :href="('./blog/new')" class="c-btn c-btn--primary float-right">Create New</a>
             </div>
         </div>
-        <!-- modal remove Blog -->
-        <modal v-if="showModalRemove" :removeid="removeId">
-            <h3 slot="header">Delete blog</h3>
-            <div slot="body" class="text-center">
-                <h3>Do you really want to delete this blog post?</h3>
-            </div>
-            <div slot="footer">
-                <div class="clearfix"></div>
-                <div class="pull-right">
-                    <button @click="removeBlog" class="btn btn-success">Yes</button>
-                    <button @click="showModalRemove = false" class="btn btn-default">No</button>
-                </div>
-            </div>
-        </modal>
-        <!-- \modal remove Blog -->
     </div>
 </template>
 
 <script>
     import axios from 'axios';
-    import modal from './ModalComponent.vue';
 
     export default {
-        data(){
+        data() {
             return {
-                blogs:[],
-                removeId: 0,
-                showModalRemove: false,
+                blogs: [],
             }
         },
-        components:{
-            modal
-        },
-        created(){
+        created() {
             this.fetchBlogs();
         },
-        methods:{
-            fetchBlogs(){
-                 axios.get('/api/blogs')
-                .then( response => response.data)
-                .then( data => {
-                    this.blogs = data;
-                });
+        methods: {
+            fetchBlogs() {
+                axios.get('/api/blogs')
+                    .then(response => response.data)
+                    .then(data => {
+                        this.blogs = data;
+                    });
             },
-            openModalDelete(id){
-                // hide remove modal
-                this.showModalRemove = true;
-                this.removeId = id;
-            },
-            removeBlog(){
-                axios.post('/api/blogs/delete',{data: this.removeId})
-                .then( response => {
-                    // success alert
-                    swal('Success!','Blog post Deleted','success');
-                    this.fetchBlogs();
-                    this.showModalRemove = false;
-                })
+            remove(id) {
+                swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover this item!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            axios.post('/api/blogs/delete', {
+                                    data: id
+                                })
+                                .then(response => {
+                                    // success alert
+                                    swal('Success!', 'Blog post Deleted', 'success');
+                                    this.fetchBlogs();
+                                })
+                        } else {
+                            swal.close();
+                        }
+                    });
             },
         }
     }

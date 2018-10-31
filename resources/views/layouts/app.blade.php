@@ -25,11 +25,18 @@
     <div id="app">
         @auth
         <header-component username="{{ Auth::user()->name }}" useremail="{{ Auth::user()->email }}" logout="{{ route('logout') }}"></header-component>
-        <nav-component username="{{ Auth::user()->name }}"></nav-component>
+        <nav-component username="{{ Auth::user()->name }}" useremail="{{ Auth::user()->email }}"></nav-component>
         @endauth
         <main>
             @yield('content')
         </main>
+        <footer class="clearfix">
+            <div class="container-fluid">
+                <div class="float-right">
+                    made by <a href="#">batinon</a>&copy; <?= date('Y') ?>
+                </div>
+            </div>
+        </footer>
     </div>
 
 

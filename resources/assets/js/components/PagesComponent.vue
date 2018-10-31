@@ -24,14 +24,14 @@
                                         <td><a :href="('./pages/edit/'+page.id)">{{page.title}}</a></td>
                                         <td>{{page.slug}}</td>
                                         <td>
-                                            <span class="u-tag" :class="{'u-tag--success' : page.status == '1', 'u-tag--danger' : page.status == '0'}">
+                                            <div class="u-tag" :class="{'u-tag--success' : page.status == '1', 'u-tag--danger' : page.status == '0'}">
                                                 <span v-if="page.status == 1">
                                                     Active
                                                 </span>
                                                 <span v-if="page.status == 0">
                                                     Inactive
                                                 </span>
-                                            </span>
+                                            </div>
                                         </td>
                                         <td>{{page.created_at}}</td>
                                         <td>

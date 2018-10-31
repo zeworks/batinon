@@ -99,7 +99,7 @@
                             swal('Error!', 'File not saved, file too large [2MB Max]', 'error');
                         }
                     }).catch(function () {
-                        swal('Error!', 'File not sent', 'error');
+                        swal('Error!', 'File not sent, file too large [2MB Max]', 'error');
                     });
             },
             // remove image

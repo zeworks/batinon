@@ -1,22 +1,26 @@
 <template>
-    <div>
-        <form @submit.prevent="saveData" :id="id" class="row">
-            <div class="col-sm-9">
-                <blocksComponent :item="blog"/>
-            </div>
-            <div class="col-sm-3">
-                <div class="box box-default">
-                    <statusComponent :item="blog"/>
-                    <hr>
-                    <featuredImageComponent :item="blog"/>
-                    <submitComponent :id="id"/>
-                </div>
-            </div>
-        </form>
-    </div>
+    <form @submit.prevent="saveData" :id="id">
+        <b-container fluid>
+            <a href="/admin/blog" class="c-btn c-btn--default u-icon-before u-margin-bottom-s"><i class="fas fa-chevron-left"></i>return</a>
+            <b-row>
+                <b-col sm="9">
+                    <blocksComponent :item="blog" />
+                </b-col>
+                <b-col sm="3">
+                    <div class="c-card">
+                        <statusComponent :item="blog" />
+                        <hr>
+                        <featuredImageComponent :item="blog" />
+                        <submitComponent :id="id" />
+                    </div>
+                </b-col>
+            </b-row>
+        </b-container>
+    </form>
 </template>
 
 <script>
+    import axios from 'axios';
     import blocksComponent from './BlocksComponent.vue';
     import submitComponent from './SubmitComponent.vue';
     import statusComponent from './StatusComponent.vue';
@@ -24,7 +28,7 @@
 
     export default {
         props: ['id'],
-        components:{
+        components: {
             blocksComponent,
             submitComponent,
             statusComponent,
@@ -32,75 +36,73 @@
         },
         data() {
             return {
-                blog : [
-                    {
-                        status           : false,
-                        slug             : '',
-                        b_title             : '', 
-                        b_summary          : '',
-                        b_description      : '',
-                        b_image            : '',
-                        image            : '',
-                    }
-                ],
+                blog: [{
+                    status: false,
+                    slug: '',
+                    b_title: '',
+                    b_summary: '',
+                    b_description: '',
+                    b_image: '',
+                    image: '',
+                }],
             }
         },
-        created(){
-            if(this.id){
+        created() {
+            if (this.id) {
                 this.fetchBlogs();
             }
         },
         methods: {
-            fetchBlogs(){
-                axios.get('/api/blogs/edit/'+this.id)
-                .then(response => response.data)
-                .then( data => {
-                    this.blog = data[0];
-                });
+            fetchBlogs() {
+                axios.get('/api/blogs/edit/' + this.id)
+                    .then(response => response.data)
+                    .then(data => {
+                        this.blog = data[0];
+                    });
             },
-            saveData(){
-                if(this.id > 0){
-                    axios.post('/api/blogs/edit/'+this.id,{
-                        id               : this.id,
-                        status           : this.blog.status,
-                        slug             : this.sanitizeTitle(this.blog.b_title),
-                        b_title          : this.blog.b_title,
-                        b_summary        : this.blog.b_summary,
-                        b_description    : this.blog.b_description,
-                        b_image          : this.blog.b_image,
-                        image            : this.blog.image,
-                    })
-                    .then(response => {
-                        if(response.data.success)
-                            swal('Sucesso!','Blog saved','success');
-                        else
-                            swal('Erro!','Blog not saved','error');
-                    });
-                }else{
-                    axios.post('/api/blogs/add',{
-                        status           : this.blog.status,
-                        slug             : this.sanitizeTitle(this.blog.b_title),
-                        b_title          : this.blog.b_title,
-                        b_summary        : this.blog.b_summary,
-                        b_description    : this.blog.b_description,
-                        b_image          : this.blog.b_image,
-                        image            : this.blog.image,
-                    })
-                    .then(response => {
-                        if(response.data.success)
-                            swal('Sucesso!','Blog saved','success');
-                        else
-                            swal('Erro!','Blog not saved','error');
-                    })
-                    .catch(error => {
-                        swal('Erro!','Please fill all the required fields.','error');
-                    });
+            saveData() {
+                if (this.id > 0) {
+                    axios.post('/api/blogs/edit/' + this.id, {
+                            id: this.id,
+                            status: this.blog.status,
+                            slug: this.sanitizeTitle(this.blog.b_title),
+                            b_title: this.blog.b_title,
+                            b_summary: this.blog.b_summary,
+                            b_description: this.blog.b_description,
+                            b_image: this.blog.b_image,
+                            image: this.blog.image,
+                        })
+                        .then(response => {
+                            if (response.data.success)
+                                swal('Sucesso!', 'Blog saved', 'success');
+                            else
+                                swal('Erro!', 'Blog not saved', 'error');
+                        });
+                } else {
+                    axios.post('/api/blogs/add', {
+                            status: this.blog.status,
+                            slug: this.sanitizeTitle(this.blog.b_title),
+                            b_title: this.blog.b_title,
+                            b_summary: this.blog.b_summary,
+                            b_description: this.blog.b_description,
+                            b_image: this.blog.b_image,
+                            image: this.blog.image,
+                        })
+                        .then(response => {
+                            if (response.data.success)
+                                swal('Sucesso!', 'Blog saved', 'success');
+                            else
+                                swal('Erro!', 'Blog not saved', 'error');
+                        })
+                        .catch(error => {
+                            swal('Erro!', 'Please fill all the required fields.', 'error');
+                        });
                 }
             },
             sanitizeTitle(title) {
                 var slug = "";
                 // Change to lower case
-                if(title){
+                if (title) {
                     var titleLower = title.toLowerCase();
                     // Letter "e"
                     slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e');
@@ -116,13 +118,12 @@
                     slug = slug.replace(/\s*$/g, '');
                     // Change whitespace to "-"
                     slug = slug.replace(/\s+/g, '-');
-                    
+
                     this.blog.slug = slug;
-                    
+
                     return (slug != '' ? slug : '')
                 }
             }
         }
     }
 </script>
-

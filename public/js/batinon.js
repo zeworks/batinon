@@ -13,6 +13,8 @@ $(document).ready(function () {
 
 function onInit() {
     $("body").addClass("body-loaded");
+
+    $('main').css({ 'min-height' : $(window).outerHeight() - ($('header').outerHeight() + $('footer').outerHeight()) });
 }
 
 function tabSystem() {

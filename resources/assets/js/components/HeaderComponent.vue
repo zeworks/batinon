@@ -8,10 +8,14 @@
                 </b-col>
                 <b-col sm="6">
                     <div class="c-profile c-profile--header float-right">
+                        <!-- notification -->
+                        <button class="c-btn c-btn--outline"><i class="fas fa-bell"></i></button>
+                        <!-- profile -->
                         <button class="c-profile__btn" @click="openProfileCard">
                             <img class="c-profile__img" :src="userImage" alt="profile image">
                             <i class="fas fa-ellipsis-v c-profile__btn-icon"></i>
                         </button>
+                        <!-- profile card -->
                         <div class="c-profile__card" :class="{ 'c-profile__card-active' : isActive}">
                             <div class="c-profile__item c-profile__item--disabled">
                                 <strong class="c-profile__item-title">{{username}}</strong>
@@ -28,13 +32,6 @@
                             </div>
                         </div>
                     </div>
-                    <form action="" method="GET">
-                        <div class="c-form c-form--search c-form--group c-form--group-right float-right">
-                            <button class="c-btn c-btn--text c-form__btn"><i class="fas fa-search"></i></button>
-                            <input type="input" placeholder="Search" name="q" class="c-form__input c-form__input-icon">
-                        </div>
-                    </form>
-
                 </b-col>
             </b-row>
         </b-container>

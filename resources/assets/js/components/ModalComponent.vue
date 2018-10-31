@@ -74,9 +74,8 @@
         margin: 0px auto;
         background-color: #fff;
         border-radius: 4px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+        box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.23);
         transition: all .3s ease;
-        font-family: Helvetica, Arial, sans-serif;
         width: 100%;
         overflow: hidden;
     }
@@ -100,19 +99,5 @@
         max-height: 600px;
         overflow-y: auto;
         display: block;
-    }
-
-    .modal-enter {
-        opacity: 0;
-    }
-
-    .modal-leave-active {
-        opacity: 0;
-    }
-
-    .modal-enter .modal-container,
-    .modal-leave-active .modal-container {
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
     }
 </style>

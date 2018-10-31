@@ -6,10 +6,16 @@
                 {{ username }}
             </span>
             <span class="c-profile__email">
-                email@email.pt
+                {{ useremail }}
             </span>
         </div>
         <hr>
+        <form action="" method="GET" class="clearfix">
+            <div class="c-form c-form--search c-form--group c-form--group-right float-right">
+                <button class="c-btn c-btn--text c-form__btn"><i class="fas fa-search"></i></button>
+                <input type="input" placeholder="Search" name="q" class="c-form__input c-form__input-icon">
+            </div>
+        </form>
         <nav class="c-nav">
             <ul class="u-margin-0 u-padding-0 u-unlist">
                 <li class="c-nav__item" :class="activeMenu('home')">
@@ -18,7 +24,7 @@
                 <li class="c-nav__item" :class="activeMenu('pages')">
                     <a href="/admin/pages" class="c-nav__link u-icon-before"><i class="fas fa-file c-nav__icon"></i>Pages</a>
                 </li>
-                <li class="c-nav__item"  :class="activeMenu('blog')">
+                <li class="c-nav__item" :class="activeMenu('blog')">
                     <a href="/admin/blog" class="c-nav__link u-icon-before"><i class="fab fa-blogger-b c-nav__icon"></i>Blog</a>
                 </li>
             </ul>
@@ -28,7 +34,7 @@
 
 <script>
     export default {
-        props: ['username'],
+        props: ['username', 'useremail'],
         data() {
             return {
                 userImage: '/user.png',

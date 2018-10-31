@@ -32835,9 +32835,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['username'],
+    props: ['username', 'useremail'],
     data: function data() {
         return {
             userImage: '/user.png',
@@ -32884,36 +32890,66 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("span", { staticClass: "c-profile__email" }, [
-        _vm._v("\n            email@email.pt\n        ")
+        _vm._v("\n            " + _vm._s(_vm.useremail) + "\n        ")
       ])
     ]),
     _vm._v(" "),
     _c("hr"),
+    _vm._v(" "),
+    _vm._m(0),
     _vm._v(" "),
     _c("nav", { staticClass: "c-nav" }, [
       _c("ul", { staticClass: "u-margin-0 u-padding-0 u-unlist" }, [
         _c(
           "li",
           { staticClass: "c-nav__item", class: _vm.activeMenu("home") },
-          [_vm._m(0)]
-        ),
-        _vm._v(" "),
-        _c(
-          "li",
-          { staticClass: "c-nav__item", class: _vm.activeMenu("pages") },
           [_vm._m(1)]
         ),
         _vm._v(" "),
         _c(
           "li",
-          { staticClass: "c-nav__item", class: _vm.activeMenu("blog") },
+          { staticClass: "c-nav__item", class: _vm.activeMenu("pages") },
           [_vm._m(2)]
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "c-nav__item", class: _vm.activeMenu("blog") },
+          [_vm._m(3)]
         )
       ])
     ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "form",
+      { staticClass: "clearfix", attrs: { action: "", method: "GET" } },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "c-form c-form--search c-form--group c-form--group-right float-right"
+          },
+          [
+            _c("button", { staticClass: "c-btn c-btn--text c-form__btn" }, [
+              _c("i", { staticClass: "fas fa-search" })
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "c-form__input c-form__input-icon",
+              attrs: { type: "input", placeholder: "Search", name: "q" }
+            })
+          ]
+        )
+      ]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -33052,7 +33088,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -33063,9 +33099,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
 //
 //
 //
@@ -33167,6 +33200,10 @@ var render = function() {
                   "div",
                   { staticClass: "c-profile c-profile--header float-right" },
                   [
+                    _c("button", { staticClass: "c-btn c-btn--outline" }, [
+                      _c("i", { staticClass: "fas fa-bell" })
+                    ]),
+                    _vm._v(" "),
                     _c(
                       "button",
                       {
@@ -33248,33 +33285,7 @@ var render = function() {
                       ]
                     )
                   ]
-                ),
-                _vm._v(" "),
-                _c("form", { attrs: { action: "", method: "GET" } }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "c-form c-form--search c-form--group c-form--group-right float-right"
-                    },
-                    [
-                      _c(
-                        "button",
-                        { staticClass: "c-btn c-btn--text c-form__btn" },
-                        [_c("i", { staticClass: "fas fa-search" })]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "c-form__input c-form__input-icon",
-                        attrs: {
-                          type: "input",
-                          placeholder: "Search",
-                          name: "q"
-                        }
-                      })
-                    ]
-                  )
-                ])
+                )
               ])
             ],
             1
@@ -34519,7 +34530,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-mask {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container {\n    max-width: 1000px;\n    margin: 0px auto;\n    background-color: #fff;\n    border-radius: 4px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n    width: 100%;\n    overflow: hidden;\n}\n@media (max-width: 768px) {\n.modal-container {\n        min-width: 100%;\n}\n}\n.modal-header * {\n    margin-top: 0;\n    color: #333;\n    font-size: 21px;\n    text-transform: uppercase;\n    font-weight: 700;\n}\n.modal-body {\n    margin: 20px 0;\n    max-height: 600px;\n    overflow-y: auto;\n    display: block;\n}\n.modal-enter {\n    opacity: 0;\n}\n.modal-leave-active {\n    opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n", ""]);
+exports.push([module.i, "\n.modal-mask {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container {\n    max-width: 1000px;\n    margin: 0px auto;\n    background-color: #fff;\n    border-radius: 4px;\n    -webkit-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.23);\n            box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.23);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    width: 100%;\n    overflow: hidden;\n}\n@media (max-width: 768px) {\n.modal-container {\n        min-width: 100%;\n}\n}\n.modal-header * {\n    margin-top: 0;\n    color: #333;\n    font-size: 21px;\n    text-transform: uppercase;\n    font-weight: 700;\n}\n.modal-body {\n    margin: 20px 0;\n    max-height: 600px;\n    overflow-y: auto;\n    display: block;\n}\n", ""]);
 
 // exports
 
@@ -34692,7 +34703,7 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("td", [
                                     _c(
-                                      "span",
+                                      "div",
                                       {
                                         staticClass: "u-tag",
                                         class: {
@@ -34864,6 +34875,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__StatusComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__StatusComponent_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__FeaturedImageComponent_vue__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__FeaturedImageComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__FeaturedImageComponent_vue__);
+//
 //
 //
 //
@@ -35190,7 +35202,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     swal('Error!', 'File not saved, file too large [2MB Max]', 'error');
                 }
             }).catch(function () {
-                swal('Error!', 'File not sent', 'error');
+                swal('Error!', 'File not sent, file too large [2MB Max]', 'error');
             });
         },
 
@@ -35211,7 +35223,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }).then(function (response) {
                         // success alert
                         swal('Success!', 'File Deleted', 'success');
-                        _this3.fetchImages();
+                        _this3.fetchBlockImages();
                     });
                 } else {
                     swal.close();
@@ -35233,9 +35245,13 @@ var render = function() {
     "div",
     [
       _c("div", { staticClass: "c-card" }, [
-        _c("div", { staticClass: "c-card__header" }, [
-          _c("span", { staticClass: "f-subtitle" }, [_vm._v(_vm._s(_vm.title))])
-        ]),
+        _vm.title
+          ? _c("div", { staticClass: "c-card__header" }, [
+              _c("span", { staticClass: "f-subtitle" }, [
+                _vm._v(_vm._s(_vm.title))
+              ])
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _c("div", { staticClass: "c-card__body" }, [
           _c("div", { staticClass: "c-form" }, [
@@ -35835,7 +35851,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     swal('Error!', 'File not saved, file too large [2MB Max]', 'error');
                 }
             }).catch(function () {
-                swal('Error!', 'File not sent', 'error');
+                swal('Error!', 'File not sent, file too large [2MB Max]', 'error');
             });
         },
 
@@ -36054,6 +36070,16 @@ var render = function() {
         "b-container",
         { attrs: { fluid: "" } },
         [
+          _c(
+            "a",
+            {
+              staticClass:
+                "c-btn c-btn--default u-icon-before u-margin-bottom-s",
+              attrs: { href: "/admin/pages" }
+            },
+            [_c("i", { staticClass: "fas fa-chevron-left" }), _vm._v("return")]
+          ),
+          _vm._v(" "),
           _c(
             "b-row",
             [
@@ -36886,8 +36912,6 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue__);
 //
 //
 //
@@ -36947,38 +36971,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            blogs: [],
-            removeId: 0,
-            showModalRemove: false
+            blogs: []
         };
-    },
-
-    components: {
-        modal: __WEBPACK_IMPORTED_MODULE_1__ModalComponent_vue___default.a
     },
     created: function created() {
         this.fetchBlogs();
@@ -36994,19 +36994,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.blogs = data;
             });
         },
-        openModalDelete: function openModalDelete(id) {
-            // hide remove modal
-            this.showModalRemove = true;
-            this.removeId = id;
-        },
-        removeBlog: function removeBlog() {
+        remove: function remove(id) {
             var _this2 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/blogs/delete', { data: this.removeId }).then(function (response) {
-                // success alert
-                swal('Success!', 'Blog post Deleted', 'success');
-                _this2.fetchBlogs();
-                _this2.showModalRemove = false;
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this item!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            }).then(function (willDelete) {
+                if (willDelete) {
+                    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/blogs/delete', {
+                        data: id
+                    }).then(function (response) {
+                        // success alert
+                        swal('Success!', 'Blog post Deleted', 'success');
+                        _this2.fetchBlogs();
+                    });
+                } else {
+                    swal.close();
+                }
             });
         }
     }
@@ -37020,174 +37028,116 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "box box-default" }, [
-        _c("div", { staticClass: "box-body" }, [
-          _c("div", { staticClass: "table-responsive" }, [
-            _c("table", { staticClass: "table no-margin" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _vm.blogs[0] != null
-                ? _c(
-                    "tbody",
-                    _vm._l(_vm.blogs, function(blog, index) {
-                      return _c("tr", { key: index }, [
-                        _c("td", [
-                          _vm._v(
-                            "\n                                #" +
-                              _vm._s(blog.id) +
-                              "\n                            "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c(
-                            "a",
-                            { attrs: { href: "./blog/edit/" + blog.id } },
-                            [_vm._v(_vm._s(blog.b_title))]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(blog.slug))]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c(
-                            "span",
-                            {
-                              staticClass: "label",
-                              class: {
-                                "label-success": blog.status == "1",
-                                "label-danger": blog.status == "0"
-                              }
-                            },
-                            [
-                              blog.status == 1
-                                ? _c("span", [
-                                    _vm._v(
-                                      "\n                                        Active\n                                    "
-                                    )
-                                  ])
-                                : _vm._e(),
-                              _vm._v(" "),
-                              blog.status == 0
-                                ? _c("span", [
-                                    _vm._v(
-                                      "\n                                        Inactive\n                                    "
-                                    )
-                                  ])
-                                : _vm._e()
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(blog.created_at))]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c("div", { staticClass: "pull-right" }, [
-                            _c(
-                              "a",
-                              {
-                                staticClass: "btn btn-warning",
-                                attrs: { href: "./blog/edit/" + blog.id }
-                              },
-                              [_c("i", { staticClass: "fa fa-edit" })]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-danger",
-                                on: {
-                                  click: function($event) {
-                                    _vm.openModalDelete(blog.id)
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fa fa-trash-o" })]
-                            )
-                          ])
-                        ])
+  return _c("div", [
+    _c("div", { staticClass: "c-card" }, [
+      _c("div", { staticClass: "c-card__body" }, [
+        _c("table", { staticClass: "c-table no-margin" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm.blogs[0] != null
+            ? _c(
+                "tbody",
+                _vm._l(_vm.blogs, function(blog, index) {
+                  return _c("tr", { key: index, staticClass: "c-table__row" }, [
+                    _c("td", [
+                      _vm._v(
+                        "\n                            #" +
+                          _vm._s(blog.id) +
+                          "\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("a", { attrs: { href: "./blog/edit/" + blog.id } }, [
+                        _vm._v(_vm._s(blog.b_title))
                       ])
-                    })
-                  )
-                : _c("tbody", [_vm._m(1)])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "box-footer clearfix" }, [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-sm btn-success btn-flat pull-right",
-              attrs: { href: "./blog/new" }
-            },
-            [_vm._v("Create New")]
-          )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(blog.slug))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "u-tag",
+                          class: {
+                            "u-tag--success": blog.status == "1",
+                            "u-tag--danger": blog.status == "0"
+                          }
+                        },
+                        [
+                          blog.status == 1
+                            ? _c("span", [
+                                _vm._v(
+                                  "\n                                    Active\n                                "
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          blog.status == 0
+                            ? _c("span", [
+                                _vm._v(
+                                  "\n                                    Inactive\n                                "
+                                )
+                              ])
+                            : _vm._e()
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(blog.created_at))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "pull-right" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "c-btn c-btn--primary c-btn--small",
+                            attrs: { href: "./blog/edit/" + blog.id }
+                          },
+                          [_vm._v("Edit")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "c-btn c-btn--link",
+                            on: {
+                              click: function($event) {
+                                _vm.remove(blog.id)
+                              }
+                            }
+                          },
+                          [_vm._v("Delete")]
+                        )
+                      ])
+                    ])
+                  ])
+                })
+              )
+            : _c("tbody", [_vm._m(1)])
         ])
       ]),
       _vm._v(" "),
-      _vm.showModalRemove
-        ? _c("modal", { attrs: { removeid: _vm.removeId } }, [
-            _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
-              _vm._v("Delete blog")
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "text-center",
-                attrs: { slot: "body" },
-                slot: "body"
-              },
-              [
-                _c("h3", [
-                  _vm._v("Do you really want to delete this blog post?")
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
-              _c("div", { staticClass: "clearfix" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "pull-right" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-success",
-                    on: { click: _vm.removeBlog }
-                  },
-                  [_vm._v("Yes")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default",
-                    on: {
-                      click: function($event) {
-                        _vm.showModalRemove = false
-                      }
-                    }
-                  },
-                  [_vm._v("No")]
-                )
-              ])
-            ])
-          ])
-        : _vm._e()
-    ],
-    1
-  )
+      _c("div", { staticClass: "c-card__footer clearfix" }, [
+        _c(
+          "a",
+          {
+            staticClass: "c-btn c-btn--primary float-right",
+            attrs: { href: "./blog/new" }
+          },
+          [_vm._v("Create New")]
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
+    return _c("thead", { staticClass: "c-table__header" }, [
       _c("tr", [
         _c("th", [_vm._v("ID")]),
         _vm._v(" "),
@@ -37278,14 +37228,16 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BlocksComponent_vue__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BlocksComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__BlocksComponent_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SubmitComponent_vue__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SubmitComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__SubmitComponent_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__StatusComponent_vue__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__StatusComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__StatusComponent_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FeaturedImageComponent_vue__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FeaturedImageComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__FeaturedImageComponent_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__BlocksComponent_vue__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__BlocksComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__BlocksComponent_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SubmitComponent_vue__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SubmitComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__SubmitComponent_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__StatusComponent_vue__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__StatusComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__StatusComponent_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__FeaturedImageComponent_vue__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__FeaturedImageComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__FeaturedImageComponent_vue__);
 //
 //
 //
@@ -37304,6 +37256,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+
 
 
 
@@ -37313,10 +37269,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id'],
     components: {
-        blocksComponent: __WEBPACK_IMPORTED_MODULE_0__BlocksComponent_vue___default.a,
-        submitComponent: __WEBPACK_IMPORTED_MODULE_1__SubmitComponent_vue___default.a,
-        statusComponent: __WEBPACK_IMPORTED_MODULE_2__StatusComponent_vue___default.a,
-        featuredImageComponent: __WEBPACK_IMPORTED_MODULE_3__FeaturedImageComponent_vue___default.a
+        blocksComponent: __WEBPACK_IMPORTED_MODULE_1__BlocksComponent_vue___default.a,
+        submitComponent: __WEBPACK_IMPORTED_MODULE_2__SubmitComponent_vue___default.a,
+        statusComponent: __WEBPACK_IMPORTED_MODULE_3__StatusComponent_vue___default.a,
+        featuredImageComponent: __WEBPACK_IMPORTED_MODULE_4__FeaturedImageComponent_vue___default.a
     },
     data: function data() {
         return {
@@ -37341,7 +37297,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchBlogs: function fetchBlogs() {
             var _this = this;
 
-            axios.get('/api/blogs/edit/' + this.id).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/blogs/edit/' + this.id).then(function (response) {
                 return response.data;
             }).then(function (data) {
                 _this.blog = data[0];
@@ -37349,7 +37305,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         saveData: function saveData() {
             if (this.id > 0) {
-                axios.post('/api/blogs/edit/' + this.id, {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/blogs/edit/' + this.id, {
                     id: this.id,
                     status: this.blog.status,
                     slug: this.sanitizeTitle(this.blog.b_title),
@@ -37362,7 +37318,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     if (response.data.success) swal('Sucesso!', 'Blog saved', 'success');else swal('Erro!', 'Blog not saved', 'error');
                 });
             } else {
-                axios.post('/api/blogs/add', {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/blogs/add', {
                     status: this.blog.status,
                     slug: this.sanitizeTitle(this.blog.b_title),
                     b_title: this.blog.b_title,
@@ -37413,46 +37369,67 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "form",
-      {
-        staticClass: "row",
-        attrs: { id: _vm.id },
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.saveData($event)
-          }
+  return _c(
+    "form",
+    {
+      attrs: { id: _vm.id },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.saveData($event)
         }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "col-sm-9" },
-          [_c("blocksComponent", { attrs: { item: _vm.blog } })],
-          1
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-3" }, [
+      }
+    },
+    [
+      _c(
+        "b-container",
+        { attrs: { fluid: "" } },
+        [
           _c(
-            "div",
-            { staticClass: "box box-default" },
+            "a",
+            {
+              staticClass:
+                "c-btn c-btn--default u-icon-before u-margin-bottom-s",
+              attrs: { href: "/admin/blog" }
+            },
+            [_c("i", { staticClass: "fas fa-chevron-left" }), _vm._v("return")]
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
             [
-              _c("statusComponent", { attrs: { item: _vm.blog } }),
+              _c(
+                "b-col",
+                { attrs: { sm: "9" } },
+                [_c("blocksComponent", { attrs: { item: _vm.blog } })],
+                1
+              ),
               _vm._v(" "),
-              _c("hr"),
-              _vm._v(" "),
-              _c("featuredImageComponent", { attrs: { item: _vm.blog } }),
-              _vm._v(" "),
-              _c("submitComponent", { attrs: { id: _vm.id } })
+              _c("b-col", { attrs: { sm: "3" } }, [
+                _c(
+                  "div",
+                  { staticClass: "c-card" },
+                  [
+                    _c("statusComponent", { attrs: { item: _vm.blog } }),
+                    _vm._v(" "),
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c("featuredImageComponent", { attrs: { item: _vm.blog } }),
+                    _vm._v(" "),
+                    _c("submitComponent", { attrs: { id: _vm.id } })
+                  ],
+                  1
+                )
+              ])
             ],
             1
           )
-        ])
-      ]
-    )
-  ])
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
