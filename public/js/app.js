@@ -33588,7 +33588,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         remove: function remove(id) {
             var _this2 = this;
 
-            // hide remove modal
             swal({
                 title: "Are you sure?",
                 text: "Once deleted, you will not be able to recover this content!",
@@ -33603,7 +33602,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         // success alert
                         swal('Success!', 'Page Deleted', 'success');
                         _this2.fetchPages();
-                        _this2.showModalRemove = false;
                     });
                 } else {
                     swal.close();
@@ -34699,9 +34697,7 @@ var render = function() {
                                     )
                                   ]),
                                   _vm._v(" "),
-                                  _c("td", { staticClass: "color-secondary" }, [
-                                    _vm._v(_vm._s(page.slug))
-                                  ]),
+                                  _c("td", [_vm._v(_vm._s(page.slug))]),
                                   _vm._v(" "),
                                   _c("td", [
                                     _c(
@@ -36393,23 +36389,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -36425,7 +36404,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             imageToPreview: '',
             showModal: false,
             showModalLibrary: false,
-            showModalRemove: false,
             showModalPreview: false
         };
     },
@@ -36441,7 +36419,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (e.keyCode === 27) {
                 _this.showModal = false;
                 _this.showModalPreview = false;
-                _this.showModalRemove = false;
                 _this.showModalLibrary = false;
             }
         });
@@ -36457,20 +36434,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.files = data;
             });
         },
-        openModalDelete: function openModalDelete(id) {
-            // hide remove modal
-            this.showModalRemove = true;
-
-            this.removeId = id;
-        },
-        removeFile: function removeFile() {
+        removeFile: function removeFile(id) {
             var _this3 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/delete', { data: this.removeId }).then(function (response) {
-                // success alert
-                swal('Success!', 'File Deleted', 'success');
-                _this3.fetchFiles();
-                _this3.showModalRemove = false;
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            }).then(function (willDelete) {
+                if (willDelete) {
+                    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/delete', {
+                        data: id
+                    }).then(function (response) {
+                        // success alert
+                        swal('Success!', 'File Deleted', 'success');
+                        _this3.fetchFiles();
+                    });
+                } else {
+                    swal.close();
+                }
             });
         },
         onImageChange: function onImageChange(e) {
@@ -36516,15 +36500,17 @@ var render = function() {
     [
       _c("div", { staticClass: "box box-default" }, [
         _c("div", { staticClass: "box-body" }, [
-          _c("div", { staticClass: "table-responsive" }, [
-            _c("table", { staticClass: "c-table no-margin" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _vm.files[0] != null
-                ? _c(
-                    "tbody",
-                    _vm._l(_vm.files, function(file, index) {
-                      return _c("tr", { key: index }, [
+          _c("table", { staticClass: "c-table no-margin" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm.files[0] != null
+              ? _c(
+                  "tbody",
+                  _vm._l(_vm.files, function(file, index) {
+                    return _c(
+                      "tr",
+                      { key: index, staticClass: "c-table__row" },
+                      [
                         _c("td", [_vm._v("#" + _vm._s(file.id))]),
                         _vm._v(" "),
                         _c("td", [
@@ -36572,21 +36558,25 @@ var render = function() {
                           _c(
                             "button",
                             {
-                              staticClass: "btn btn-danger pull-right",
+                              staticClass:
+                                "c-btn c-btn--primary float-right u-icon-before",
                               on: {
                                 click: function($event) {
-                                  _vm.openModalDelete(file.id)
+                                  _vm.removeFile(file.id)
                                 }
                               }
                             },
-                            [_c("i", { staticClass: "fa fa-trash-o" })]
+                            [
+                              _c("i", { staticClass: "fas fa-trash" }),
+                              _vm._v(" delete")
+                            ]
                           )
                         ])
-                      ])
-                    })
-                  )
-                : _c("tbody", [_vm._m(1)])
-            ])
+                      ]
+                    )
+                  })
+                )
+              : _c("tbody", [_vm._m(1)])
           ])
         ]),
         _vm._v(" "),
@@ -36743,52 +36733,6 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm.showModalRemove
-        ? _c("modal", { attrs: { removeid: _vm.removeId } }, [
-            _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
-              _vm._v("Delete File")
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "text-center",
-                attrs: { slot: "body" },
-                slot: "body"
-              },
-              [_c("h3", [_vm._v("Do you really want to delete this file?")])]
-            ),
-            _vm._v(" "),
-            _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
-              _c("div", { staticClass: "clearfix" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "pull-right" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-success",
-                    on: { click: _vm.removeFile }
-                  },
-                  [_vm._v("Yes")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default",
-                    on: {
-                      click: function($event) {
-                        _vm.showModalRemove = false
-                      }
-                    }
-                  },
-                  [_vm._v("No")]
-                )
-              ])
-            ])
-          ])
-        : _vm._e(),
-      _vm._v(" "),
       _vm.showModalPreview
         ? _c("modal", [
             _c("div", { attrs: { slot: "body" }, slot: "body" }, [
@@ -36823,7 +36767,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
+    return _c("thead", { staticClass: "c-table__header" }, [
       _c("tr", [
         _c("th", { attrs: { width: "60" } }, [_vm._v("ID")]),
         _vm._v(" "),

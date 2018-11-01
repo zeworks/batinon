@@ -1,18 +1,20 @@
 // Typography
-$font: "Roboto", sans-serif;
-$font-variant: "Raleway", sans-serif;
+$font: "Roboto",
+sans-serif;
+$font-variant: "Raleway",
+sans-serif;
 $fontSizeDefault: 15px;
 $lineHeightDefault: 1.4;
 
 // Colors
-$white       : #fff;
+$white : #fff;
 $white-light : #f2f2f2;
-$dark        : #181818;
-$dark-light  : #232323;
-$blue-grey   : #37474f;
+$dark : #181818;
+$dark-light : #232323;
+$blue-grey : #37474f;
 
-$grey        : #616161;
-$grey-light  : #d9d9d9;
+$grey : #616161;
+$grey-light : #d9d9d9;
 
 $primary: #2962FF;
 $secondary: #e57373;
@@ -23,17 +25,6 @@ $info: #2196f3;
 $success: #4caf50;
 
 $colors : (
-    primary: "#2962FF",
-    secondary: "#e57373",
-    accent: "#9c27b0",
-    error: "#f44336",
-    warning: "#ffeb3b",
-    info: "#2196f3",
-    success: "#4caf50"
-);
-/*
-
-{
   primary: "#2962FF",
   secondary: "#e57373",
   accent: "#9c27b0",
@@ -41,9 +32,7 @@ $colors : (
   warning: "#ffeb3b",
   info: "#2196f3",
   success: "#4caf50"
-}
-
-*/
+);
 
 // Body
 $bodyColor: $white-light;

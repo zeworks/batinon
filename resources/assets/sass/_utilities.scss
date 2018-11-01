@@ -63,8 +63,9 @@
     display: none;
 }
 
-@each $color in $colors {
-    .color-#{$color} {
+// utility color
+@each $name,$color in $colors {
+    .u-color-#{$name} {
       color: #{$color};
     }
-  }
+}

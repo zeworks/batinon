@@ -22,7 +22,7 @@
                                             #{{page.id}}
                                         </td>
                                         <td><a :href="('./pages/edit/'+page.id)">{{page.title}}</a></td>
-                                        <td class="color-secondary">{{page.slug}}</td>
+                                        <td>{{page.slug}}</td>
                                         <td>
                                             <div class="u-tag" :class="{'u-tag--success' : page.status == '1', 'u-tag--danger' : page.status == '0'}">
                                                 <span v-if="page.status == 1">
@@ -89,7 +89,6 @@
                     });
             },
             remove(id) {
-                // hide remove modal
                 swal({
                         title: "Are you sure?",
                         text: "Once deleted, you will not be able to recover this content!",
@@ -106,7 +105,6 @@
                                     // success alert
                                     swal('Success!', 'Page Deleted', 'success');
                                     this.fetchPages();
-                                    this.showModalRemove = false;
                                 })
                         } else {
                             swal.close();

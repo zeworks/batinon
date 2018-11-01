@@ -2,43 +2,41 @@
     <div>
         <div class="box box-default">
             <div class="box-body">
-                <div class="table-responsive">
-                    <!-- files list -->
-                    <table class="c-table no-margin">
-                        <thead>
-                            <tr>
-                                <th width="60">ID</th>
-                                <th width="100"></th>
-                                <th width="200">Date</th>
-                                <th>URL File</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody v-if="files[0] != null">
-                            <tr v-for="(file,index) in files" :key="index">
-                                <td>#{{file.id}}</td>
-                                <td>
-                                    <a href="#" @click="imagePreview(origin+image_path+file.name)" class="image-to-preview" v-if="file.name">
-                                        <img width="50" :src="origin+image_path+file.name" alt="dummy image">
-                                    </a>
-                                </td>
-                                <td>{{file.created_at}}</td>
-                                <td><input type="text" disabled  :value="origin+image_path+file.name" class="form-control"></td>
-                                <td><button class="btn btn-danger pull-right" @click="openModalDelete(file.id)"><i class="fa fa-trash-o"></i></button></td>
-                            </tr>
-                        </tbody>
-                        <tbody v-else>
-                            <tr>
-                                <td colspan="5">
-                                    <div class="text-center">
-                                        <small>You have no files saved yet!</small>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <!-- \files list -->
-                </div>
+                <!-- files list -->
+                <table class="c-table no-margin">
+                    <thead class="c-table__header">
+                        <tr>
+                            <th width="60">ID</th>
+                            <th width="100"></th>
+                            <th width="200">Date</th>
+                            <th>URL File</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody v-if="files[0] != null">
+                        <tr class="c-table__row" v-for="(file,index) in files" :key="index">
+                            <td>#{{file.id}}</td>
+                            <td>
+                                <a href="#" @click="imagePreview(origin+image_path+file.name)" class="image-to-preview" v-if="file.name">
+                                    <img width="50" :src="origin+image_path+file.name" alt="dummy image">
+                                </a>
+                            </td>
+                            <td>{{file.created_at}}</td>
+                            <td><input type="text" disabled  :value="origin+image_path+file.name" class="form-control"></td>
+                            <td><button class="c-btn c-btn--primary float-right u-icon-before" @click="removeFile(file.id)"><i class="fas fa-trash"></i> delete</button></td>
+                        </tr>
+                    </tbody>
+                    <tbody v-else>
+                        <tr>
+                            <td colspan="5">
+                                <div class="text-center">
+                                    <small>You have no files saved yet!</small>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- \files list -->
             </div>
             <div class="box-footer clearfix">
                 <div class="pull-right">
@@ -86,21 +84,6 @@
             </div>
         </modal>
         <!-- \modal library file -->
-        <!-- modal remove file -->
-        <modal v-if="showModalRemove" :removeid="removeId">
-            <h3 slot="header">Delete File</h3>
-            <div slot="body" class="text-center">
-                <h3>Do you really want to delete this file?</h3>
-            </div>
-            <div slot="footer">
-                <div class="clearfix"></div>
-                <div class="pull-right">
-                    <button @click="removeFile" class="btn btn-success">Yes</button>
-                    <button @click="showModalRemove = false" class="btn btn-default">No</button>
-                </div>
-            </div>
-        </modal>
-        <!-- \modal remove file -->
         <!-- modal preview image -->
         <modal v-if="showModalPreview">
             <div slot="body">
@@ -129,7 +112,6 @@
                 imageToPreview   : '',
                 showModal        : false,
                 showModalLibrary : false,
-                showModalRemove  : false,
                 showModalPreview : false,
             }
         },
@@ -142,7 +124,6 @@
                 if (e.keyCode === 27) {
                     this.showModal = false;
                     this.showModalPreview = false;
-                    this.showModalRemove = false;
                     this.showModalLibrary = false;
                 }
             })
@@ -155,21 +136,28 @@
                     this.files = data;
                 });
             },
-            openModalDelete(id){
-                // hide remove modal
-                this.showModalRemove = true;
-                
-                this.removeId = id;
-                
-            },
-            removeFile(){
-                axios.post('/api/files/delete',{data: this.removeId})
-                .then( response => {
-                    // success alert
-                    swal('Success!','File Deleted','success');
-                    this.fetchFiles();
-                    this.showModalRemove = false;
-                })
+            removeFile(id){
+                swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover this file!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            axios.post('/api/files/delete', {
+                                    data: id
+                                })
+                                .then(response => {
+                                    // success alert
+                                    swal('Success!', 'File Deleted', 'success');
+                                    this.fetchFiles();
+                                })
+                        } else {
+                            swal.close();
+                        }
+                    });
             },
             onImageChange(e) {
                 this.image = document.querySelector('#file_input').files[0];
@@ -179,7 +167,7 @@
 
                 const formData = new FormData();
                 formData.append( 'image', this.image );
-                
+
                 axios.post('/api/files/add', formData)
                 .then(response => {
                     if(response.data.success){
@@ -200,7 +188,3 @@
         }
     }
 </script>
-
-
-
-

@@ -10477,20 +10477,6 @@ a.text-dark:focus {
 
 /* Variables */
 
-/*
-
-{
-  primary: "#2962FF",
-  secondary: "#e57373",
-  accent: "#9c27b0",
-  error: "#f44336",
-  warning: "#ffeb3b",
-  info: "#2196f3",
-  success: "#4caf50"
-}
-
-*/
-
 /* Variables end */
 
 /* Mixins */
@@ -10563,32 +10549,32 @@ a.text-dark:focus {
   display: none;
 }
 
-.color-primary #2962FF {
-  color: primary #2962FF;
+.u-color-primary {
+  color: #2962FF;
 }
 
-.color-secondary #e57373 {
-  color: secondary #e57373;
+.u-color-secondary {
+  color: #e57373;
 }
 
-.color-accent #9c27b0 {
-  color: accent #9c27b0;
+.u-color-accent {
+  color: #9c27b0;
 }
 
-.color-error #f44336 {
-  color: error #f44336;
+.u-color-error {
+  color: #f44336;
 }
 
-.color-warning #ffeb3b {
-  color: warning #ffeb3b;
+.u-color-warning {
+  color: #ffeb3b;
 }
 
-.color-info #2196f3 {
-  color: info #2196f3;
+.u-color-info {
+  color: #2196f3;
 }
 
-.color-success #4caf50 {
-  color: success #4caf50;
+.u-color-success {
+  color: #4caf50;
 }
 
 /* Utilities end */
