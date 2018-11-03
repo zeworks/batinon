@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <div class="box box-default">
-            <div class="box-body">
+    <b-container fluid>
+        <div class="c-card">
+            <div class="c-card__body">
                 <!-- files list -->
                 <table class="c-table no-margin">
                     <thead class="c-table__header">
@@ -23,7 +23,7 @@
                             </td>
                             <td>{{file.created_at}}</td>
                             <td><input type="text" disabled  :value="origin+image_path+file.name" class="form-control"></td>
-                            <td><button class="c-btn c-btn--primary float-right u-icon-before" @click="removeFile(file.id)"><i class="fas fa-trash"></i> delete</button></td>
+                            <td><button class="c-btn c-btn--primary u-icon-before" @click="removeFile(file.id)"><i class="fas fa-trash"></i> delete</button></td>
                         </tr>
                     </tbody>
                     <tbody v-else>
@@ -38,11 +38,11 @@
                 </table>
                 <!-- \files list -->
             </div>
-            <div class="box-footer clearfix">
-                <div class="pull-right">
-                    <button class="btn btn-sm btn-success btn-flat" @click="showModal = true">Send File</button>
+            <div class="c-card__footer clearfix">
+                <div class="float-right">
+                    <button class="c-btn c-btn--text" @click="showModalLibrary = true">Show All</button>
                     &nbsp;
-                    <button class="btn btn-sm btn-default btn-flat" @click="showModalLibrary = true">Show All</button>
+                    <button class="c-btn c-btn--primary" @click="showModal = true">Send File</button>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
         <modal v-if="showModal">
             <h3 slot="header">Send New File</h3>
             <div slot="body">
-                <form @submit.prevent="uploadImage">
+                <!-- <form @submit.prevent="uploadImage">
                     <div class="form-group">
                         <label for="file_input">File input</label>
                         <input type="file" id="file_input" @change="onImageChange" name="file_input">
@@ -62,7 +62,17 @@
                         <button type="submit" class="btn btn-success">Send</button>
                         <button type="button" @click="showModal = false" class="btn btn-default">Cancel</button>
                     </div>
-                </form>
+                </form> -->
+                <div v-if="files==0" class="text-center">
+                    <span>No files in storage yet!</span>
+                </div>
+                <b-row v-else>
+                    <b-col sm="3" v-for="(image,index) in files" :key="index">
+                        <button @click="chooseImage(origin+image_path+image.name)" :style="{ 'background-image': 'url(' + origin+image_path+image.name + ')' }"
+                            type="button" class="c-btn btn--choose"></button>
+                        <button type="button" @click="removeBlockImage(image.id)" class="c-btn c-btn--rounded c-btn--danger">&times;</button>
+                    </b-col>
+                </b-row>
             </div>
         </modal>
         <!-- \modal send file -->
@@ -87,14 +97,14 @@
         <!-- modal preview image -->
         <modal v-if="showModalPreview">
             <div slot="body">
-                <img :src="imageToPreview" class="preview-image u-img-responsive">
+                <img :src="imageToPreview" class="u-img-responsive">
             </div>
             <div slot="footer">
                 <button @click="showModalPreview = false" class="btn btn-default">Close</button>
             </div>
         </modal>
         <!-- \modal preview image -->
-    </div>
+    </b-container>
 </template>
 
 <script>
@@ -188,3 +198,21 @@
         }
     }
 </script>
+
+<style scoped>
+    .btn--choose {
+        width: 210px;
+        height: 210px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .c-btn--rounded {
+        font-size: 28px;
+        position: absolute;
+        top: 10px;
+        right: 30px;
+        z-index: 1;
+    }
+</style>
