@@ -48,9 +48,9 @@
         </div>
         <!-- modal send file -->
         <modal v-if="showModal">
-            <h3 slot="header">Send New File</h3>
+            <h3 class="f-subtitle" slot="header">Send New File</h3>
             <div slot="body">
-                <!-- <form @submit.prevent="uploadImage">
+                <form @submit.prevent="uploadImage">
                     <div class="form-group">
                         <label for="file_input">File input</label>
                         <input type="file" id="file_input" @change="onImageChange" name="file_input">
@@ -58,21 +58,11 @@
                     </div>
                     <hr>
                     <div class="clearfix"></div>
-                    <div class="pull-right">
-                        <button type="submit" class="btn btn-success">Send</button>
-                        <button type="button" @click="showModal = false" class="btn btn-default">Cancel</button>
+                    <div class="float-right">
+                        <button type="submit" class="c-btn c-btn--primary">Send</button>
+                        <button type="button" @click="showModal = false" class="c-btn c-btn--link">Cancel</button>
                     </div>
-                </form> -->
-                <div v-if="files==0" class="text-center">
-                    <span>No files in storage yet!</span>
-                </div>
-                <b-row v-else>
-                    <b-col sm="3" v-for="(image,index) in files" :key="index">
-                        <button @click="chooseImage(origin+image_path+image.name)" :style="{ 'background-image': 'url(' + origin+image_path+image.name + ')' }"
-                            type="button" class="c-btn btn--choose"></button>
-                        <button type="button" @click="removeBlockImage(image.id)" class="c-btn c-btn--rounded c-btn--danger">&times;</button>
-                    </b-col>
-                </b-row>
+                </form>
             </div>
         </modal>
         <!-- \modal send file -->
@@ -80,16 +70,16 @@
         <modal v-if="showModalLibrary">
             <h3 slot="header">Files Libray</h3>
             <div slot="body" class="clearfix">
-                <div v-for="(file,index) in files" :key="index">
-                    <div class="col-sm-4">
-                        <img class="u-img-responsive" :src="origin+image_path+file.name" :alt="file.name">
-                    </div>
-                </div>
+              <b-row>
+                <b-col sm="4" v-for="(file,index) in files" :key="index">
+                  <img class="u-img-responsive" :src="origin+image_path+file.name" :alt="file.name">
+                </b-col>
+              </b-row>
             </div>
             <div slot="footer">
                 <div class="clearfix"></div>
-                <div class="pull-right">
-                    <button @click="showModalLibrary = false" class="btn btn-default">Cancel</button>
+                <div class="float-right">
+                    <button @click="showModalLibrary = false" class="c-btn c-btn--default">Cancel</button>
                 </div>
             </div>
         </modal>

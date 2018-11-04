@@ -31,73 +31,8 @@
 
 <script>
     export default {
-        // props: ['modal'],
-        // computed: {
-        //     modal() {
-        //         var modal = this.modal;
-        //         return false;
-        //     }
-        // },
         data() {
             return {}
-        },
-        mounted() {
-            document.body.addEventListener('keyup', e => {
-                if (e.keyCode === 27) {
-                    this.modal = false;
-                }
-            })
         }
     }
 </script>
-
-<style>
-    .modal-mask {
-        position: fixed;
-        z-index: 9998;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, .5);
-        display: table;
-        transition: opacity .3s ease;
-    }
-
-    .modal-wrapper {
-        display: table-cell;
-        vertical-align: middle;
-    }
-
-    .modal-container {
-        max-width: 1000px;
-        margin: 0px auto;
-        background-color: #fff;
-        border-radius: 4px;
-        box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.23);
-        transition: all .3s ease;
-        width: 100%;
-        overflow: hidden;
-    }
-
-    @media (max-width: 768px) {
-        .modal-container {
-            min-width: 100%;
-        }
-    }
-
-    .modal-header * {
-        margin-top: 0;
-        color: #333;
-        font-size: 21px;
-        text-transform: uppercase;
-        font-weight: 700;
-    }
-
-    .modal-body {
-        margin: 20px 0;
-        max-height: 600px;
-        overflow-y: auto;
-        display: block;
-    }
-</style>

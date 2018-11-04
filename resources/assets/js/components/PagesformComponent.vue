@@ -1,5 +1,6 @@
 <template>
     <form @submit.prevent="saveData" :id="id">
+        <!-- <LoadingComponent /> -->
         <b-container fluid>
             <a href="/admin/pages" class="c-btn c-btn--default u-icon-before u-margin-bottom-s"><i class="fas fa-chevron-left"></i>return</a>
             <b-row>
@@ -45,6 +46,7 @@
     import submitComponent from './SubmitComponent.vue';
     import statusComponent from './StatusComponent.vue';
     import featuredImageComponent from './FeaturedImageComponent.vue';
+    // import LoadingComponent from './LoadingComponent.vue';
 
     export default {
         props: ['id'],
@@ -58,7 +60,8 @@
             blocksComponent,
             submitComponent,
             statusComponent,
-            featuredImageComponent
+            featuredImageComponent,
+            // LoadingComponent
         },
         data() {
             return {

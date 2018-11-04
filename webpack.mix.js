@@ -1,5 +1,7 @@
 let mix = require('laravel-mix');
 
+// mix.browserSync('http://127.0.0.1');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management

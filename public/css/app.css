@@ -10577,6 +10577,77 @@ a.text-dark:focus {
   color: #4caf50;
 }
 
+.u-loading {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 100;
+}
+
+.u-loading__items {
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.u-loading__items > div {
+  position: absolute;
+  border: 4px solid #2962FF;
+  opacity: 1;
+  border-radius: 50%;
+  -webkit-animation: u-loading 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+          animation: u-loading 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.u-loading__items > div:nth-child(2) {
+  -webkit-animation-delay: -0.5s;
+          animation-delay: -0.5s;
+}
+
+@-webkit-keyframes u-loading {
+  0% {
+    top: 28px;
+    left: 28px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  100% {
+    top: -1px;
+    left: -1px;
+    width: 58px;
+    height: 58px;
+    opacity: 0;
+  }
+}
+
+@keyframes u-loading {
+  0% {
+    top: 28px;
+    left: 28px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  100% {
+    top: -1px;
+    left: -1px;
+    width: 58px;
+    height: 58px;
+    opacity: 0;
+  }
+}
+
 /* Utilities end */
 
 /* Components */
@@ -11106,6 +11177,53 @@ button:hover {
 
 .c-table__row > td {
   padding: 10px 5px;
+}
+
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: table;
+  -webkit-transition: opacity .3s ease;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  max-width: 1000px;
+  margin: 0px auto;
+  background-color: #fff;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.23);
+          box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.23);
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .modal-container {
+    min-width: 100%;
+  }
+}
+
+.modal-header * {
+  margin-top: 0;
+}
+
+.modal-body {
+  max-height: 600px;
+  overflow-y: auto;
+  display: block;
 }
 
 /* Components end */
