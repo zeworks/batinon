@@ -81,12 +81,13 @@
         },
         methods: {
             fetchPages() {
-                axios.get('/api/pages')
+                $('.u-loading').show()
+                var req = axios.get('/api/pages')
                     .then(response => response.data)
                     .then(data => {
                         this.pages = data;
-
                     });
+                req.then(response => $('.u-loading').hide());
             },
             remove(id) {
                 swal({

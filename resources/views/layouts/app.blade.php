@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Batinon</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:200,200i,300,300i,400,400i,500,600,700,800,900" qrel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,900" rel="stylesheet">
@@ -39,10 +39,15 @@
         </footer>
     </div>
 
+    <div class="u-loading">
+        <div class="u-loading__items">
+          <div></div>
+          <div></div>
+        </div>
+    </div>
 
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/batinon.js') }}" defer></script>
 
     @yield('script')
 </body>

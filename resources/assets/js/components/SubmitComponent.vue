@@ -16,14 +16,12 @@
     export default {
         props: ['id'],
         data() {
-            return {
-                
-            }
+            return {}
         },
         methods: {
             goBack(){
                  window.history.go(-1);
             }
-        }
+        },
     }
 </script>

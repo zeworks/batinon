@@ -8,13 +8,17 @@ $(document).ready(function () {
 
     headerSystem();
 
+    inputValidation();
+
 });
 
 
 function onInit() {
     $("body").addClass("body-loaded");
 
-    $('main').css({ 'min-height' : $(window).outerHeight() - ($('header').outerHeight() + $('footer').outerHeight()) });
+    $('main').css({
+        'min-height': $(window).outerHeight() - ($('header').outerHeight() + $('footer').outerHeight())
+    });
 }
 
 function tabSystem() {
@@ -38,5 +42,17 @@ function tabSystem() {
 function headerSystem() {
     $('.js-toggle-aside').on('click', function () {
         $('body').toggleClass('is-collapsed');
+    });
+}
+
+function inputValidation() {
+    $("button[type='submit']").prop('disabled', 'disabled');
+
+    $("input").on('change', function () {
+        if ($(this).length) {
+            $("button[type='submit']").prop('disabled', false);
+        } else {
+            $("button[type='submit']").prop('disabled', 'disabled');
+        }
     });
 }

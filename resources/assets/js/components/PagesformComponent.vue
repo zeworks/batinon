@@ -46,7 +46,6 @@
     import submitComponent from './SubmitComponent.vue';
     import statusComponent from './StatusComponent.vue';
     import featuredImageComponent from './FeaturedImageComponent.vue';
-    // import LoadingComponent from './LoadingComponent.vue';
 
     export default {
         props: ['id'],
@@ -61,7 +60,6 @@
             submitComponent,
             statusComponent,
             featuredImageComponent,
-            // LoadingComponent
         },
         data() {
             return {
@@ -83,11 +81,15 @@
         },
         methods: {
             fetchPages() {
-                axios.get('/api/pages/edit/' + this.id)
+                $('.u-loading').show();
+
+                var req = axios.get('/api/pages/edit/' + this.id)
                     .then(response => response.data)
                     .then(data => {
                         this.page = data[0];
                     });
+
+                req.then(response => $('.u-loading').hide());
             },
             saveData() {
                 if (this.id > 0) {

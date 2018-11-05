@@ -27,6 +27,9 @@
                 <li class="c-nav__item" :class="activeMenu('blog')">
                     <a href="/admin/blog" class="c-nav__link u-icon-before"><i class="fab fa-blogger-b c-nav__icon"></i>Blog</a>
                 </li>
+                <li class="c-nav__item" :class="activeMenu('files')">
+                    <a href="/admin/files" class="c-nav__link u-icon-before"><i class="fas fa-file-archive c-nav__icon"></i>Files</a>
+                </li>
             </ul>
         </nav>
     </aside>

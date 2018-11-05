@@ -22,7 +22,7 @@
                                 </a>
                             </td>
                             <td>{{file.created_at}}</td>
-                            <td><input type="text" disabled  :value="origin+image_path+file.name" class="form-control"></td>
+                            <td><input type="text" disabled  :value="origin+image_path+file.name" class="c-form__input"></td>
                             <td><button class="c-btn c-btn--primary u-icon-before" @click="removeFile(file.id)"><i class="fas fa-trash"></i> delete</button></td>
                         </tr>
                     </tbody>
@@ -50,19 +50,18 @@
         <modal v-if="showModal">
             <h3 class="f-subtitle" slot="header">Send New File</h3>
             <div slot="body">
-                <form @submit.prevent="uploadImage">
-                    <div class="form-group">
-                        <label for="file_input">File input</label>
-                        <input type="file" id="file_input" @change="onImageChange" name="file_input">
-                        <p class="help-block">This file will be visible on the <b>files</b> list.</p>
-                    </div>
-                    <hr>
-                    <div class="clearfix"></div>
-                    <div class="float-right">
-                        <button type="submit" class="c-btn c-btn--primary">Send</button>
-                        <button type="button" @click="showModal = false" class="c-btn c-btn--link">Cancel</button>
-                    </div>
-                </form>
+                <div class="form-group">
+                    <label for="file_input">File input</label>
+                    <input type="file" id="file_input" @change="onImageChange" name="file_input">
+                    <p class="c-form__help">This file will be visible on the <b>files</b> list.</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div slot="footer">
+                <div class="float-right">
+                    <button type="submit" @click="uploadImage" class="c-btn c-btn--primary">Send</button>
+                    <button type="button" @click="showModal = false" class="c-btn c-btn--link">Cancel</button>
+                </div>
             </div>
         </modal>
         <!-- \modal send file -->
@@ -90,7 +89,7 @@
                 <img :src="imageToPreview" class="u-img-responsive">
             </div>
             <div slot="footer">
-                <button @click="showModalPreview = false" class="btn btn-default">Close</button>
+                <button @click="showModalPreview = false" class="c-btn c-btn--text">Close</button>
             </div>
         </modal>
         <!-- \modal preview image -->
@@ -120,21 +119,18 @@
         },
         created(){
             this.fetchFiles();
-            document.body.addEventListener('keyup', e => {
-                if (e.keyCode === 27) {
-                    this.showModal = false;
-                    this.showModalPreview = false;
-                    this.showModalLibrary = false;
-                }
-            })
         },
         methods: {
             fetchFiles(){
-                axios.get('/api/files')
+                $('.u-loading').show();
+
+                var req = axios.get('/api/files')
                 .then( response => response.data)
                 .then( data => {
                     this.files = data;
                 });
+
+                req.then(response => $('.u-loading').hide());
             },
             removeFile(id){
                 swal({

@@ -1,4 +1,7 @@
-.modal-mask {
+.modal {
+  $class: 'modal';
+
+  &-mask{
     position: fixed;
     z-index: 9998;
     top: 0;
@@ -6,38 +9,48 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, .5);
-    display: table;
     transition: opacity .3s ease;
-}
+  }
 
-.modal-wrapper {
-    display: table-cell;
-    vertical-align: middle;
-}
+  &-wrapper{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+  }
 
-.modal-container {
-    max-width: 1000px;
+  &-container{
     margin: 0px auto;
     background-color: #fff;
     border-radius: 4px;
     box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.23);
     transition: all .3s ease;
     width: 100%;
+    height: 100%;
     overflow: hidden;
-}
 
-@media (max-width: 768px) {
-    .modal-container {
-        min-width: 100%;
+    @include media(xs){
+      min-width: 100%;
     }
-}
+  }
 
-.modal-header * {
-    margin-top: 0;
-}
+  &-header{
+    height: 55px;
 
-.modal-body {
-    max-height: 600px;
-    overflow-y: auto;
-    display: block;
+    * {
+        margin-top: 0;
+    }
+  }
+
+  &-body {
+      height: calc(100% - (55px + 70px));
+      overflow-y: auto;
+      display: block;
+  }
+
+  &-footer{
+    height: 70px;
+  }
+
 }

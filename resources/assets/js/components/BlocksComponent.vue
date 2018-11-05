@@ -35,13 +35,13 @@
         </div>
         <!-- modal choose block image -->
         <modal v-if="showModalBlockImages">
-            <h3 slot="header">Choose your Block Image</h3>
+            <h3 slot="header" class="f-subtitle">Choose your Block Image</h3>
             <div slot="body">
                 <div v-if="images==0" class="text-center">
                     <span>No files in storage yet!</span>
                 </div>
                 <b-row v-else>
-                    <b-col sm="3" v-for="(image,index) in images" :key="index">
+                    <b-col sm="2" v-for="(image,index) in images" :key="index">
                         <button @click="chooseImage(origin+image_path+image.name)" :style="{ 'background-image': 'url(' + origin+image_path+image.name + ')' }"
                             type="button" class="c-btn btn--choose"></button>
                         <button type="button" @click="removeBlockImage(image.id)" class="c-btn c-btn--rounded c-btn--danger">&times;</button>
@@ -150,7 +150,7 @@
 </script>
 <style scoped>
     .btn--choose {
-        width: 210px;
+        width: 100%;
         height: 210px;
         background-position: center;
         background-size: cover;

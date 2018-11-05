@@ -16,13 +16,13 @@
         </div>
         <!-- modal library image -->
         <modal :modal="showModalFeatured" v-if="showModalFeatured">
-            <div slot="header">Choose your Featured Image</div>
+            <div slot="header" class="f-subtitle">Choose your Featured Image</div>
             <div slot="body" class="clearfix">
                 <div v-if="images==0" class="text-center">
                     <span>No files in storage yet!</span>
                 </div>
                 <b-row v-else>
-                    <b-col sm="3" v-for="(image,index) in images" :key="index">
+                    <b-col sm="2" v-for="(image,index) in images" :key="index">
                         <button @click="chooseImage(origin+image_path+image.name)" :style="{ 'background-image': 'url(' + origin+image_path+image.name + ')' }"
                             type="button" class="c-btn btn--choose"></button>
                         <button type="button" @click="removeImage(image.id)" class="c-btn c-btn--rounded c-btn--danger">&times;</button>
@@ -132,7 +132,7 @@
 
 <style scoped>
     .btn--choose {
-        width: 210px;
+        width: 100%;
         height: 210px;
         background-position: center;
         background-size: cover;

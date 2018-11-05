@@ -6,13 +6,11 @@
 
 
 import Vue from 'vue';
-
-// bootstrap 4
-import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-
 import VueSwal from 'vue-swal';
 import VueEditor from 'vue2-editor';
+import BootstrapVue from 'bootstrap-vue'
+
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 // nav component
 import NavComponent from './components/NavComponent.vue';
@@ -34,6 +32,8 @@ import BlogsformComponent from './components/BlogsFormComponent.vue';
 import NavigationComponent from './components/NavigationComponent.vue';
 
 
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding  components to this application
@@ -42,27 +42,25 @@ import NavigationComponent from './components/NavigationComponent.vue';
 
 Vue.use(VueSwal)
 Vue.use(VueEditor)
-Vue.use(BootstrapVue);
+Vue.use(BootstrapVue)
 
-Vue.mixin({
-  created: function () {
-    var myOption = this.$options.myOption
-    if (myOption) {
-      return (
-        `<div class="u-loading">
-              <div class="u-loading__items">
-                <div></div>
-                <div></div>
-              </div>
-          </div>`
-      )
-    }
-  }
-})
-
+// const mixinLoading = {
+//   template : '#mixinLoading',
+//   data() {
+//     return {
+//       isShowing: false
+//     }
+//   },
+//   methods: {
+//     toggleShow() {
+//       this.isShowing = !this.isShowing;
+//     }
+//   }
+// }
 
 var app = new Vue({
     el: '#app',
+    // mixins: [mixinLoading],
     components: {
         NavComponent,
         HeaderComponent,

@@ -54,11 +54,14 @@
         },
         methods: {
             fetchBlogs() {
-                axios.get('/api/blogs/edit/' + this.id)
+                $('.u-loading').show();
+
+                var req = axios.get('/api/blogs/edit/' + this.id)
                     .then(response => response.data)
                     .then(data => {
                         this.blog = data[0];
                     });
+                req.then(response => $('.u-loading').hide());
             },
             saveData() {
                 if (this.id > 0) {
