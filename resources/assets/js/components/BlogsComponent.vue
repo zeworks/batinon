@@ -33,7 +33,7 @@
                                 </td>
                                 <td>{{blog.created_at}}</td>
                                 <td>
-                                    <div class="pull-right">
+                                    <div class="float-right">
                                         <a :href="('./blog/edit/'+blog.id)" class="c-btn c-btn--primary c-btn--small">Edit</a>
                                         <button class="c-btn c-btn--link" @click="remove(blog.id)">Delete</button>
                                     </div>

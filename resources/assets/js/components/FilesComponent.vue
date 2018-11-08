@@ -23,7 +23,7 @@
                             </td>
                             <td>{{file.created_at}}</td>
                             <td><input type="text" disabled  :value="origin+image_path+file.name" class="c-form__input"></td>
-                            <td><button class="c-btn c-btn--primary u-icon-before" @click="removeFile(file.id)"><i class="fas fa-trash"></i> delete</button></td>
+                            <td><button class="c-btn c-btn--primary" @click="removeFile(file.id)"><i class="fas fa-trash u-icon-before"></i> delete</button></td>
                         </tr>
                     </tbody>
                     <tbody v-else>

@@ -16,6 +16,10 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import NavComponent from './components/NavComponent.vue';
 // header component
 import HeaderComponent from './components/HeaderComponent.vue';
+// breadcrumb component
+import BreadcrumbComponent from './components/BreadcrumbComponent.vue';
+// return component
+import ReturnComponent from './components/BreadcrumbComponent.vue';
 // home dashboard
 import DashboardComponent from './components/DashboardComponent.vue';
 // pages
@@ -64,12 +68,14 @@ var app = new Vue({
     components: {
         NavComponent,
         HeaderComponent,
+        BreadcrumbComponent,
+        ReturnComponent,
         DashboardComponent,
         PagesComponent,
         PagesformComponent,
         FilesComponent,
         BlogsComponent,
         BlogsformComponent,
-        NavigationComponent,
+        NavigationComponent
     },
 });

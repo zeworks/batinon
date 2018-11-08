@@ -24,6 +24,7 @@
 @import 'component.tab';
 @import 'component.table';
 @import 'component.modal';
+@import 'component.breadcrumb';
 /* Components end */
 
 /* Fonts */
@@ -104,6 +105,7 @@ a {
 
     &:hover {
         text-decoration: none !important;
+        color: $info;
     }
 }
 

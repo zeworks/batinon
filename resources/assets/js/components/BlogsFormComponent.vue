@@ -1,7 +1,7 @@
 <template>
     <form @submit.prevent="saveData" :id="id">
         <b-container fluid>
-            <a href="/admin/blog" class="c-btn c-btn--default u-icon-before u-margin-bottom-s"><i class="fas fa-chevron-left"></i>return</a>
+            <returnComponent />
             <b-row>
                 <b-col sm="9">
                     <blocksComponent :item="blog" />
@@ -25,6 +25,7 @@
     import submitComponent from './SubmitComponent.vue';
     import statusComponent from './StatusComponent.vue';
     import featuredImageComponent from './FeaturedImageComponent.vue';
+    import returnComponent from './ReturnComponent.vue';
 
     export default {
         props: ['id'],
@@ -32,7 +33,8 @@
             blocksComponent,
             submitComponent,
             statusComponent,
-            featuredImageComponent
+            featuredImageComponent,
+            returnComponent
         },
         data() {
             return {

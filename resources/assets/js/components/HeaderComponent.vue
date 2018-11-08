@@ -8,8 +8,10 @@
                 </b-col>
                 <b-col sm="6">
                     <div class="c-profile c-profile--header float-right">
+                        <!-- tasks -->
+                        <button class="c-btn c-btn--text"><i class="fas fa-flag"></i></button>
                         <!-- notification -->
-                        <button class="c-btn c-btn--outline"><i class="fas fa-bell"></i></button>
+                        <button class="c-btn c-btn--text"><i class="fas fa-bell"></i></button>
                         <!-- profile -->
                         <button class="c-profile__btn" @click="openProfileCard">
                             <img class="c-profile__img" :src="userImage" alt="profile image">
@@ -20,6 +22,9 @@
                             <div class="c-profile__item c-profile__item--disabled">
                                 <strong class="c-profile__item-title">{{username}}</strong>
                                 <small class="c-profile__item-subtitle">{{useremail}}</small>
+                            </div>
+                            <div class="c-profile__item">
+                                <a href="" class="c-profile__item-link">Profile</a>
                             </div>
                             <div class="c-profile__item">
                                 <a href="" class="c-profile__item-link">Settings</a>

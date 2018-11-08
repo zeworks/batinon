@@ -28,12 +28,14 @@
         <nav-component username="{{ Auth::user()->name }}" useremail="{{ Auth::user()->email }}"></nav-component>
         @endauth
         <main>
+            <breadcrumb-component></breadcrumb-component>
             @yield('content')
         </main>
         <footer class="clearfix">
             <div class="container-fluid">
                 <div class="float-right">
-                    made by <a href="#">batinon</a>&copy; <?= date('Y') ?>
+                    made by <a href="#">batinon</a>&copy;
+                    <?= date('Y') ?>
                 </div>
             </div>
         </footer>
@@ -41,8 +43,8 @@
 
     <div class="u-loading">
         <div class="u-loading__items">
-          <div></div>
-          <div></div>
+            <div></div>
+            <div></div>
         </div>
     </div>
 

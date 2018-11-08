@@ -1,0 +1,29 @@
+.c-breadcrumb {
+    $class: 'c-breadcrumb';
+    
+    padding: 0;
+
+    &__item {
+        @include buttonStyle;
+        color: $grey;
+        display: inline-block;
+        margin-right: 10px;
+        &:last-child{
+            
+            .#{$class}__icon{
+                display: none;
+            }
+
+            .#{$class}__link{
+                color: $grey;
+                &:hover{
+                    cursor: default;
+                }
+            }
+        }
+    }
+
+    &__link{
+        color: $primary;
+    }
+}

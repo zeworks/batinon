@@ -8,7 +8,7 @@ $(document).ready(function () {
 
     headerSystem();
 
-    inputValidation();
+    breadcrumbSystem();
 
 });
 
@@ -45,14 +45,8 @@ function headerSystem() {
     });
 }
 
-function inputValidation() {
-    $("button[type='submit']").prop('disabled', 'disabled');
-
-    $("input").on('change', function () {
-        if ($(this).length) {
-            $("button[type='submit']").prop('disabled', false);
-        } else {
-            $("button[type='submit']").prop('disabled', 'disabled');
-        }
+function breadcrumbSystem() {
+    $('.c-breadcrumb__link:last-child').on('click', function (e) {
+        e.preventDefault();
     });
 }
