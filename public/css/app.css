@@ -10794,6 +10794,12 @@ button:hover {
   color: #2196f3;
 }
 
+.c-btn--link:focus,
+.c-btn--link:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .c-btn--rounded {
   border-radius: 100%;
   width: 45px;
@@ -11007,6 +11013,15 @@ button:hover {
   width: 100%;
   resize: vertical;
   margin: 5px 0;
+  -webkit-transition: -webkit-box-shadow .2s ease;
+  transition: -webkit-box-shadow .2s ease;
+  transition: box-shadow .2s ease;
+  transition: box-shadow .2s ease, -webkit-box-shadow .2s ease;
+}
+
+.c-form__input:focus {
+  -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .c-form__input::-webkit-input-placeholder {
@@ -11059,6 +11074,46 @@ button:hover {
   content: "";
   display: inline-block;
   position: relative;
+  width: 25px;
+  height: 25px;
+  background-color: #e5e5e5;
+  border-radius: 5px;
+  margin-right: 10px;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+  vertical-align: middle;
+  margin: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.c-form__checkbox-indicator::after {
+  content: "";
+  display: inline-block;
+  position: relative;
+  width: 13px;
+  height: 6px;
+  border-left: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  background-color: transparent;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  left: 6px;
+  top: -1px;
+}
+
+.c-form__input:checked ~ .c-form__checkbox-indicator {
+  background-color: rgba(41, 98, 255, 0.8);
+}
+
+.c-form__input:checked ~ .c-form__checkbox-indicator:after {
+  border-color: #fff;
+}
+
+.c-form__checkbox--toggle .c-form__checkbox-indicator {
+  content: "";
+  display: inline-block;
+  position: relative;
   width: 40px;
   height: 15px;
   background-color: #e5e5e5;
@@ -11072,7 +11127,7 @@ button:hover {
           box-shadow: none;
 }
 
-.c-form__checkbox-indicator:after {
+.c-form__checkbox--toggle .c-form__checkbox-indicator:after {
   content: "";
   position: absolute;
   display: inline-block;
@@ -11080,6 +11135,7 @@ button:hover {
   height: 18px;
   background-color: #f1f1f1;
   border-radius: 21px;
+  border: 0;
   -webkit-box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
           box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
   left: -2px;
@@ -11091,21 +11147,47 @@ button:hover {
   transition: left .3s ease, background .3s ease, box-shadow .1s ease, -webkit-box-shadow .1s ease;
 }
 
-.c-form__input:checked ~ .c-form__checkbox-indicator {
+.c-form__checkbox--toggle .c-form__input:checked ~ .c-form__checkbox-indicator:after {
+  background-color: #2962FF;
+  left: 25px;
+}
+
+.c-form__checkbox--toggle .c-form__input:checked ~ .c-form__checkbox-indicator {
   background-color: rgba(41, 98, 255, 0.4);
   background-image: none;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
 }
 
-.c-form__input:checked ~ .c-form__checkbox-indicator:after {
-  background-color: #2962FF;
-  left: 25px;
+.c-form__checkbox--radio .c-form__checkbox-indicator {
+  border-radius: 100%;
+  border: 2px solid transparent;
+  position: relative;
 }
 
-.c-form__input:focus ~ .c-form__checkbox-indicator {
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+.c-form__checkbox--radio .c-form__checkbox-indicator::after {
+  border: 0;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 100%;
+  -webkit-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+}
+
+.c-form__checkbox--radio .c-form__input:checked ~ .c-form__checkbox-indicator {
+  background-color: transparent;
+  border-color: #2962FF;
+  -webkit-box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+}
+
+.c-form__checkbox--radio .c-form__input:checked ~ .c-form__checkbox-indicator:after {
+  background-color: rgba(41, 98, 255, 0.8);
 }
 
 .c-form--search {
@@ -11492,7 +11574,8 @@ a:hover {
   display: block;
 }
 
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="radio"] {
   opacity: 0;
   position: absolute;
   width: auto;

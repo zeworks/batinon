@@ -25,7 +25,7 @@
 </head>
 
 <body>
-<header class="c-header">
+    <header class="c-header">
         <button class="c-btn c-btn--text js-toggle-aside" id="btn-menu"><i class="fas fa-bars"></i></button>
 
         <div class="c-profile c-profile--header float-right">
@@ -56,6 +56,9 @@
                 </li>
                 <li class="c-nav__item">
                     <a href="" class="c-nav__link" data-target="4"><i class="fas fa-plus c-nav__icon  u-icon-before"></i>Breadcrumb</a>
+                </li>
+                <li class="c-nav__item">
+                    <a href="" class="c-nav__link" data-target="5"><i class="fas fa-plus c-nav__icon  u-icon-before"></i>Checkbox & Radio</a>
                 </li>
             </ul>
         </nav>
@@ -122,7 +125,8 @@
                         <a href="#" class="c-btn c-btn--link">button text</a>
                         <br><br>
                         <p>7. Link with icon</p>
-                        <a href="#" class="c-btn c-btn--link"><i class="fab fa-font-awesome-flag u-icon-before"></i>button text</a>
+                        <a href="#" class="c-btn c-btn--link"><i class="fab fa-font-awesome-flag u-icon-before"></i>button
+                            text</a>
                     </div>
                 </div>
             </div>
@@ -169,6 +173,39 @@
                                 teste
                             </li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+            <div data-scope="5">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Checkbox</h4>
+                        <hr>
+                        <div class="c-form">
+                            <code>c-form__checkbox--toggle</code>
+                            <br>
+                            <label class="c-form__checkbox c-form__checkbox--toggle">
+                                <input type="checkbox" class="c-form__input" name="status" v-model="item.status"
+                                    true-value="1" false-value="0">
+                                <span class="c-form__checkbox-indicator"></span>
+                            </label>
+                            <br>
+                            <code>c-form__checkbox</code>
+                            <br>
+                            <label class="c-form__checkbox">
+                                <input type="checkbox" class="c-form__input" name="status" v-model="item.status"
+                                    true-value="1" false-value="0">
+                                <span class="c-form__checkbox-indicator"></span>
+                            </label>
+                            <br>
+                            <code>c-form__checkbox--radio</code>
+                            <br>
+                            <label class="c-form__checkbox c-form__checkbox--radio">
+                                <input type="radio" class="c-form__input" name="status" v-model="item.status"
+                                    true-value="1" false-value="0">
+                                <span class="c-form__checkbox-indicator"></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
