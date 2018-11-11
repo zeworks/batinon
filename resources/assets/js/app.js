@@ -10,6 +10,7 @@ import VueSwal from 'vue-swal';
 import VueEditor from 'vue2-editor';
 import BootstrapVue from 'bootstrap-vue'
 
+import 'vue-multiselect/dist/vue-multiselect.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 // nav component

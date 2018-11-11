@@ -1,6 +1,6 @@
 .c-breadcrumb {
     $class: 'c-breadcrumb';
-    
+
     padding: 0;
 
     &__item {
@@ -9,7 +9,7 @@
         display: inline-block;
         margin-right: 10px;
         &:last-child{
-            
+
             .#{$class}__icon{
                 display: none;
             }

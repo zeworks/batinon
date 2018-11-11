@@ -63,7 +63,7 @@
                             name="menu_title" class="c-form__input">
                     </div>
                     <h5>Menu item</h5>
-                    <div class="c-form">
+                    <!-- <div class="c-form">
                         <label for="menu_name" class="c-form__label">Name*</label>
                         <input required type="text" id="menu_name" v-model="navigationItem.name" name="menu_name"
                             placeholder="ex: About, etc." class="c-form__input">
@@ -73,10 +73,10 @@
                         <input required type="text" id="menu_link" v-model="navigationItem.url" name="menu_link"
                             placeholder="ex: /about-us" class="c-form__input">
                         <p class="c-form__help">You can copy the slug from the page detail</p>
-                    </div>
-                    <!-- <label class="typo__label">Tagging</label>
-                    <multiselect tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="name"
-                        track-by="title" :options="options.title" :multiple="true" :taggable="true" ></multiselect> -->
+                    </div> -->
+                    <label class="typo__label">Tagging</label>
+                    <multiselect v-model="value" tag-placeholder="Add this as new tag" placeholder="Search or add a tag"
+                        :options="options" :multiple="true" :taggable="true" label="title" track-by="title"></multiselect>
                 </form>
             </div>
             <div slot="footer">
@@ -101,7 +101,8 @@
         },
         data() {
             return {
-                // options: [],
+                value : null,
+                options: [],
                 navigation: {
                     title: '',
                 },
@@ -113,19 +114,19 @@
         },
         created() {
             this.fetchNavigation();
-            // this.fetchPages();
+            this.fetchPages();
         },
         methods: {
             openModal() {
                 this.showModal = true;
             },
-            // fetchPages() {
-            //     axios.get('/api/pages')
-            //         .then(response => response.data)
-            //         .then(data => {
-            //             this.options = data;
-            //         });
-            // },
+            fetchPages() {
+                axios.get('/api/pages')
+                    .then(response => response.data)
+                    .then(data => {
+                        this.options = data;
+                    });
+            },
             fetchNavigation() {
                 axios.get('/api/navigation')
                     .then(response => response.data)
