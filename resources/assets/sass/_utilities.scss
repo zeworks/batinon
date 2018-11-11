@@ -4,6 +4,12 @@
     height: auto;
 }
 
+.u-image-background {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .u-icon-before {
     margin: 0 10px 0 0;
 }
@@ -61,8 +67,10 @@
 .hidden {
     display: none;
 }
+
 // utility color
-@each $name,$color in $colors {
+@each $name,
+$color in $colors {
     .u-color-#{$name} {
         color: #{$color};
     }
@@ -81,26 +89,27 @@
     z-index: 100;
 
     &__items {
-      width: 64px;
-      height: 64px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
-
-      & > div{
+        width: 64px;
+        height: 64px;
         position: absolute;
-        border: 4px solid $primary;
-        opacity: 1;
-        border-radius: 50%;
-        animation: u-loading 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-      }
-      & > div:nth-child(2) {
-          animation-delay: -0.5s;
-      }
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        &>div {
+            position: absolute;
+            border: 4px solid $primary;
+            opacity: 1;
+            border-radius: 50%;
+            animation: u-loading 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+        }
+
+        &>div:nth-child(2) {
+            animation-delay: -0.5s;
+        }
     }
 
-    &--boxed{
+    &--boxed {
         position: absolute;
     }
 }

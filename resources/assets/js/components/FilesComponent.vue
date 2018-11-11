@@ -67,11 +67,11 @@
         <!-- \modal send file -->
         <!-- modal library file -->
         <modal v-if="showModalLibrary">
-            <h3 slot="header">Files Libray</h3>
+            <h3 slot="header" class="f-subtitle">Files Libray</h3>
             <div slot="body" class="clearfix">
               <b-row>
-                <b-col sm="4" v-for="(file,index) in files" :key="index">
-                  <img class="u-img-responsive" :src="origin+image_path+file.name" :alt="file.name">
+                <b-col sm="3" :style="{ 'background-image': 'url(' + origin+image_path+file.name + ')' }" v-for="(file,index) in files" :key="index" class="u-image-background">
+                  <img class="u-img-responsive" :style="{ 'opacity' : '0' }" :src="origin+image_path+file.name" :alt="file.name">
                 </b-col>
               </b-row>
             </div>

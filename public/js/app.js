@@ -37051,9 +37051,15 @@ var render = function() {
       _vm._v(" "),
       _vm.showModalLibrary
         ? _c("modal", [
-            _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
-              _vm._v("Files Libray")
-            ]),
+            _c(
+              "h3",
+              {
+                staticClass: "f-subtitle",
+                attrs: { slot: "header" },
+                slot: "header"
+              },
+              [_vm._v("Files Libray")]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -37066,15 +37072,32 @@ var render = function() {
                 _c(
                   "b-row",
                   _vm._l(_vm.files, function(file, index) {
-                    return _c("b-col", { key: index, attrs: { sm: "4" } }, [
-                      _c("img", {
-                        staticClass: "u-img-responsive",
-                        attrs: {
-                          src: _vm.origin + _vm.image_path + file.name,
-                          alt: file.name
-                        }
-                      })
-                    ])
+                    return _c(
+                      "b-col",
+                      {
+                        key: index,
+                        staticClass: "u-image-background",
+                        style: {
+                          "background-image":
+                            "url(" +
+                            _vm.origin +
+                            _vm.image_path +
+                            file.name +
+                            ")"
+                        },
+                        attrs: { sm: "3" }
+                      },
+                      [
+                        _c("img", {
+                          staticClass: "u-img-responsive",
+                          style: { opacity: "0" },
+                          attrs: {
+                            src: _vm.origin + _vm.image_path + file.name,
+                            alt: file.name
+                          }
+                        })
+                      ]
+                    )
                   })
                 )
               ],

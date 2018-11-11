@@ -13,37 +13,38 @@
             </div>
             <div class="form-group row">
                 <div class="col-md-7 offset-md-2">
-                    <input id="email" placeholder="{{ __('E-Mail Address') }}" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                    <input id="email" placeholder="{{ __('E-Mail Address') }}" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                        name="email" value="{{ old('email') }}" required autofocus>
 
                     @if ($errors->has('email'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
                     @endif
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-md-7 offset-md-2">
-                    <input id="password" placeholder="{{ __('Password') }}" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                    <input id="password" placeholder="{{ __('Password') }}" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                        name="password" required>
 
                     @if ($errors->has('password'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
                     @endif
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-md-7 offset-md-2">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                        <label class="form-check-label" for="remember">
-                            {{ __('Remember Me') }}
-                        </label>
-                    </div>
+                    <label class="c-form__checkbox">
+                        <input type="checkbox" class="c-form__input" name="remember" id="remember"
+                        {{ old('remember') ? 'checked' : '' }}>
+                        <span class="c-form__checkbox-indicator"></span>
+                        Remember me
+                    </label>
                 </div>
             </div>
 
