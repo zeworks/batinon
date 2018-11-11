@@ -9,11 +9,10 @@ $(document).ready(function () {
     headerSystem();
 
     breadcrumbSystem();
-
 });
 
 
-function onInit() {
+var onInit = () => {
     $("body").addClass("body-loaded");
 
     $('main').css({
@@ -21,7 +20,7 @@ function onInit() {
     });
 }
 
-function tabSystem() {
+var tabSystem = () => {
     if ($('[data-target]').length) {
         // on load function
         $('[data-target]:eq(0)').addClass('is-active');
@@ -39,13 +38,13 @@ function tabSystem() {
     });
 }
 
-function headerSystem() {
+var headerSystem = () => {
     $('.js-toggle-aside').on('click', function () {
         $('body').toggleClass('is-collapsed');
     });
 }
 
-function breadcrumbSystem() {
+var breadcrumbSystem = () => {
     $('.c-breadcrumb__link:last-child').on('click', function (e) {
         e.preventDefault();
     });

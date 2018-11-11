@@ -34,7 +34,7 @@
             </div>
         </div>
         <!-- modal choose block image -->
-        <modal v-if="showModalBlockImages">
+        <modal v-if="showModal">
             <h3 slot="header" class="f-subtitle">Choose your Block Image</h3>
             <div slot="body">
                 <div v-if="images==0" class="text-center">
@@ -52,7 +52,7 @@
                 <div class="clearfix"></div>
                 <div class="float-right">
                     <input type="file" @change="onBlockImageChange" id="file_blockImages" name="file_blockImages" class="hidden">
-                    <button type="button" @click="showModalBlockImages = false" class="c-btn c-btn--text">Cancel</button>
+                    <button type="button" @click="showModal = false" class="c-btn c-btn--text">Cancel</button>
                     <button type="button" @click="fileClick" class="c-btn c-btn--primary">Or Send File...</button>
                 </div>
             </div>
@@ -72,7 +72,6 @@
         },
         data() {
             return {
-                showModalBlockImages: false,
                 origin: window.location.origin + '/',
                 image_path: 'storage/images/',
                 images: [],
@@ -81,7 +80,7 @@
         },
         methods: {
             fetchBlockImages() {
-                this.showModalBlockImages = true;
+                this.showModal = true;
 
                 axios.get('/api/files')
                     .then(response => response.data)
@@ -90,7 +89,7 @@
                     });
             },
             chooseImage(fileName) {
-                this.showModalBlockImages = false; // hide the modal
+                this.showModal = false; // hide the modal
                 this.item.b_image = fileName; // set the file choosed by the user
             },
             // if the user wants to upload a new file...

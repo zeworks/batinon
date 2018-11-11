@@ -28,10 +28,37 @@
     }
 }
 
+// Typography
 @mixin font-size($sizeValue: 12 ){
 	font-size: $sizeValue + px; //fallback for old browsers
 	font-size: (0.0625 * $sizeValue) + rem;
 };
+
+@mixin font-light(){
+    font-weight: 300;
+}
+
+@mixin font-lightItalic {
+    font-weight: 300;
+    font-style: italic;
+}
+
+@mixin  font-medium {
+    font-weight: 500;
+}
+
+@mixin  font-mediumItalic {
+    font-weight: 500;
+    font-style: italic;
+}
+
+@mixin font-bold {
+    font-weight: 700;
+}
+
+@mixin font-black {
+    font-weight: 900;
+}
 
 @mixin placeholder {
     &::-webkit-input-placeholder {@content}

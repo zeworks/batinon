@@ -131,3 +131,23 @@ $color in $colors {
         opacity: 0;
     }
 }
+
+.u-font-lightItalic {
+    @include font-lightItalic;
+}
+
+.u-font-light {
+    @include font-light;
+}
+
+.u-font-medium {
+    @include font-medium;
+}
+
+.u-font-bold {
+    @include font-bold;
+}
+
+.u-font-black {
+    @include font-black;
+}

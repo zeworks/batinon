@@ -15,7 +15,7 @@
             </div>
         </div>
         <!-- modal library image -->
-        <modal :modal="showModalFeatured" v-if="showModalFeatured">
+        <modal v-if="showModal">
             <div slot="header" class="f-subtitle">Choose your Featured Image</div>
             <div slot="body" class="clearfix">
                 <div v-if="images==0" class="text-center">
@@ -33,7 +33,7 @@
                 <div class="clearfix"></div>
                 <div class="pull-right">
                     <input type="file" @change="onImageChange" id="file_input" name="file_input" class="hidden">
-                    <button type="button" @click="showModalFeatured = false" class="c-btn c-btn--text">Cancel</button>
+                    <button type="button" @click="showModal = false" class="c-btn c-btn--text">Cancel</button>
                     <button type="button" @click="fileClick" class="c-btn c-btn--primary">Or Send File...</button>
                 </div>
             </div>
@@ -53,7 +53,6 @@
         },
         data() {
             return {
-                showModalFeatured: false,
                 origin: window.location.origin + '/',
                 image_path: 'storage/images/',
                 images: [],
@@ -62,7 +61,7 @@
         },
         methods: {
             fetchImages() {
-                this.showModalFeatured = true;
+                this.showModal = true;
 
                 axios.get('/api/files')
                     .then(response => response.data)
@@ -71,7 +70,7 @@
                     });
             },
             chooseImage(fileName) {
-                this.showModalFeatured = false; // hide the modal
+                this.showModal = false; // hide the modal
                 this.item.image = fileName; // set the file choosed by the user
             },
             // if the user wants to upload a new file...

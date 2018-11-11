@@ -45,6 +45,11 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+        'front' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
     ],
 
     /*

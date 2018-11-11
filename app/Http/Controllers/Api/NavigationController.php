@@ -34,4 +34,13 @@ class NavigationController extends Controller
 
         return ['success' => true, 'returnId' => $nav];
     }
+    
+    public function delete(Request $request){
+
+        NavigationItem::where('parent_id', $request->data)->delete();
+        
+        Navigation::where('id',$request->data)->delete();
+        
+        return ['success' => true];
+	}
 }

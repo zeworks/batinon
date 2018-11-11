@@ -48,23 +48,18 @@ Vue.use(VueSwal)
 Vue.use(VueEditor)
 Vue.use(BootstrapVue)
 
-// const mixinLoading = {
-//   template : '#mixinLoading',
-//   data() {
-//     return {
-//       isShowing: false
-//     }
-//   },
-//   methods: {
-//     toggleShow() {
-//       this.isShowing = !this.isShowing;
-//     }
-//   }
-// }
+Vue.mixin({
+    data() {
+        return {
+            showModal: false,
+            showModalLibrary: false,
+            showModalPreview: false,
+        }
+    }
+})
 
 var app = new Vue({
     el: '#app',
-    // mixins: [mixinLoading],
     components: {
         NavComponent,
         HeaderComponent,
@@ -77,5 +72,5 @@ var app = new Vue({
         BlogsComponent,
         BlogsformComponent,
         NavigationComponent
-    },
+    }
 });

@@ -109,9 +109,6 @@
                 origin           : window.location.origin+'/',
                 image_path       : 'storage/images/',
                 imageToPreview   : '',
-                showModal        : false,
-                showModalLibrary : false,
-                showModalPreview : false,
             }
         },
         components: {
