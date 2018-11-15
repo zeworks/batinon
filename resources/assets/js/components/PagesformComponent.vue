@@ -1,6 +1,5 @@
 <template>
     <form @submit.prevent="saveData" :id="id">
-        <!-- <LoadingComponent /> -->
         <b-container fluid>
             <returnComponent />
             <b-row>

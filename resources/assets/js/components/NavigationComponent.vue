@@ -31,7 +31,9 @@
                             <tr v-for="(nav,index) in navigation" :key="index" class="c-table__row">
                                 <td>{{nav.title}}</td>
                                 <td>
-                                    <div v-for="(navItem,index) in navigationItem" :key="index">{{navItem.name}}</div>
+                                    <div v-for="(navItem,index) in navigationItem" :key="index" v-if="navItem.parent_id == nav.id" >
+                                      {{navItem.name}}
+                                    </div>
                                 </td>
                                 <td><button class="c-btn c-btn--primary" @click="remove(nav.id)"><i class="fas fa-trash"></i></button></td>
                             </tr>
@@ -62,17 +64,6 @@
                     <input required type="text" id="menu_title" v-model="navigation.title" placeholder="ex: menu, footer menu, etc." name="menu_title" class="c-form__input">
                 </div>
                 <h5>Menu item</h5>
-                <!-- <div class="c-form">
-                        <label for="menu_name" class="c-form__label">Name*</label>
-                        <input required type="text" id="menu_name" v-model="navigationItem.name" name="menu_name"
-                            placeholder="ex: About, etc." class="c-form__input">
-                    </div>
-                    <div class="c-form">
-                        <label for="menu_link" class="c-form__label">Link*</label>
-                        <input required type="text" id="menu_link" v-model="navigationItem.url" name="menu_link"
-                            placeholder="ex: /about-us" class="c-form__input">
-                        <p class="c-form__help">You can copy the slug from the page detail</p>
-                    </div> -->
                 <label class="typo__label">Page name</label>
                 <multiselect v-model="value" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" :options="options" :multiple="true" :taggable="true" label="title" track-by="title"></multiselect>
             </form>
@@ -99,7 +90,7 @@ export default {
     },
     data() {
         return {
-            value: null,
+            value: [],
             options: {},
             navigation: {
                 title: '',
@@ -133,33 +124,29 @@ export default {
                     this.navigationItem = data.navigationItems;
                 });
         },
-        saveData() {
-            for (var i = 0; i < this.value.length; i++) {
-                this.navigationItem.push({
-                    name : this.value[i].title,
-                    url  : this.value[i].slug
+        saveData(){
+            axios.post('/api/navigation/add', {
+                    menu_title: this.navigation.title,
+                    navigation_item: this.value,
+                })
+                .then(response => {
+                    if (response.data.success) {
+                        // success
+                        if (response.data.returnId) {
+                            swal('Sucesso!', 'Page saved', 'success');
+                            this.showModal = false;
+                            this.fetchNavigation();
+                            this.value = [];
+                        }
+
+                    } else
+                        swal('Erro!', 'Page not saved', 'error');
+                })
+                .catch(error => {
+                    swal('Erro!', 'Please fill all the required fields.', 'error');
                 });
-            }
-            // axios.post('/api/navigation/add', {
-            //         title: this.navigation.title,
-            //         name: this.navigationItem.name,
-            //         url: this.navigationItem.url,
-            //     })
-            //     .then(response => {
-            //         if (response.data.success) {
-            //             // success
-            //             if (response.data.returnId) {
-            //                 swal('Sucesso!', 'Page saved', 'success');
-            //                 this.showModal = false;
-            //                 this.fetchNavigation();
-            //             }
-            //
-            //         } else
-            //             swal('Erro!', 'Page not saved', 'error');
-            //     })
-            //     .catch(error => {
-            //         swal('Erro!', 'Please fill all the required fields.', 'error');
-            //     });
+
+
         },
         remove(id) {
             swal({

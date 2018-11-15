@@ -17,30 +17,30 @@ class NavigationController extends Controller
     }
 
     public function add(Request $request){
-        
         $navigation = [
-            "title" => $request->title,
+            "title" => $request->menu_title,
         ];
 
         $nav = Navigation::create($navigation)->id;
-        
-        $navigationItem = [
-            "name" => $request->name,
-            "url"  => $request->url,
-            "parent_id" => $nav
-        ];
-        
-        $navItem = NavigationItem::create($navigationItem);
+
+        foreach ($request->navigation_item as $key => $value) {
+          $navigationItem = [
+              "name" => $request->navigation_item[$key]['title'],
+              "url"  => $request->navigation_item[$key]['slug'],
+              "parent_id" => $nav
+          ];
+          $navItem = NavigationItem::create($navigationItem);
+        }
 
         return ['success' => true, 'returnId' => $nav];
     }
-    
+
     public function delete(Request $request){
 
         NavigationItem::where('parent_id', $request->data)->delete();
-        
+
         Navigation::where('id',$request->data)->delete();
-        
+
         return ['success' => true];
 	}
 }
