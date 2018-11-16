@@ -50,7 +50,7 @@
                     </table>
                 </div>
                 <div class="c-card__footer clearfix">
-                    <button class="c-btn c-btn--primary float-right" @click="openModal">Add new</button>
+                    <button class="c-btn c-btn--primary float-right" @click="showModal = true">Add new</button>
                 </div>
             </div>
         </b-col>
@@ -106,9 +106,6 @@ export default {
         this.fetchPages();
     },
     methods: {
-        openModal() {
-            this.showModal = true;
-        },
         fetchPages() {
             axios.get('/api/pages')
                 .then(response => response.data)

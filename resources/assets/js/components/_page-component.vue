@@ -65,16 +65,12 @@
 
 <script>
     import axios from 'axios';
-    import modal from './ModalComponent.vue';
 
     export default {
         data() {
             return {
                 pages: [],
             }
-        },
-        components: {
-            modal
         },
         created() {
             this.fetchPages();

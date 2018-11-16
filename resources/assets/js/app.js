@@ -9,33 +9,33 @@ import Vue from 'vue';
 import VueSwal from 'vue-swal';
 import VueEditor from 'vue2-editor';
 import BootstrapVue from 'bootstrap-vue'
+import './components/_global'
 
 import 'vue-multiselect/dist/vue-multiselect.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-// nav component
-import NavComponent from './components/NavComponent.vue';
-// header component
-import HeaderComponent from './components/HeaderComponent.vue';
-// breadcrumb component
-import BreadcrumbComponent from './components/BreadcrumbComponent.vue';
-// return component
-import ReturnComponent from './components/BreadcrumbComponent.vue';
-// home dashboard
-import DashboardComponent from './components/DashboardComponent.vue';
-// pages
-import PagesComponent from './components/PagesComponent.vue';
-// pages form
-import PagesformComponent from './components/PagesformComponent.vue';
-// files
-import FilesComponent from './components/FilesComponent.vue';
-// blogs
-import BlogsComponent from './components/BlogsComponent.vue';
-// blog form
-import BlogsformComponent from './components/BlogsFormComponent.vue';
-// navigation
-import NavigationComponent from './components/NavigationComponent.vue';
-
+// // nav component
+// import NavComponent from './components/NavComponent.vue';
+// // header component
+// import HeaderComponent from './components/HeaderComponent.vue';
+// // breadcrumb component
+// import BreadcrumbComponent from './components/BreadcrumbComponent.vue';
+// // return component
+// import ReturnComponent from './components/BreadcrumbComponent.vue';
+// // home dashboard
+// import DashboardComponent from './components/DashboardComponent.vue';
+// // pages
+// import PagesComponent from './components/PagesComponent.vue';
+// // pages form
+// import PagesformComponent from './components/PagesformComponent.vue';
+// // files
+// import FilesComponent from './components/FilesComponent.vue';
+// // blogs
+// import BlogsComponent from './components/BlogsComponent.vue';
+// // blog form
+// import BlogsformComponent from './components/BlogsFormComponent.vue';
+// // navigation
+// import NavigationComponent from './components/NavigationComponent.vue';
 
 
 
@@ -59,19 +59,21 @@ Vue.mixin({
     }
 })
 
+
+
 var app = new Vue({
     el: '#app',
-    components: {
-        NavComponent,
-        HeaderComponent,
-        BreadcrumbComponent,
-        ReturnComponent,
-        DashboardComponent,
-        PagesComponent,
-        PagesformComponent,
-        FilesComponent,
-        BlogsComponent,
-        BlogsformComponent,
-        NavigationComponent
-    }
+    // components: {
+    //     NavComponent,
+    //     HeaderComponent,
+    //     BreadcrumbComponent,
+    //     ReturnComponent,
+    //     DashboardComponent,
+    //     PagesComponent,
+    //     PagesformComponent,
+    //     FilesComponent,
+    //     BlogsComponent,
+    //     BlogsformComponent,
+    //     NavigationComponent
+    // }
 });
