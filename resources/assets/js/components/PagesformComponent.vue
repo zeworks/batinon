@@ -45,7 +45,7 @@
     import submitComponent from './SubmitComponent.vue';
     import statusComponent from './StatusComponent.vue';
     import featuredImageComponent from './FeaturedImageComponent.vue';
-    // import returnComponent from './ReturnComponent.vue';
+    import returnComponent from './ReturnComponent.vue';
 
     export default {
         props: ['id'],
@@ -60,7 +60,7 @@
             submitComponent,
             statusComponent,
             featuredImageComponent,
-            // returnComponent
+            returnComponent
         },
         data() {
             return {

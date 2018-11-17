@@ -52,8 +52,16 @@
                 <div class="clearfix"></div>
                 <div class="float-right">
                     <input type="file" @change="onBlockImageChange" id="file_blockImages" name="file_blockImages" class="hidden">
-                    <button type="button" @click="showModal = false" class="c-btn c-btn--text">Cancel</button>
-                    <button type="button" @click="fileClick" class="c-btn c-btn--primary">Or Send File...</button>
+                    <button 
+                        type="button" 
+                        @click="showModal = false" 
+                        class="c-btn c-btn--text"
+                        >Cancel</button>
+                    <button 
+                        type="button"
+                        @click="fileClick"
+                        class="c-btn c-btn--primary"
+                        >Or Send File...</button>
                 </div>
             </div>
         </modal>

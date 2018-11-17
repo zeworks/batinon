@@ -39,4 +39,5 @@ Route::post('blogs/delete','Api\BlogController@delete');
 //navigation
 Route::get('navigation','Api\NavigationController@index');
 Route::post('navigation/add','Api\NavigationController@add');
+Route::get('navigation/edit/{id}','Api\NavigationController@get');
 Route::post('navigation/delete','Api\NavigationController@delete');
