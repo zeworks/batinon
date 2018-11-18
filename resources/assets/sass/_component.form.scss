@@ -184,7 +184,7 @@
         &-left {
 
             .#{$class}__btn {
-                left: 4px;
+                left: 8px;
             }
 
             .#{$class}__input {
@@ -195,7 +195,7 @@
         &-right {
 
             .#{$class}__btn {
-                right: 3px;
+                right: 8px;
             }
 
             .#{$class}__input {
@@ -209,7 +209,8 @@
             top: 50%;
             z-index: 1;
             transform: translateY(-50%);
-            max-width: 50px;
+            width: 40px;
+            padding: 0;
         }
     }
 }

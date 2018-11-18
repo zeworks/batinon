@@ -10556,7 +10556,7 @@ a.text-dark:focus {
 }
 
 .u-color-primary {
-  color: #2962FF;
+  color: #1867c0;
 }
 
 .u-color-secondary {
@@ -10583,6 +10583,10 @@ a.text-dark:focus {
   color: #4caf50;
 }
 
+.u-color-white {
+  color: #fff;
+}
+
 .u-loading {
   display: none;
   height: 100%;
@@ -10606,7 +10610,7 @@ a.text-dark:focus {
 
 .u-loading__items > div {
   position: absolute;
-  border: 4px solid #2962FF;
+  border: 4px solid #1867c0;
   opacity: 1;
   border-radius: 50%;
   -webkit-animation: u-loading 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
@@ -10687,9 +10691,9 @@ a.text-dark:focus {
   /* default styles */
   display: block;
   height: 60px;
-  background-color: #fff;
-  -webkit-box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.1);
+  background-color: #1867c0;
+  -webkit-box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+          box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
 .c-header__logo {
@@ -10745,12 +10749,12 @@ button:hover {
 }
 
 .c-btn--primary {
-  background-color: #2962FF;
+  background-color: #1867c0;
   color: #fff !important;
 }
 
 .c-btn--primary:hover {
-  background-color: rgba(41, 98, 255, 0.85);
+  background-color: rgba(24, 103, 192, 0.85);
 }
 
 .c-btn--default {
@@ -10783,14 +10787,14 @@ button:hover {
   background-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
-  color: #2962FF;
+  color: #1867c0;
 }
 
 .c-btn--text:hover {
-  background-color: rgba(41, 98, 255, 0.1);
+  background-color: rgba(24, 103, 192, 0.1);
   -webkit-box-shadow: none;
           box-shadow: none;
-  color: rgba(41, 98, 255, 0.9);
+  color: rgba(24, 103, 192, 0.9);
 }
 
 .c-btn--padding-0 {
@@ -10808,7 +10812,7 @@ button:hover {
   font-size: 0.875rem;
   text-transform: uppercase;
   display: inline-block;
-  color: #2962FF;
+  color: #1867c0;
   background-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -10855,12 +10859,12 @@ button:hover {
 
 .c-nav__item-active .c-nav__link {
   text-decoration: none;
-  background-color: rgba(41, 98, 255, 0.3);
-  color: #2962FF;
+  background-color: rgba(24, 103, 192, 0.3);
+  color: #1867c0;
 }
 
 .c-nav__item-active .c-nav__icon {
-  color: #2962FF;
+  color: #1867c0;
 }
 
 .c-nav__link {
@@ -10870,28 +10874,30 @@ button:hover {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   border-radius: 5px;
+  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .c-nav__link:hover,
 .c-nav__link:focus {
   text-decoration: none;
-  background-color: rgba(41, 98, 255, 0.3);
-  color: #2962FF;
+  background-color: rgba(24, 103, 192, 0.3);
+  color: #1867c0;
 }
 
 .c-nav__link:hover .c-nav__icon,
 .c-nav__link:focus .c-nav__icon {
-  color: #2962FF;
+  color: #1867c0;
 }
 
 .c-nav__link.is-active {
   text-decoration: none;
-  background-color: rgba(41, 98, 255, 0.3);
-  color: #2962FF;
+  background-color: rgba(24, 103, 192, 0.3);
+  color: #1867c0;
 }
 
 .c-nav__link.is-active .c-nav__icon {
-  color: #2962FF;
+  color: #1867c0;
 }
 
 .c-nav__icon {
@@ -10943,7 +10949,7 @@ button:hover {
 .c-profile__item {
   padding: 5px;
   margin: 0 0 2px;
-  border-bottom: 1px solid #f2f2f2;
+  border-bottom: 1px solid #fafafa;
 }
 
 .c-profile__item:last-child {
@@ -10951,7 +10957,7 @@ button:hover {
 }
 
 .c-profile__item--disabled {
-  background-color: #f2f2f2;
+  background-color: #fafafa;
 }
 
 .c-profile__item-title {
@@ -10998,7 +11004,7 @@ button:hover {
   right: 0;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  color: #616161;
+  color: #fff;
   font-size: 15px;
   font-size: 0.9375rem;
 }
@@ -11130,7 +11136,7 @@ button:hover {
 }
 
 .c-form__input:checked ~ .c-form__checkbox-indicator {
-  background-color: rgba(41, 98, 255, 0.8);
+  background-color: rgba(24, 103, 192, 0.8);
 }
 
 .c-form__input:checked ~ .c-form__checkbox-indicator:after {
@@ -11175,12 +11181,12 @@ button:hover {
 }
 
 .c-form__checkbox--toggle .c-form__input:checked ~ .c-form__checkbox-indicator:after {
-  background-color: #2962FF;
+  background-color: #1867c0;
   left: 25px;
 }
 
 .c-form__checkbox--toggle .c-form__input:checked ~ .c-form__checkbox-indicator {
-  background-color: rgba(41, 98, 255, 0.4);
+  background-color: rgba(24, 103, 192, 0.4);
   background-image: none;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
@@ -11208,13 +11214,13 @@ button:hover {
 
 .c-form__checkbox--radio .c-form__input:checked ~ .c-form__checkbox-indicator {
   background-color: transparent;
-  border-color: #2962FF;
+  border-color: #1867c0;
   -webkit-box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
           box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
 }
 
 .c-form__checkbox--radio .c-form__input:checked ~ .c-form__checkbox-indicator:after {
-  background-color: rgba(41, 98, 255, 0.8);
+  background-color: rgba(24, 103, 192, 0.8);
 }
 
 .c-form--search {
@@ -11229,7 +11235,7 @@ button:hover {
 }
 
 .c-form--group-left .c-form__btn {
-  left: 4px;
+  left: 8px;
 }
 
 .c-form--group-left .c-form__input {
@@ -11237,7 +11243,7 @@ button:hover {
 }
 
 .c-form--group-right .c-form__btn {
-  right: 3px;
+  right: 8px;
 }
 
 .c-form--group-right .c-form__input {
@@ -11250,7 +11256,8 @@ button:hover {
   z-index: 1;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  max-width: 50px;
+  width: 40px;
+  padding: 0;
 }
 
 .c-tab {
@@ -11294,7 +11301,7 @@ button:hover {
 }
 
 .c-table__row:nth-child(2n+2) {
-  background-color: #f2f2f2;
+  background-color: #fafafa;
 }
 
 .c-table__row > td {
@@ -11385,7 +11392,7 @@ button:hover {
 }
 
 .c-breadcrumb__link {
-  color: #2962FF;
+  color: #1867c0;
 }
 
 /* Components end */
@@ -11518,7 +11525,7 @@ strong,
 /* layouts end */
 
 body {
-  background-color: #f2f2f2;
+  background-color: #fafafa;
   opacity: 0;
   -webkit-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
@@ -11556,8 +11563,6 @@ aside {
   top: 0;
   left: -100%;
   height: 100%;
-  -webkit-box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.1);
-          box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.1);
   z-index: 1;
   padding: 10px;
   -webkit-transition: left 0.5s ease-in-out;
@@ -11576,7 +11581,7 @@ main {
 }
 
 a:not(.c-btn):hover {
-  color: #2962FF;
+  color: #1867c0;
 }
 
 a {
@@ -11585,7 +11590,7 @@ a {
   font-size: 0.875rem;
   text-transform: uppercase;
   display: inline-block;
-  color: #2962FF;
+  color: #1867c0;
 }
 
 a:hover {

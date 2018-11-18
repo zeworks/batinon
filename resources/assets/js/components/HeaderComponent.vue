@@ -4,14 +4,14 @@
             <b-row>
                 <b-col sm="6">
                     <img class="c-header__logo" :src="logo" alt>
-                    <button class="c-btn c-btn--text js-toggle-aside" id="btn-menu"><i class="fas fa-bars"></i></button>
+                    <button class="c-btn c-btn--text js-toggle-aside" id="btn-menu"><i class="fas fa-bars u-color-white"></i></button>
                 </b-col>
                 <b-col sm="6">
                     <div class="c-profile c-profile--header float-right">
                         <!-- tasks -->
-                        <button class="c-btn c-btn--text"><i class="fas fa-flag"></i></button>
+                        <button class="c-btn c-btn--text"><i class="fas fa-flag u-color-white"></i></button>
                         <!-- notification -->
-                        <button class="c-btn c-btn--text"><i class="fas fa-bell"></i></button>
+                        <button class="c-btn c-btn--text"><i class="fas fa-bell u-color-white"></i></button>
                         <!-- profile -->
                         <button class="c-profile__btn" @click="openProfileCard">
                             <img class="c-profile__img" :src="userImage" alt="profile image">
