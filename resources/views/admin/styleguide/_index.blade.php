@@ -24,12 +24,13 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body>
+<body class="is-collapsed">
     <header class="c-header">
         <div class="container-fluid">
-            <button class="float-left c-header__item c-header__lineHeight u-color-white js-toggle-aside" id="btn-menu"><i class="fas fa-bars"></i></button>
-            <h4 class="float-left u-color-white u-text-transform-uppercase u-font-medium u-font-size-large c-header__lineHeight">Batify</h4>
-    
+            <button class="float-left c-header__item c-header__lineHeight u-color-white js-toggle-aside" id="btn-menu"><i
+                    class="fas fa-bars"></i></button>
+            <h4 class="float-left u-color-white u-text-transform-uppercase u-font-medium u-font-size-large c-header__lineHeight">Batinon</h4>
+
             <!-- logout form -->
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="float-right">
                 @csrf
@@ -55,7 +56,8 @@
                     <a href="" class="c-nav__link" data-target="4"><i class="fas fa-plus c-nav__icon  u-icon-before"></i>Breadcrumb</a>
                 </li>
                 <li class="c-nav__item">
-                    <a href="" class="c-nav__link" data-target="5"><i class="fas fa-plus c-nav__icon  u-icon-before"></i>Checkbox & Radio</a>
+                    <a href="" class="c-nav__link" data-target="5"><i class="fas fa-plus c-nav__icon  u-icon-before"></i>Checkbox
+                        & Radio</a>
                 </li>
             </ul>
         </nav>
@@ -65,11 +67,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-10">
-                    <h3><i class="far fa-file-alt u-icon-before"></i>Batify Styleguide</h3>
+                    <h3><i class="far fa-file-alt u-icon-before"></i>Batinon Styleguide</h3>
                 </div>
                 <div class="col-sm-2">
                     <div class="float-right">
-                        <a href="/admin/home" class="u-icon-before"><i class="fas fa-chevron-left"></i><strong>Go Back</strong></a>
+                        <a href="/admin/home"><i class="fas fa-chevron-left u-icon-before"></i><strong>Go Back</strong></a>
                     </div>
                 </div>
             </div>
@@ -78,12 +80,12 @@
                 <h4>Heading</h4>
                 <hr>
                 <div class="col-sm-12">
-                    <h1>Some text 1</h1>
-                    <h2>Some text 1</h2>
-                    <h3>Some text 1</h3>
-                    <h4>Some text 1</h4>
-                    <h5>Some text 1</h5>
-                    <h6>Some text 1</h6>
+                    <h1>@Heading 1</h1>
+                    <h2>@Heading 2</h2>
+                    <h3>@Heading 3</h3>
+                    <h4>@Heading 4</h4>
+                    <h5>@Heading 5</h5>
+                    <h6>@Heading 6</h6>
                 </div>
             </div>
             <div data-scope="2">
@@ -229,7 +231,7 @@
         </div>
     </main>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="{{ asset('js/batify.js') }}" defer></script>
+    <script src="{{ asset('js/batinon.js') }}" defer></script>
 </body>
 
 </html>

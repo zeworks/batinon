@@ -33334,7 +33334,7 @@ var render = function() {
                     staticClass:
                       "float-left u-color-white u-text-transform-uppercase u-font-medium u-font-size-large c-header__lineHeight"
                   },
-                  [_vm._v(" Batify")]
+                  [_vm._v(" Batinon")]
                 )
               ]),
               _vm._v(" "),
@@ -38467,9 +38467,11 @@ if (false) {
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
+    var hashDescriptor = 'tab';
 
-    var developed = console.log("Developed by Batify!");
+    var developed = console.log("Developed by Batinon!");
 
+    updateUrlParam('teste');
     onInit();
 
     tabSystem();
@@ -38490,7 +38492,7 @@ var onInit = function onInit() {
 var tabSystem = function tabSystem() {
     if ($('[data-target]').length) {
         // on load function
-        $('[data-target]:eq(0)').addClass('is-active');
+        $('[data-target]:eq(0)').parent().addClass('is-active');
         $('[data-scope]:eq(0)').addClass('is-active');
     }
     // on click in each data target;
@@ -38500,8 +38502,8 @@ var tabSystem = function tabSystem() {
         $('[data-scope]').removeClass('is-active');
         $('[data-scope="' + _target + '"]').addClass('is-active');
 
-        $('[data-target]').removeClass('is-active');
-        $(this).addClass('is-active');
+        $('[data-target]').parent().removeClass('is-active');
+        $(this).parent().addClass('is-active');
     });
 };
 
@@ -38515,6 +38517,25 @@ var breadcrumbSystem = function breadcrumbSystem() {
     $('.c-breadcrumb__link:last-child').on('click', function (e) {
         e.preventDefault();
     });
+};
+
+var updateUrlParam = function updateUrlParam(current) {
+    var options = {
+        url: window.location.href,
+        title: window.location.pathname,
+        key: current
+    };
+    history.pushState(options, '', '');
+
+    console.log(options);
+};
+
+var getUrlParam = function getUrlParam(parameter, defaultvalue) {
+    var urlparameter = defaultvalue;
+    if (window.location.href.indexOf(parameter) > -1) {
+        urlparameter = getUrlVars()[parameter];
+    }
+    return urlparameter;
 };
 
 /***/ }),

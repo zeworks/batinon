@@ -148,3 +148,12 @@ blockquote {
         background-color: $grey-light;
     }
 }
+
+code {
+    background-color: gainsboro;
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid $grey-light;
+    margin: 5px 0;
+    display: inline-block;
+}

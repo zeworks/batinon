@@ -1,7 +1,9 @@
 $(document).ready(function () {
+    let hashDescriptor = 'tab';
 
-    var developed = console.log("Developed by Batify!");
+    var developed = console.log("Developed by Batinon!");
 
+    updateUrlParam('teste')
     onInit();
 
     tabSystem();
@@ -23,7 +25,7 @@ var onInit = () => {
 var tabSystem = () => {
     if ($('[data-target]').length) {
         // on load function
-        $('[data-target]:eq(0)').addClass('is-active');
+        $('[data-target]:eq(0)').parent().addClass('is-active');
         $('[data-scope]:eq(0)').addClass('is-active');
     }
     // on click in each data target;
@@ -33,8 +35,8 @@ var tabSystem = () => {
         $('[data-scope]').removeClass('is-active');
         $('[data-scope="' + _target + '"]').addClass('is-active');
 
-        $('[data-target]').removeClass('is-active');
-        $(this).addClass('is-active');
+        $('[data-target]').parent().removeClass('is-active');
+        $(this).parent().addClass('is-active');
     });
 }
 
@@ -48,4 +50,24 @@ var breadcrumbSystem = () => {
     $('.c-breadcrumb__link:last-child').on('click', function (e) {
         e.preventDefault();
     });
+}
+
+var updateUrlParam = (current) => {
+    var options = {
+        url: window.location.href,
+        title: window.location.pathname,
+        key: current
+    }
+    history.pushState(options, '', '');
+
+    console.log(options);
+    
+}
+
+var getUrlParam = (parameter, defaultvalue) => {
+    var urlparameter = defaultvalue;
+    if(window.location.href.indexOf(parameter) > -1){
+        urlparameter = getUrlVars()[parameter];
+        }
+    return urlparameter;
 }

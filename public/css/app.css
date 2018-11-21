@@ -10857,6 +10857,7 @@ button:focus {
   background-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
+  padding: 0;
 }
 
 .c-btn--link:hover {
@@ -11667,5 +11668,14 @@ blockquote::before {
   top: 0;
   left: 0;
   background-color: #d1d1d1;
+}
+
+code {
+  background-color: gainsboro;
+  padding: 2px 5px;
+  border-radius: 3px;
+  border: 1px solid #d1d1d1;
+  margin: 5px 0;
+  display: inline-block;
 }
 

@@ -102,6 +102,7 @@ button:focus {
         color: $primary;
         background-color: transparent;
         box-shadow: none;
+        padding: 0;
 
         &:hover {
             box-shadow: none;

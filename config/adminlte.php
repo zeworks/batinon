@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'Batify',
+    'title' => 'Batinon',
 
     'title_prefix' => '',
 
@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => 'batify', //'<img class="img-responsive" alt="batify" src="/logo.png" />',
+    'logo' => 'batinon', //'<img class="img-responsive" alt="batinon" src="/logo.png" />',
 
     'logo_mini' => '<b>B</b>ON',
 
