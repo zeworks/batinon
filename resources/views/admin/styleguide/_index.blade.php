@@ -29,7 +29,7 @@
         <div class="container-fluid">
             <button class="float-left c-header__item c-header__lineHeight u-color-white js-toggle-aside" id="btn-menu"><i
                     class="fas fa-bars"></i></button>
-            <h4 class="float-left u-color-white u-text-transform-uppercase u-font-medium u-font-size-large c-header__lineHeight">Batinon</h4>
+            <h4 class="float-left u-color-white u-text-transform-uppercase u-font-medium u-font-size-large c-header__lineHeight">Batinon <span class="u-text-transform-none">v1.0.0</span></h4>
 
             <!-- logout form -->
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="float-right">
@@ -43,21 +43,24 @@
         <nav class="c-nav">
             <ul class="u-margin-0 u-padding-0 u-unlist">
                 <li class="c-nav__item">
-                    <a href="#" class="c-nav__link" data-target="1"><i class="fas fa-plus c-nav__icon  u-icon-before"></i>Heading</a>
+                    <a href="#" class="c-nav__link" data-target="1"><i class="fas fa-plus c-nav__icon u-icon-before"></i>Heading</a>
                 </li>
                 <li class="c-nav__item">
-                    <a href="#" class="c-nav__link" data-target="2"><i class="fas fa-plus c-nav__icon  u-icon-before"></i>Buttons
+                    <a href="#" class="c-nav__link" data-target="2"><i class="fas fa-plus c-nav__icon u-icon-before"></i>Buttons
                         & Links</a>
                 </li>
                 <li class="c-nav__item">
-                    <a href="" class="c-nav__link" data-target="3"><i class="fas fa-plus c-nav__icon  u-icon-before"></i>Cards</a>
+                    <a href="" class="c-nav__link" data-target="3"><i class="fas fa-plus c-nav__icon u-icon-before"></i>Cards</a>
                 </li>
                 <li class="c-nav__item">
-                    <a href="" class="c-nav__link" data-target="4"><i class="fas fa-plus c-nav__icon  u-icon-before"></i>Breadcrumb</a>
+                    <a href="" class="c-nav__link" data-target="4"><i class="fas fa-plus c-nav__icon u-icon-before"></i>Breadcrumb</a>
                 </li>
                 <li class="c-nav__item">
-                    <a href="" class="c-nav__link" data-target="5"><i class="fas fa-plus c-nav__icon  u-icon-before"></i>Checkbox
+                    <a href="" class="c-nav__link" data-target="5"><i class="fas fa-plus c-nav__icon u-icon-before"></i>Checkbox
                         & Radio</a>
+                </li>
+                <li class="c-nav__item">
+                    <a href="" class="c-nav__link" data-target="6"><i class="fas fa-plus c-nav__icon u-icon-before"></i>Tab System</a>
                 </li>
             </ul>
         </nav>
@@ -208,25 +211,29 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="c-tab clearfix">
-                <div class="c-tab__items">
-                    <button data-target="1" type="button" class="c-btn c-tab__button">Heading</button>
-                    <button data-target="2" type="button" class="c-btn c-tab__button">Tab 2</button>
+            <div data-scope="6">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Tab System</h4>
+                        <hr>
+                        <div class="c-tab">
+                            <div class="c-tab__tabs">
+                                <div class="c-tab__item" data-target="tab1">
+                                    tab 1
+                                </div>
+                            </div>
+                            <div class="c-tab__body">
+                                <div data-scope="tab1">
+                                    tab 1 teste
+                                </div>
+                                <div data-scope="tab2">
+                                    tab 2 teste
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="c-tab__content" data-tab="1">
-                    <h2>
-                        Headings
-                    </h2>
-                    <br>
-                    <h1>@Heading 1</h1>
-                    <h2>@Heading 2</h2>
-                    <h3>@Heading 3</h3>
-                    <h4>@Heading 4</h4>
-                    <h5>@Heading 5</h5>
-                    <h6>@Heading 6</h6>
-                </div>
-                <div class="c-tab__content" data-tab="2"></div>
-            </div> -->
+            </div>
             <br>
         </div>
     </main>

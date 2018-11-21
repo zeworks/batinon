@@ -50,11 +50,11 @@
 
             <div class="form-group row mb-0">
                 <div class="col-md-7 offset-md-2">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="c-btn c-btn--primary">
                         {{ __('Login') }}
                     </button>
-
-                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                    &nbsp;&nbsp;&nbsp;
+                    <a class="c-btn c-btn--link" href="{{ route('password.request') }}">
                         {{ __('Forgot Your Password?') }}
                     </a>
                 </div>

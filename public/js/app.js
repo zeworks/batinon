@@ -33024,35 +33024,86 @@ var render = function() {
     _vm._v(" "),
     _c("nav", { staticClass: "c-nav" }, [
       _c("ul", { staticClass: "u-margin-0 u-padding-0 u-unlist" }, [
-        _c(
-          "li",
-          { staticClass: "c-nav__item", class: _vm.activeMenu("home") },
-          [_vm._m(1)]
-        ),
+        _c("li", { staticClass: "c-nav__item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "c-nav__link u-text-transform-none",
+              class: _vm.activeMenu("home"),
+              attrs: { href: "/admin/home" }
+            },
+            [
+              _c("i", {
+                staticClass: "fas fa-tachometer-alt c-nav__icon u-icon-before"
+              }),
+              _vm._v("Dashboard")
+            ]
+          )
+        ]),
         _vm._v(" "),
-        _c(
-          "li",
-          { staticClass: "c-nav__item", class: _vm.activeMenu("pages") },
-          [_vm._m(2)]
-        ),
+        _c("li", { staticClass: "c-nav__item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "c-nav__link u-text-transform-none",
+              class: _vm.activeMenu("pages"),
+              attrs: { href: "/admin/pages" }
+            },
+            [
+              _c("i", { staticClass: "fas fa-file c-nav__icon u-icon-before" }),
+              _vm._v("Pages")
+            ]
+          )
+        ]),
         _vm._v(" "),
-        _c(
-          "li",
-          { staticClass: "c-nav__item", class: _vm.activeMenu("blog") },
-          [_vm._m(3)]
-        ),
+        _c("li", { staticClass: "c-nav__item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "c-nav__link u-text-transform-none",
+              class: _vm.activeMenu("blog"),
+              attrs: { href: "/admin/blog" }
+            },
+            [
+              _c("i", {
+                staticClass: "fab fa-blogger-b c-nav__icon u-icon-before"
+              }),
+              _vm._v("Blog")
+            ]
+          )
+        ]),
         _vm._v(" "),
-        _c(
-          "li",
-          { staticClass: "c-nav__item", class: _vm.activeMenu("files") },
-          [_vm._m(4)]
-        ),
+        _c("li", { staticClass: "c-nav__item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "c-nav__link u-text-transform-none",
+              class: _vm.activeMenu("files"),
+              attrs: { href: "/admin/files" }
+            },
+            [
+              _c("i", {
+                staticClass: "fas fa-file-archive c-nav__icon u-icon-before"
+              }),
+              _vm._v("Files")
+            ]
+          )
+        ]),
         _vm._v(" "),
-        _c(
-          "li",
-          { staticClass: "c-nav__item", class: _vm.activeMenu("navigation") },
-          [_vm._m(5)]
-        )
+        _c("li", { staticClass: "c-nav__item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "c-nav__link u-text-transform-none",
+              class: _vm.activeMenu("navigation"),
+              attrs: { href: "/admin/navigation" }
+            },
+            [
+              _c("i", { staticClass: "fas fa-bars c-nav__icon u-icon-before" }),
+              _vm._v("Navigation")
+            ]
+          )
+        ])
       ])
     ])
   ])
@@ -33083,90 +33134,6 @@ var staticRenderFns = [
             })
           ]
         )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "c-nav__link u-text-transform-none",
-        attrs: { href: "/admin/home" }
-      },
-      [
-        _c("i", {
-          staticClass: "fas fa-tachometer-alt c-nav__icon u-icon-before"
-        }),
-        _vm._v("Dashboard")
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "c-nav__link u-text-transform-none",
-        attrs: { href: "/admin/pages" }
-      },
-      [
-        _c("i", { staticClass: "fas fa-file c-nav__icon u-icon-before" }),
-        _vm._v("Pages")
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "c-nav__link u-text-transform-none",
-        attrs: { href: "/admin/blog" }
-      },
-      [
-        _c("i", { staticClass: "fab fa-blogger-b c-nav__icon u-icon-before" }),
-        _vm._v("Blog")
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "c-nav__link u-text-transform-none",
-        attrs: { href: "/admin/files" }
-      },
-      [
-        _c("i", {
-          staticClass: "fas fa-file-archive c-nav__icon u-icon-before"
-        }),
-        _vm._v("Files")
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "c-nav__link u-text-transform-none",
-        attrs: { href: "/admin/navigation" }
-      },
-      [
-        _c("i", { staticClass: "fas fa-bars c-nav__icon u-icon-before" }),
-        _vm._v("Navigation")
       ]
     )
   }
@@ -33334,7 +33301,12 @@ var render = function() {
                     staticClass:
                       "float-left u-color-white u-text-transform-uppercase u-font-medium u-font-size-large c-header__lineHeight"
                   },
-                  [_vm._v(" Batinon")]
+                  [
+                    _vm._v(" Batinon "),
+                    _c("span", { staticClass: "u-text-transform-none" }, [
+                      _vm._v("v1.0.0")
+                    ])
+                  ]
                 )
               ]),
               _vm._v(" "),
@@ -38472,6 +38444,7 @@ $(document).ready(function () {
     var developed = console.log("Developed by Batinon!");
 
     updateUrlParam('teste');
+
     onInit();
 
     tabSystem();
@@ -38492,7 +38465,7 @@ var onInit = function onInit() {
 var tabSystem = function tabSystem() {
     if ($('[data-target]').length) {
         // on load function
-        $('[data-target]:eq(0)').parent().addClass('is-active');
+        $('[data-target]:eq(0)').addClass('is-active');
         $('[data-scope]:eq(0)').addClass('is-active');
     }
     // on click in each data target;
@@ -38502,8 +38475,8 @@ var tabSystem = function tabSystem() {
         $('[data-scope]').removeClass('is-active');
         $('[data-scope="' + _target + '"]').addClass('is-active');
 
-        $('[data-target]').parent().removeClass('is-active');
-        $(this).parent().addClass('is-active');
+        $('[data-target]').removeClass('is-active');
+        $(this).addClass('is-active');
     });
 };
 
@@ -38527,7 +38500,7 @@ var updateUrlParam = function updateUrlParam(current) {
     };
     history.pushState(options, '', '');
 
-    console.log(options);
+    // console.log(op);
 };
 
 var getUrlParam = function getUrlParam(parameter, defaultvalue) {

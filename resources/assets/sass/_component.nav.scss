@@ -7,17 +7,7 @@
         padding: 0 5px;
         margin: 5px 0;
 
-        &.is-active {
-            .#{$class}__link {
-                text-decoration: none;
-                background-color: rgba($color: $primary, $alpha: .3);
-                color: $primary;
-            }
-
-            .#{$class}__icon {
-                color: $primary;
-            }
-        }
+        
     }
 
     &__link {
@@ -30,6 +20,16 @@
 
         &:hover,
         &:focus {
+            text-decoration: none;
+            background-color: rgba($color: $primary, $alpha: .3);
+            color: $primary;
+
+            .#{$class}__icon {
+                color: $primary;
+            }
+        }
+
+        &.is-active {
             text-decoration: none;
             background-color: rgba($color: $primary, $alpha: .3);
             color: $primary;

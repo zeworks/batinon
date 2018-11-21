@@ -3,9 +3,10 @@ $(document).ready(function () {
 
     var developed = console.log("Developed by Batinon!");
 
-    updateUrlParam('teste')
-    onInit();
+    updateUrlParam('teste');
 
+    onInit();
+    
     tabSystem();
 
     headerSystem();
@@ -25,7 +26,7 @@ var onInit = () => {
 var tabSystem = () => {
     if ($('[data-target]').length) {
         // on load function
-        $('[data-target]:eq(0)').parent().addClass('is-active');
+        $('[data-target]:eq(0)').addClass('is-active');
         $('[data-scope]:eq(0)').addClass('is-active');
     }
     // on click in each data target;
@@ -35,8 +36,8 @@ var tabSystem = () => {
         $('[data-scope]').removeClass('is-active');
         $('[data-scope="' + _target + '"]').addClass('is-active');
 
-        $('[data-target]').parent().removeClass('is-active');
-        $(this).parent().addClass('is-active');
+        $('[data-target]').removeClass('is-active');
+        $(this).addClass('is-active');
     });
 }
 
@@ -60,7 +61,7 @@ var updateUrlParam = (current) => {
     }
     history.pushState(options, '', '');
 
-    console.log(options);
+    // console.log(op);
     
 }
 

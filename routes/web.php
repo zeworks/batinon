@@ -17,7 +17,7 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function() {
     Route::prefix('admin')->group(function(){
         // STYLEGUIDE
-        Route::get('/batifystyleguide', function(){
+        Route::get('/styleguide', function(){
             return view('admin.styleguide._index');
         });
 

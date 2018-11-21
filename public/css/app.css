@@ -10857,7 +10857,6 @@ button:focus {
   background-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
-  padding: 0;
 }
 
 .c-btn--link:hover {
@@ -10899,16 +10898,6 @@ button:focus {
   margin: 5px 0;
 }
 
-.c-nav__item.is-active .c-nav__link {
-  text-decoration: none;
-  background-color: rgba(24, 103, 192, 0.3);
-  color: #1867c0;
-}
-
-.c-nav__item.is-active .c-nav__icon {
-  color: #1867c0;
-}
-
 .c-nav__link {
   color: #181818;
   display: block;
@@ -10929,6 +10918,16 @@ button:focus {
 
 .c-nav__link:hover .c-nav__icon,
 .c-nav__link:focus .c-nav__icon {
+  color: #1867c0;
+}
+
+.c-nav__link.is-active {
+  text-decoration: none;
+  background-color: rgba(24, 103, 192, 0.3);
+  color: #1867c0;
+}
+
+.c-nav__link.is-active .c-nav__icon {
   color: #1867c0;
 }
 

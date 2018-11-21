@@ -18,20 +18,20 @@
         </form>
         <nav class="c-nav">
             <ul class="u-margin-0 u-padding-0 u-unlist">
-                <li class="c-nav__item" :class="activeMenu('home')">
-                    <a href="/admin/home" class="c-nav__link u-text-transform-none"><i class="fas fa-tachometer-alt c-nav__icon u-icon-before"></i>Dashboard</a>
+                <li class="c-nav__item">
+                    <a href="/admin/home" :class="activeMenu('home')" class="c-nav__link u-text-transform-none"><i class="fas fa-tachometer-alt c-nav__icon u-icon-before"></i>Dashboard</a>
                 </li>
-                <li class="c-nav__item" :class="activeMenu('pages')">
-                    <a href="/admin/pages" class="c-nav__link u-text-transform-none"><i class="fas fa-file c-nav__icon u-icon-before"></i>Pages</a>
+                <li class="c-nav__item">
+                    <a href="/admin/pages" :class="activeMenu('pages')" class="c-nav__link u-text-transform-none"><i class="fas fa-file c-nav__icon u-icon-before"></i>Pages</a>
                 </li>
-                <li class="c-nav__item" :class="activeMenu('blog')">
-                    <a href="/admin/blog" class="c-nav__link u-text-transform-none"><i class="fab fa-blogger-b c-nav__icon u-icon-before"></i>Blog</a>
+                <li class="c-nav__item">
+                    <a href="/admin/blog" :class="activeMenu('blog')" class="c-nav__link u-text-transform-none"><i class="fab fa-blogger-b c-nav__icon u-icon-before"></i>Blog</a>
                 </li>
-                <li class="c-nav__item" :class="activeMenu('files')">
-                    <a href="/admin/files" class="c-nav__link u-text-transform-none"><i class="fas fa-file-archive c-nav__icon u-icon-before"></i>Files</a>
+                <li class="c-nav__item">
+                    <a href="/admin/files" :class="activeMenu('files')" class="c-nav__link u-text-transform-none"><i class="fas fa-file-archive c-nav__icon u-icon-before"></i>Files</a>
                 </li>
-                <li class="c-nav__item" :class="activeMenu('navigation')">
-                    <a href="/admin/navigation" class="c-nav__link u-text-transform-none"><i class="fas fa-bars c-nav__icon u-icon-before"></i>Navigation</a>
+                <li class="c-nav__item">
+                    <a href="/admin/navigation" :class="activeMenu('navigation')" class="c-nav__link u-text-transform-none"><i class="fas fa-bars c-nav__icon u-icon-before"></i>Navigation</a>
                 </li>
             </ul>
         </nav>
