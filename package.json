@@ -1,4 +1,10 @@
 {
+  "name": "batinon",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/zeworks/batinon.git",
+  "author": "<josenogueira95@gmail.com>",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "npm run development",
