@@ -7,7 +7,7 @@
         padding: 0 5px;
         margin: 5px 0;
 
-        &-active {
+        &.is-active {
             .#{$class}__link {
                 text-decoration: none;
                 background-color: rgba($color: $primary, $alpha: .3);
@@ -26,20 +26,10 @@
         padding: 10px 20px;
         transition: all 0.3s ease;
         border-radius: 5px;
-        @include font-size(12);
+        @include font-size(13);
 
         &:hover,
         &:focus {
-            text-decoration: none;
-            background-color: rgba($color: $primary, $alpha: .3);
-            color: $primary;
-
-            .#{$class}__icon {
-                color: $primary;
-            }
-        }
-
-        &.is-active {
             text-decoration: none;
             background-color: rgba($color: $primary, $alpha: .3);
             color: $primary;

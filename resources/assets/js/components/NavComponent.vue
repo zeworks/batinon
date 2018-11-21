@@ -19,19 +19,19 @@
         <nav class="c-nav">
             <ul class="u-margin-0 u-padding-0 u-unlist">
                 <li class="c-nav__item" :class="activeMenu('home')">
-                    <a href="/admin/home" class="c-nav__link"><i class="fas fa-tachometer-alt c-nav__icon u-icon-before"></i>Dashboard</a>
+                    <a href="/admin/home" class="c-nav__link u-text-transform-none"><i class="fas fa-tachometer-alt c-nav__icon u-icon-before"></i>Dashboard</a>
                 </li>
                 <li class="c-nav__item" :class="activeMenu('pages')">
-                    <a href="/admin/pages" class="c-nav__link"><i class="fas fa-file c-nav__icon u-icon-before"></i>Pages</a>
+                    <a href="/admin/pages" class="c-nav__link u-text-transform-none"><i class="fas fa-file c-nav__icon u-icon-before"></i>Pages</a>
                 </li>
                 <li class="c-nav__item" :class="activeMenu('blog')">
-                    <a href="/admin/blog" class="c-nav__link"><i class="fab fa-blogger-b c-nav__icon u-icon-before"></i>Blog</a>
+                    <a href="/admin/blog" class="c-nav__link u-text-transform-none"><i class="fab fa-blogger-b c-nav__icon u-icon-before"></i>Blog</a>
                 </li>
                 <li class="c-nav__item" :class="activeMenu('files')">
-                    <a href="/admin/files" class="c-nav__link"><i class="fas fa-file-archive c-nav__icon u-icon-before"></i>Files</a>
+                    <a href="/admin/files" class="c-nav__link u-text-transform-none"><i class="fas fa-file-archive c-nav__icon u-icon-before"></i>Files</a>
                 </li>
                 <li class="c-nav__item" :class="activeMenu('navigation')">
-                    <a href="/admin/navigation" class="c-nav__link"><i class="fas fa-bars c-nav__icon u-icon-before"></i>navigation</a>
+                    <a href="/admin/navigation" class="c-nav__link u-text-transform-none"><i class="fas fa-bars c-nav__icon u-icon-before"></i>Navigation</a>
                 </li>
             </ul>
         </nav>
@@ -60,7 +60,7 @@
                 return this.routes.route(url)
             },
             activeMenu(segment) {
-                return segment == this.currentLink ? 'c-nav__item-active' : ''
+                return segment == this.currentLink ? 'is-active' : ''
             },
             setCurrentLink() {
                 this.currentLink = new URL(location.href).pathname.split('/')[2];

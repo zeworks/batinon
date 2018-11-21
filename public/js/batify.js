@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var developed = console.log("Developed by BATINON!");
+    var developed = console.log("Developed by Batify!");
 
     onInit();
 

@@ -10683,6 +10683,29 @@ a.text-dark:focus {
   font-weight: 900;
 }
 
+.u-font-size-small {
+  font-size: 12px;
+  font-size: 0.75rem;
+}
+
+.u-font-size-medium {
+  font-size: 16px;
+  font-size: 1rem;
+}
+
+.u-font-size-large {
+  font-size: 20px;
+  font-size: 1.25rem;
+}
+
+.u-text-transform-uppercase {
+  text-transform: uppercase;
+}
+
+.u-text-transform-none {
+  text-transform: none;
+}
+
 /* Utilities end */
 
 /* Components */
@@ -10700,8 +10723,28 @@ a.text-dark:focus {
   max-width: 100px;
 }
 
+.c-header__item {
+  background-color: transparent;
+  border: 0;
+  padding: 0 20px;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.c-header__item:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.c-header__lineHeight {
+  line-height: 60px;
+}
+
 button:hover {
   cursor: pointer;
+}
+
+button:focus {
+  outline: none;
 }
 
 .c-btn {
@@ -10731,8 +10774,6 @@ button:hover {
 
 .c-btn:focus {
   outline: none;
-  -webkit-box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-          box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
 .c-btn:active {
@@ -10846,7 +10887,7 @@ button:hover {
 }
 
 #btn-menu {
-  margin: 12px 10px 0;
+  margin: 0 10px 0 0;
 }
 
 /* NAV COMPONENT */
@@ -10857,13 +10898,13 @@ button:hover {
   margin: 5px 0;
 }
 
-.c-nav__item-active .c-nav__link {
+.c-nav__item.is-active .c-nav__link {
   text-decoration: none;
   background-color: rgba(24, 103, 192, 0.3);
   color: #1867c0;
 }
 
-.c-nav__item-active .c-nav__icon {
+.c-nav__item.is-active .c-nav__icon {
   color: #1867c0;
 }
 
@@ -10874,8 +10915,8 @@ button:hover {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   border-radius: 5px;
-  font-size: 12px;
-  font-size: 0.75rem;
+  font-size: 13px;
+  font-size: 0.8125rem;
 }
 
 .c-nav__link:hover,
@@ -10887,16 +10928,6 @@ button:hover {
 
 .c-nav__link:hover .c-nav__icon,
 .c-nav__link:focus .c-nav__icon {
-  color: #1867c0;
-}
-
-.c-nav__link.is-active {
-  text-decoration: none;
-  background-color: rgba(24, 103, 192, 0.3);
-  color: #1867c0;
-}
-
-.c-nav__link.is-active .c-nav__icon {
   color: #1867c0;
 }
 
@@ -11588,7 +11619,6 @@ a {
   font-weight: 500;
   font-size: 14px;
   font-size: 0.875rem;
-  text-transform: uppercase;
   display: inline-block;
   color: #1867c0;
 }

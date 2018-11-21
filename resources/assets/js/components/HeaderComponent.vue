@@ -3,15 +3,11 @@
         <b-container fluid>
             <b-row>
                 <b-col sm="6">
-                    <img class="c-header__logo" :src="logo" alt>
-                    <button class="c-btn c-btn--text js-toggle-aside" id="btn-menu"><i class="fas fa-bars u-color-white"></i></button>
+                        <button class="c-header__item c-header__lineHeight float-left js-toggle-aside" id="btn-menu"><i class="fas fa-bars u-color-white"></i></button>
+                        <h4 class="float-left u-color-white u-text-transform-uppercase u-font-medium u-font-size-large c-header__lineHeight"> Batify</h4>
                 </b-col>
-                <b-col sm="6">
+                <b-col sm="6" class="clearfix">
                     <div class="c-profile c-profile--header float-right">
-                        <!-- tasks -->
-                        <button class="c-btn c-btn--text"><i class="fas fa-flag u-color-white"></i></button>
-                        <!-- notification -->
-                        <button class="c-btn c-btn--text"><i class="fas fa-bell u-color-white"></i></button>
                         <!-- profile -->
                         <button class="c-profile__btn" @click="openProfileCard">
                             <img class="c-profile__img" :src="userImage" alt="profile image">
@@ -37,11 +33,15 @@
                             </div>
                         </div>
                     </div>
+                    <div class="float-right">
+                        <!-- tasks -->
+                        <button class="c-header__item c-header__lineHeight"><i class="fas fa-flag u-color-white"></i></button>
+                        <!-- notification -->
+                        <button class="c-header__item c-header__lineHeight"><i class="fas fa-bell u-color-white"></i></button>
+                    </div>
                 </b-col>
             </b-row>
         </b-container>
-
-
     </header>
 </template>
 
@@ -52,7 +52,6 @@
             return {
                 isActive: false,
                 userImage: '/user.png',
-                logo: '/logo.png',
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             }
         },
@@ -60,10 +59,6 @@
             openProfileCard() {
                 this.isActive = !this.isActive;
             }
-        }
+        },
     }
 </script>
-
-<style scoped>
-
-</style>

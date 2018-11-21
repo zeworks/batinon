@@ -99,7 +99,6 @@ a:not(.c-btn) {
 a {
     font-weight: 500;
     @include font-size(14);
-    text-transform: uppercase;
     display: inline-block;
     color: $primary;
 

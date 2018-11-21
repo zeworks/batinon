@@ -26,20 +26,17 @@
 
 <body>
     <header class="c-header">
-        <button class="c-btn c-btn--text js-toggle-aside" id="btn-menu"><i class="fas fa-bars"></i></button>
-
-        <div class="c-profile c-profile--header float-right">
-            <button class="c-profile__btn">
-                <img src="{{ asset('user.png') }}" alt="profile image" width="40">
-                <i class="fas fa-ellipsis-v c-profile__btn-icon"></i>
-            </button>
+        <div class="container-fluid">
+            <button class="float-left c-header__item c-header__lineHeight u-color-white js-toggle-aside" id="btn-menu"><i class="fas fa-bars"></i></button>
+            <h4 class="float-left u-color-white u-text-transform-uppercase u-font-medium u-font-size-large c-header__lineHeight">Batify</h4>
+    
+            <!-- logout form -->
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="float-right">
+                @csrf
+                <button type="submit" class="c-header__item c-header__lineHeight u-color-white u-font-size-medium">logout</button>
+            </form>
+            <!-- logout form ends -->
         </div>
-        <!-- logout form -->
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="float-right">
-            @csrf
-            <button type="submit" class="c-btn c-btn--primary">logout</button>
-        </form>
-        <!-- logout form ends -->
     </header>
     <aside>
         <nav class="c-nav">
@@ -68,7 +65,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-10">
-                    <h3><i class="far fa-file-alt u-icon-before"></i>Batinon Styleguide</h3>
+                    <h3><i class="far fa-file-alt u-icon-before"></i>Batify Styleguide</h3>
                 </div>
                 <div class="col-sm-2">
                     <div class="float-right">
@@ -232,7 +229,7 @@
         </div>
     </main>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="{{ asset('js/batinon.js') }}" defer></script>
+    <script src="{{ asset('js/batify.js') }}" defer></script>
 </body>
 
 </html>

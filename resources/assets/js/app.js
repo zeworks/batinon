@@ -11,34 +11,40 @@ import VueEditor from 'vue2-editor'
 import BootstrapVue from 'bootstrap-vue'
 
 import 'vue-multiselect/dist/vue-multiselect.min.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-
-// global components
-// import './_globals.js';
+// import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 // nav component
 import NavComponent from './components/NavComponent.vue'
+
 // header component
 import HeaderComponent from './components/HeaderComponent.vue'
+
 // breadcrumb component
 import BreadcrumbComponent from './components/BreadcrumbComponent.vue'
+
 // return component
 import ReturnComponent from './components/BreadcrumbComponent.vue'
+
 // home dashboard
 import DashboardComponent from './components/DashboardComponent.vue'
+
 // pages
 import PagesComponent from './components/PagesComponent.vue'
+
 // pages form
 import PagesformComponent from './components/PagesformComponent.vue'
+
 // files
 import FilesComponent from './components/FilesComponent.vue'
+
 // blogs
 import BlogsComponent from './components/BlogsComponent.vue'
+
 // blog form
 import BlogsformComponent from './components/BlogsFormComponent.vue'
+
 // navigation
 import NavigationComponent from './components/NavigationComponent.vue'
-
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

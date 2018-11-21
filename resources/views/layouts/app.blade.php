@@ -10,7 +10,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- app title -->
-    <title>BATINON</title>
+    <title>Batify</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:200,200i,300,300i,400,400i,500,600,700,800,900" qrel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,900" rel="stylesheet">
@@ -37,7 +37,7 @@
         <footer class="clearfix">
             <div class="container-fluid">
                 <div class="float-right">
-                    made by <a href="#">batinon</a>&copy;
+                    made by <a href="#">Batifu</a>&copy;
                     <?= date('Y') ?>
                 </div>
             </div>
