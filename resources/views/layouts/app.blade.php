@@ -37,7 +37,7 @@
         <footer class="clearfix">
             <div class="container-fluid">
                 <div class="float-right">
-                    made by <a href="#">Batifu</a>&copy;
+                    made by <a href="#">Batinon</a>&copy;
                     <?= date('Y') ?>
                 </div>
             </div>

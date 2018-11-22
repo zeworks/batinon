@@ -41,7 +41,7 @@
     </header>
     <aside>
         <nav class="c-nav">
-            <ul class="u-margin-0 u-padding-0 u-unlist">
+            <ul class="u-margin-0 u-padding-0 u-unlist js-nav-system">
                 <li class="c-nav__item">
                     <a href="#" class="c-nav__link" data-target="1"><i class="fas fa-plus c-nav__icon u-icon-before"></i>Heading</a>
                 </li>
@@ -123,10 +123,10 @@
                             with icon</button>
                     </div>
                     <div class="col-sm-6">
-                        <p>6. Link </p>
+                        <p>6. Link <code>btn--link</code></p>
                         <a href="#" class="c-btn c-btn--link">button text</a>
                         <br><br>
-                        <p>7. Link with icon</p>
+                        <p>7. Link with icon <code>btn--link > u-icon-before</code></p>
                         <a href="#" class="c-btn c-btn--link"><i class="fab fa-font-awesome-flag u-icon-before"></i>button
                             text</a>
                     </div>
@@ -216,17 +216,20 @@
                     <div class="col-sm-12">
                         <h4>Tab System</h4>
                         <hr>
-                        <div class="c-tab">
+                        <div class="c-tab js-tab-system">
                             <div class="c-tab__tabs">
-                                <div class="c-tab__item" data-target="tab1">
+                                <button class="c-tab__item" data-tab-target="tab1">
                                     tab 1
-                                </div>
+                                </button>
+                                <button class="c-tab__item" data-tab-target="tab2">
+                                    tab 2
+                                </button>
                             </div>
                             <div class="c-tab__body">
-                                <div data-scope="tab1">
+                                <div data-tab-scope="tab1">
                                     tab 1 teste
                                 </div>
-                                <div data-scope="tab2">
+                                <div data-tab-scope="tab2">
                                     tab 2 teste
                                 </div>
                             </div>

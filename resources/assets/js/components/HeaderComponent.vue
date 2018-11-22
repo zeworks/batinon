@@ -4,7 +4,7 @@
             <b-row>
                 <b-col sm="6">
                         <button class="c-header__item c-header__lineHeight float-left js-toggle-aside" id="btn-menu"><i class="fas fa-bars u-color-white"></i></button>
-                        <h4 class="float-left u-color-white u-text-transform-uppercase u-font-medium u-font-size-large c-header__lineHeight"> Batinon <span class="u-text-transform-none">v1.0.0</span></h4>
+                        <h4 class="float-left u-color-white u-text-transform-uppercase u-font-medium u-font-size-large c-header__lineHeight"> Site Name</h4>
                 </b-col>
                 <b-col sm="6" class="clearfix">
                     <div class="c-profile c-profile--header float-right">
@@ -52,6 +52,7 @@
             return {
                 isActive: false,
                 userImage: '/user.png',
+                userLogo: '/logo.png',
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             }
         },
@@ -62,3 +63,11 @@
         },
     }
 </script>
+
+<style scoped>
+    .userLogo{
+        max-width: 25px;
+        margin-right: 5px;
+    }
+</style>
+

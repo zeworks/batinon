@@ -108,7 +108,8 @@ a {
     }
 }
 
-[data-scope] {
+[data-scope],
+[data-tab-scope] {
     display: none;
 }
 

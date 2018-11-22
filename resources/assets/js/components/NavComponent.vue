@@ -43,7 +43,7 @@
         props: ['username', 'useremail'],
         data() {
             return {
-                userImage: '/user.png',
+                userImage: '/logo.png',
                 currentLink: location.href,
             }
         },
@@ -72,5 +72,6 @@
 <style scoped>
     img {
         max-width: 50px;
+        border-radius: 100%;
     }
 </style>

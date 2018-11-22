@@ -1,20 +1,3 @@
-$(document).ready(function () {
-    let hashDescriptor = 'tab';
-
-    var developed = console.log("Developed by Batinon!");
-
-    updateUrlParam('teste');
-
-    onInit();
-    
-    tabSystem();
-
-    headerSystem();
-
-    breadcrumbSystem();
-});
-
-
 var onInit = () => {
     $("body").addClass("body-loaded");
 
@@ -23,22 +6,46 @@ var onInit = () => {
     });
 }
 
-var tabSystem = () => {
-    if ($('[data-target]').length) {
-        // on load function
-        $('[data-target]:eq(0)').addClass('is-active');
-        $('[data-scope]:eq(0)').addClass('is-active');
-    }
-    // on click in each data target;
-    $('[data-target]').on('click', function (e) {
-        e.preventDefault();
-        var _target = $(this).attr('data-target');
-        $('[data-scope]').removeClass('is-active');
-        $('[data-scope="' + _target + '"]').addClass('is-active');
+var toggleSystem = () => {
+    if ($('.js-nav-system').length) {
+        var jsNavSystem = $('.js-nav-system');
 
-        $('[data-target]').removeClass('is-active');
-        $(this).addClass('is-active');
-    });
+        if (jsNavSystem.find('[data-target]').length) {
+            // on load function
+            jsNavSystem.find('[data-target]:eq(0)').addClass('is-active');
+            $('[data-scope]:eq(0)').addClass('is-active');
+        }
+        // on click in each data target;
+        jsNavSystem.find('[data-target]').on('click', function (e) {
+            e.preventDefault();
+            var _target = $(this).attr('data-target');
+            $('[data-scope]').removeClass('is-active');
+            $('[data-scope="' + _target + '"]').addClass('is-active');
+
+            jsNavSystem.find('[data-target]').removeClass('is-active');
+            $(this).addClass('is-active');
+        });
+    }
+
+    if ($('.js-tab-system')) {
+        var jsTabSystem = $('.js-tab-system');
+
+        if (jsTabSystem.find('[data-tab-target]').length) {
+            // on load function
+            jsTabSystem.find('[data-tab-target]:eq(0)').addClass('is-active');
+            jsTabSystem.find('[data-tab-scope]:eq(0)').addClass('is-active');
+        }
+
+        jsTabSystem.find('[data-tab-target]').on('click', function (e) {
+            e.preventDefault();
+            var _target = $(this).attr('data-tab-target');
+            $('[data-tab-scope]').removeClass('is-active');
+            $('[data-tab-scope="' + _target + '"]').addClass('is-active');
+
+            jsTabSystem.find('[data-tab-target]').removeClass('is-active');
+            $(this).addClass('is-active');
+        });
+    }
 }
 
 var headerSystem = () => {
@@ -53,22 +60,15 @@ var breadcrumbSystem = () => {
     });
 }
 
-var updateUrlParam = (current) => {
-    var options = {
-        url: window.location.href,
-        title: window.location.pathname,
-        key: current
-    }
-    history.pushState(options, '', '');
+$(document).ready(function () {
 
-    // console.log(op);
-    
-}
+    var developed = console.log("Developed by Batinon!");
 
-var getUrlParam = (parameter, defaultvalue) => {
-    var urlparameter = defaultvalue;
-    if(window.location.href.indexOf(parameter) > -1){
-        urlparameter = getUrlVars()[parameter];
-        }
-    return urlparameter;
-}
+    onInit();
+
+    toggleSystem();
+
+    headerSystem();
+
+    breadcrumbSystem();
+});
