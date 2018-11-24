@@ -1,10 +1,17 @@
 <template>
     <div>
-        <div class="c-card__body">
+        <div class="c-card__body clearfix">
             <div class="f-subtitle u-margin-bottom-s">
                 Featured Image
             </div>
-            <button type="button" class="c-btn c-btn--primary" @click="fetchImages">Choose Image</button>
+            <b-row>
+                <b-col sm="6">
+                    <button type="button" class="c-btn c-btn--primary" @click="fetchImages">Choose Image</button>
+                </b-col>
+                <b-col sm="6">
+                    <button v-if="item.image" type="button" class="c-btn c-btn--text float-right" @click="removeFeatured">Remove</button>
+                </b-col>
+            </b-row>
         </div>
         <div class="c-card__body">
             <div v-if="item.image">
@@ -104,26 +111,29 @@
             // remove image
             removeImage(id) {
                 swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this imaginary file!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        axios.post('/api/files/delete', {
-                                data: id
-                            })
-                            .then(response => {
-                                // success alert
-                                swal('Success!', 'File Deleted', 'success');
-                                this.fetchImages();
-                            })
-                    } else {
-                        swal.close();
-                    }
-                });
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover this imaginary file!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            axios.post('/api/files/delete', {
+                                    data: id
+                                })
+                                .then(response => {
+                                    // success alert
+                                    swal('Success!', 'File Deleted', 'success');
+                                    this.fetchImages();
+                                })
+                        } else {
+                            swal.close();
+                        }
+                    });
+            },
+            removeFeatured() {
+                this.item.image = null;
             }
         }
     }

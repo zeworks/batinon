@@ -11051,6 +11051,7 @@ button:focus {
 .c-card__header,
 .c-card__body,
 .c-card__footer {
+  position: relative;
   padding: 10px;
 }
 
@@ -11670,6 +11671,8 @@ blockquote {
 blockquote * {
   font-weight: 300;
   font-style: italic;
+  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 blockquote::before {

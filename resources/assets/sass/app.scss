@@ -137,6 +137,7 @@ blockquote {
     
     *{
         @include font-lightItalic;
+        @include font-size(14);
     }
     
     &::before{
