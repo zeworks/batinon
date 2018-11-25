@@ -11296,6 +11296,10 @@ button:focus {
   position: relative;
 }
 
+.c-tab__tabs {
+  border-bottom: 1px solid #d1d1d1;
+}
+
 .c-tab__tabs::after {
   content: '';
   width: 100%;
@@ -11305,31 +11309,27 @@ button:focus {
 
 .c-tab__item {
   padding: 10px 20px;
-  background-color: #d1d1d1;
   max-width: 150px;
   width: 100%;
   text-align: center;
+  background-color: transparent;
   float: left;
   border: 0;
   font-size: 15px;
   font-size: 0.9375rem;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-bottom: 3px solid transparent;
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
 }
 
 .c-tab__item.is-active {
-  background-color: #e3e3e3;
-  -webkit-box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.21);
-          box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.21);
+  border-color: #1867c0;
 }
 
 .c-tab__body {
   width: 100%;
   position: relative;
   padding: 10px;
-  border: 1px solid #d1d1d1;
 }
 
 .c-table {

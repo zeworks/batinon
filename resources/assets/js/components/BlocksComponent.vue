@@ -4,32 +4,56 @@
             <div class="c-card__header" v-if="title">
                 <span class="f-subtitle">{{title}}</span>
             </div>
-            <div class="c-card__body">
-                <div class="c-form">
-                    <label class="c-form__label" for="block_title">Title*</label>
-                    <input type="text" id="block_title" name="block_title" class="c-form__input" v-model="item.b_title">
+            <div class="c-tab js-tab-system">
+                <div class="c-tab__tabs">
+                    <button class="c-tab__item" data-tab-target="title_section">
+                        Title
+                    </button>
+                    <button class="c-tab__item" data-tab-target="details_section">
+                        Details
+                    </button>
+                    <button class="c-tab__item" data-tab-target="image_section">
+                        Image
+                    </button>
                 </div>
-                <div class="c-form">
-                    <br>
-                    <label for="block_summary" class="c-form__label">Summary</label>
-                    <vueEditor id="block_summary" name="block_summary" v-model="item.b_summary"></vueEditor>
-                </div>
-                <div class="c-form">
-                    <br>
-                    <label for="block_description" class="c-form__label">Description</label>
-                    <vueEditor id="block_description" name="block_description" v-model="item.b_description"></vueEditor>
-                </div>
-                <div class="c-form">
-                    <br>
-                    <label class="c-form__label">Image</label>
-                    <p class="c-form__help">Choose wich image you want to display into this block</p>
-                    <b-row>
-                        <b-col sm="4" v-if="item.b_image">
-                            <img :src="item.b_image" alt class="u-img-responsive">
-                            <br>
-                        </b-col>
-                    </b-row>
-                    <button type="button" class="c-btn c-btn--primary" @click="fetchBlockImages">Choose Image</button>
+                <div class="c-tab__body">
+                    <div data-tab-scope="title_section">
+                        <div class="c-card__body">
+                            <div class="c-form">
+                                <label class="c-form__label" for="block_title">Title*</label>
+                                <input type="text" id="block_title" name="block_title" class="c-form__input" v-model="item.b_title">
+                            </div>
+                        </div>
+                    </div>
+                    <div data-tab-scope="details_section">
+                        <div class="c-card__body">
+                            <div class="c-form">
+                                <label for="block_summary" class="c-form__label">Summary</label>
+                                <vueEditor id="block_summary" name="block_summary" v-model="item.b_summary"></vueEditor>
+                            </div>
+                            <div class="c-form">
+                                <br>
+                                <label for="block_description" class="c-form__label">Description</label>
+                                <vueEditor id="block_description" name="block_description" v-model="item.b_description"></vueEditor>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-tab-scope="image_section">
+                        <div class="c-card__body">
+                            <div class="c-form">
+                                <label class="c-form__label">Image</label>
+                                <p class="c-form__help">Choose wich image you want to display into this block</p>
+                                <b-row>
+                                    <b-col sm="4" v-if="item.b_image">
+                                        <img :src="item.b_image" alt class="u-img-responsive">
+                                        <br>
+                                    </b-col>
+                                </b-row>
+                                <button type="button" class="c-btn c-btn--primary" @click="fetchBlockImages">Choose
+                                    Image</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -52,16 +76,8 @@
                 <div class="clearfix"></div>
                 <div class="float-right">
                     <input type="file" @change="onBlockImageChange" id="file_blockImages" name="file_blockImages" class="hidden">
-                    <button 
-                        type="button" 
-                        @click="showModal = false" 
-                        class="c-btn c-btn--text"
-                        >Cancel</button>
-                    <button 
-                        type="button"
-                        @click="fileClick"
-                        class="c-btn c-btn--primary"
-                        >Or Send File...</button>
+                    <button type="button" @click="showModal = false" class="c-btn c-btn--text">Cancel</button>
+                    <button type="button" @click="fileClick" class="c-btn c-btn--primary">Or Send File...</button>
                 </div>
             </div>
         </modal>
@@ -130,27 +146,27 @@
             },
             // remove image
             removeBlockImage(id) {
-               swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this imaginary file!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        axios.post('/api/files/delete', {
-                                data: id
-                            })
-                            .then(response => {
-                                // success alert
-                                swal('Success!', 'File Deleted', 'success');
-                                this.fetchBlockImages();
-                            })
-                    } else {
-                        swal.close();
-                    }
-                });
+                swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover this imaginary file!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            axios.post('/api/files/delete', {
+                                    data: id
+                                })
+                                .then(response => {
+                                    // success alert
+                                    swal('Success!', 'File Deleted', 'success');
+                                    this.fetchBlockImages();
+                                })
+                        } else {
+                            swal.close();
+                        }
+                    });
             }
         }
     }

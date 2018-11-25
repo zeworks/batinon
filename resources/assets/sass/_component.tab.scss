@@ -4,6 +4,7 @@
     position: relative;
 
     &__tabs {
+        border-bottom: 1px solid $grey-light;
         &::after {
             content: '';
             width: 100%;
@@ -14,20 +15,18 @@
 
     &__item {
         padding: 10px 20px;
-        background-color: $grey-light;
         max-width: 150px;
         width: 100%;
         text-align: center;
+        background-color: transparent;
         float: left;
         border: 0;
         @include font-size(15);
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
+        border-bottom: 3px solid transparent;
         transition: all .5s ease;
 
         &.is-active {
-            background-color: #e3e3e3;
-            box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.21);
+            border-color: $primary;
         }
     }
 
@@ -35,6 +34,5 @@
         width: 100%;
         position: relative;
         padding: 10px;
-        border: 1px solid $grey-light;
     }
 }

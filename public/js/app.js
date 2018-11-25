@@ -35299,6 +35299,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -35494,136 +35510,162 @@ var render = function() {
             ])
           : _vm._e(),
         _vm._v(" "),
-        _c("div", { staticClass: "c-card__body" }, [
-          _c("div", { staticClass: "c-form" }, [
-            _c(
-              "label",
-              { staticClass: "c-form__label", attrs: { for: "block_title" } },
-              [_vm._v("Title*")]
-            ),
+        _c("div", { staticClass: "c-tab js-tab-system" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "c-tab__body" }, [
+            _c("div", { attrs: { "data-tab-scope": "title_section" } }, [
+              _c("div", { staticClass: "c-card__body" }, [
+                _c("div", { staticClass: "c-form" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "c-form__label",
+                      attrs: { for: "block_title" }
+                    },
+                    [_vm._v("Title*")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.item.b_title,
+                        expression: "item.b_title"
+                      }
+                    ],
+                    staticClass: "c-form__input",
+                    attrs: {
+                      type: "text",
+                      id: "block_title",
+                      name: "block_title"
+                    },
+                    domProps: { value: _vm.item.b_title },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.item, "b_title", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ])
+            ]),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.item.b_title,
-                  expression: "item.b_title"
-                }
-              ],
-              staticClass: "c-form__input",
-              attrs: { type: "text", id: "block_title", name: "block_title" },
-              domProps: { value: _vm.item.b_title },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.item, "b_title", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "c-form" },
-            [
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "c-form__label",
-                  attrs: { for: "block_summary" }
-                },
-                [_vm._v("Summary")]
-              ),
-              _vm._v(" "),
-              _c("vueEditor", {
-                attrs: { id: "block_summary", name: "block_summary" },
-                model: {
-                  value: _vm.item.b_summary,
-                  callback: function($$v) {
-                    _vm.$set(_vm.item, "b_summary", $$v)
-                  },
-                  expression: "item.b_summary"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "c-form" },
-            [
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "c-form__label",
-                  attrs: { for: "block_description" }
-                },
-                [_vm._v("Description")]
-              ),
-              _vm._v(" "),
-              _c("vueEditor", {
-                attrs: { id: "block_description", name: "block_description" },
-                model: {
-                  value: _vm.item.b_description,
-                  callback: function($$v) {
-                    _vm.$set(_vm.item, "b_description", $$v)
-                  },
-                  expression: "item.b_description"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "c-form" },
-            [
-              _c("br"),
-              _vm._v(" "),
-              _c("label", { staticClass: "c-form__label" }, [_vm._v("Image")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "c-form__help" }, [
-                _vm._v("Choose wich image you want to display into this block")
-              ]),
-              _vm._v(" "),
-              _c(
-                "b-row",
-                [
-                  _vm.item.b_image
-                    ? _c("b-col", { attrs: { sm: "4" } }, [
-                        _c("img", {
-                          staticClass: "u-img-responsive",
-                          attrs: { src: _vm.item.b_image, alt: "" }
-                        }),
-                        _vm._v(" "),
-                        _c("br")
-                      ])
-                    : _vm._e()
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "c-btn c-btn--primary",
-                  attrs: { type: "button" },
-                  on: { click: _vm.fetchBlockImages }
-                },
-                [_vm._v("Choose Image")]
-              )
-            ],
-            1
-          )
+            _c("div", { attrs: { "data-tab-scope": "details_section" } }, [
+              _c("div", { staticClass: "c-card__body" }, [
+                _c(
+                  "div",
+                  { staticClass: "c-form" },
+                  [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "c-form__label",
+                        attrs: { for: "block_summary" }
+                      },
+                      [_vm._v("Summary")]
+                    ),
+                    _vm._v(" "),
+                    _c("vueEditor", {
+                      attrs: { id: "block_summary", name: "block_summary" },
+                      model: {
+                        value: _vm.item.b_summary,
+                        callback: function($$v) {
+                          _vm.$set(_vm.item, "b_summary", $$v)
+                        },
+                        expression: "item.b_summary"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "c-form" },
+                  [
+                    _c("br"),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "c-form__label",
+                        attrs: { for: "block_description" }
+                      },
+                      [_vm._v("Description")]
+                    ),
+                    _vm._v(" "),
+                    _c("vueEditor", {
+                      attrs: {
+                        id: "block_description",
+                        name: "block_description"
+                      },
+                      model: {
+                        value: _vm.item.b_description,
+                        callback: function($$v) {
+                          _vm.$set(_vm.item, "b_description", $$v)
+                        },
+                        expression: "item.b_description"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { attrs: { "data-tab-scope": "image_section" } }, [
+              _c("div", { staticClass: "c-card__body" }, [
+                _c(
+                  "div",
+                  { staticClass: "c-form" },
+                  [
+                    _c("label", { staticClass: "c-form__label" }, [
+                      _vm._v("Image")
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "c-form__help" }, [
+                      _vm._v(
+                        "Choose wich image you want to display into this block"
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-row",
+                      [
+                        _vm.item.b_image
+                          ? _c("b-col", { attrs: { sm: "4" } }, [
+                              _c("img", {
+                                staticClass: "u-img-responsive",
+                                attrs: { src: _vm.item.b_image, alt: "" }
+                              }),
+                              _vm._v(" "),
+                              _c("br")
+                            ])
+                          : _vm._e()
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "c-btn c-btn--primary",
+                        attrs: { type: "button" },
+                        on: { click: _vm.fetchBlockImages }
+                      },
+                      [_vm._v("Choose\n                                Image")]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ])
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -35736,7 +35778,41 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "c-tab__tabs" }, [
+      _c(
+        "button",
+        {
+          staticClass: "c-tab__item",
+          attrs: { "data-tab-target": "title_section" }
+        },
+        [_vm._v("\n                    Title\n                ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "c-tab__item",
+          attrs: { "data-tab-target": "details_section" }
+        },
+        [_vm._v("\n                    Details\n                ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "c-tab__item",
+          attrs: { "data-tab-target": "image_section" }
+        },
+        [_vm._v("\n                    Image\n                ")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
