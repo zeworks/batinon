@@ -23,7 +23,6 @@
                 </li>
                 <li class="c-nav__item">
                     <router-link to="pages" class="c-nav__link u-text-transform-none"><i class="fas fa-file c-nav__icon u-icon-before"></i>Pages</router-link>
-                    <!-- <a href="/admin/pages" :class="activeMenu('pages')" class="c-nav__link u-text-transform-none"><i class="fas fa-file c-nav__icon u-icon-before"></i>Pages</a> -->
                 </li>
                 <li class="c-nav__item">
                     <a href="/admin/blog" :class="activeMenu('blog')" class="c-nav__link u-text-transform-none"><i class="fab fa-blogger-b c-nav__icon u-icon-before"></i>Blog</a>
