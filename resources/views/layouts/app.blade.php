@@ -32,7 +32,8 @@
             @auth
             <breadcrumb-component></breadcrumb-component>
             @endauth
-            @yield('content')
+            <!-- @yield('content') -->
+            <router-view></router-view>
         </main>
         <footer class="clearfix">
             <div class="container-fluid">

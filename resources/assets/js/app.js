@@ -9,6 +9,7 @@ import Vue from 'vue'
 import VueSwal from 'vue-swal'
 import VueEditor from 'vue2-editor'
 import BootstrapVue from 'bootstrap-vue'
+import router from './router'
 
 import 'vue-multiselect/dist/vue-multiselect.min.css'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -29,7 +30,7 @@ import ReturnComponent from './components/BreadcrumbComponent.vue'
 import DashboardComponent from './components/DashboardComponent.vue'
 
 // pages
-import PagesComponent from './components/PagesComponent.vue'
+// import PagesComponent from './components/PagesComponent.vue'
 
 // pages form
 import PagesformComponent from './components/PagesformComponent.vue'
@@ -52,6 +53,8 @@ import NavigationComponent from './components/NavigationComponent.vue'
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
+
 Vue.use(VueSwal)
 Vue.use(VueEditor)
 Vue.use(BootstrapVue)
@@ -70,13 +73,13 @@ Vue.mixin({
 
 var app = new Vue({
     el: '#app',
+    router,
     components: {
         NavComponent,
         HeaderComponent,
         BreadcrumbComponent,
         ReturnComponent,
         DashboardComponent,
-        PagesComponent,
         PagesformComponent,
         FilesComponent,
         BlogsComponent,
