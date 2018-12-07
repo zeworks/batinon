@@ -21,7 +21,8 @@
                                         <td>
                                             #{{page.id}}
                                         </td>
-                                        <td><a :href="('./pages/edit/'+page.id)">{{page.title}}</a></td>
+                                        <!-- <td><a :href="('./pages/edit/'+page.id)">{{page.title}}</a></td> -->
+                                        <td><router-link to="/admin/pages/detail">{{page.title}}</router-link></td>
                                         <td>{{page.slug}}</td>
                                         <td>
                                             <div class="u-tag" :class="{'u-tag--success' : page.status == '1', 'u-tag--danger' : page.status == '0'}">
@@ -36,8 +37,8 @@
                                         <td>{{page.created_at}}</td>
                                         <td>
                                             <div class="float-right">
-                                                <a :href="('./pages/edit/'+page.id)" class="c-btn c-btn--primary c-btn--small">Edit</a>
-                                                <button class="c-btn c-btn--link c-btn--small" @click="remove(page.id)">Delete</button>
+                                                <!-- <a :href="('./pages/edit/'+page.id)" class="c-btn c-btn--primary c-btn--small">Edit</a> -->
+                                                <!-- <button class="c-btn c-btn--link c-btn--small" @click="remove(page.id)">Delete</button> -->
                                             </div>
                                         </td>
                                     </tr>
@@ -54,7 +55,8 @@
                             </table>
                         </div>
                         <div class="c-card__footer clearfix">
-                            <a :href="('./pages/new')" class="c-btn c-btn--primary float-right">Create New</a>
+                            <router-link to="/admin/pages/add" class="c-btn c-btn--primary float-right">Create New</router-link>
+                            <!-- <a :href="('./pages/new')" class="c-btn c-btn--primary float-right">Create New</a> -->
                         </div>
                     </div>
                 </b-col>

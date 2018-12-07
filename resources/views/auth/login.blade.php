@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('body_class', 'login_page')
-@section('content')
+
 <div class="container-fluid login-section">
     <div class="row">
         <form method="POST" class="col-sm-6 col-md-5 login-form" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
@@ -65,4 +65,3 @@
         <img src="{{ asset('logo.png') }}" class="login-logo" alt="">
     </div>
 </div>
-@endsection
