@@ -1,7 +1,10 @@
+/**
+ * In this file you only need to set the route and import which component to that route vue component.
+ * Try always to use the names as camelCase, for best practices.
+ */
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Pages from './views/Pages.vue'
-import PagesForm from './views/PagesForm.vue'
 
 Vue.use(VueRouter)
 
@@ -10,12 +13,14 @@ export default new VueRouter({
     linkActiveClass: 'is-active',
     routes: [{
         path: '/admin/pages',
-        name: 'pages',
-        component: Pages
+        component: require('./views/Pages.vue')
     },
     {
         path: '/admin/pages/add',
-        name: 'pagesNew',
-        component: PagesForm
+        component: require('./views/PagesForm.vue')
+    },
+    {
+        path: '/admin/pages/edit/:id',
+        component: require('./views/PagesForm.vue')
     }]
 })

@@ -73,13 +73,11 @@
         },
         methods: {
             fetchBlogs() {
-                $('.u-loading').show()
                 var req = axios.get('/api/blogs')
                     .then(response => response.data)
                     .then(data => {
                         this.blogs = data;
                     });
-                req.then(response => $('.u-loading').hide());
             },
             remove(id) {
                 swal({

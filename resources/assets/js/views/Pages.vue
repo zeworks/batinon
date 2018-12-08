@@ -22,7 +22,7 @@
                                             #{{page.id}}
                                         </td>
                                         <!-- <td><a :href="('./pages/edit/'+page.id)">{{page.title}}</a></td> -->
-                                        <td><router-link to="/admin/pages/detail">{{page.title}}</router-link></td>
+                                        <td><router-link :to="'/admin/pages/edit/'+page.id">{{page.title}}</router-link></td>
                                         <td>{{page.slug}}</td>
                                         <td>
                                             <div class="u-tag" :class="{'u-tag--success' : page.status == '1', 'u-tag--danger' : page.status == '0'}">

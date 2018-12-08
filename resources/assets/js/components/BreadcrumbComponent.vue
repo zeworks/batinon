@@ -6,7 +6,7 @@
                 <i class="fas fa-angle-right c-breadcrumb__icon u-icon-after"></i>
             </li>
             <li v-if="currentLink[2]" class="c-breadcrumb__item">
-                 <a :href="'/admin/' + currentLink[2]" class="c-breadcrumb__link">{{ currentLink[2] }}</a>
+                <a :href="'/admin/' + currentLink[2]" class="c-breadcrumb__link">{{ currentLink[2] }}</a>
                 <i class="fas fa-angle-right c-breadcrumb__icon u-icon-after"></i>
             </li>
             <li v-if="currentLink[3]" class="c-breadcrumb__item">

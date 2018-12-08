@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="saveData" :id="id">
+    <form @submit.prevent="saveData">
         <b-container fluid>
             <returnComponent />
             <b-row>
@@ -31,7 +31,7 @@
                         <statusComponent :item="page" />
                         <hr>
                         <featuredImageComponent :item="page" />
-                        <submitComponent :id="id" />
+                        <v-submitComponent :id="$route.params.id" />
                     </div>
                 </b-col>
             </b-row>
@@ -42,13 +42,11 @@
 <script>
     import axios from 'axios';
     // import blocksComponent from './BlocksComponent.vue';
-    // import submitComponent from './SubmitComponent.vue';
     // import statusComponent from './StatusComponent.vue';
     // import featuredImageComponent from './FeaturedImageComponent.vue';
     // import returnComponent from './ReturnComponent.vue';
 
     export default {
-        props: ['id'],
         computed: {
             slug() {
                 var slug = this.sanitizeTitle(this.page.title);
@@ -76,15 +74,15 @@
             }
         },
         created() {
-            if (this.id) {
+            if (this.$route.params.id) {
                 this.fetchPages();
             }
         },
         methods: {
             fetchPages() {
                 $('.u-loading').show();
-
-                var req = axios.get('/api/pages/edit/' + this.id)
+                
+                var req = axios.get('/api/pages/edit/' + this.$route.params.id)
                     .then(response => response.data)
                     .then(data => {
                         this.page = data[0];
@@ -93,9 +91,9 @@
                 req.then(response => $('.u-loading').hide());
             },
             saveData() {
-                if (this.id > 0) {
-                    axios.post('/api/pages/edit/' + this.id, {
-                            id: this.id,
+                if (this.$route.params.id > 0) {
+                    axios.post('/api/pages/edit/' + this.$route.params.id, {
+                            id: this.$route.params.id,
                             title: this.page.title,
                             status: this.page.status,
                             slug: this.page.slug,
@@ -110,6 +108,8 @@
                                 swal('Sucesso!', 'Page saved', 'success');
                             else
                                 swal('Erro!', 'Page not saved', 'error');
+                            this.$router.push("/admin/pages");
+                            
                         });
                 } else {
                     axios.post('/api/pages/add', {
@@ -127,6 +127,7 @@
                                 swal('Sucesso!', 'Page saved', 'success');
                             else
                                 swal('Erro!', 'Page not saved', 'error');
+                            
                         })
                         .catch(error => {
                             swal('Erro!', 'Please fill all the required fields.', 'error');

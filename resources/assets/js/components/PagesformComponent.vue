@@ -82,7 +82,6 @@
         },
         methods: {
             fetchPages() {
-                $('.u-loading').show();
 
                 var req = axios.get('/api/pages/edit/' + this.id)
                     .then(response => response.data)
@@ -90,7 +89,6 @@
                         this.page = data[0];
                     });
 
-                req.then(response => $('.u-loading').hide());
             },
             saveData() {
                 if (this.id > 0) {

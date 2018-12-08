@@ -6,6 +6,7 @@
 
 
 import Vue from 'vue'
+import './components/_globals'
 import VueSwal from 'vue-swal'
 import VueEditor from 'vue2-editor'
 import BootstrapVue from 'bootstrap-vue'
@@ -28,9 +29,6 @@ import ReturnComponent from './components/BreadcrumbComponent.vue'
 
 // home dashboard
 import DashboardComponent from './components/DashboardComponent.vue'
-
-// pages
-// import PagesComponent from './components/PagesComponent.vue'
 
 // pages form
 import PagesformComponent from './components/PagesformComponent.vue'

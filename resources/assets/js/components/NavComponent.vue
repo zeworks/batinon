@@ -22,7 +22,7 @@
                     <a href="/admin/home" :class="activeMenu('home')" class="c-nav__link u-text-transform-none"><i class="fas fa-tachometer-alt c-nav__icon u-icon-before"></i>Dashboard</a>
                 </li>
                 <li class="c-nav__item">
-                    <router-link to="pages" class="c-nav__link u-text-transform-none"><i class="fas fa-file c-nav__icon u-icon-before"></i>Pages</router-link>
+                    <router-link to="/admin/pages" class="c-nav__link u-text-transform-none"><i class="fas fa-file c-nav__icon u-icon-before"></i>Pages</router-link>
                 </li>
                 <li class="c-nav__item">
                     <a href="/admin/blog" :class="activeMenu('blog')" class="c-nav__link u-text-transform-none"><i class="fab fa-blogger-b c-nav__icon u-icon-before"></i>Blog</a>

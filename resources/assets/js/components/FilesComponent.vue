@@ -119,7 +119,6 @@
         },
         methods: {
             fetchFiles(){
-                $('.u-loading').show();
 
                 var req = axios.get('/api/files')
                 .then( response => response.data)
@@ -127,7 +126,6 @@
                     this.files = data;
                 });
 
-                req.then(response => $('.u-loading').hide());
             },
             removeFile(id){
                 swal({
