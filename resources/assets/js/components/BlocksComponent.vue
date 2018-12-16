@@ -58,7 +58,7 @@
             </div>
         </div>
         <!-- modal choose block image -->
-        <modal v-if="showModal">
+        <v-modal v-if="showModal">
             <h3 slot="header" class="f-subtitle">Choose your Block Image</h3>
             <div slot="body">
                 <div v-if="images==0" class="text-center">
@@ -80,20 +80,16 @@
                     <button type="button" @click="fileClick" class="c-btn c-btn--primary">Or Send File...</button>
                 </div>
             </div>
-        </modal>
+        </v-modal>
         <!-- :modal choose block image -->
     </div>
 </template>
 
 <script>
     import axios from 'axios';
-    import modal from './ModalComponent.vue';
 
     export default {
         props: ['item', 'title'],
-        components: {
-            modal
-        },
         data() {
             return {
                 origin: window.location.origin + '/',

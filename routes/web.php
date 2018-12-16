@@ -14,14 +14,15 @@
 Auth::routes();
 
 // back end
+
 Route::group(['middleware' => ['auth']], function() {
     Route::prefix('admin')->group(function(){
-
         Route::get('/{any}', 'Admin\SpaController@index')->where('any', '.*');
+
         // STYLEGUIDE
-        // Route::get('/styleguide', function(){
-        //     return view('admin.styleguide._index');
-        // });
+        Route::get('/styleguide', function(){
+            return view('admin.styleguide._index');
+        });
 
         // // HOME
         // Route::get('/home', 'Admin\HomeController@index');

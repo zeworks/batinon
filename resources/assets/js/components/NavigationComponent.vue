@@ -58,7 +58,7 @@
                 </div>
             </b-col>
         </b-row>
-        <modal v-if="showModal && !editId">
+        <v-modal v-if="showModal && !editId">
             <h3 slot="header" class="f-subtitle">Add new navigation</h3>
             <div slot="body">
                 <div class="c-form">
@@ -77,8 +77,8 @@
                     <button type="button" @click="saveData" class="c-btn c-btn--primary">Save</button>
                 </div>
             </div>
-        </modal>
-        <modal v-if="showModal && editId">
+        </v-modal>
+        <v-modal v-if="showModal && editId">
             <h3 slot="header" class="f-subtitle">Edit navigation</h3>
             <div slot="body" v-for="(nav,index) in navigation" :key="index">
                 <div class="c-form" >
@@ -99,18 +99,16 @@
                     <button type="button" @click="saveData" class="c-btn c-btn--primary">Save</button>
                 </div>
             </div>
-        </modal>
+        </v-modal>
     </b-container>
 </template>
 
 <script>
     import axios from 'axios';
-    import modal from './ModalComponent.vue';
     import Multiselect from 'vue-multiselect'
 
     export default {
         components: {
-            modal,
             Multiselect
         },
         data() {

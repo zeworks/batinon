@@ -32,7 +32,6 @@
             <breadcrumb-component></breadcrumb-component>
             @endauth
             <router-view></router-view>
-            <!-- @yield('content') -->
         </main>
         <footer class="clearfix">
             <div class="container-fluid">
@@ -54,7 +53,6 @@
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    @yield('script')
 </body>
 
 </html>

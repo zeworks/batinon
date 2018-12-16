@@ -30,7 +30,7 @@
                     <div class="c-card">
                         <statusComponent :item="page" />
                         <hr>
-                        <featuredImageComponent :item="page" />
+                        <v-featuredImage :item="page" />
                         <v-submitComponent :id="$route.params.id" />
                     </div>
                 </b-col>
@@ -41,24 +41,13 @@
 
 <script>
     import axios from 'axios';
-    // import blocksComponent from './BlocksComponent.vue';
-    // import statusComponent from './StatusComponent.vue';
-    // import featuredImageComponent from './FeaturedImageComponent.vue';
-    // import returnComponent from './ReturnComponent.vue';
 
     export default {
         computed: {
             slug() {
-                var slug = this.sanitizeTitle(this.page.title);
+                var slug = this.suglifyTitle(this.page.title);
                 return slug;
             }
-        },
-        components: {
-            // blocksComponent,
-            // submitComponent,
-            // statusComponent,
-            // featuredImageComponent,
-            // returnComponent
         },
         data() {
             return {
@@ -132,31 +121,6 @@
                         .catch(error => {
                             swal('Erro!', 'Please fill all the required fields.', 'error');
                         });
-                }
-            },
-            sanitizeTitle(title) {
-                var slug = "";
-                // Change to lower case
-                if (title) {
-                    var titleLower = title.toLowerCase();
-                    // Letter "e"
-                    slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e');
-                    // Letter "a"
-                    slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a');
-                    // Letter "o"
-                    slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o');
-                    // Letter "u"
-                    slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u');
-                    // Letter "d"
-                    slug = slug.replace(/đ/gi, 'd');
-                    // Trim the last whitespace
-                    slug = slug.replace(/\s*$/g, '');
-                    // Change whitespace to "-"
-                    slug = slug.replace(/\s+/g, '-');
-
-                    this.page.slug = slug;
-
-                    return (slug != '' ? slug : '')
                 }
             }
         }

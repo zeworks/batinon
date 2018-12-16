@@ -22,7 +22,7 @@
             </div>
         </div>
         <!-- modal library image -->
-        <modal v-if="showModal">
+        <v-modal v-if="showModal">
             <div slot="header" class="f-subtitle">Choose your Featured Image</div>
             <div slot="body" class="clearfix">
                 <div v-if="images==0" class="text-center">
@@ -44,20 +44,16 @@
                     <button type="button" @click="fileClick" class="c-btn c-btn--primary">Or Send File...</button>
                 </div>
             </div>
-        </modal>
+        </v-modal>
         <!-- \modal library image -->
     </div>
 </template>
 
 <script>
     import axios from 'axios';
-    import modal from './ModalComponent.vue';
 
     export default {
         props: ['item'],
-        components: {
-            modal
-        },
         data() {
             return {
                 origin: window.location.origin + '/',

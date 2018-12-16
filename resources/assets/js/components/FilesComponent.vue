@@ -47,7 +47,7 @@
             </div>
         </div>
         <!-- modal send file -->
-        <modal v-if="showModal">
+        <v-modal v-if="showModal">
             <h3 class="f-subtitle" slot="header">Send New File</h3>
             <div slot="body">
                 <div class="form-group">
@@ -63,10 +63,10 @@
                     <button type="button" @click="showModal = false" class="c-btn c-btn--link">Cancel</button>
                 </div>
             </div>
-        </modal>
+        </v-modal>
         <!-- \modal send file -->
         <!-- modal library file -->
-        <modal v-if="showModalLibrary">
+        <v-modal v-if="showModalLibrary">
             <h3 slot="header" class="f-subtitle">Files Libray</h3>
             <div slot="body" class="clearfix">
               <b-row>
@@ -81,24 +81,23 @@
                     <button @click="showModalLibrary = false" class="c-btn c-btn--default">Cancel</button>
                 </div>
             </div>
-        </modal>
+        </v-modal>
         <!-- \modal library file -->
         <!-- modal preview image -->
-        <modal v-if="showModalPreview">
+        <v-modal v-if="showModalPreview">
             <div slot="body">
                 <img :src="imageToPreview" class="u-img-responsive">
             </div>
             <div slot="footer">
                 <button @click="showModalPreview = false" class="c-btn c-btn--text">Close</button>
             </div>
-        </modal>
+        </v-modal>
         <!-- \modal preview image -->
     </b-container>
 </template>
 
 <script>
     import axios from 'axios';
-    import modal from './ModalComponent.vue';
 
     export default {
         data() {
@@ -110,9 +109,6 @@
                 image_path       : 'storage/images/',
                 imageToPreview   : '',
             }
-        },
-        components: {
-            modal
         },
         created(){
             this.fetchFiles();

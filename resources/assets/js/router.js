@@ -8,10 +8,14 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-export default new VueRouter({
+const router = new VueRouter({
     mode: 'history',
     linkActiveClass: 'is-active',
     routes: [{
+        path: '/login',
+        component: require('./views/Login.vue')
+    },
+    {
         path: '/admin/pages',
         component: require('./views/Pages.vue')
     },
@@ -22,5 +26,11 @@ export default new VueRouter({
     {
         path: '/admin/pages/edit/:id',
         component: require('./views/PagesForm.vue')
+    },
+    {
+        path: '*',
+        component: require('./views/404.vue')
     }]
 })
+
+export default router;
