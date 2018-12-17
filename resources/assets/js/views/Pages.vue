@@ -37,8 +37,8 @@
                                         <td>{{page.created_at}}</td>
                                         <td>
                                             <div class="float-right">
-                                                <!-- <a :href="('./pages/edit/'+page.id)" class="c-btn c-btn--primary c-btn--small">Edit</a> -->
-                                                <!-- <button class="c-btn c-btn--link c-btn--small" @click="remove(page.id)">Delete</button> -->
+                                                <router-link :to="'/admin/pages/edit/'+page.id" class="c-btn c-btn--primary c-btn--small">Edit</router-link>
+                                                <button class="c-btn c-btn--link c-btn--small" @click="remove(page.id)">Delete</button>
                                             </div>
                                         </td>
                                     </tr>

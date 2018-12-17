@@ -11332,6 +11332,10 @@ button:focus {
   padding: 10px;
 }
 
+.c-tab__body-item {
+  display: none;
+}
+
 .c-table {
   width: 100%;
 }

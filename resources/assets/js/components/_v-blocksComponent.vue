@@ -6,18 +6,18 @@
             </div>
             <div class="c-tab js-tab-system">
                 <div class="c-tab__tabs">
-                    <button class="c-tab__item" data-tab-target="title_section">
+                    <button type="button" class="c-tab__item" :class="{ 'is-active' : tabActive === 1 }" @click="tabActive = 1">
                         Title
                     </button>
-                    <button class="c-tab__item" data-tab-target="details_section">
+                    <button type="button" class="c-tab__item" :class="{ 'is-active' : tabActive === 2 }" @click="tabActive = 2">
                         Details
                     </button>
-                    <button class="c-tab__item" data-tab-target="image_section">
+                    <button type="button" class="c-tab__item" :class="{ 'is-active' : tabActive === 3 }" @click="tabActive = 3">
                         Image
                     </button>
                 </div>
                 <div class="c-tab__body">
-                    <div data-tab-scope="title_section">
+                    <div class="c-tab__body-item" :class="{ 'is-active' : tabActive === 1 }">
                         <div class="c-card__body">
                             <div class="c-form">
                                 <label class="c-form__label" for="block_title">Title*</label>
@@ -25,7 +25,7 @@
                             </div>
                         </div>
                     </div>
-                    <div data-tab-scope="details_section">
+                    <div class="c-tab__body-item" :class="{ 'is-active' : tabActive === 2 }">
                         <div class="c-card__body">
                             <div class="c-form">
                                 <label for="block_summary" class="c-form__label">Summary</label>
@@ -38,7 +38,7 @@
                             </div>
                         </div>
                     </div>
-                    <div data-tab-scope="image_section">
+                    <div class="c-tab__body-item" :class="{ 'is-active' : tabActive === 3 }">
                         <div class="c-card__body">
                             <div class="c-form">
                                 <label class="c-form__label">Image</label>
@@ -96,6 +96,7 @@
                 image_path: 'storage/images/',
                 images: [],
                 image: {},
+                tabActive: false,
             }
         },
         methods: {

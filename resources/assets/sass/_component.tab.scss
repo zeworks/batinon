@@ -25,7 +25,7 @@
         border-bottom: 3px solid transparent;
         transition: all .5s ease;
 
-        &.is-active {
+        &.is-active{
             border-color: $primary;
         }
     }
@@ -34,5 +34,9 @@
         width: 100%;
         position: relative;
         padding: 10px;
+
+        &-item {
+            display: none;
+        }
     }
 }

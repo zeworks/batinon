@@ -1,7 +1,7 @@
 <template>
     <form @submit.prevent="saveData">
         <b-container fluid>
-            <returnComponent />
+            <!-- <returnComponent /> -->
             <b-row>
                 <b-col sm="9">
                     <div class="c-card">
@@ -24,11 +24,11 @@
                         </div>
                     </div>
                     <br>
-                    <blocksComponent :item="page" :title="'Page Blocks'" />
+                    <v-blocksComponent :item="page" :title="'Page Blocks'" />
                 </b-col>
                 <b-col sm="3">
                     <div class="c-card">
-                        <statusComponent :item="page" />
+                        <v-statusComponent :item="page" />
                         <hr>
                         <v-featuredImage :item="page" />
                         <v-submitComponent :id="$route.params.id" />
