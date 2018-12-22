@@ -21,7 +21,6 @@
                                         <td>
                                             #{{page.id}}
                                         </td>
-                                        <!-- <td><a :href="('./pages/edit/'+page.id)">{{page.title}}</a></td> -->
                                         <td><router-link :to="'/admin/pages/edit/'+page.id">{{page.title}}</router-link></td>
                                         <td>{{page.slug}}</td>
                                         <td>
@@ -47,7 +46,8 @@
                                     <tr>
                                         <td colspan="5">
                                             <div class="text-center">
-                                                <small>You have no pages created yet!</small>
+                                                <br>
+                                                <p>You have no pages created yet!</p>
                                             </div>
                                         </td>
                                     </tr>
@@ -56,7 +56,6 @@
                         </div>
                         <div class="c-card__footer clearfix">
                             <router-link to="/admin/pages/add" class="c-btn c-btn--primary float-right">Create New</router-link>
-                            <!-- <a :href="('./pages/new')" class="c-btn c-btn--primary float-right">Create New</a> -->
                         </div>
                     </div>
                 </b-col>
@@ -79,13 +78,11 @@
         },
         methods: {
             fetchPages() {
-                $('.u-loading').show()
-                var req = axios.get('/api/pages')
+                axios.get('/api/pages')
                     .then(response => response.data)
                     .then(data => {
                         this.pages = data;
                     });
-                req.then(response => $('.u-loading').hide());
             },
             remove(id) {
                 swal({

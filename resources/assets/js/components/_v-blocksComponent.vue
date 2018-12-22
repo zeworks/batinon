@@ -96,7 +96,7 @@
                 image_path: 'storage/images/',
                 images: [],
                 image: {},
-                tabActive: false,
+                tabActive: 1,
             }
         },
         methods: {

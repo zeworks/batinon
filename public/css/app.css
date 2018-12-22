@@ -10587,6 +10587,30 @@ a.text-dark:focus {
   color: #fff;
 }
 
+.u-color-white-light {
+  color: #fafafa;
+}
+
+.u-color-dark {
+  color: #34495e;
+}
+
+.u-color-dark-light {
+  color: #232323;
+}
+
+.u-color-blue-grey {
+  color: #37474f;
+}
+
+.u-color-grey {
+  color: #616161;
+}
+
+.u-color-grey-light {
+  color: #d1d1d1;
+}
+
 .u-loading {
   display: none;
   height: 100%;
@@ -10714,7 +10738,7 @@ a.text-dark:focus {
   /* default styles */
   display: block;
   height: 60px;
-  background-color: #1867c0;
+  background-color: #fff;
   -webkit-box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
           box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
@@ -10737,6 +10761,11 @@ a.text-dark:focus {
 
 .c-header__lineHeight {
   line-height: 60px;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
 }
 
 button:hover {
@@ -10799,11 +10828,11 @@ button:focus {
 }
 
 .c-btn--default {
-  color: #181818;
+  color: #34495e;
 }
 
 .c-btn--default:hover {
-  color: rgba(24, 24, 24, 0.8);
+  color: rgba(52, 73, 94, 0.8);
 }
 
 .c-btn--outline {
@@ -10888,6 +10917,8 @@ button:focus {
 
 #btn-menu {
   margin: 0 10px 0 0;
+  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 /* NAV COMPONENT */
@@ -10899,7 +10930,7 @@ button:focus {
 }
 
 .c-nav__link {
-  color: #181818;
+  color: #34495e;
   display: block;
   padding: 10px 20px;
   -webkit-transition: all 0.3s ease;
@@ -11035,7 +11066,6 @@ button:focus {
   right: 0;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  color: #fff;
   font-size: 15px;
   font-size: 0.9375rem;
 }
@@ -11072,7 +11102,7 @@ button:focus {
   border-radius: 5px;
   border: 1px solid #d1d1d1;
   line-height: 40px;
-  color: #181818;
+  color: #34495e;
   outline: none;
   display: inline-block;
   width: 100%;
@@ -11108,7 +11138,7 @@ button:focus {
 .c-form__label {
   font-size: 13px;
   font-size: 0.8125rem;
-  color: #181818;
+  color: #34495e;
   display: inline-block;
   font-weight: 600;
   text-transform: uppercase;
@@ -11358,7 +11388,7 @@ button:focus {
 
 .modal-mask {
   position: fixed;
-  z-index: 9998;
+  z-index: 99;
   top: 0;
   left: 0;
   width: 100%;
@@ -11510,7 +11540,7 @@ strong,
 .f-subtitle {
   font-size: 15px;
   font-size: 0.9375rem;
-  color: #181818;
+  color: #34495e;
   display: block;
   font-weight: 600;
   text-transform: uppercase;
@@ -11595,26 +11625,39 @@ body.body-loaded {
   opacity: 1;
 }
 
-body.is-collapsed header,
-body.is-collapsed aside + main {
-  padding-left: 300px;
-}
-
-body.is-collapsed aside {
-  left: 0;
-}
-
 aside {
-  width: 300px;
-  background-color: #fff;
   position: fixed;
   top: 0;
-  left: -100%;
+  left: 0;
+  width: 100%;
   height: 100%;
   z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity, visibility 0.1s ease-in;
+  transition: opacity, visibility 0.1s ease-in;
+  background-color: rgba(52, 73, 94, 0.5);
+}
+
+aside .aside-content {
   padding: 10px;
-  -webkit-transition: left 0.5s ease-in-out;
-  transition: left 0.5s ease-in-out;
+  width: 300px;
+  height: 100%;
+  -webkit-transition: left 0.2s ease-in-out;
+  transition: left 0.2s ease-in-out;
+  left: -100%;
+  position: absolute;
+  top: 0;
+  background-color: #fff;
+}
+
+aside.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+aside.is-active .aside-content {
+  left: 0;
 }
 
 header,

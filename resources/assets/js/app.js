@@ -14,12 +14,6 @@ import router from './router'
 
 import 'vue-multiselect/dist/vue-multiselect.min.css'
 
-// nav component
-import NavComponent from './components/NavComponent.vue'
-
-// header component
-import HeaderComponent from './components/HeaderComponent.vue'
-
 // breadcrumb component
 import BreadcrumbComponent from './components/BreadcrumbComponent.vue'
 
@@ -46,6 +40,8 @@ Vue.use(BootstrapVue)
 Vue.mixin({
     data() {
         return {
+            drawerActive: false,
+            loading: false,
             showModal: false,
             showModalLibrary: false,
             showModalPreview: false,
@@ -76,6 +72,12 @@ Vue.mixin({
 
                 return (slug != '' ? slug : '')
             }
+        },
+        toggleDrawer(){
+            this.$root.drawerActive = !this.$root.drawerActive;    
+        },
+        isLoading(){
+            this.$root.loading = !this.$root.loading;
         }
     }
 })
@@ -86,12 +88,9 @@ var app = new Vue({
     el: '#app',
     router,
     components: {
-        NavComponent,
-        HeaderComponent,
         BreadcrumbComponent,
         ReturnComponent,
         DashboardComponent,
-        // PagesformComponent,
         FilesComponent,
         BlogsComponent,
         // BlogsformComponent,

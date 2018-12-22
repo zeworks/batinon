@@ -53,31 +53,37 @@ body {
     &.body-loaded {
         opacity: 1;
     }
-
-    &.is-collapsed {
-
-        header,
-        aside+main {
-            padding-left: $asideMaxWidth;
-        }
-
-        aside {
-            left: 0;
-        }
-    }
 }
 
 aside {
-    width: $asideMaxWidth;
-    background-color: $asideColor;
     position: fixed;
     top: 0;
-    left: -100%;
+    left: 0;
+    width: 100%;
     height: 100%;
-    // box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.1);
     z-index: 1;
-    padding: 10px;
-    transition: left 0.5s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity, visibility 0.1s ease-in;
+    background-color: rgba($color: $dark, $alpha: 0.5);
+
+    .aside-content {
+        padding: 10px;
+        width: $asideMaxWidth;
+        height: 100%;
+        transition: left 0.2s ease-in-out;
+        left: -100%;
+        position: absolute;
+        top: 0;
+        background-color: $asideColor;
+    }
+
+    &.is-active {
+        opacity: 1;
+        visibility: visible;
+
+        .aside-content { left: 0}
+    }
 }
 
 header,

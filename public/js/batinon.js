@@ -24,7 +24,7 @@ $(document).ready(function () {
 
     onInit();
 
-    headerSystem();
+    // headerSystem();
 
     breadcrumbSystem();
 });

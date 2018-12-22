@@ -1,3 +1,8 @@
+button {
+    background-color: transparent;
+    border: 0;
+}
+
 button:hover {
     cursor: pointer;
 }
@@ -135,4 +140,5 @@ button:focus {
 
 #btn-menu {
     margin: 0 10px 0 0;
+    @include font-size(20)
 }

@@ -69,15 +69,14 @@
         },
         methods: {
             fetchPages() {
-                $('.u-loading').show();
-                
+                this.isLoading();                
                 var req = axios.get('/api/pages/edit/' + this.$route.params.id)
                     .then(response => response.data)
                     .then(data => {
                         this.page = data[0];
                     });
 
-                req.then(response => $('.u-loading').hide());
+                req.then(response => this.isLoading());
             },
             saveData() {
                 if (this.$route.params.id > 0) {
@@ -93,11 +92,12 @@
                             image: this.page.image,
                         })
                         .then(response => {
-                            if (response.data.success)
+                            if (response.data.success) {
                                 swal('Sucesso!', 'Page saved', 'success');
-                            else
+                                this.$router.push("/admin/pages");
+                            } else {
                                 swal('Erro!', 'Page not saved', 'error');
-                            this.$router.push("/admin/pages");
+                            }
                             
                         });
                 } else {
@@ -112,11 +112,12 @@
                             image: this.page.image,
                         })
                         .then(response => {
-                            if (response.data.success)
+                           if (response.data.success) {
                                 swal('Sucesso!', 'Page saved', 'success');
-                            else
+                                this.$router.push("/admin/pages");
+                            } else {
                                 swal('Erro!', 'Page not saved', 'error');
-                            
+                            }
                         })
                         .catch(error => {
                             swal('Erro!', 'Please fill all the required fields.', 'error');

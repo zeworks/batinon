@@ -24,8 +24,8 @@
 <body class="@yield('body_class')">
     <div id="app">
         @auth
-        <header-component username="{{ Auth::user()->name }}" useremail="{{ Auth::user()->email }}" logout="{{ route('logout') }}"></header-component>
-        <nav-component username="{{ Auth::user()->name }}" useremail="{{ Auth::user()->email }}"></nav-component>
+        <v-header username="{{ Auth::user()->name }}" useremail="{{ Auth::user()->email }}" logout="{{ route('logout') }}"></v-header>
+        <v-drawer username="{{ Auth::user()->name }}" useremail="{{ Auth::user()->email }}"></v-drawer>
         @endauth
         <main>
             @auth
@@ -41,13 +41,7 @@
                 </div>
             </div>
         </footer>
-    </div>
-
-    <div class="u-loading">
-        <div class="u-loading__items">
-            <div></div>
-            <div></div>
-        </div>
+        <v-loading />
     </div>
 
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>

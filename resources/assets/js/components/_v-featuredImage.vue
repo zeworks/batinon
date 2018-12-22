@@ -65,12 +65,13 @@
         methods: {
             fetchImages() {
                 this.showModal = true;
-
-                axios.get('/api/files')
+                this.isLoading();
+                var req = axios.get('/api/files')
                     .then(response => response.data)
                     .then(data => {
                         this.images = data; // fill the array with all the images on database
                     });
+                req.then(response => this.isLoading());
             },
             chooseImage(fileName) {
                 this.showModal = false; // hide the modal
