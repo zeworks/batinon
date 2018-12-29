@@ -14,11 +14,8 @@ import router from './router'
 
 import 'vue-multiselect/dist/vue-multiselect.min.css'
 
-// breadcrumb component
-import BreadcrumbComponent from './components/BreadcrumbComponent.vue'
-
 // return component
-import ReturnComponent from './components/BreadcrumbComponent.vue'
+import ReturnComponent from './components/ReturnComponent.vue'
 
 // home dashboard
 import DashboardComponent from './components/DashboardComponent.vue'
@@ -88,7 +85,6 @@ var app = new Vue({
     el: '#app',
     router,
     components: {
-        BreadcrumbComponent,
         ReturnComponent,
         DashboardComponent,
         FilesComponent,

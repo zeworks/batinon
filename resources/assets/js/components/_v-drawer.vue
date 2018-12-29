@@ -45,7 +45,7 @@
         props: ['username', 'useremail'],
         data() {
             return {
-                userImage: '/logo.png',
+                userImage: '/logo.jpg',
                 currentLink: location.href,
             }
         },

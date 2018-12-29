@@ -83,7 +83,7 @@
             </form>
         </div>
         <div class="login-image" style="background-image: url(https://dummyimage.com/1024x1024/e3e3e3/000)">
-            <img src="{{ asset('logo.png') }}" class="login-logo" alt="">
+            <img src="{{ asset('logo.jpg') }}" width="60" style="border-radius: 8px" class="login-logo" alt="">
         </div>
     </div>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>

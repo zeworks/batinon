@@ -54,7 +54,7 @@
             return {
                 isActive: false,
                 userImage: '/user.png',
-                userLogo: '/logo.png',
+                userLogo: '/logo.jpg',
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             }
         },

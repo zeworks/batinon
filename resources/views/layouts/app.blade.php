@@ -29,7 +29,7 @@
         @endauth
         <main>
             @auth
-            <breadcrumb-component></breadcrumb-component>
+            <v-breadcrumb></v-breadcrumb>
             @endauth
             <router-view></router-view>
         </main>

@@ -1,7 +1,13 @@
 <template>
     <b-container fluid>
-        <ul class="c-breadcrumb u-unlist" v-if="currentLink[2] != 'home'">
-            <li class="c-breadcrumb__item">
+        <ul class="c-breadcrumb u-unlist">
+            <li class="c-breadcrumb__item"
+                v-for="(breadcumb,index) in breadcrumbList" 
+                :key="index"
+                @click="routeTo(index)">
+                {{ breadcrumb.name }}
+            </li>
+            <!-- <li class="c-breadcrumb__item">
                 <a href="/admin/home" class="c-breadcrumb__link">home</a>
                 <i class="fas fa-angle-right c-breadcrumb__icon u-icon-after"></i>
             </li>
@@ -11,7 +17,7 @@
             </li>
             <li v-if="currentLink[3]" class="c-breadcrumb__item">
                 {{ currentLink[3] }}
-            </li>
+            </li> -->
         </ul>
     </b-container>
 </template>
@@ -21,14 +27,26 @@
         data() {
             return {
                 currentLink: null,
+                breadcrumbList: {},
             }
         },
-        created() {
-            this.setCurrentLink()
+        mounted() {
+            this.updateBreadcrumb()
         },
         methods: {
             setCurrentLink() {
                 this.currentLink = new URL(location.href).pathname.split('/');
+            },
+            updateBreadcrumb() {
+                this.breadcrumbList = this.$route.meta.breadcrumb
+            },
+            routeTo() {
+                if (this.breadcrumbList[pRouteTo].link) this.$router.push(this.breadcrumbList[pRouteTo].link)
+            }
+        },
+        watch: {
+            '$route' () {
+                this.updateBreadcrumb()
             }
         }
     }
