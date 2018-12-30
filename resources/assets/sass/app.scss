@@ -15,16 +15,17 @@
 /* Utilities end */
 
 /* Components */
-@import 'component.header';
+@import 'component.aside';
+@import 'component.breadcrumb';
 @import 'component.button';
+@import 'component.card';
+@import 'component.header';
 @import 'component.nav';
 @import 'component.profile';
-@import 'component.card';
 @import 'component.form';
 @import 'component.tab';
 @import 'component.table';
 @import 'component.modal';
-@import 'component.breadcrumb';
 /* Components end */
 
 /* Fonts */
@@ -52,37 +53,6 @@ body {
 
     &.body-loaded {
         opacity: 1;
-    }
-}
-
-aside {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity, visibility 0.1s ease-in;
-    background-color: rgba($color: $dark, $alpha: 0.5);
-
-    .aside-content {
-        padding: 10px;
-        width: $asideMaxWidth;
-        height: 100%;
-        transition: left 0.2s ease-in-out;
-        left: -100%;
-        position: absolute;
-        top: 0;
-        background-color: $asideColor;
-    }
-
-    &.is-active {
-        opacity: 1;
-        visibility: visible;
-
-        .aside-content { left: 0}
     }
 }
 

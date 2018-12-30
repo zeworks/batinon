@@ -65,8 +65,6 @@ Vue.mixin({
                 // Change whitespace to "-"
                 slug = slug.replace(/\s+/g, '-');
 
-                this.page.slug = slug;
-
                 return (slug != '' ? slug : '')
             }
         },

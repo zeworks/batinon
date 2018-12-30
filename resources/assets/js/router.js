@@ -15,7 +15,7 @@ const router = new VueRouter({
         path: '/login',
         component: require('./views/Login.vue')
     },
-    {
+    { // pages
         path: '/admin/pages',
         component: require('./views/Pages.vue'),
         meta: {
@@ -31,6 +31,30 @@ const router = new VueRouter({
     {
         path: '/admin/pages/edit/:id',
         component: require('./views/PagesForm.vue')
+    },
+    { // blog
+        path: '/admin/blog',
+        component: require('./views/Blog.vue'),
+    },
+    {
+        path: '/admin/blog/add',
+        component: require('./views/BlogForm.vue')
+    },
+    {
+        path: '/admin/blog/edit/:id',
+        component: require('./views/BlogForm.vue')
+    },
+    { // banners
+        path: '/admin/banners',
+        component: require('./views/Banners.vue')
+    },
+    {
+        path: '/admin/banners/add',
+        component: require('./views/BannersForm.vue')
+    },
+    {
+        path: '/admin/banners/edit/:id',
+        component: require('./views/BannersForm.vue')
     },
     {
         path: '*',

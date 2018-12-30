@@ -1,6 +1,6 @@
 <template>
-    <aside @click="toggleDrawer" :class="{ 'is-active' : this.$root.drawerActive }">
-        <div class="aside-content">
+    <aside class="c-aside" @click="toggleDrawer" :class="{ 'is-active' : this.$root.drawerActive }">
+        <div class="c-aside__content">
             <div class="c-profile">
                 <img :src="userImage" alt="profile image">
                 <span class="c-profile__name">
@@ -23,10 +23,13 @@
                         <a href="/admin/home" :class="activeMenu('home')" class="c-nav__link u-text-transform-none"><i class="fas fa-tachometer-alt c-nav__icon u-icon-before"></i>Dashboard</a>
                     </li>
                     <li class="c-nav__item">
-                        <router-link to="/admin/pages" class="c-nav__link u-text-transform-none"><i class="fas fa-file c-nav__icon u-icon-before"></i>Pages</router-link>
+                        <router-link to="/admin/banners" class="c-nav__link u-text-transform-none"><i class="fas fa-file c-nav__icon u-icon-before"></i>Banners</router-link>
                     </li>
                     <li class="c-nav__item">
-                        <a href="/admin/blog" :class="activeMenu('blog')" class="c-nav__link u-text-transform-none"><i class="fab fa-blogger-b c-nav__icon u-icon-before"></i>Blog</a>
+                        <router-link to="/admin/blog" class="c-nav__link u-text-transform-none"><i class="fab fa-blogger-b c-nav__icon u-icon-before"></i>Blog</router-link>
+                    </li>
+                    <li class="c-nav__item">
+                        <router-link to="/admin/pages" class="c-nav__link u-text-transform-none"><i class="fas fa-file c-nav__icon u-icon-before"></i>Pages</router-link>
                     </li>
                     <li class="c-nav__item">
                         <a href="/admin/files" :class="activeMenu('files')" class="c-nav__link u-text-transform-none"><i class="fas fa-file-archive c-nav__icon u-icon-before"></i>Files</a>

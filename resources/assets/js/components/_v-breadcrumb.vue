@@ -1,12 +1,12 @@
 <template>
     <b-container fluid>
         <ul class="c-breadcrumb u-unlist">
-            <li class="c-breadcrumb__item"
+            <!-- <li class="c-breadcrumb__item"
                 v-for="(breadcumb,index) in breadcrumbList" 
                 :key="index"
                 @click="routeTo(index)">
-                {{ breadcrumb.name }}
-            </li>
+                {{ breadcrumb.name }} -->
+            <!-- </li> -->
             <!-- <li class="c-breadcrumb__item">
                 <a href="/admin/home" class="c-breadcrumb__link">home</a>
                 <i class="fas fa-angle-right c-breadcrumb__icon u-icon-after"></i>

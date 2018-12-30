@@ -21299,8 +21299,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.mixin({
                 // Change whitespace to "-"
                 slug = slug.replace(/\s+/g, '-');
 
-                this.page.slug = slug;
-
                 return slug != '' ? slug : '';
             }
         },
@@ -24263,29 +24261,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("b-container", { attrs: { fluid: "" } }, [
-    _c(
-      "ul",
-      { staticClass: "c-breadcrumb u-unlist" },
-      _vm._l(_vm.breadcrumbList, function(breadcumb, index) {
-        return _c(
-          "li",
-          {
-            key: index,
-            staticClass: "c-breadcrumb__item",
-            on: {
-              click: function($event) {
-                _vm.routeTo(index)
-              }
-            }
-          },
-          [
-            _vm._v(
-              "\n            " + _vm._s(_vm.breadcrumb.name) + "\n        "
-            )
-          ]
-        )
-      })
-    )
+    _c("ul", { staticClass: "c-breadcrumb u-unlist" })
   ])
 }
 var staticRenderFns = []
@@ -24437,6 +24413,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['username', 'useremail'],
@@ -24480,11 +24459,12 @@ var render = function() {
   return _c(
     "aside",
     {
+      staticClass: "c-aside",
       class: { "is-active": this.$root.drawerActive },
       on: { click: _vm.toggleDrawer }
     },
     [
-      _c("div", { staticClass: "aside-content" }, [
+      _c("div", { staticClass: "c-aside__content" }, [
         _c("div", { staticClass: "c-profile" }, [
           _c("img", { attrs: { src: _vm.userImage, alt: "profile image" } }),
           _vm._v(" "),
@@ -24546,6 +24526,48 @@ var render = function() {
                   "router-link",
                   {
                     staticClass: "c-nav__link u-text-transform-none",
+                    attrs: { to: "/admin/banners" }
+                  },
+                  [
+                    _c("i", {
+                      staticClass: "fas fa-file c-nav__icon u-icon-before"
+                    }),
+                    _vm._v("Banners")
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "c-nav__item" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "c-nav__link u-text-transform-none",
+                    attrs: { to: "/admin/blog" }
+                  },
+                  [
+                    _c("i", {
+                      staticClass: "fab fa-blogger-b c-nav__icon u-icon-before"
+                    }),
+                    _vm._v("Blog")
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "c-nav__item" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "c-nav__link u-text-transform-none",
                     attrs: { to: "/admin/pages" }
                   },
                   [
@@ -24558,23 +24580,6 @@ var render = function() {
               ],
               1
             ),
-            _vm._v(" "),
-            _c("li", { staticClass: "c-nav__item" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "c-nav__link u-text-transform-none",
-                  class: _vm.activeMenu("blog"),
-                  attrs: { href: "/admin/blog" }
-                },
-                [
-                  _c("i", {
-                    staticClass: "fab fa-blogger-b c-nav__icon u-icon-before"
-                  }),
-                  _vm._v("Blog")
-                ]
-              )
-            ]),
             _vm._v(" "),
             _c("li", { staticClass: "c-nav__item" }, [
               _c(
@@ -36922,7 +36927,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     routes: [{
         path: '/login',
         component: __webpack_require__(286)
-    }, {
+    }, { // pages
         path: '/admin/pages',
         component: __webpack_require__(291),
         meta: {
@@ -36934,6 +36939,24 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     }, {
         path: '/admin/pages/edit/:id',
         component: __webpack_require__(80)
+    }, { // blog
+        path: '/admin/blog',
+        component: __webpack_require__(326)
+    }, {
+        path: '/admin/blog/add',
+        component: __webpack_require__(329)
+    }, {
+        path: '/admin/blog/edit/:id',
+        component: __webpack_require__(329)
+    }, { // banners
+        path: '/admin/banners',
+        component: __webpack_require__(332)
+    }, {
+        path: '/admin/banners/add',
+        component: __webpack_require__(335)
+    }, {
+        path: '/admin/banners/edit/:id',
+        component: __webpack_require__(335)
     }, {
         path: '*',
         component: __webpack_require__(296)
@@ -40261,7 +40284,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     id: this.$route.params.id,
                     title: this.page.title,
                     status: this.page.status,
-                    slug: this.page.slug,
+                    slug: this.slug,
                     b_title: this.page.b_title,
                     b_summary: this.page.b_summary,
                     b_description: this.page.b_description,
@@ -40279,7 +40302,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/pages/add', {
                     title: this.page.title,
                     status: this.page.status,
-                    slug: this.page.slug,
+                    slug: this.slug,
                     b_title: this.page.b_title,
                     b_summary: this.page.b_summary,
                     b_description: this.page.b_description,
@@ -40397,8 +40420,8 @@ var render = function() {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.page.slug,
-                                      expression: "page.slug"
+                                      value: _vm.slug,
+                                      expression: "slug"
                                     }
                                   ],
                                   staticClass: "c-form__input",
@@ -40409,17 +40432,13 @@ var render = function() {
                                     name: "slug",
                                     slug: _vm.slug
                                   },
-                                  domProps: { value: _vm.page.slug },
+                                  domProps: { value: _vm.slug },
                                   on: {
                                     input: function($event) {
                                       if ($event.target.composing) {
                                         return
                                       }
-                                      _vm.$set(
-                                        _vm.page,
-                                        "slug",
-                                        $event.target.value
-                                      )
+                                      _vm.slug = $event.target.value
                                     }
                                   }
                                 })
@@ -42563,6 +42582,1247 @@ $(document).ready(function () {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 325 */,
+/* 326 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(327)
+/* template */
+var __vue_template__ = __webpack_require__(328)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\views\\Blog.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0751ce2f", Component.options)
+  } else {
+    hotAPI.reload("data-v-0751ce2f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 327 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            blogs: []
+        };
+    },
+    created: function created() {
+        this.fetchBlogs();
+    },
+
+    methods: {
+        fetchBlogs: function fetchBlogs() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/blogs').then(function (response) {
+                return response.data;
+            }).then(function (data) {
+                _this.blogs = data;
+            });
+        },
+        remove: function remove(id) {
+            var _this2 = this;
+
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this item!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            }).then(function (willDelete) {
+                if (willDelete) {
+                    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/blogs/delete', {
+                        data: id
+                    }).then(function (response) {
+                        // success alert
+                        swal('Success!', 'Blog post Deleted', 'success');
+                        _this2.fetchBlogs();
+                    });
+                } else {
+                    swal.close();
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 328 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("b-container", { attrs: { fluid: "" } }, [
+    _c("div", { staticClass: "c-card" }, [
+      _c("div", { staticClass: "c-card__body" }, [
+        _c("table", { staticClass: "c-table no-margin" }, [
+          _c("thead", { staticClass: "c-table__header" }, [
+            _c("tr", [
+              _c("th", [_vm._v("ID")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Blog Title")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Blog Slug")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Status")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Date")]),
+              _vm._v(" "),
+              _c("th")
+            ])
+          ]),
+          _vm._v(" "),
+          _vm.blogs[0] != null
+            ? _c(
+                "tbody",
+                _vm._l(_vm.blogs, function(blog, index) {
+                  return _c("tr", { key: index, staticClass: "c-table__row" }, [
+                    _c("td", [
+                      _vm._v(
+                        "\n                            #" +
+                          _vm._s(blog.id) +
+                          "\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      [
+                        _c(
+                          "router-link",
+                          { attrs: { to: "/admin/blog/edit/" + blog.id } },
+                          [_vm._v(_vm._s(blog.b_title))]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(blog.slug))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "u-tag",
+                          class: {
+                            "u-tag--success": blog.status == "1",
+                            "u-tag--danger": blog.status == "0"
+                          }
+                        },
+                        [
+                          blog.status == 1
+                            ? _c("span", [
+                                _vm._v(
+                                  "\n                                    Active\n                                "
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          blog.status == 0
+                            ? _c("span", [
+                                _vm._v(
+                                  "\n                                    Inactive\n                                "
+                                )
+                              ])
+                            : _vm._e()
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(blog.created_at))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "div",
+                        { staticClass: "float-right" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "c-btn c-btn--primary c-btn--small",
+                              attrs: { to: "/admin/blog/edit/" + blog.id }
+                            },
+                            [_vm._v("Edit")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "c-btn c-btn--link",
+                              on: {
+                                click: function($event) {
+                                  _vm.remove(blog.id)
+                                }
+                              }
+                            },
+                            [_vm._v("Delete")]
+                          )
+                        ],
+                        1
+                      )
+                    ])
+                  ])
+                })
+              )
+            : _c("tbody", [
+                _c("tr", [
+                  _c("td", { attrs: { colspan: "5" } }, [
+                    _c("div", { staticClass: "text-center" }, [
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("You have no blogs created yet!")])
+                    ])
+                  ])
+                ])
+              ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "c-card__footer clearfix" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "c-btn c-btn--primary float-right",
+              attrs: { to: "/admin/blog/add" }
+            },
+            [_vm._v("Create New")]
+          )
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0751ce2f", module.exports)
+  }
+}
+
+/***/ }),
+/* 329 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(330)
+/* template */
+var __vue_template__ = __webpack_require__(331)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\views\\BlogForm.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d2eaccda", Component.options)
+  } else {
+    hotAPI.reload("data-v-d2eaccda", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 330 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['id'],
+    data: function data() {
+        return {
+            blog: [{
+                status: false,
+                slug: '',
+                b_title: '',
+                b_summary: '',
+                b_description: '',
+                b_image: '',
+                image: ''
+            }]
+        };
+    },
+    created: function created() {
+        if (this.$route.params.id) {
+            this.fetchBlogs();
+        }
+    },
+
+    methods: {
+        fetchBlogs: function fetchBlogs() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/blogs/edit/' + this.$route.params.id).then(function (response) {
+                return response.data;
+            }).then(function (data) {
+                _this.blog = data[0];
+            });
+        },
+        saveData: function saveData() {
+            var _this2 = this;
+
+            if (this.$route.params.id > 0) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/blogs/edit/' + this.$route.params.id, {
+                    id: this.$route.params.id,
+                    status: this.blog.status,
+                    slug: this.suglifyTitle(this.blog.b_title),
+                    b_title: this.blog.b_title,
+                    b_summary: this.blog.b_summary,
+                    b_description: this.blog.b_description,
+                    b_image: this.blog.b_image,
+                    image: this.blog.image
+                }).then(function (response) {
+                    if (response.data.success) {
+                        swal('Sucesso!', 'Blog saved', 'success');
+                        _this2.$router.push("/admin/blog");
+                    } else {
+                        swal('Erro!', 'Blog not saved', 'error');
+                    }
+                });
+            } else {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/blogs/add', {
+                    status: this.blog.status,
+                    slug: this.suglifyTitle(this.blog.b_title),
+                    b_title: this.blog.b_title,
+                    b_summary: this.blog.b_summary,
+                    b_description: this.blog.b_description,
+                    b_image: this.blog.b_image,
+                    image: this.blog.image
+                }).then(function (response) {
+                    if (response.data.success) {
+                        swal('Sucesso!', 'Blog saved', 'success');
+                        _this2.$router.push("/admin/blog");
+                    } else {
+                        swal('Erro!', 'Blog not saved', 'error');
+                    }
+                }).catch(function (error) {
+                    swal('Erro!', 'Please fill all the required fields.', 'error');
+                });
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 331 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.saveData($event)
+        }
+      }
+    },
+    [
+      _c(
+        "b-container",
+        { attrs: { fluid: "" } },
+        [
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                { attrs: { sm: "9" } },
+                [_c("v-blocksComponent", { attrs: { item: _vm.blog } })],
+                1
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { sm: "3" } }, [
+                _c(
+                  "div",
+                  { staticClass: "c-card" },
+                  [
+                    _c("v-statusComponent", { attrs: { item: _vm.blog } }),
+                    _vm._v(" "),
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c("v-featuredImage", { attrs: { item: _vm.blog } }),
+                    _vm._v(" "),
+                    _c("v-submitComponent", {
+                      attrs: { id: _vm.$route.params.id }
+                    })
+                  ],
+                  1
+                )
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d2eaccda", module.exports)
+  }
+}
+
+/***/ }),
+/* 332 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(333)
+/* template */
+var __vue_template__ = __webpack_require__(334)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\views\\Banners.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3a169e6c", Component.options)
+  } else {
+    hotAPI.reload("data-v-3a169e6c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 333 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            banners: []
+        };
+    },
+    created: function created() {
+        this.fetch();
+    },
+
+    methods: {
+        fetch: function fetch() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/banners').then(function (response) {
+                return response.data;
+            }).then(function (data) {
+                _this.banners = data;
+            });
+        },
+        remove: function remove(id) {
+            var _this2 = this;
+
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this content!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            }).then(function (willDelete) {
+                if (willDelete) {
+                    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/banners/delete', {
+                        data: id
+                    }).then(function (response) {
+                        // success alert
+                        swal('Success!', 'Banner Deleted', 'success');
+                        _this2.fetch();
+                    });
+                } else {
+                    swal.close();
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 334 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "b-container",
+        { attrs: { fluid: "" } },
+        [
+          _c(
+            "b-row",
+            [
+              _c("b-col", { attrs: { sm: "12" } }, [
+                _c("div", { staticClass: "c-card" }, [
+                  _c("div", { staticClass: "c-card__body" }, [
+                    _c("table", { staticClass: "c-table no-margin" }, [
+                      _c("thead", { staticClass: "c-table__header" }, [
+                        _c("tr", [
+                          _c("th", [_vm._v("ID")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Title")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Status")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Date")]),
+                          _vm._v(" "),
+                          _c("th")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _vm.banners[0] != null
+                        ? _c(
+                            "tbody",
+                            _vm._l(_vm.banners, function(banner, index) {
+                              return _c(
+                                "tr",
+                                { key: index, staticClass: "c-table__row" },
+                                [
+                                  _c("td", [
+                                    _vm._v(
+                                      "\n                                        #" +
+                                        _vm._s(banner.id) +
+                                        "\n                                    "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    [
+                                      _c(
+                                        "router-link",
+                                        {
+                                          attrs: {
+                                            to:
+                                              "/admin/banners/edit/" + banner.id
+                                          }
+                                        },
+                                        [_vm._v(_vm._s(banner.title))]
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "u-tag",
+                                        class: {
+                                          "u-tag--success":
+                                            banner.status == "1",
+                                          "u-tag--danger": banner.status == "0"
+                                        }
+                                      },
+                                      [
+                                        banner.status == 1
+                                          ? _c("span", [
+                                              _vm._v(
+                                                "\n                                                Active\n                                            "
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        banner.status == 0
+                                          ? _c("span", [
+                                              _vm._v(
+                                                "\n                                                Inactive\n                                            "
+                                              )
+                                            ])
+                                          : _vm._e()
+                                      ]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(banner.created_at))]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _c(
+                                      "div",
+                                      { staticClass: "float-right" },
+                                      [
+                                        _c(
+                                          "router-link",
+                                          {
+                                            staticClass:
+                                              "c-btn c-btn--primary c-btn--small",
+                                            attrs: {
+                                              to:
+                                                "/admin/banners/edit/" +
+                                                banner.id
+                                            }
+                                          },
+                                          [_vm._v("Edit")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "c-btn c-btn--link c-btn--small",
+                                            on: {
+                                              click: function($event) {
+                                                _vm.remove(banner.id)
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Delete")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ])
+                                ]
+                              )
+                            })
+                          )
+                        : _c("tbody", [
+                            _c("tr", [
+                              _c("td", { attrs: { colspan: "5" } }, [
+                                _c("div", { staticClass: "text-center" }, [
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _vm._v("You have no pages created yet!")
+                                  ])
+                                ])
+                              ])
+                            ])
+                          ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "c-card__footer clearfix" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "c-btn c-btn--primary float-right",
+                          attrs: { to: "/admin/banners/add" }
+                        },
+                        [_vm._v("Create New")]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3a169e6c", module.exports)
+  }
+}
+
+/***/ }),
+/* 335 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(336)
+}
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(338)
+/* template */
+var __vue_template__ = __webpack_require__(339)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\views\\BannersForm.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4a74b6ae", Component.options)
+  } else {
+    hotAPI.reload("data-v-4a74b6ae", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 336 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(337);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(12)("23eb8df9", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4a74b6ae\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./BannersForm.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4a74b6ae\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./BannersForm.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 337 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 338 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            banners: [{
+                status: false,
+                title: '',
+                summary: '',
+                image: ''
+            }]
+        };
+    },
+    created: function created() {
+        if (this.$route.params.id) {
+            this.fetch();
+        }
+    },
+
+    methods: {
+        fetch: function fetch() {
+            var _this = this;
+
+            this.isLoading();
+            var req = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/banners/edit/' + this.$route.params.id).then(function (response) {
+                return response.data;
+            }).then(function (data) {
+                _this.banners = data[0];
+            });
+
+            req.then(function (response) {
+                return _this.isLoading();
+            });
+        },
+        saveData: function saveData() {
+            var _this2 = this;
+
+            if (this.$route.params.id > 0) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/banners/edit/' + this.$route.params.id, {
+                    id: this.$route.params.id,
+                    title: this.banners.title,
+                    status: this.banners.status,
+                    summary: this.banners.summary,
+                    image: this.banners.image
+                }).then(function (response) {
+                    if (response.data.success) {
+                        swal('Sucesso!', 'Banner saved', 'success');
+                        _this2.$router.push("/admin/banners");
+                    } else {
+                        swal('Erro!', 'Banner not saved', 'error');
+                    }
+                });
+            } else {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/banners/add', {
+                    title: this.banners.title,
+                    status: this.banners.status,
+                    summary: this.banners.summary,
+                    image: this.banners.image
+                }).then(function (response) {
+                    if (response.data.success) {
+                        swal('Sucesso!', 'Banner saved', 'success');
+                        _this2.$router.push("/admin/banners");
+                    } else {
+                        swal('Erro!', 'Banner not saved', 'error');
+                    }
+                }).catch(function (error) {
+                    swal('Erro!', 'Please fill all the required fields.', 'error');
+                });
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 339 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.saveData($event)
+        }
+      }
+    },
+    [
+      _c(
+        "b-container",
+        { attrs: { fluid: "" } },
+        [
+          _c(
+            "b-row",
+            [
+              _c("b-col", { attrs: { sm: "9" } }, [
+                _c("div", { staticClass: "c-form" }, [
+                  _c(
+                    "label",
+                    { staticClass: "c-form__label", attrs: { for: "title" } },
+                    [_vm._v("Title*")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.banners.title,
+                        expression: "banners.title"
+                      }
+                    ],
+                    staticClass: "c-form__input",
+                    attrs: { type: "text", id: "title", name: "title" },
+                    domProps: { value: _vm.banners.title },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.banners, "title", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "c-form" },
+                  [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "c-form__label",
+                        attrs: { for: "summary" }
+                      },
+                      [_vm._v("Summary")]
+                    ),
+                    _vm._v(" "),
+                    _c("vueEditor", {
+                      attrs: { id: "summary", name: "summary" },
+                      model: {
+                        value: _vm.banners.summary,
+                        callback: function($$v) {
+                          _vm.$set(_vm.banners, "summary", $$v)
+                        },
+                        expression: "banners.summary"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("b-col", { attrs: { sm: "3" } }, [
+                _c(
+                  "div",
+                  { staticClass: "c-card" },
+                  [
+                    _c("v-statusComponent", { attrs: { item: _vm.banners } }),
+                    _vm._v(" "),
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c("v-featuredImage", { attrs: { item: _vm.banners } }),
+                    _vm._v(" "),
+                    _c("v-submitComponent", {
+                      attrs: { id: _vm.$route.params.id }
+                    })
+                  ],
+                  1
+                )
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4a74b6ae", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

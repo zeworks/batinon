@@ -36,6 +36,13 @@ Route::get('blogs/edit/{id}','Api\BlogController@get');
 Route::post('blogs/edit/{id}','Api\BlogController@editBlog');
 Route::post('blogs/delete','Api\BlogController@delete');
 
+//banners
+Route::get('banners','Api\BannersController@index');
+Route::post('banners/add','Api\BannersController@add');
+Route::get('banners/edit/{id}','Api\BannersController@get');
+Route::post('banners/edit/{id}','Api\BannersController@edit');
+Route::post('banners/delete','Api\BannersController@delete');
+
 //navigation
 Route::get('navigation','Api\NavigationController@index');
 Route::post('navigation/add','Api\NavigationController@add');

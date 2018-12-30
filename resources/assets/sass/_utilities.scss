@@ -133,7 +133,7 @@ $color in $colors {
 }
 
 // fonts
-.u-font{
+.u-font {
     $class: u-font;
 
     &-lightItalic {
@@ -172,10 +172,12 @@ $color in $colors {
 }
 
 // text
-.u-text-transform-uppercase {
-    text-transform: uppercase;
-}
+.u-text {
+    &-transform-uppercase {
+        text-transform: uppercase;
+    }
 
-.u-text-transform-none {
-    text-transform: none;
+    &-transform-none {
+        text-transform: none;
+    }
 }

@@ -17,7 +17,7 @@
                                     <div class="c-form">
                                         <label for="slug" class="c-form__label">Page Slug</label>
                                         <input disabled type="text" id="slug" name="slug" class="c-form__input" :slug="slug"
-                                            v-model="page.slug">
+                                            v-model="slug">
                                     </div>
                                 </b-col>
                             </b-row>
@@ -84,7 +84,7 @@
                             id: this.$route.params.id,
                             title: this.page.title,
                             status: this.page.status,
-                            slug: this.page.slug,
+                            slug: this.slug,
                             b_title: this.page.b_title,
                             b_summary: this.page.b_summary,
                             b_description: this.page.b_description,
@@ -104,7 +104,7 @@
                     axios.post('/api/pages/add', {
                             title: this.page.title,
                             status: this.page.status,
-                            slug: this.page.slug,
+                            slug: this.slug,
                             b_title: this.page.b_title,
                             b_summary: this.page.b_summary,
                             b_description: this.page.b_description,
