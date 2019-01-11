@@ -11,7 +11,7 @@ class PagesController extends Controller
 {
     // INDEX
     public function index(){
-        $pages = Pages::get();
+        $pages = Pages::get(['id','title','slug','status','created_at']);
         return $pages;
     }
 

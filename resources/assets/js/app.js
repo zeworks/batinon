@@ -20,13 +20,6 @@ import ReturnComponent from './components/ReturnComponent.vue'
 // home dashboard
 import DashboardComponent from './components/DashboardComponent.vue'
 
-// files
-import FilesComponent from './components/FilesComponent.vue'
-
-// blogs
-import BlogsComponent from './components/BlogsComponent.vue'
-
-
 // navigation
 import NavigationComponent from './components/NavigationComponent.vue'
 
@@ -85,9 +78,6 @@ var app = new Vue({
     components: {
         ReturnComponent,
         DashboardComponent,
-        FilesComponent,
-        BlogsComponent,
-        // BlogsformComponent,
         NavigationComponent
     }
 });

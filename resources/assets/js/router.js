@@ -11,10 +11,7 @@ Vue.use(VueRouter)
 const router = new VueRouter({
     mode: 'history',
     linkActiveClass: 'is-active',
-    routes: [{
-        path: '/login',
-        component: require('./views/Login.vue')
-    },
+    routes: [
     { // pages
         path: '/admin/pages',
         component: require('./views/Pages.vue'),
@@ -55,6 +52,10 @@ const router = new VueRouter({
     {
         path: '/admin/banners/edit/:id',
         component: require('./views/BannersForm.vue')
+    },
+    { // files
+        path: '/admin/files',
+        component: require('./views/Files.vue')
     },
     {
         path: '*',

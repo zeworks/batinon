@@ -17,9 +17,9 @@
                         <tr class="c-table__row" v-for="(file,index) in files" :key="index">
                             <td>#{{file.id}}</td>
                             <td>
-                                <a href="#" @click="imagePreview(origin+image_path+file.name)" class="image-to-preview" v-if="file.name">
+                                <button @click="imagePreview(origin+image_path+file.name)" class="image-to-preview" v-if="file.name">
                                     <img width="50" :src="origin+image_path+file.name" alt="dummy image">
-                                </a>
+                                </button>
                             </td>
                             <td>{{file.created_at}}</td>
                             <td><input type="text" disabled  :value="origin+image_path+file.name" class="c-form__input"></td>
