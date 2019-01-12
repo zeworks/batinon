@@ -20,9 +20,6 @@ import ReturnComponent from './components/ReturnComponent.vue'
 // home dashboard
 import DashboardComponent from './components/DashboardComponent.vue'
 
-// navigation
-import NavigationComponent from './components/NavigationComponent.vue'
-
 Vue.use(VueSwal)
 Vue.use(VueEditor)
 Vue.use(BootstrapVue)
@@ -77,7 +74,6 @@ var app = new Vue({
     router,
     components: {
         ReturnComponent,
-        DashboardComponent,
-        NavigationComponent
+        DashboardComponent
     }
 });

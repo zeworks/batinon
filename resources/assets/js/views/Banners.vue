@@ -34,8 +34,8 @@
                                         <td>{{banner.created_at}}</td>
                                         <td>
                                             <div class="float-right">
-                                                <router-link :to="'/admin/banners/edit/'+banner.id" class="c-btn c-btn--primary c-btn--small">Edit</router-link>
-                                                <button class="c-btn c-btn--link c-btn--small" @click="remove(banner.id)">Delete</button>
+                                                <router-link :to="'/admin/banners/edit/'+banner.id" class="c-btn c-btn--text c-btn--small">Edit</router-link>
+                                                <button class="c-btn c-btn--danger c-btn--small" @click="remove(banner.id)">Delete</button>
                                             </div>
                                         </td>
                                     </tr>

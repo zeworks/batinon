@@ -11132,7 +11132,7 @@ button:focus {
 
 .c-profile--header {
   padding: 0;
-  margin: 0 20px;
+  margin: 0 20px 0 0;
 }
 
 .c-profile--header .c-profile__btn {

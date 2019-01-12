@@ -57,6 +57,10 @@ const router = new VueRouter({
         path: '/admin/files',
         component: require('./views/Files.vue')
     },
+    { // navigation
+        path: '/admin/navigation',
+        component: require('./views/Navigation.vue')
+    },
     {
         path: '*',
         component: require('./views/404.vue')

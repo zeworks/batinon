@@ -6,10 +6,10 @@
             </div>
             <b-row>
                 <b-col sm="6">
-                    <button type="button" class="c-btn c-btn--primary" @click="fetchImages">Choose Image</button>
+                    <button type="button" class="c-btn c-btn--text c-btn--small" @click="fetchImages">Choose Image</button>
                 </b-col>
                 <b-col sm="6">
-                    <button v-if="item.image" type="button" class="c-btn c-btn--text float-right" @click="removeFeatured">Remove</button>
+                    <button v-if="item.image" type="button" class="c-btn c-btn--danger c-btn--small float-right" @click="removeFeatured">Remove</button>
                 </b-col>
             </b-row>
         </div>

@@ -35,8 +35,8 @@
                             <td>{{blog.created_at}}</td>
                             <td>
                                 <div class="float-right">
-                                    <router-link :to="'/admin/blog/edit/'+blog.id" class="c-btn c-btn--primary c-btn--small">Edit</router-link>
-                                    <button class="c-btn c-btn--link" @click="remove(blog.id)">Delete</button>
+                                    <router-link :to="'/admin/blog/edit/'+blog.id" class="c-btn c-btn--text c-btn--small">Edit</router-link>
+                                    <button class="c-btn c-btn--danger c-btn--small" @click="remove(blog.id)">Delete</button>
                                 </div>
                             </td>
                         </tr>

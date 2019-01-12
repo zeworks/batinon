@@ -23,7 +23,7 @@
                             </td>
                             <td>{{file.created_at}}</td>
                             <td><input type="text" disabled  :value="origin+image_path+file.name" class="c-form__input"></td>
-                            <td><button class="c-btn c-btn--primary" @click="removeFile(file.id)"><i class="fas fa-trash u-icon-before"></i> delete</button></td>
+                            <td><button class="c-btn c-btn--danger c-btn--small" @click="removeFile(file.id)"><i class="fas fa-trash u-icon-before"></i> delete</button></td>
                         </tr>
                     </tbody>
                     <tbody v-else>
@@ -78,7 +78,7 @@
             <div slot="footer">
                 <div class="clearfix"></div>
                 <div class="float-right">
-                    <button @click="showModalLibrary = false" class="c-btn c-btn--default">Cancel</button>
+                    <button @click="showModalLibrary = false" class="c-btn c-btn--text">Cancel</button>
                 </div>
             </div>
         </v-modal>

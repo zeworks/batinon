@@ -35,7 +35,7 @@
                         <router-link to="/admin/files" class="c-nav__link u-text-transform-none"><i class="fas fa-file-archive c-nav__icon u-icon-before"></i>Files</router-link>
                     </li>
                     <li class="c-nav__item">
-                        <a href="/admin/navigation" :class="activeMenu('navigation')" class="c-nav__link u-text-transform-none"><i class="fas fa-bars c-nav__icon u-icon-before"></i>Navigation</a>
+                        <router-link to="/admin/navigation" class="c-nav__link u-text-transform-none"><i class="fas fa-bars c-nav__icon u-icon-before"></i>Navigation</router-link>
                     </li>
                 </ul>
             </nav>
