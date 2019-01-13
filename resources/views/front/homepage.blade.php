@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-6">
                                 <strong>{{ $banner->title }}</strong>
-                                <p>{{ $banner->summary }}</p>
+                                <p>{!! $banner->summary !!}</p>
                             </div>
                         </div>
                     </div>
