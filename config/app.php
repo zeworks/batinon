@@ -108,39 +108,6 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-    
-    
-        // [
-        //     'text' => 'Dashboard',
-        //     'url'  => 'admin/home',
-        //     'icon' => 'dashboard'
-        // ],
-        // [
-        //     'text'        => 'Pages',
-        //     'url'         => 'admin/pages',
-        //     'icon'        => 'desktop',
-        // ],
-        // [
-        //     'text'        => 'Blog',
-        //     'url'         => 'admin/blog',
-        //     'icon'        => 'commenting-o',
-        // ],
-        // [
-        //     'text'        => 'Files',
-        //     'url'         => 'admin/files',
-        //     'icon'        => 'file',
-        // ],
-        // [
-        //     'text' => 'Navigation',
-        //     'url'  => 'admin/navigation',
-        //     'icon' => 'gear'
-        // ],
-        // [
-        //     'text' => 'Profile',
-        //     'url'  => 'admin/settings',
-        //     'icon' => 'user',
-        // ],
-
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -195,6 +162,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
+        Folklore\Image\ImageServiceProvider::class
 
     ],
 
@@ -244,7 +212,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Image' => Intervention\Image\Facades\Image::class,
+        'Image' => Folklore\Image\Facades\Image::class
 
     ],
 
