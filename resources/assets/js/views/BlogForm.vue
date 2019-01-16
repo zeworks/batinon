@@ -4,7 +4,11 @@
             <!-- <returnComponent /> -->
             <b-row>
                 <b-col sm="9">
-                    <v-blocksComponent :item="blog"/>
+                    <div class="c-form">
+                        <label for="slug" class="c-form__label">Blog Slug</label>
+                        <input disabled type="text" id="slug" name="slug" class="c-form__input" :slug="slug" v-model="slug">
+                    </div>
+                    <v-blocksComponent :item="blog" />
                 </b-col>
                 <b-col sm="3">
                     <div class="c-card">
@@ -42,6 +46,12 @@
                 this.fetchBlogs();
             }
         },
+        computed: {
+            slug() {
+                var slug = this.suglifyTitle(this.blog.b_title);
+                return slug;
+            }
+        },
         methods: {
             fetchBlogs() {
 
@@ -64,11 +74,11 @@
                             image: this.blog.image,
                         })
                         .then(response => {
-                            if (response.data.success){
-                              swal('Sucesso!', 'Blog saved', 'success');
-                              this.$router.push("/admin/blog");
+                            if (response.data.success) {
+                                swal('Sucesso!', 'Blog saved', 'success');
+                                this.$router.push("/admin/blog");
                             } else {
-                              swal('Erro!', 'Blog not saved', 'error');
+                                swal('Erro!', 'Blog not saved', 'error');
                             }
                         });
                 } else {
@@ -82,11 +92,11 @@
                             image: this.blog.image,
                         })
                         .then(response => {
-                            if (response.data.success){
-                              swal('Sucesso!', 'Blog saved', 'success');
-                              this.$router.push("/admin/blog");
+                            if (response.data.success) {
+                                swal('Sucesso!', 'Blog saved', 'success');
+                                this.$router.push("/admin/blog");
                             } else {
-                              swal('Erro!', 'Blog not saved', 'error');
+                                swal('Erro!', 'Blog not saved', 'error');
                             }
                         })
                         .catch(error => {

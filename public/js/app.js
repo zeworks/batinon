@@ -40713,6 +40713,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -40737,6 +40741,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
 
+    computed: {
+        slug: function slug() {
+            var slug = this.suglifyTitle(this.blog.b_title);
+            return slug;
+        }
+    },
     methods: {
         fetchBlogs: function fetchBlogs() {
             var _this = this;
@@ -40821,7 +40831,45 @@ var render = function() {
               _c(
                 "b-col",
                 { attrs: { sm: "9" } },
-                [_c("v-blocksComponent", { attrs: { item: _vm.blog } })],
+                [
+                  _c("div", { staticClass: "c-form" }, [
+                    _c(
+                      "label",
+                      { staticClass: "c-form__label", attrs: { for: "slug" } },
+                      [_vm._v("Blog Slug")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.slug,
+                          expression: "slug"
+                        }
+                      ],
+                      staticClass: "c-form__input",
+                      attrs: {
+                        disabled: "",
+                        type: "text",
+                        id: "slug",
+                        name: "slug",
+                        slug: _vm.slug
+                      },
+                      domProps: { value: _vm.slug },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.slug = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("v-blocksComponent", { attrs: { item: _vm.blog } })
+                ],
                 1
               ),
               _vm._v(" "),
