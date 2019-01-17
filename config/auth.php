@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'backend',
         'passwords' => 'users',
     ],
 
@@ -36,7 +36,7 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'backend' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
@@ -46,7 +46,7 @@ return [
             'provider' => 'users',
         ],
 
-        'front' => [
+        'frontend' => [
             'driver' => 'session',
             'provider' => 'users',
         ],

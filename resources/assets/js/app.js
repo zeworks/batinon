@@ -6,7 +6,7 @@
 
 
 import Vue from 'vue'
-import './components/_globals'
+import '@components/_globals'
 import VueSwal from 'vue-swal'
 import VueEditor from 'vue2-editor'
 import BootstrapVue from 'bootstrap-vue'
@@ -15,10 +15,10 @@ import router from './router'
 import 'vue-multiselect/dist/vue-multiselect.min.css'
 
 // return component
-import ReturnComponent from './components/ReturnComponent.vue'
+import ReturnComponent from '@components/ReturnComponent.vue'
 
 // home dashboard
-import DashboardComponent from './components/DashboardComponent.vue'
+import DashboardComponent from '@components/DashboardComponent.vue'
 
 Vue.use(VueSwal)
 Vue.use(VueEditor)

@@ -20,7 +20,7 @@
             <nav class="c-nav">
                 <ul class="u-margin-0 u-padding-0 u-unlist">
                     <li class="c-nav__item">
-                        <a href="/admin/home" :class="activeMenu('home')" class="c-nav__link u-text-transform-none"><i class="fas fa-tachometer-alt c-nav__icon u-icon-before"></i>Dashboard</a>
+                        <!-- <a href="/admin/home" :class="activeMenu('home')" class="c-nav__link u-text-transform-none"><i class="fas fa-tachometer-alt c-nav__icon u-icon-before"></i>Dashboard</a> -->
                     </li>
                     <li class="c-nav__item">
                         <router-link to="/admin/banners" class="c-nav__link u-text-transform-none"><i class="fas fa-file c-nav__icon u-icon-before"></i>Banners</router-link>
@@ -49,26 +49,6 @@
         data() {
             return {
                 userImage: '/logo.jpg',
-                currentLink: location.href,
-            }
-        },
-        computed: {
-            routes() {
-                return window.routes
-            },
-        },
-        created() {
-            this.setCurrentLink()
-        },
-        methods: {
-            route(url) {
-                return this.routes.route(url)
-            },
-            activeMenu(segment) {
-                return segment == this.currentLink ? 'is-active' : ''
-            },
-            setCurrentLink() {
-                this.currentLink = new URL(location.href).pathname.split('/')[2];
             }
         }
     }

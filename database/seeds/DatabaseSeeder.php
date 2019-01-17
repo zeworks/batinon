@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(UsersTableSeeder::class);
-        $this->call(AdminSettingsTableSeeder::class);
+        $this->call(SettingsTableSeeder::class);
         // $this->call(TemplateTypeTableSeeder::class);
     }
 }
@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder
     }
 }
 
-class AdminSettingsTableSeeder extends Seeder
+class SettingsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -44,7 +44,7 @@ class AdminSettingsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('admin_settings')->insert([
+        DB::table('settings')->insert([
             'website_name' => 'Just For you',
             'website_account_email' => 'info@justforyou.pt',
             'website_legal_name' => 'Just For You',

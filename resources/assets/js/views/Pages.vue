@@ -68,15 +68,7 @@
     export default {
         data() {
             return {
-                tableHeaders: [
-                    'ID',
-                    'Page Title',
-                    'Page Slug',
-                    'Status',
-                    'Date',
-                    ''
-                ],
-                pages: [],
+                pages: []
             }
         },
         created() {

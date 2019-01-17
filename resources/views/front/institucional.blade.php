@@ -2,8 +2,8 @@
 <!-- banner - large -->
 <section>
     <div class="institutional-banner">
-        @foreach($template as $templ)
-            <div class="image-bg" style="background-image: url('{{ asset('storage/images/'.$templ->featured_image) }}')"></div>
+        @foreach($page as $item)
+            <div class="image-bg" style="background-image: url('<?=Image::url($item->image,1920,900)?>')"></div>
         @endforeach
     </div>
 </section>
@@ -19,8 +19,8 @@
                         <a href="../" title="home">Home</a>
                     </li>
                     <li>
-                        @foreach($template as $templ)
-                        <a href="{{$templ->slug}}" title="sobre">{{ $templ->title }}</a>
+                        @foreach($page as $item)
+                        <a href="{{$item->slug}}" title="sobre">{{ $item->title }}</a>
                         @endforeach
                     </li>
                 </ul>
@@ -30,38 +30,26 @@
 </section>
 <!-- /breadcrumb -->
 <!-- ABOUT -->
-@if($blocks)
-<section>
-    <div class="empty-space-80"></div>
-    <div class="container">
-        @foreach($blocks as $key => $block)
+@foreach($page as $block)
+    @if($block->b_title)
+    <section>
+        <div class="empty-space-80"></div>
+        <div class="container">
             <div class="row">
-                @if($key%2)
-                    <div class="col-sm-6 col-md-5 col-sm-push-7">
-                        <h1>{{$block->blocks->title}}</h1>
-                            {!! $block->blocks->description !!}    
+                <div class="col-sm-6 col-md-5">
+                    <h1>{{$block->b_title}}</h1>
+                    {!! $block->b_summary !!}    
+                </div>
+                <div class="col-sm-6 col-md-offset-1">
+                    <div class="bordered-image">
+                        <img class="img-responsive" src="<?=Image::url($block->b_image,720,480)?>" alt="">
                     </div>
-                    <div class="col-sm-6 col-md-offset-1 col-sm-pull-6">
-                        <div class="bordered-image">
-                            <img class="img-responsive" src="{{ Image::url(asset('storage/images/'.$block->blocks->image),720,480,array('crop','')) }}" alt="">
-                        </div>
-                    </div>
-                @else
-                    <div class="col-sm-6 col-md-5">
-                        <h1>{{$block->blocks->title}}</h1>
-                        {!! $block->blocks->description !!}    
-                    </div>
-                    <div class="col-sm-6 col-md-offset-1">
-                        <div class="bordered-image">
-                            <img class="img-responsive" src="{{ Image::url(asset('storage/images/'.$block->blocks->image),720,480,array('crop','')) }}" alt="">
-                        </div>
-                    </div>
-                @endif
+                </div>
             </div>
             <div class="empty-space-80"></div>
-        @endforeach
-    </div>
-</section>
-@endif
+        </div>
+    </section>
+    @endif
+@endforeach
 <!-- /ABOUT -->
 @endsection

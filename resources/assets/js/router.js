@@ -14,7 +14,7 @@ const router = new VueRouter({
     routes: [
     { // pages
         path: '/admin/pages',
-        component: require('./views/Pages.vue'),
+        component: require('@views/Pages.vue'),
         meta: {
             breadcrumb: [
                 { name: 'Pages', link: '/admin/pages' }
@@ -23,47 +23,47 @@ const router = new VueRouter({
     },
     {
         path: '/admin/pages/add',
-        component: require('./views/PagesForm.vue')
+        component: require('@views/PagesForm.vue')
     },
     {
         path: '/admin/pages/edit/:id',
-        component: require('./views/PagesForm.vue')
+        component: require('@views/PagesForm.vue')
     },
     { // blog
         path: '/admin/blog',
-        component: require('./views/Blog.vue'),
+        component: require('@views/Blog.vue'),
     },
     {
         path: '/admin/blog/add',
-        component: require('./views/BlogForm.vue')
+        component: require('@views/BlogForm.vue')
     },
     {
         path: '/admin/blog/edit/:id',
-        component: require('./views/BlogForm.vue')
+        component: require('@views/BlogForm.vue')
     },
     { // banners
         path: '/admin/banners',
-        component: require('./views/Banners.vue')
+        component: require('@views/Banners.vue')
     },
     {
         path: '/admin/banners/add',
-        component: require('./views/BannersForm.vue')
+        component: require('@views/BannersForm.vue')
     },
     {
         path: '/admin/banners/edit/:id',
-        component: require('./views/BannersForm.vue')
+        component: require('@views/BannersForm.vue')
     },
     { // files
         path: '/admin/files',
-        component: require('./views/Files.vue')
+        component: require('@views/Files.vue')
     },
     { // navigation
         path: '/admin/navigation',
-        component: require('./views/Navigation.vue')
+        component: require('@views/Navigation.vue')
     },
     {
         path: '*',
-        component: require('./views/404.vue')
+        component: require('@views/404.vue')
     }]
 })
 

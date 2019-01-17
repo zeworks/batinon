@@ -11,7 +11,6 @@
 
 <script>
     export default {
-        props: ['id'],
         methods: {
             goBack(){
                  window.history.go(-1);
