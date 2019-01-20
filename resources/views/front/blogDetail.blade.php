@@ -1,8 +1,8 @@
 @extends('layouts.default') @section('content')
 <section>
     <div class="institutional-banner">
-        @foreach($blogs as $blog)
-        <div class="image-bg" style="background-image: url('{{ asset('storage/images/'.$blog->featured_image) }}')"></div>
+        @foreach($details as $detail)
+        <div class="image-bg" style="background-image: url('<?=Image::url($detail->image,1920,900)?>')"></div>
         @endforeach
     </div>
 </section>
@@ -20,8 +20,8 @@
                         <a href="{{ url('blog')}}" title="Blog">Blog</a>
                     </li>
                     <li>
-                        @foreach($blogs as $blog)
-                        <a href="{{ $blog -> slug }}" title="{{ $blog -> title }}">{{ $blog -> title }}</a>
+                        @foreach($details as $detail)
+                        <a href="{{ $detail->slug }}" title="{{ $detail->b_title }}">{{ $detail->b_title }}</a>
                         @endforeach
                     </li>
                 </ul>
@@ -36,7 +36,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-5 col-sm-push-7">
-                @isset($images)
+            {{-- @isset($images)
                 <div class="empty-space-20"></div>
                 <div class="owl-carousel owl-theme product-carousel">
                     @foreach($images as $key => $image)
@@ -55,23 +55,22 @@
                     @endforeach
                 </div>
                 @endisset
+            --}}
             </div>
             <div class="col-sm-7 col-sm-pull-5">
-                @foreach($blogs as $blog)
+                @foreach($details as $detail)
                 <article class="post-article">
-                    <h1>{{$blog->title}}</h1>
-                    <small>{{$blog->created_at}}</small>
+                    <h1>{{$detail->b_title}}</h1>
+                    <small>{{$detail->created_at}}</small>
                     <br>
                     <span>Posted by:
                         <strong>Diana Pampols</strong>
                     </span>
                     <br>
-                    <br> {!! $blog->description !!}
+                    <br> {!! $detail->b_description !!}
                     <div class="share fright">
                         <div id="shareRoundIcons"></div>
                     </div>
-
-
                 </article>
                 @endforeach
             </div>

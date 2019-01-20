@@ -4614,6 +4614,12 @@ textarea {
   line-height: normal;
 }
 
+@media (max-width: 768px){
+  .wrapper-slide strong {
+    font-size: 48px;
+  }
+}
+
 /* line 92, modules/_sliders.scss */
 
 .wrapper-slide p {
@@ -4655,6 +4661,12 @@ textarea {
 
 .post-article .text-ellipses {
   height: 130px;
+}
+
+@media (max-width: 768px){
+  .post-article .text-ellipses {
+    height: auto;
+  }
 }
 
 /* elemento que contem todos os produtos adicionados ao carrinho */

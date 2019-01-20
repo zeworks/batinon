@@ -13,42 +13,64 @@ class FilesController extends Controller
 {
     // INDEX
     public function index(){
-
         $files = Files::get();
+        
         return $files;
     }
-    // ADD NEW FILE
+    // ADD NEW FILE - SINGLE FILE
     public function add(Request $request){
-        if($request->file('image'))
-        {
-          $image = $request->file('image');
-          $image_extension = $request->file('image')->getClientOriginalExtension();
-          $name = $image->getClientOriginalName();
-          $name_encoded = base64_encode($name).'.'.$image_extension;
-          $image->storeAs('public/images', $name_encoded);
+
+        try{
+            if($request->file('image'))
+            {
+                $image = $request->file('image');
+                $image_extension = $request->file('image')->getClientOriginalExtension();
+                $name = $image->getClientOriginalName();
+                $name_encoded = base64_encode($name).'.'.$image_extension;
+                
+                if($this->ValidateExistImage($name_encoded)){
+                    $image->storeAs('public/images', $name_encoded);
+                } else {
+                    return ['success' => false, 'message' => 'This file already exists!'];
+                }
+    
+            }
+            
+            // if uploaded successfullly
+            if($request->file('image')->isValid()){
+    
+                $image= new Files();
+                $image->name = $name_encoded;
+                $image->save();
+                
+                return ['success' => true, 'message' => 'File sent with success!'];
+            }
+        } catch (\Exception $e) {
+			return ['success' => false, 'message' => 'File not saved, file too large [2MB Max]'];
         }
-
-      
-		// if uploaded successfullly
-		if($request->file('image')->isValid()){
-
-			$image= new Files();
-			$image->name = $name_encoded;
-			$image->save();
-			
-			return ['success' => true];
-		}else{
-			return ['success' => false];
-		}
-	}
-	
+    }
+    
 	public function delete(Request $request){
         $files = Files::where('id',$request->data)->get();
+
         foreach ($files as $file) {
             Storage::delete('public/images/'.$file->name);
             $file->delete();
         }
         
-        return ['success' => true];
-	}
+        return ['success' => true, 'message' => 'File deleted with success!'];
+    }
+    /***
+     * 
+     * VALIDATION OF IMAGE IF EXISTS OR NOT
+     */
+    public static function ValidateExistImage($imageName){
+       $validation = count($getImage = Files::where('name', $imageName)->get());
+
+       if($validation > 0) {
+           return false;
+       } else {
+           return true;
+       }
+    }
 }

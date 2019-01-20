@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     function index(){
         // get banners from homepage
-        $banners = HomeController::getBanners();
+        $banners = $this->getBanners();
         return view("front.homepage", compact('banners'));
     }
 

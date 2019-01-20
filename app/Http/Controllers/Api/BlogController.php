@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Blog;
+use App\BlogImages;
 
 class BlogController extends Controller
 {
@@ -16,7 +17,7 @@ class BlogController extends Controller
 
     // GET BLOG POST (DISPLAY)
     public function get($id){
-        $blog = Blog::where('id',$id)->get();
+        $blog = Blog::where('id',$id)->with('Files')->get();
         return $blog;
     }
 
@@ -41,12 +42,20 @@ class BlogController extends Controller
             "b_title" => $request->b_title,
             "b_summary" => $request->b_summary,
             "b_description" => $request->b_description,
-            "b_image" => $request->b_image,
             "image" => $request->image,
         ];
 
 
-        Blog::create($data);
+        $id = Blog::create($data)->id;
+
+        $this->getBlogImages($id);
+
+        foreach($request->multiple_images as $images){
+            BlogImages::create([
+                "blog_id" => $id,
+                "file_name" => $images
+            ]);
+        }
         
         return ['success' => true];
     }
@@ -65,12 +74,31 @@ class BlogController extends Controller
             "b_title" => $request->b_title,
             "b_summary" => $request->b_summary,
             "b_description" => $request->b_description,
-            "b_image" => $request->b_image,
             "image" => $request->image,
         ];
 
         Blog::where('id',$request->id)->update($data);
+
+        $this->getBlogImages($request->id);
+
+        foreach($request->multiple_images as $images){
+            BlogImages::create([
+                "blog_id" => $request->id,
+                "file_name" => $images
+            ]);
+        }
         
         return ['success' => true];
+    }
+
+
+    public static function getBlogImages($blogid){
+        $blogImage = BlogImages::where('blog_id',$blogid)->get();
+
+        if(count($blogImage) > 0) {
+            foreach($blogImage as $images){
+                BlogImages::where('blog_id',$blogid)->delete();
+            }
+        }
     }
 }

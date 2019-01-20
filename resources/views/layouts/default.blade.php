@@ -73,7 +73,7 @@
 						<li class="menu__item">
 							<a href="../{{ $url->slug }}" title="{{$url->title}}" class="menu__item__link">{{$url->title}}</a>
 						</li>
-						@endforeach 
+						@endforeach
 						@if($settings[0]->website_mode_store == 'on')
 						<li class="menu__item">
 							<a href="login.php" title="User Account" class="menu__item__link menu__item__link--icon">
@@ -240,7 +240,7 @@
 					<ul class="footer-list">
 						@foreach($urls as $url)
 						<li class="footer-item">
-							<a href="#linkFooter" title="{{$url->slug}}" class="footer-link">{{$url->title}}</a>
+							<a href="../{{$url->slug}}" title="{{$url->title}}" class="footer-link">{{$url->title}}</a>
 						</li>
 						@endforeach
 					</ul>

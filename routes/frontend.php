@@ -13,6 +13,8 @@
 
 // front get
 Route::get('/', 'Front\HomeController@index');
+Route::get('/blog', 'Front\BlogController@index');
+Route::get('/blog/{slug}', 'Front\BlogController@getBlog');
 Route::get('/{slug}', 'Front\PagesController@getPage');
 
 // front post

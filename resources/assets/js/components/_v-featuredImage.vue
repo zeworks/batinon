@@ -95,14 +95,14 @@
                 axios.post('/api/files/add', formData)
                     .then(response => {
                         if (response.data.success) {
-                            swal('Success!', 'File saved', 'success');
+                            swal('Success!', response.data.message, 'success');
                             // reload files
                             this.fetchImages();
                         } else {
-                            swal('Error!', 'File not saved, file too large [2MB Max]', 'error');
+                            swal('Error!', response.data.message, 'error');
                         }
                     }).catch(function () {
-                        swal('Error!', 'File not sent, file too large [2MB Max]', 'error');
+                        swal('Error!', response.data.message, 'error');
                     });
             },
             // remove image
@@ -121,7 +121,7 @@
                                 })
                                 .then(response => {
                                     // success alert
-                                    swal('Success!', 'File Deleted', 'success');
+                                    swal('Success!', response.data.message, 'success');
                                     this.fetchImages();
                                 })
                         } else {

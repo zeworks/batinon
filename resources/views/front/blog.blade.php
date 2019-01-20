@@ -2,8 +2,18 @@
 
 <section>
     <div class="institutional-banner">
-        @foreach($template as $templ)
-        <div class="image-bg" style="background-image: url('{{ asset('storage/images/'.$templ->featured_image) }}')"></div>
+        @foreach($banner as $element)
+            <div class="image-bg" style="background-image: url('<?=Image::url($element->image,1920,900)?>')">
+                <div class="wrapper-slide">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <strong>{{ $element->title }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         @endforeach
     </div>
 </section>
@@ -18,9 +28,7 @@
                         <a href="{{ url('/')}}" title="home">Home</a>
                     </li>
                     <li>
-                        @foreach($template as $templ)
-                        <a href="{{ $templ -> slug }}" title="{{ $templ -> title }}">{{ $templ -> title }}</a>
-                        @endforeach
+                        <a href="{{ url('blog') }}" title="blog">Blog</a>
                     </li>
                 </ul>
             </div>
@@ -36,18 +44,16 @@
             @foreach($blogs as $blog)
             <div class="col-sm-6">
                 <article class="post-article">
-                    <a href="{{$templ->slug.'/'.$blog->slug}}" title="{{$blog->title}}">
-                        <img class="img-responsive" src="{{ Image::url(asset('storage/images/'.$blog->featured_image),720,480,array('crop','')) }}" alt="">
+                    <a href="{{ url('blog').'/'.$blog->slug }}" title="{{$blog->b_title}}">
+                        <img class="img-responsive" src="<?= Image::url($blog->image,720,480) ?>" alt="">
                     </a>
-                    <h2>{{$blog->title}}</h2>
+                    <h2>{{$blog->b_title}}</h2>
                     <small>{{$blog->created_at}}</small>
                     <br><br>
                     <div class="text-ellipses">
-                        {!! $blog->description !!}        
+                        {!! $blog->b_summary !!}        
                     </div>
-                    @foreach($template as $templ)
-                    <a href="{{$templ->slug.'/'.$blog->slug}}" class="btn btn-primary" title="{{$blog->title}}">Ver mais</a>
-                    @endforeach
+                    <a href="{{ url('blog').'/'.$blog->slug }}" class="btn btn-primary" title="{{$blog->b_title}}">Ver mais</a>
                 </article>
                 <div class="empty-space-80"></div>
             </div>

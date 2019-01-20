@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-sm-6 col-md-offset-1">
                     <div class="bordered-image">
-                        <img class="img-responsive" src="<?=Image::url($block->b_image,720,480)?>" alt="">
+                        <img class="img-responsive" src="{{ asset($block->b_image) }}" alt="">
                     </div>
                 </div>
             </div>

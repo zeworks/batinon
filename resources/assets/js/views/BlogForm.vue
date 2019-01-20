@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="saveData">
+    <form @submit.prevent="saveData" enctype="multipart/form-data">
         <b-container fluid>
             <!-- <returnComponent /> -->
             <b-row>
@@ -8,7 +8,26 @@
                         <label for="slug" class="c-form__label">Blog Slug</label>
                         <input disabled type="text" id="slug" name="slug" class="c-form__input" :slug="slug" v-model="slug">
                     </div>
-                    <v-blocksComponent :item="blog" />
+                    <div class="c-form">
+                        <label class="c-form__label" for="block_title">Title*</label>
+                        <input type="text" id="block_title" name="block_title" class="c-form__input" v-model="blog.b_title">
+                    </div>
+                    <div class="c-form">
+                        <label for="block_summary" class="c-form__label">Summary</label>
+                        <vueEditor id="block_summary" name="block_summary" v-model="blog.b_summary"></vueEditor>
+                    </div>
+                    <div class="c-form">
+                        <br>
+                        <label for="block_description" class="c-form__label">Description</label>
+                        <vueEditor id="block_description" name="block_description" v-model="blog.b_description"></vueEditor>
+                    </div>
+                    <!-- <v-blocksComponent :item="blog" /> -->
+                    <b-row>
+                        <b-col sm="3" v-for="(image,index) in blogImages" :key="index">
+                            <img class="u-img-responsive" v-if="image.file_name" :src="origin+image_path+image.file_name" alt="">
+                        </b-col>
+                    </b-row>
+                    <v-slider :item="blogImages" :checked-images="checkedImages" />
                 </b-col>
                 <b-col sm="3">
                     <div class="c-card">
@@ -30,6 +49,8 @@
         props: ['id'],
         data() {
             return {
+                origin: window.location.origin + '/',
+				image_path: 'storage/images/',
                 blog: [{
                     status: false,
                     slug: '',
@@ -39,6 +60,8 @@
                     b_image: '',
                     image: '',
                 }],
+                blogImages: [],
+                checkedImages: []
             }
         },
         created() {
@@ -59,6 +82,7 @@
                     .then(response => response.data)
                     .then(data => {
                         this.blog = data[0];
+                        this.blogImages = data[0].files
                     });
             },
             saveData() {
@@ -70,7 +94,7 @@
                             b_title: this.blog.b_title,
                             b_summary: this.blog.b_summary,
                             b_description: this.blog.b_description,
-                            b_image: this.blog.b_image,
+                            multiple_images: this.checkedImages,
                             image: this.blog.image,
                         })
                         .then(response => {
@@ -88,7 +112,7 @@
                             b_title: this.blog.b_title,
                             b_summary: this.blog.b_summary,
                             b_description: this.blog.b_description,
-                            b_image: this.blog.b_image,
+                            multiple_images: this.checkedImages,
                             image: this.blog.image,
                         })
                         .then(response => {
