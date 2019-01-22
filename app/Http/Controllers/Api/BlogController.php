@@ -48,7 +48,9 @@ class BlogController extends Controller
 
         $id = Blog::create($data)->id;
 
-        $this->getBlogImages($id);
+        if($request->multiple_images){
+            $this->deleteBlogImages($request->id);
+        }
 
         foreach($request->multiple_images as $images){
             BlogImages::create([
@@ -78,8 +80,10 @@ class BlogController extends Controller
         ];
 
         Blog::where('id',$request->id)->update($data);
-
-        $this->getBlogImages($request->id);
+        
+        if($request->multiple_images){
+            $this->deleteBlogImages($request->id);
+        }
 
         foreach($request->multiple_images as $images){
             BlogImages::create([
@@ -92,7 +96,7 @@ class BlogController extends Controller
     }
 
 
-    public static function getBlogImages($blogid){
+    public static function deleteBlogImages($blogid){
         $blogImage = BlogImages::where('blog_id',$blogid)->get();
 
         if(count($blogImage) > 0) {
