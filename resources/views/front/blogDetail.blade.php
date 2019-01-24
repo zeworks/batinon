@@ -35,29 +35,7 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-sm-5 col-sm-push-7">
-            {{-- @isset($images)
-                <div class="empty-space-20"></div>
-                <div class="owl-carousel owl-theme product-carousel">
-                    @foreach($images as $key => $image)
-                    <div class="item" data-hash="{{$image->id}}">
-                        <img class="img-responsive zoom-image" src="{{ Image::url(asset('storage/images/image_temp/'.$images[$key]['images']->image_name),720,480,array('crop','')) }}"
-                            alt="" data-zoom-image="{{ Image::url(asset('storage/images/image_temp/'.$images[$key]['images']->image_name),900,900,array('crop','')) }}">
-                    </div>
-                    @endforeach
-                </div>
-                <div class="product-carousel-thumbs">
-                    @foreach($images as $key => $image)
-                    <a href="#{{$image->id}}">
-                        <img class="img-responsive" src="{{ Image::url(asset('storage/images/image_temp/'.$images[$key]['images']->image_name),100,100,array('crop','')) }}"
-                            alt="">
-                    </a>
-                    @endforeach
-                </div>
-                @endisset
-            --}}
-            </div>
-            <div class="col-sm-7 col-sm-pull-5">
+            <div class="col-sm-7">
                 @foreach($details as $detail)
                 <article class="post-article">
                     <h1>{{$detail->b_title}}</h1>
@@ -73,6 +51,27 @@
                     </div>
                 </article>
                 @endforeach
+            </div>
+            <div class="col-sm-5">
+            @isset($details[0]->files)
+                <div class="empty-space-20"></div>
+                <div class="owl-carousel owl-theme product-carousel">
+                    @foreach($details[0]->files as $file)
+                        <div class="item" data-hash="{{$file->id}}">
+                            <img class="img-responsive zoom-image" src="{{ Image::url(asset('storage/images/'.$file->file_name),720,480,array('crop','')) }}"
+                                alt="" data-zoom-image="{{ Image::url(asset('storage/images/'.$file->file_name),900,900,array('crop','')) }}">
+                        </div>
+                    @endforeach
+                </div>
+                <div class="product-carousel-thumbs">
+                    @foreach($details[0]->files as $file)
+                    <a href="#{{$file->id}}">
+                        <img class="img-responsive" src="{{ Image::url(asset('storage/images/'.$file->file_name),100,100,array('crop','')) }}"
+                            alt="">
+                    </a>
+                    @endforeach
+                </div>
+            @endisset
             </div>
         </div>
         <div class="empty-space-80"></div>

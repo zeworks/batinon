@@ -60,7 +60,7 @@ class BlogController extends Controller
      */
     public function validateSlug($slug){
         
-        $details = Blog::where('slug', $slug)->get();
+        $details = Blog::where('slug', $slug)->with('Files')->get();
 
         if(count($details) > 0){
             return $details;

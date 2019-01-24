@@ -36,15 +36,24 @@
         <div class="empty-space-80"></div>
         <div class="container">
             <div class="row">
+                @isset($block->b_image)
                 <div class="col-sm-6 col-md-5">
                     <h1>{{$block->b_title}}</h1>
                     {!! $block->b_summary !!}    
+                    {!! $block->b_description !!}    
                 </div>
                 <div class="col-sm-6 col-md-offset-1">
                     <div class="bordered-image">
                         <img class="img-responsive" src="{{ asset($block->b_image) }}" alt="">
                     </div>
                 </div>
+                @else
+                <div class=" text-center col-sm-12 col-md-8 col-md-offset-2">
+                    <h1>{{$block->b_title}}</h1>
+                    {!! $block->b_summary !!}    
+                    {!! $block->b_description !!}    
+                </div>
+                @endisset
             </div>
             <div class="empty-space-80"></div>
         </div>
