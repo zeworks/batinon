@@ -25841,12 +25841,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['item', 'checkedImages'],
+    props: ['item'],
     data: function data() {
         return {
             images: [],
-            image: {}
+            image: {},
+            checkedImages: []
         };
+    },
+    mounted: function mounted() {
+        this.checkedImages = this.item;
     },
 
     methods: {
@@ -25920,11 +25924,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         selectImage: function selectImage(fileName) {
             this.checkedImages.push(fileName);
+            this.updateImagesArray();
         },
         unselectImage: function unselectImage(fileName) {
             this.checkedImages = this.checkedImages.filter(function (item) {
                 return fileName != item;
             });
+            this.updateImagesArray();
+        },
+        updateImagesArray: function updateImagesArray() {
+            this.$emit('updateSlider', this.checkedImages);
         }
     }
 });
@@ -25940,27 +25949,6 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.checkedImages,
-            expression: "checkedImages"
-          }
-        ],
-        attrs: { type: "hidden" },
-        domProps: { value: _vm.checkedImages },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.checkedImages = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
       _c(
         "button",
         {
@@ -25999,7 +25987,11 @@ var render = function() {
                           { key: index, attrs: { sm: "2" } },
                           [
                             _c("v-slider-images", {
-                              attrs: { images: image, index: index },
+                              attrs: {
+                                images: image,
+                                index: index,
+                                "checked-images": _vm.checkedImages
+                              },
                               on: {
                                 unselectImage: _vm.unselectImage,
                                 selectImage: _vm.selectImage,
@@ -26170,7 +26162,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -26198,7 +26190,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['images', 'index'],
+	props: ['images', 'index', 'checkedImages'],
 	data: function data() {
 		return {
 			origin: window.location.origin + '/',
@@ -26219,6 +26211,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		removeEvent: function removeEvent($id) {
 			this.$emit('removeImage', $id);
 		}
+	},
+	mounted: function mounted() {
+		var _this = this;
+
+		this.checkedImages.forEach(function (element) {
+			if (element === _this.images.name) {
+				_this.isChecked = true;
+			}
+		});
 	}
 });
 
@@ -41434,6 +41435,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -41449,16 +41451,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 b_title: '',
                 b_summary: '',
                 b_description: '',
-                b_image: '',
                 image: ''
             }],
-            blogImages: [],
-            checkedImages: []
+            blogImages: []
         };
     },
     created: function created() {
         if (this.$route.params.id) {
             this.fetchBlogs();
+            this.fetchBlogImages();
         }
     },
 
@@ -41476,11 +41477,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return response.data;
             }).then(function (data) {
                 _this.blog = data[0];
-                _this.blogImages = data[0].files;
             });
         },
-        saveData: function saveData() {
+        fetchBlogImages: function fetchBlogImages() {
             var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/blogs/edit/' + this.$route.params.id).then(function (response) {
+                return response.data;
+            }).then(function (data) {
+                var array = data[0].files;
+                array.forEach(function (element) {
+                    _this2.blogImages.push(element.file_name);
+                });
+            });
+        },
+        updateSlider: function updateSlider(array) {
+            this.blogImages = array;
+        },
+        saveData: function saveData() {
+            var _this3 = this;
 
             if (this.$route.params.id > 0) {
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/blogs/edit/' + this.$route.params.id, {
@@ -41490,12 +41505,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     b_title: this.blog.b_title,
                     b_summary: this.blog.b_summary,
                     b_description: this.blog.b_description,
-                    multiple_images: this.checkedImages,
+                    multiple_images: this.blogImages,
                     image: this.blog.image
                 }).then(function (response) {
                     if (response.data.success) {
                         swal('Sucesso!', 'Blog saved', 'success');
-                        _this2.$router.push("/admin/blog");
+                        _this3.$router.push("/admin/blog");
                     } else {
                         swal('Erro!', 'Blog not saved', 'error');
                     }
@@ -41507,12 +41522,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     b_title: this.blog.b_title,
                     b_summary: this.blog.b_summary,
                     b_description: this.blog.b_description,
-                    multiple_images: this.checkedImages,
+                    multiple_images: this.blogImages,
                     image: this.blog.image
                 }).then(function (response) {
                     if (response.data.success) {
                         swal('Sucesso!', 'Blog saved', 'success');
-                        _this2.$router.push("/admin/blog");
+                        _this3.$router.push("/admin/blog");
                     } else {
                         swal('Erro!', 'Blog not saved', 'error');
                     }
@@ -41687,30 +41702,31 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("v-slider", {
+                    attrs: { item: _vm.blogImages },
+                    on: { updateSlider: _vm.updateSlider }
+                  }),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
                   _c(
                     "b-row",
                     _vm._l(_vm.blogImages, function(image, index) {
                       return _c("b-col", { key: index, attrs: { sm: "3" } }, [
-                        image.file_name
+                        image
                           ? _c("img", {
                               staticClass: "u-img-responsive",
                               attrs: {
-                                src:
-                                  _vm.origin + _vm.image_path + image.file_name,
+                                src: _vm.origin + _vm.image_path + image,
                                 alt: ""
                               }
                             })
                           : _vm._e()
                       ])
                     })
-                  ),
-                  _vm._v(" "),
-                  _c("v-slider", {
-                    attrs: {
-                      item: _vm.blogImages,
-                      "checked-images": _vm.checkedImages
-                    }
-                  })
+                  )
                 ],
                 1
               ),

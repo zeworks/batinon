@@ -1,6 +1,5 @@
 <template>
     <div>
-		<input type="hidden" v-model="checkedImages"/>
 		<button type="button" class="c-btn c-btn--primary" @click="fetchImages">Choose Images</button>
         <v-modal v-if="showModal">
             <h3 slot="header" class="f-subtitle">Choose which images you want in the slider</h3>
@@ -15,7 +14,8 @@
 						@selectImage="selectImage" 
 						@removeImage="removeImage"
 						:images="image" 
-						:index="index"></v-slider-images>
+						:index="index"
+                        :checked-images="checkedImages"></v-slider-images>
                     </b-col>
                 </b-row>
             </div>
@@ -35,12 +35,16 @@
 <script>
     import axios from 'axios';
     export default {
-		props: ['item','checkedImages'],
+		props: ['item'],
         data() {
             return {
 				images: [],
-                image: {}
+                image: {},
+                checkedImages: [],
             }
+        },
+        mounted(){
+            this.checkedImages = this.item;
         },
         methods: {
             fetchImages() {
@@ -107,13 +111,18 @@
                     });
             },
 			selectImage(fileName) {
-                this.checkedImages.push(fileName)
-			},
+                this.checkedImages.push(fileName);
+                this.updateImagesArray();
+            },
 			unselectImage(fileName) {
 				this.checkedImages = this.checkedImages.filter(function (item) {
-					return fileName != item;
+                    return fileName != item;
                 });
-			}
+                this.updateImagesArray();
+            },
+            updateImagesArray(){
+                this.$emit('updateSlider', this.checkedImages);
+            }
         }
     }
 </script>

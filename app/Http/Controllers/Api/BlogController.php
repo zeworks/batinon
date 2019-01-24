@@ -24,6 +24,8 @@ class BlogController extends Controller
     // REMOVE BLOG POST
     public function delete(Request $request){
         Blog::where('id',$request->data)->delete();
+
+        $this->deleteBlogImages($request->data);
         
         return ['success' => true];
     }

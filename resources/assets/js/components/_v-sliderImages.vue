@@ -1,10 +1,10 @@
 <template>
 	<div>
 		<label class="c-btn--choose" :for="index">
-			<input type="checkbox" 
-			:checked="isChecked" 
+			<input type="checkbox"
+			:checked="isChecked"
 			@click="selectEvent"
-				:id="index">
+			:id="index">
 			<div :style="{ 'background-image': 'url(' + origin+image_path+images.name + ')' }" class="c-btn c-btn--choose c-btn--choose--multiple">
 				<span class="c-btn__icon" v-show="isChecked"><i class="far fa-check-circle"></i></span>
 			</div>
@@ -15,7 +15,7 @@
 
 <script>
     export default {
-        props: ['images','index'],
+        props: ['images','index','checkedImages'],
         data() {
             return {
                 origin: window.location.origin + '/',
@@ -35,6 +35,13 @@
 			removeEvent($id){
 				this.$emit('removeImage', $id)
 			}
+		},
+		mounted(){
+			this.checkedImages.forEach(element => {
+				if (element === this.images.name) {
+					this.isChecked = true
+				}
+			})
 		}
     }
 </script>

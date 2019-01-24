@@ -21,13 +21,14 @@
                         <label for="block_description" class="c-form__label">Description</label>
                         <vueEditor id="block_description" name="block_description" v-model="blog.b_description"></vueEditor>
                     </div>
-                    <!-- <v-blocksComponent :item="blog" /> -->
+                    <br>
+                    <v-slider @updateSlider="updateSlider" :item="blogImages" />
+                    <br>
                     <b-row>
                         <b-col sm="3" v-for="(image,index) in blogImages" :key="index">
-                            <img class="u-img-responsive" v-if="image.file_name" :src="origin+image_path+image.file_name" alt="">
+                            <img class="u-img-responsive" v-if="image" :src="origin+image_path+image" alt="">
                         </b-col>
                     </b-row>
-                    <v-slider :item="blogImages" :checked-images="checkedImages" />
                 </b-col>
                 <b-col sm="3">
                     <div class="c-card">
@@ -57,16 +58,15 @@
                     b_title: '',
                     b_summary: '',
                     b_description: '',
-                    b_image: '',
                     image: '',
                 }],
-                blogImages: [],
-                checkedImages: []
+                blogImages: []
             }
         },
         created() {
             if (this.$route.params.id) {
                 this.fetchBlogs();
+                this.fetchBlogImages();
             }
         },
         computed: {
@@ -77,13 +77,24 @@
         },
         methods: {
             fetchBlogs() {
-
                 axios.get('/api/blogs/edit/' + this.$route.params.id)
                     .then(response => response.data)
                     .then(data => {
                         this.blog = data[0];
-                        this.blogImages = data[0].files
                     });
+            },
+            fetchBlogImages(){
+                axios.get('/api/blogs/edit/' + this.$route.params.id)
+                    .then(response => response.data)
+                    .then(data => {
+                        var array = data[0].files;
+                        array.forEach(element => {
+                            this.blogImages.push(element.file_name);
+                        });
+                    });
+            },
+            updateSlider(array){
+                this.blogImages = array;
             },
             saveData() {
                 if (this.$route.params.id > 0) {
@@ -94,7 +105,7 @@
                             b_title: this.blog.b_title,
                             b_summary: this.blog.b_summary,
                             b_description: this.blog.b_description,
-                            multiple_images: this.checkedImages,
+                            multiple_images: this.blogImages,
                             image: this.blog.image,
                         })
                         .then(response => {
@@ -112,7 +123,7 @@
                             b_title: this.blog.b_title,
                             b_summary: this.blog.b_summary,
                             b_description: this.blog.b_description,
-                            multiple_images: this.checkedImages,
+                            multiple_images: this.blogImages,
                             image: this.blog.image,
                         })
                         .then(response => {
