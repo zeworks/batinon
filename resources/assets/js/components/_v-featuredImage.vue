@@ -15,7 +15,10 @@
         </div>
         <div class="c-card__body">
             <div v-if="item.image">
-                <img :src="item.image" alt class="u-img-responsive  u-margin-bottom-s">
+                <img :src="item.image" alt class="u-img-responsive u-margin-bottom-s">
+            </div>
+            <div v-else>
+                <img src="/placeholder.jpg" alt class="u-img-responsive u-margin-bottom-s">
             </div>
             <div>
                 <p class="c-form__help">This image will appear on top of your page</p>

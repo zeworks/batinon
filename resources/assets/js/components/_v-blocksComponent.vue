@@ -45,6 +45,7 @@
                                 <p class="c-form__help">Choose wich image you want to display into this block</p>
                                 <b-row>
                                     <b-col sm="4" v-if="item.b_image">
+                                        <button type="button" @click="removeImage" class="c-btn c-btn--rounded c-btn--danger">&times;</button>
                                         <img :src="item.b_image" alt class="u-img-responsive">
                                         <br>
                                     </b-col>
@@ -68,7 +69,7 @@
                     <b-col sm="2" v-for="(image,index) in images" :key="index">
                         <button @click="chooseImage(origin+image_path+image.name)" :style="{ 'background-image': 'url(' + origin+image_path+image.name + ')' }"
                             type="button" class="c-btn btn--choose"></button>
-                        <button type="button" @click="removeBlockImage(image.id)" class="c-btn c-btn--rounded c-btn--danger">&times;</button>
+                        <button type="button" @click="removeLibraryImage(image.id)" class="c-btn c-btn--rounded c-btn--danger">&times;</button>
                     </b-col>
                 </b-row>
             </div>
@@ -142,7 +143,7 @@
                     });
             },
             // remove image
-            removeBlockImage(id) {
+            removeLibraryImage(id) {
                 swal({
                         title: "Are you sure?",
                         text: "Once deleted, you will not be able to recover this imaginary file!",
@@ -164,6 +165,13 @@
                             swal.close();
                         }
                     });
+            },
+            /***
+             * 
+             * Function to remove the image from the tab block
+             */
+            removeImage(){
+                this.item.b_image = null;
             }
         }
     }
@@ -175,13 +183,5 @@
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
-    }
-
-    .c-btn--rounded {
-        font-size: 28px;
-        position: absolute;
-        top: 10px;
-        right: 30px;
-        z-index: 1;
     }
 </style>

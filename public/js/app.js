@@ -22754,7 +22754,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "\n.btn--choose[data-v-4bb8eb58] {\n    width: 100%;\n    height: 210px;\n    background-position: center;\n    background-size: cover;\n    background-repeat: no-repeat;\n}\n.c-btn--rounded[data-v-4bb8eb58] {\n    font-size: 28px;\n    position: absolute;\n    top: 10px;\n    right: 30px;\n    z-index: 1;\n}\n", ""]);
+exports.push([module.i, "\n.btn--choose[data-v-4bb8eb58] {\n    width: 100%;\n    height: 210px;\n    background-position: center;\n    background-size: cover;\n    background-repeat: no-repeat;\n}\n", ""]);
 
 // exports
 
@@ -22800,6 +22800,7 @@ module.exports = function listToStyles (parentId, list) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
 //
 //
 //
@@ -22951,7 +22952,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         // remove image
-        removeBlockImage: function removeBlockImage(id) {
+        removeLibraryImage: function removeLibraryImage(id) {
             var _this3 = this;
 
             swal({
@@ -22973,6 +22974,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     swal.close();
                 }
             });
+        },
+
+        /***
+         * 
+         * Function to remove the image from the tab block
+         */
+        removeImage: function removeImage() {
+            this.item.b_image = null;
         }
     }
 });
@@ -24073,6 +24082,17 @@ var render = function() {
                         [
                           _vm.item.b_image
                             ? _c("b-col", { attrs: { sm: "4" } }, [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "c-btn c-btn--rounded c-btn--danger",
+                                    attrs: { type: "button" },
+                                    on: { click: _vm.removeImage }
+                                  },
+                                  [_vm._v("×")]
+                                ),
+                                _vm._v(" "),
                                 _c("img", {
                                   staticClass: "u-img-responsive",
                                   attrs: { src: _vm.item.b_image, alt: "" }
@@ -24159,7 +24179,7 @@ var render = function() {
                               attrs: { type: "button" },
                               on: {
                                 click: function($event) {
-                                  _vm.removeBlockImage(image.id)
+                                  _vm.removeLibraryImage(image.id)
                                 }
                               }
                             },
@@ -24856,6 +24876,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -25010,11 +25033,16 @@ var render = function() {
         _vm.item.image
           ? _c("div", [
               _c("img", {
-                staticClass: "u-img-responsive  u-margin-bottom-s",
+                staticClass: "u-img-responsive u-margin-bottom-s",
                 attrs: { src: _vm.item.image, alt: "" }
               })
             ])
-          : _vm._e(),
+          : _c("div", [
+              _c("img", {
+                staticClass: "u-img-responsive u-margin-bottom-s",
+                attrs: { src: "/placeholder.jpg", alt: "" }
+              })
+            ]),
         _vm._v(" "),
         _vm._m(0)
       ]),
