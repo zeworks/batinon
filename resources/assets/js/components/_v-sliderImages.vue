@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<!-- each slider image -->
 		<label class="c-btn--choose" :for="index">
 			<input type="checkbox"
 			:checked="isChecked"

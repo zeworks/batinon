@@ -19,23 +19,11 @@
             </form>
             <nav class="c-nav">
                 <ul class="u-margin-0 u-padding-0 u-unlist">
-                    <li class="c-nav__item">
-                        <!-- <a href="/admin/home" :class="activeMenu('home')" class="c-nav__link u-text-transform-none"><i class="fas fa-tachometer-alt c-nav__icon u-icon-before"></i>Dashboard</a> -->
-                    </li>
-                    <li class="c-nav__item">
-                        <router-link to="/admin/banners" class="c-nav__link u-text-transform-none"><i class="fas fa-file c-nav__icon u-icon-before"></i>Banners</router-link>
-                    </li>
-                    <li class="c-nav__item">
-                        <router-link to="/admin/blog" class="c-nav__link u-text-transform-none"><i class="fab fa-blogger-b c-nav__icon u-icon-before"></i>Blog</router-link>
-                    </li>
-                    <li class="c-nav__item">
-                        <router-link to="/admin/pages" class="c-nav__link u-text-transform-none"><i class="fas fa-file c-nav__icon u-icon-before"></i>Pages</router-link>
-                    </li>
-                    <li class="c-nav__item">
-                        <router-link to="/admin/files" class="c-nav__link u-text-transform-none"><i class="fas fa-file-archive c-nav__icon u-icon-before"></i>Files</router-link>
-                    </li>
-                    <li class="c-nav__item">
-                        <router-link to="/admin/navigation" class="c-nav__link u-text-transform-none"><i class="fas fa-bars c-nav__icon u-icon-before"></i>Navigation</router-link>
+                    <li v-for="(item, index) in navItems" :key="index" class="c-nav__item">
+                        <router-link v-if="item.active" :to="item.url" class="c-nav__link u-text-transform-none">
+                            <i :class=" item.icon + ' c-nav__icon u-icon-before'"></i>
+                            {{ item.title }}
+                        </router-link>
                     </li>
                 </ul>
             </nav>
@@ -49,6 +37,44 @@
         data() {
             return {
                 userImage: '/logo.jpg',
+                navItems: [
+                    {
+                        title: 'Home',
+                        url: '/admin/home',
+                        icon: 'fas fa-tachometer-alt',
+                        active: true
+                    },
+                    {
+                        title: 'Banners',
+                        url: '/admin/banners',
+                        icon: 'fas fa-file',
+                        active: true
+                    },
+                    {
+                        title: 'Blog',
+                        url: '/admin/blog',
+                        icon: 'fab fa-blogger-b',
+                        active: true
+                    },
+                    {
+                        title: 'Pages',
+                        url: '/admin/pages',
+                        icon: 'fas fa-file',
+                        active: true
+                    },
+                    {
+                        title: 'Files',
+                        url: '/admin/files',
+                        icon: 'fas fa-file-archive',
+                        active: true
+                    },
+                    {
+                        title: 'Navigation',
+                        url: '/admin/navigation',
+                        icon: 'fas fa-bars',
+                        active: true
+                    }
+                ]
             }
         }
     }

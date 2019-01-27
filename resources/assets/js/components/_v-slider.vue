@@ -1,12 +1,15 @@
 <template>
     <div>
+        <!-- button to choose new images -->
 		<button type="button" class="c-btn c-btn--primary u-margin--top-bottom-s" @click="fetchImages">Choose Images</button>
-        <b-row>
+        <!-- row of slider items -->
+        <b-row v-if="item">
             <b-col sm="3" v-for="(image,index) in item" :key="index">
                 <button type="button" @click="unselectImage(image)" class="c-btn c-btn--rounded c-btn--danger">&times;</button>
                 <img class="u-img-responsive" v-if="image" :src="origin+image_path+image" alt="">
             </b-col>
         </b-row>
+        <!-- modal of slider items selected / not selected  -->
         <v-modal v-if="showModal">
             <h3 slot="header" class="f-subtitle">Choose which images you want in the slider</h3>
             <div slot="body">
@@ -15,6 +18,7 @@
                 </div>
                 <b-row v-else>
                     <b-col sm="2" v-for="(image,index) in images" :key="index">
+                        <!-- v-slider images child component -->
 						<v-slider-images 
 						@unselectImage="unselectImage" 
 						@selectImage="selectImage" 

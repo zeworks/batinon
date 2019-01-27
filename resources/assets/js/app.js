@@ -14,9 +14,6 @@ import router from './router'
 
 import 'vue-multiselect/dist/vue-multiselect.min.css'
 
-// return component
-import ReturnComponent from '@components/ReturnComponent.vue'
-
 // home dashboard
 import DashboardComponent from '@components/DashboardComponent.vue'
 
@@ -66,6 +63,11 @@ Vue.mixin({
         isLoading(){
             this.$root.loading = !this.$root.loading;
         }
+    },
+    computed: {
+        currentLink() {
+            return new URL(location.href).pathname.split('/');
+        }
     }
 })
 
@@ -75,7 +77,6 @@ var app = new Vue({
     el: '#app',
     router,
     components: {
-        ReturnComponent,
         DashboardComponent
     }
 });

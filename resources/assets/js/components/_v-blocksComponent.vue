@@ -93,8 +93,6 @@
         props: ['item', 'title'],
         data() {
             return {
-                origin: window.location.origin + '/',
-                image_path: 'storage/images/',
                 images: [],
                 image: {},
                 tabActive: 1,
