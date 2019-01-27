@@ -10525,6 +10525,10 @@ a.text-dark:focus {
   margin-bottom: 30px;
 }
 
+.u-margin--top-bottom-s {
+  margin: 10px 0;
+}
+
 .u-padding-0 {
   padding: 0;
 }

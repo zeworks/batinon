@@ -21,14 +21,7 @@
                         <label for="block_description" class="c-form__label">Description</label>
                         <vueEditor id="block_description" name="block_description" v-model="blog.b_description"></vueEditor>
                     </div>
-                    <br>
                     <v-slider @updateSlider="updateSlider" :item="blogImages" />
-                    <br>
-                    <b-row>
-                        <b-col sm="3" v-for="(image,index) in blogImages" :key="index">
-                            <img class="u-img-responsive" v-if="image" :src="origin+image_path+image" alt="">
-                        </b-col>
-                    </b-row>
                 </b-col>
                 <b-col sm="3">
                     <div class="c-card">
@@ -50,8 +43,6 @@
         props: ['id'],
         data() {
             return {
-                origin: window.location.origin + '/',
-				image_path: 'storage/images/',
                 blog: [{
                     status: false,
                     slug: '',

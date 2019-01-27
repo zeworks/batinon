@@ -21353,6 +21353,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_boot
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.mixin({
     data: function data() {
         return {
+            origin: window.location.origin + '/',
+            image_path: 'storage/images/',
             drawerActive: false,
             loading: false,
             showModal: false,
@@ -25866,6 +25868,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -25927,7 +25935,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 swal('Error!', response.data.message, 'error');
             });
         },
-        removeImage: function removeImage(id) {
+        removeSliderImage: function removeSliderImage(id) {
             var _this3 = this;
 
             swal({
@@ -25980,11 +25988,39 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "c-btn c-btn--primary",
+          staticClass: "c-btn c-btn--primary u-margin--top-bottom-s",
           attrs: { type: "button" },
           on: { click: _vm.fetchImages }
         },
         [_vm._v("Choose Images")]
+      ),
+      _vm._v(" "),
+      _c(
+        "b-row",
+        _vm._l(_vm.item, function(image, index) {
+          return _c("b-col", { key: index, attrs: { sm: "3" } }, [
+            _c(
+              "button",
+              {
+                staticClass: "c-btn c-btn--rounded c-btn--danger",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    _vm.unselectImage(image)
+                  }
+                }
+              },
+              [_vm._v("×")]
+            ),
+            _vm._v(" "),
+            image
+              ? _c("img", {
+                  staticClass: "u-img-responsive",
+                  attrs: { src: _vm.origin + _vm.image_path + image, alt: "" }
+                })
+              : _vm._e()
+          ])
+        })
       ),
       _vm._v(" "),
       _vm.showModal
@@ -26023,7 +26059,7 @@ var render = function() {
                               on: {
                                 unselectImage: _vm.unselectImage,
                                 selectImage: _vm.selectImage,
-                                removeImage: _vm.removeImage
+                                removeImage: _vm.removeSliderImage
                               }
                             })
                           ],
@@ -41457,13 +41493,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -41471,8 +41500,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['id'],
     data: function data() {
         return {
-            origin: window.location.origin + '/',
-            image_path: 'storage/images/',
             blog: [{
                 status: false,
                 slug: '',
@@ -41730,31 +41757,10 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
                   _c("v-slider", {
                     attrs: { item: _vm.blogImages },
                     on: { updateSlider: _vm.updateSlider }
-                  }),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "b-row",
-                    _vm._l(_vm.blogImages, function(image, index) {
-                      return _c("b-col", { key: index, attrs: { sm: "3" } }, [
-                        image
-                          ? _c("img", {
-                              staticClass: "u-img-responsive",
-                              attrs: {
-                                src: _vm.origin + _vm.image_path + image,
-                                alt: ""
-                              }
-                            })
-                          : _vm._e()
-                      ])
-                    })
-                  )
+                  })
                 ],
                 1
               ),

@@ -27,6 +27,8 @@ Vue.use(BootstrapVue)
 Vue.mixin({
     data() {
         return {
+            origin: window.location.origin + '/',
+            image_path: 'storage/images/',
             drawerActive: false,
             loading: false,
             showModal: false,

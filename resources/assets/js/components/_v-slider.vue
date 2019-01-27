@@ -1,6 +1,12 @@
 <template>
     <div>
-		<button type="button" class="c-btn c-btn--primary" @click="fetchImages">Choose Images</button>
+		<button type="button" class="c-btn c-btn--primary u-margin--top-bottom-s" @click="fetchImages">Choose Images</button>
+        <b-row>
+            <b-col sm="3" v-for="(image,index) in item" :key="index">
+                <button type="button" @click="unselectImage(image)" class="c-btn c-btn--rounded c-btn--danger">&times;</button>
+                <img class="u-img-responsive" v-if="image" :src="origin+image_path+image" alt="">
+            </b-col>
+        </b-row>
         <v-modal v-if="showModal">
             <h3 slot="header" class="f-subtitle">Choose which images you want in the slider</h3>
             <div slot="body">
@@ -12,7 +18,7 @@
 						<v-slider-images 
 						@unselectImage="unselectImage" 
 						@selectImage="selectImage" 
-						@removeImage="removeImage"
+						@removeImage="removeSliderImage"
 						:images="image" 
 						:index="index"
                         :checked-images="checkedImages"></v-slider-images>
@@ -87,7 +93,7 @@
                         swal('Error!', response.data.message, 'error');
                     });
 			},
-			removeImage(id) {
+			removeSliderImage(id) {
                 swal({
                         title: "Are you sure?",
                         text: "Once deleted, you will not be able to recover this imaginary file!",
