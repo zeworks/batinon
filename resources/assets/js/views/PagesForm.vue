@@ -70,12 +70,16 @@
         methods: {
             fetchPages() {
                 this.isLoading();                
-                var req = axios.get('/api/pages/edit/' + this.$route.params.id)
+                var req = axios.get('/api/pages/' + this.$route.params.id)
                     .then(response => response.data)
                     .then(data => {
-                        this.page = data[0];
+                        if (data.success) {
+                            this.page = data.content[0];
+                        } else {
+                            this.$router.replace(data.redirect);
+                            swal('Erro!', data.message, 'error');
+                        }
                     });
-
                 req.then(response => this.isLoading());
             },
             saveData() {
@@ -93,10 +97,10 @@
                         })
                         .then(response => {
                             if (response.data.success) {
-                                swal('Sucesso!', 'Page saved', 'success');
+                                swal('Sucesso!', response.data.message, 'success');
                                 this.$router.push("/admin/pages");
                             } else {
-                                swal('Erro!', 'Page not saved', 'error');
+                                swal('Erro!', response.data.message, 'error');
                             }
                             
                         });
@@ -113,10 +117,10 @@
                         })
                         .then(response => {
                            if (response.data.success) {
-                                swal('Sucesso!', 'Page saved', 'success');
+                                swal('Sucesso!', response.data.message, 'success');
                                 this.$router.push("/admin/pages");
                             } else {
-                                swal('Erro!', 'Page not saved', 'error');
+                                swal('Erro!', response.data.message, 'error');
                             }
                         })
                         .catch(error => {

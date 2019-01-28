@@ -58,7 +58,6 @@
         created() {
             if (this.$route.params.id) {
                 this.fetchBlogs();
-                this.fetchBlogImages();
             }
         },
         computed: {
@@ -69,20 +68,20 @@
         },
         methods: {
             fetchBlogs() {
-                axios.get('/api/blogs/edit/' + this.$route.params.id)
+                axios.get('/api/blogs/' + this.$route.params.id)
                     .then(response => response.data)
                     .then(data => {
-                        this.blog = data[0];
-                    });
-            },
-            fetchBlogImages(){
-                axios.get('/api/blogs/edit/' + this.$route.params.id)
-                    .then(response => response.data)
-                    .then(data => {
-                        var array = data[0].files;
-                        array.forEach(element => {
-                            this.blogImages.push(element.file_name);
-                        });
+                        if (data.success) {
+                            var array = data.content[0].files;
+
+                            this.blog = data.content[0];
+                            array.forEach(element => {
+                                this.blogImages.push(element.file_name);
+                            });
+                        } else {
+                            this.$router.replace(data.redirect);
+                            swal('Erro!', data.message, 'error');
+                        }
                     });
             },
             updateSlider(array){
@@ -102,10 +101,10 @@
                         })
                         .then(response => {
                             if (response.data.success) {
-                                swal('Sucesso!', 'Blog saved', 'success');
+                                swal('Sucesso!', response.data.message, 'success');
                                 this.$router.push("/admin/blog");
                             } else {
-                                swal('Erro!', 'Blog not saved', 'error');
+                                swal('Erro!', response.data.message, 'error');
                             }
                         });
                 } else {
@@ -120,10 +119,10 @@
                         })
                         .then(response => {
                             if (response.data.success) {
-                                swal('Sucesso!', 'Blog saved', 'success');
+                                swal('Sucesso!', response.data.message, 'success');
                                 this.$router.push("/admin/blog");
                             } else {
-                                swal('Erro!', 'Blog not saved', 'error');
+                                swal('Erro!', response.data.message, 'error');
                             }
                         })
                         .catch(error => {

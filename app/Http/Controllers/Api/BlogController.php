@@ -18,7 +18,12 @@ class BlogController extends Controller
     // GET BLOG POST (DISPLAY)
     public function get($id){
         $blog = Blog::where('id',$id)->with('Files')->get();
-        return $blog;
+        
+        if ($this->ValidateExistent($blog) > 0) {
+            return [ 'success' => true, 'content' => $blog];
+        } else {
+            return [ 'success' => false, 'message' => 'Esta página não existe!', 'redirect' => '/admin/blog'];
+        }
     }
 
     // REMOVE BLOG POST
@@ -32,73 +37,82 @@ class BlogController extends Controller
     
     public function add(Request $request){
         
-        if($request->status == ''){
-            $status = 0;
-        }else{
-            $status = $request->status;
+        try {
+            if($request->status == ''){
+                $status = 0;
+            }else{
+                $status = $request->status;
+            }
+    
+            $data = [
+                "slug" => $request->slug,
+                "status" => $status,
+                "b_title" => $request->b_title,
+                "b_summary" => $request->b_summary,
+                "b_description" => $request->b_description,
+                "image" => $request->image,
+            ];
+    
+    
+            $id = Blog::create($data)->id;
+    
+            if($request->multiple_images){
+                $this->deleteBlogImages($request->id);
+            }
+    
+            foreach($request->multiple_images as $images){
+                BlogImages::create([
+                    "blog_id" => $id,
+                    "file_name" => $images
+                ]);
+            }
+
+            return [ 'success' => true, 'message' => 'Blog criado com sucesso!'];
+
+        } catch (\Exception $e) {
+            return [ 'success' => false, 'message' => 'Blog não criado, algo correu mal!'];
         }
-
-        $data = [
-            "slug" => $request->slug,
-            "status" => $status,
-            "b_title" => $request->b_title,
-            "b_summary" => $request->b_summary,
-            "b_description" => $request->b_description,
-            "image" => $request->image,
-        ];
-
-
-        $id = Blog::create($data)->id;
-
-        if($request->multiple_images){
-            $this->deleteBlogImages($request->id);
-        }
-
-        foreach($request->multiple_images as $images){
-            BlogImages::create([
-                "blog_id" => $id,
-                "file_name" => $images
-            ]);
-        }
-        
-        return ['success' => true];
     }
 
     public function editBlog(Request $request){
-        
-        if($request->status == ''){
-            $status = 0;
-        }else{
-            $status = $request->status;
-        }
 
-        $data = [
-            "slug" => $request->slug,
-            "status" => $status,
-            "b_title" => $request->b_title,
-            "b_summary" => $request->b_summary,
-            "b_description" => $request->b_description,
-            "image" => $request->image,
-        ];
+        try {
+            if($request->status == ''){
+                $status = 0;
+            }else{
+                $status = $request->status;
+            }
+    
+            $data = [
+                "slug" => $request->slug,
+                "status" => $status,
+                "b_title" => $request->b_title,
+                "b_summary" => $request->b_summary,
+                "b_description" => $request->b_description,
+                "image" => $request->image,
+            ];
+    
+            Blog::where('id',$request->id)->update($data);
+            
+            if($request->multiple_images){
+                $this->deleteBlogImages($request->id);
+            }
+    
+            foreach($request->multiple_images as $images){
+                BlogImages::create([
+                    "blog_id" => $request->id,
+                    "file_name" => $images
+                ]);
+            }
 
-        Blog::where('id',$request->id)->update($data);
-        
-        if($request->multiple_images){
-            $this->deleteBlogImages($request->id);
-        }
+            return [ 'success' => true, 'message' => 'Blog editado com sucesso!'];
 
-        foreach($request->multiple_images as $images){
-            BlogImages::create([
-                "blog_id" => $request->id,
-                "file_name" => $images
-            ]);
+        } catch (\Exception $e) {
+            return [ 'success' => false, 'message' => 'Blog não editado, algo correu mal!'];
         }
-        
-        return ['success' => true];
     }
 
-
-    public static function deleteBlogImages($blogid){
+    function deleteBlogImages($blogid){
         $blogImage = BlogImages::where('blog_id',$blogid)->get();
 
         if(count($blogImage) > 0) {
@@ -106,5 +120,9 @@ class BlogController extends Controller
                 BlogImages::where('blog_id',$blogid)->delete();
             }
         }
+    }
+
+    function ValidateExistent($blog_id){
+        return count($blog_id);
     }
 }

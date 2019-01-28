@@ -47,7 +47,7 @@
         methods: {
             fetch() {
                 this.isLoading();
-                var req = axios.get('/api/banners/edit/' + this.$route.params.id)
+                var req = axios.get('/api/banners/' + this.$route.params.id)
                     .then(response => response.data)
                     .then(data => {
                         this.banners = data[0];

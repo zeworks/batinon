@@ -23,31 +23,5 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                currentLink: null,
-                breadcrumbList: {},
-            }
-        },
-        mounted() {
-            this.updateBreadcrumb()
-        },
-        methods: {
-            setCurrentLink() {
-                this.currentLink = new URL(location.href).pathname.split('/');
-            },
-            updateBreadcrumb() {
-                this.breadcrumbList = this.$route.meta.breadcrumb
-            },
-            routeTo() {
-                if (this.breadcrumbList[pRouteTo].link) this.$router.push(this.breadcrumbList[pRouteTo].link)
-            }
-        },
-        watch: {
-            '$route' () {
-                this.updateBreadcrumb()
-            }
-        }
-    }
+    export default {}
 </script>

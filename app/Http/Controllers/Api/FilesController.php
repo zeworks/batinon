@@ -65,7 +65,7 @@ class FilesController extends Controller
      * VALIDATION OF IMAGE IF EXISTS OR NOT
      */
     public static function ValidateExistImage($imageName){
-       $validation = count($getImage = Files::where('name', $imageName)->get());
+       $validation = count(Files::where('name', $imageName)->get());
 
        if($validation > 0) {
            return false;
