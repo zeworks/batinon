@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Pages;
 use App\Files;
+use Helpers;
 
 class PagesController extends Controller
 {
@@ -19,7 +20,7 @@ class PagesController extends Controller
     public function get($id){
         $page = Pages::where('id',$id)->get();
 
-        if ($this->ValidateExistent($page) > 0) {
+        if (Helpers::ValidateExistent($page) > 0) {
             return [ 'success' => true, 'content' => $page];
         } else {
             return [ 'success' => false, 'message' => 'Esta página não existe!', 'redirect' => '/admin/pages'];
@@ -90,9 +91,5 @@ class PagesController extends Controller
         Pages::where('id',$request->data)->delete();
         
         return ['success' => true];
-    }
-    
-    function ValidateExistent($page_id){
-        return count($page_id);
     }
 }

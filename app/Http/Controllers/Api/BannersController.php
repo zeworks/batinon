@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Banners;
+use Helpers;
 
 
 class BannersController extends Controller
@@ -19,7 +20,7 @@ class BannersController extends Controller
     public function get($id){
         $banner = Banners::where('id',$id)->get();
 
-        if ($this->ValidateExistent($banner) > 0) {
+        if (Helpers::ValidateExistent($banner) > 0) {
             return [ 'success' => true, 'content' => $banner];
         } else {
             return [ 'success' => false, 'message' => 'Esta página não existe!', 'redirect' => '/admin/banners'];
@@ -82,9 +83,5 @@ class BannersController extends Controller
         Banners::where('id',$request->data)->delete();
         
         return ['success' => true];
-    }
-    
-    function ValidateExistent($banner_id){
-        return count($banner_id);
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Blog;
 use App\BlogImages;
+use Helpers;
 
 class BlogController extends Controller
 {
@@ -19,7 +20,7 @@ class BlogController extends Controller
     public function get($id){
         $blog = Blog::where('id',$id)->with('Files')->get();
         
-        if ($this->ValidateExistent($blog) > 0) {
+        if (Helpers::ValidateExistent($blog) > 0) {
             return [ 'success' => true, 'content' => $blog];
         } else {
             return [ 'success' => false, 'message' => 'Esta página não existe!', 'redirect' => '/admin/blog'];
@@ -120,9 +121,5 @@ class BlogController extends Controller
                 BlogImages::where('blog_id',$blogid)->delete();
             }
         }
-    }
-
-    function ValidateExistent($blog_id){
-        return count($blog_id);
     }
 }
