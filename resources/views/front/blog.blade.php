@@ -1,22 +1,23 @@
 @extends('layouts.default') @section('content')
 
+@if($banner[0]->image)
 <section>
-    <div class="institutional-banner">
-        @foreach($banner as $element)
-            <div class="image-bg" style="background-image: url('<?=Image::url($element->image,1920,900)?>')">
-                <div class="wrapper-slide">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6">
-                                <strong>{{ $element->title }}</strong>
-                            </div>
+    <div class="institutional-banner institutional-banner--masked">
+        <div class="image-bg" style="background-image: url('<?=Image::url($banner[0]->image,1920,900)?>')">
+            <div class="wrapper-slide">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <strong>{{ $banner[0]->title }}</strong>
                         </div>
                     </div>
                 </div>
             </div>
-        @endforeach
+        </div>
     </div>
 </section>
+@endif
+
 <div class="empty-space-20"></div>
 <!-- breadcrumb -->
 <section>
