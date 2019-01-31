@@ -50,10 +50,10 @@ class PagesController extends Controller
     
             Pages::create($data);
 
-            return [ 'success' => true, 'message' => 'Página criada com sucesso!' ];
+            return [ 'success' => true, 'message' => 'Página guardada com sucesso!' ];
 
         } catch (\Exception $e) {
-            return [ 'success' => false, 'message' => 'Página não criada, algo correu mal!'];
+            return [ 'success' => false, 'message' => 'Página não guardada, algo correu mal!'];
         }
     }
 
@@ -80,7 +80,7 @@ class PagesController extends Controller
     
             $update = Pages::where('id',$request->id)->update($data);
     
-            return ['success' => true, 'message' => 'Página editado com sucesso!'];
+            return ['success' => true, 'message' => 'Página editada com sucesso!'];
 
         } catch (\Exception $e) {
             return [ 'success' => false, 'message' => 'Página não editado, algo correu mal!'];
@@ -90,6 +90,6 @@ class PagesController extends Controller
     public function delete(Request $request){
         Pages::where('id',$request->data)->delete();
         
-        return ['success' => true];
+        return ['success' => true, 'message' => 'Página eliminada com sucesso!'];
     }
 }

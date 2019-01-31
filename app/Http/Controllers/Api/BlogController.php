@@ -33,7 +33,7 @@ class BlogController extends Controller
 
         $this->deleteBlogImages($request->data);
         
-        return ['success' => true];
+        return ['success' => true, 'message' => 'Blog eliminado com sucesso!'];
     }
     
     public function add(Request $request){
@@ -68,10 +68,10 @@ class BlogController extends Controller
                 ]);
             }
 
-            return [ 'success' => true, 'message' => 'Blog criado com sucesso!'];
+            return [ 'success' => true, 'message' => 'Blog guardado com sucesso!'];
 
         } catch (\Exception $e) {
-            return [ 'success' => false, 'message' => 'Blog não criado, algo correu mal!'];
+            return [ 'success' => false, 'message' => 'Blog não guardado, algo correu mal!'];
         }
     }
 

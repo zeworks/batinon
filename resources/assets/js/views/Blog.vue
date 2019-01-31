@@ -13,8 +13,21 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody v-if="blogs[0] != null">
-                        <tr class="c-table__row" v-for="(blog,index) in blogs" :key="index">
+                    <tbody>
+                        <tr v-if="this.$root.placeholders && blogs.length === 0">
+                            <td colspan="5">
+                                <v-placeholder />
+                            </td>
+                        </tr>
+                        <tr v-if="!this.$root.placeholders && blogs.length === 0">
+                            <td colspan="5">
+                                <div class="text-center">
+                                    <br>
+                                    <p>You have no blogs created yet!</p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr v-else class="c-table__row" v-for="(blog,index) in blogs" :key="index">
                             <td>
                                 #{{blog.id}}
                             </td>
@@ -41,16 +54,6 @@
                             </td>
                         </tr>
                     </tbody>
-                    <tbody v-else>
-                        <tr>
-                            <td colspan="5">
-                                <div class="text-center">
-                                    <br>
-                                    <p>You have no blogs created yet!</p>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
                 </table>
             </div>
             <div class="c-card__footer clearfix">
@@ -58,6 +61,7 @@
             </div>
         </div>
     </b-container>
+
 </template>
 
 <script>
@@ -74,15 +78,17 @@
         },
         methods: {
             fetchBlogs() {
-                axios.get('/api/blogs')
+                this.isHolding();
+                var req = axios.get('/api/blogs')
                     .then(response => response.data)
                     .then(data => {
                         this.blogs = data;
                     });
+                req.then(response => this.isHolding())
             },
             remove(id) {
                 swal({
-                        title: "Are you sure?",
+                        title: "Tem certeza?",
                         text: "Once deleted, you will not be able to recover this item!",
                         icon: "warning",
                         buttons: true,
@@ -95,7 +101,7 @@
                                 })
                                 .then(response => {
                                     // success alert
-                                    swal('Success!', 'Blog post Deleted', 'success');
+                                    swal('Sucesso!', 'Blog post Deleted', 'success');
                                     this.fetchBlogs();
                                 })
                         } else {

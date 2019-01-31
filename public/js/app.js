@@ -21352,6 +21352,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.mixin({
             image_path: 'storage/images/',
             drawerActive: false,
             loading: false,
+            placeholders: false,
             showModal: false,
             showModalLibrary: false,
             showModalPreview: false
@@ -21387,11 +21388,19 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.mixin({
         },
         isLoading: function isLoading() {
             this.$root.loading = !this.$root.loading;
+        },
+        isHolding: function isHolding() {
+            this.$root.placeholders = !this.$root.placeholders;
         }
     },
     computed: {
         currentLink: function currentLink() {
             return new URL(location.href).pathname.split('/');
+        }
+    },
+    watch: {
+        $route: function $route(to, from) {
+            console.log(to, from);
         }
     }
 });
@@ -22647,6 +22656,7 @@ var map = {
 	"./_v-header.vue": 153,
 	"./_v-loading.vue": 158,
 	"./_v-modal.vue": 161,
+	"./_v-placeholder.vue": 352,
 	"./_v-returnComponent.vue": 164,
 	"./_v-slider.vue": 167,
 	"./_v-sliderImages.vue": 172,
@@ -22940,14 +22950,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/add', formData).then(function (response) {
                 if (response.data.success) {
-                    swal('Success!', response.data.message, 'success');
+                    swal('Sucesso!', response.data.message, 'success');
                     // reload files
                     _this2.fetchBlockImages();
                 } else {
-                    swal('Error!', response.data.message, 'error');
+                    swal('Erro!', response.data.message, 'error');
                 }
             }).catch(function () {
-                swal('Error!', response.data.message, 'error');
+                swal('Erro!', response.data.message, 'error');
             });
         },
 
@@ -22956,7 +22966,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this3 = this;
 
             swal({
-                title: "Are you sure?",
+                title: "Tem certeza?",
                 text: "Once deleted, you will not be able to recover this imaginary file!",
                 icon: "warning",
                 buttons: true,
@@ -22967,7 +22977,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         data: id
                     }).then(function (response) {
                         // success alert
-                        swal('Success!', response.data.message, 'success');
+                        swal('Sucesso!', response.data.message, 'success');
                         _this3.fetchBlockImages();
                     });
                 } else {
@@ -24318,14 +24328,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            breadcrumbList: []
+        };
+    }
+});
 
 /***/ }),
 /* 142 */
@@ -24336,7 +24346,49 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("b-container", { attrs: { fluid: "" } }, [
-    _c("ul", { staticClass: "c-breadcrumb u-unlist" })
+    _c("ul", { staticClass: "c-breadcrumb u-unlist" }, [
+      _c("li", { staticClass: "c-breadcrumb__item" }, [
+        _c(
+          "a",
+          { staticClass: "c-breadcrumb__link", attrs: { href: "/admin/home" } },
+          [_vm._v("home")]
+        ),
+        _vm._v(" "),
+        _c("i", {
+          staticClass: "fas fa-angle-right c-breadcrumb__icon u-icon-after"
+        })
+      ]),
+      _vm._v(" "),
+      _vm.currentLink[2]
+        ? _c(
+            "li",
+            { staticClass: "c-breadcrumb__item" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "c-breadcrumb__link",
+                  style: { display: "inline-block" },
+                  attrs: { to: "/admin/" + _vm.currentLink[2] }
+                },
+                [_vm._v(_vm._s(_vm.currentLink[2]))]
+              ),
+              _vm._v(" "),
+              _c("i", {
+                staticClass:
+                  "fas fa-angle-right c-breadcrumb__icon u-icon-after"
+              })
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.currentLink[3]
+        ? _c("li", { staticClass: "c-breadcrumb__item" }, [
+            _vm._v("\n            " + _vm._s(_vm.currentLink[3]) + "\n        ")
+          ])
+        : _vm._e()
+    ])
   ])
 }
 var staticRenderFns = []
@@ -24848,14 +24900,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/add', formData).then(function (response) {
                 if (response.data.success) {
-                    swal('Success!', response.data.message, 'success');
+                    swal('Sucesso!', response.data.message, 'success');
                     // reload files
                     _this2.fetchImages();
                 } else {
-                    swal('Error!', response.data.message, 'error');
+                    swal('Erro!', response.data.message, 'error');
                 }
             }).catch(function () {
-                swal('Error!', response.data.message, 'error');
+                swal('Erro!', response.data.message, 'error');
             });
         },
 
@@ -24864,7 +24916,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this3 = this;
 
             swal({
-                title: "Are you sure?",
+                title: "Tem certeza?",
                 text: "Once deleted, you will not be able to recover this imaginary file!",
                 icon: "warning",
                 buttons: true,
@@ -24875,7 +24927,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         data: id
                     }).then(function (response) {
                         // success alert
-                        swal('Success!', response.data.message, 'success');
+                        swal('Sucesso!', response.data.message, 'success');
                         _this3.fetchImages();
                     });
                 } else {
@@ -25882,6 +25934,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -25933,21 +25987,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/add', formData).then(function (response) {
                 if (response.data.success) {
-                    swal('Success!', response.data.message, 'success');
+                    swal('Sucesso!', response.data.message, 'success');
                     // reload files
                     _this2.fetchImages();
                 } else {
-                    swal('Error!', response.data.message, 'error');
+                    swal('Erro!', response.data.message, 'error');
                 }
             }).catch(function () {
-                swal('Error!', response.data.message, 'error');
+                swal('Erro!', response.data.message, 'error');
             });
         },
         removeSliderImage: function removeSliderImage(id) {
             var _this3 = this;
 
             swal({
-                title: "Are you sure?",
+                title: "Tem certeza?",
                 text: "Once deleted, you will not be able to recover this imaginary file!",
                 icon: "warning",
                 buttons: true,
@@ -25958,7 +26012,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         data: id
                     }).then(function (response) {
                         // success alert
-                        swal('Success!', response.data.message, 'success');
+                        swal('Sucesso!', response.data.message, 'success');
                         _this3.fetchImages();
                     });
                 } else {
@@ -25993,10 +26047,16 @@ var render = function() {
   return _c(
     "div",
     [
+      _c("br"),
+      _vm._v(" "),
+      _c("h4", { staticClass: "f-subtitle u-margin--top-bottom-s" }, [
+        _vm._v("Slide Images")
+      ]),
+      _vm._v(" "),
       _c(
         "button",
         {
-          staticClass: "c-btn c-btn--primary u-margin--top-bottom-s",
+          staticClass: "c-btn c-btn--default u-margin--top-bottom-s",
           attrs: { type: "button" },
           on: { click: _vm.fetchImages }
         },
@@ -40706,6 +40766,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -40723,17 +40786,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchPages: function fetchPages() {
             var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/pages').then(function (response) {
+            this.isHolding();
+
+            var req = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/pages').then(function (response) {
                 return response.data;
             }).then(function (data) {
                 _this.pages = data;
+            });
+            req.then(function (response) {
+                return _this.isHolding();
             });
         },
         remove: function remove(id) {
             var _this2 = this;
 
             swal({
-                title: "Are you sure?",
+                title: "Tem certeza?",
                 text: "Once deleted, you will not be able to recover this content!",
                 icon: "warning",
                 buttons: true,
@@ -40744,7 +40812,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         data: id
                     }).then(function (response) {
                         // success alert
-                        swal('Success!', 'Page Deleted', 'success');
+                        swal('Sucesso!', response.data.message, 'success');
                         _this2.fetchPages();
                     });
                 } else {
@@ -40790,123 +40858,135 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm.pages[0] != null
-                    ? _c(
-                        "tbody",
-                        _vm._l(_vm.pages, function(page, index) {
-                          return _c(
-                            "tr",
-                            { key: index, staticClass: "c-table__row" },
-                            [
-                              _c("td", [
-                                _vm._v(
-                                  "\n                                    #" +
-                                    _vm._s(page.id) +
-                                    "\n                                "
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "td",
-                                [
-                                  _c(
-                                    "router-link",
-                                    {
-                                      attrs: {
-                                        to: "/admin/pages/edit/" + page.id
-                                      }
-                                    },
-                                    [_vm._v(_vm._s(page.title))]
+                  _c(
+                    "tbody",
+                    [
+                      this.$root.placeholders && _vm.pages.length === 0
+                        ? _c("tr", [
+                            _c(
+                              "td",
+                              { attrs: { colspan: "5" } },
+                              [_c("v-placeholder")],
+                              1
+                            )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      !this.$root.placeholders && _vm.pages.length === 0
+                        ? _c("tr", [
+                            _c("td", { attrs: { colspan: "5" } }, [
+                              _c("div", { staticClass: "text-center" }, [
+                                _c("br"),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _vm._v("You have no pages created yet!")
+                                ])
+                              ])
+                            ])
+                          ])
+                        : _vm._l(_vm.pages, function(page, index) {
+                            return _c(
+                              "tr",
+                              { key: index, staticClass: "c-table__row" },
+                              [
+                                _c("td", [
+                                  _vm._v(
+                                    "\n                                    #" +
+                                      _vm._s(page.id) +
+                                      "\n                                "
                                   )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(page.slug))]),
-                              _vm._v(" "),
-                              _c("td", [
+                                ]),
+                                _vm._v(" "),
                                 _c(
-                                  "div",
-                                  {
-                                    staticClass: "u-tag",
-                                    class: {
-                                      "u-tag--success": page.status == "1",
-                                      "u-tag--danger": page.status == "0"
-                                    }
-                                  },
-                                  [
-                                    page.status == 1
-                                      ? _c("span", [
-                                          _vm._v(
-                                            "\n                                            Active\n                                        "
-                                          )
-                                        ])
-                                      : _vm._e(),
-                                    _vm._v(" "),
-                                    page.status == 0
-                                      ? _c("span", [
-                                          _vm._v(
-                                            "\n                                            Inactive\n                                        "
-                                          )
-                                        ])
-                                      : _vm._e()
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(page.created_at))]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c(
-                                  "div",
-                                  { staticClass: "float-right" },
+                                  "td",
                                   [
                                     _c(
                                       "router-link",
                                       {
-                                        staticClass:
-                                          "c-btn c-btn--text c-btn--small",
                                         attrs: {
                                           to: "/admin/pages/edit/" + page.id
                                         }
                                       },
-                                      [_vm._v("Edit")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass:
-                                          "c-btn c-btn--danger c-btn--small",
-                                        on: {
-                                          click: function($event) {
-                                            _vm.remove(page.id)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Delete")]
+                                      [_vm._v(_vm._s(page.title))]
                                     )
                                   ],
                                   1
-                                )
-                              ])
-                            ]
-                          )
-                        })
-                      )
-                    : _c("tbody", [
-                        _c("tr", [
-                          _c("td", { attrs: { colspan: "5" } }, [
-                            _c("div", { staticClass: "text-center" }, [
-                              _c("br"),
-                              _vm._v(" "),
-                              _c("p", [
-                                _vm._v("You have no pages created yet!")
-                              ])
-                            ])
-                          ])
-                        ])
-                      ])
+                                ),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(page.slug))]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "u-tag",
+                                      class: {
+                                        "u-tag--success": page.status == "1",
+                                        "u-tag--danger": page.status == "0"
+                                      }
+                                    },
+                                    [
+                                      page.status == 1
+                                        ? _c("span", [
+                                            _vm._v(
+                                              "\n                                            Active\n                                        "
+                                            )
+                                          ])
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      page.status == 0
+                                        ? _c("span", [
+                                            _vm._v(
+                                              "\n                                            Inactive\n                                        "
+                                            )
+                                          ])
+                                        : _vm._e()
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(page.created_at))]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "div",
+                                    { staticClass: "float-right" },
+                                    [
+                                      _c(
+                                        "router-link",
+                                        {
+                                          staticClass:
+                                            "c-btn c-btn--text c-btn--small",
+                                          attrs: {
+                                            to: "/admin/pages/edit/" + page.id
+                                          }
+                                        },
+                                        [_vm._v("Edit")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "c-btn c-btn--danger c-btn--small",
+                                          on: {
+                                            click: function($event) {
+                                              _vm.remove(page.id)
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("Delete")]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ])
+                              ]
+                            )
+                          })
+                    ],
+                    2
+                  )
                 ])
               ]),
               _vm._v(" "),
@@ -41081,7 +41161,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         swal('Erro!', response.data.message, 'error');
                     }
                 }).catch(function (error) {
-                    swal('Erro!', 'Please fill all the required fields.', 'error');
+                    swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
                 });
             }
         }
@@ -41111,6 +41191,8 @@ var render = function() {
         "b-container",
         { attrs: { fluid: "" } },
         [
+          _c("v-returnComponent"),
+          _vm._v(" "),
           _c(
             "b-row",
             [
@@ -41381,6 +41463,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -41398,17 +41484,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchBlogs: function fetchBlogs() {
             var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/blogs').then(function (response) {
+            this.isHolding();
+            var req = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/blogs').then(function (response) {
                 return response.data;
             }).then(function (data) {
                 _this.blogs = data;
+            });
+            req.then(function (response) {
+                return _this.isHolding();
             });
         },
         remove: function remove(id) {
             var _this2 = this;
 
             swal({
-                title: "Are you sure?",
+                title: "Tem certeza?",
                 text: "Once deleted, you will not be able to recover this item!",
                 icon: "warning",
                 buttons: true,
@@ -41419,7 +41509,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         data: id
                     }).then(function (response) {
                         // success alert
-                        swal('Success!', 'Blog post Deleted', 'success');
+                        swal('Sucesso!', 'Blog post Deleted', 'success');
                         _this2.fetchBlogs();
                     });
                 } else {
@@ -41458,109 +41548,126 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm.blogs[0] != null
-            ? _c(
-                "tbody",
-                _vm._l(_vm.blogs, function(blog, index) {
-                  return _c("tr", { key: index, staticClass: "c-table__row" }, [
-                    _c("td", [
-                      _vm._v(
-                        "\n                            #" +
-                          _vm._s(blog.id) +
-                          "\n                        "
-                      )
-                    ]),
-                    _vm._v(" "),
+          _c(
+            "tbody",
+            [
+              this.$root.placeholders && _vm.blogs.length === 0
+                ? _c("tr", [
                     _c(
                       "td",
-                      [
-                        _c(
-                          "router-link",
-                          { attrs: { to: "/admin/blog/edit/" + blog.id } },
-                          [_vm._v(_vm._s(blog.b_title))]
-                        )
-                      ],
+                      { attrs: { colspan: "5" } },
+                      [_c("v-placeholder")],
                       1
-                    ),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(blog.slug))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "u-tag",
-                          class: {
-                            "u-tag--success": blog.status == "1",
-                            "u-tag--danger": blog.status == "0"
-                          }
-                        },
-                        [
-                          blog.status == 1
-                            ? _c("span", [
-                                _vm._v(
-                                  "\n                                    Active\n                                "
-                                )
-                              ])
-                            : _vm._e(),
-                          _vm._v(" "),
-                          blog.status == 0
-                            ? _c("span", [
-                                _vm._v(
-                                  "\n                                    Inactive\n                                "
-                                )
-                              ])
-                            : _vm._e()
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(blog.created_at))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "div",
-                        { staticClass: "float-right" },
-                        [
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              !this.$root.placeholders && _vm.blogs.length === 0
+                ? _c("tr", [
+                    _c("td", { attrs: { colspan: "5" } }, [
+                      _c("div", { staticClass: "text-center" }, [
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("p", [_vm._v("You have no blogs created yet!")])
+                      ])
+                    ])
+                  ])
+                : _vm._l(_vm.blogs, function(blog, index) {
+                    return _c(
+                      "tr",
+                      { key: index, staticClass: "c-table__row" },
+                      [
+                        _c("td", [
+                          _vm._v(
+                            "\n                            #" +
+                              _vm._s(blog.id) +
+                              "\n                        "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c(
+                              "router-link",
+                              { attrs: { to: "/admin/blog/edit/" + blog.id } },
+                              [_vm._v(_vm._s(blog.b_title))]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(blog.slug))]),
+                        _vm._v(" "),
+                        _c("td", [
                           _c(
-                            "router-link",
+                            "div",
                             {
-                              staticClass: "c-btn c-btn--text c-btn--small",
-                              attrs: { to: "/admin/blog/edit/" + blog.id }
-                            },
-                            [_vm._v("Edit")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "c-btn c-btn--danger c-btn--small",
-                              on: {
-                                click: function($event) {
-                                  _vm.remove(blog.id)
-                                }
+                              staticClass: "u-tag",
+                              class: {
+                                "u-tag--success": blog.status == "1",
+                                "u-tag--danger": blog.status == "0"
                               }
                             },
-                            [_vm._v("Delete")]
+                            [
+                              blog.status == 1
+                                ? _c("span", [
+                                    _vm._v(
+                                      "\n                                    Active\n                                "
+                                    )
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              blog.status == 0
+                                ? _c("span", [
+                                    _vm._v(
+                                      "\n                                    Inactive\n                                "
+                                    )
+                                  ])
+                                : _vm._e()
+                            ]
                           )
-                        ],
-                        1
-                      )
-                    ])
-                  ])
-                })
-              )
-            : _c("tbody", [
-                _c("tr", [
-                  _c("td", { attrs: { colspan: "5" } }, [
-                    _c("div", { staticClass: "text-center" }, [
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("p", [_vm._v("You have no blogs created yet!")])
-                    ])
-                  ])
-                ])
-              ])
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(blog.created_at))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "div",
+                            { staticClass: "float-right" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "c-btn c-btn--text c-btn--small",
+                                  attrs: { to: "/admin/blog/edit/" + blog.id }
+                                },
+                                [_vm._v("Edit")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "c-btn c-btn--danger c-btn--small",
+                                  on: {
+                                    click: function($event) {
+                                      _vm.remove(blog.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Delete")]
+                              )
+                            ],
+                            1
+                          )
+                        ])
+                      ]
+                    )
+                  })
+            ],
+            2
+          )
         ])
       ]),
       _vm._v(" "),
@@ -41673,7 +41780,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchBlogs: function fetchBlogs() {
             var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/blogs/' + this.$route.params.id).then(function (response) {
+            this.isLoading();
+            var req = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/blogs/' + this.$route.params.id).then(function (response) {
                 return response.data;
             }).then(function (data) {
                 if (data.success) {
@@ -41687,6 +41795,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this.$router.replace(data.redirect);
                     swal('Erro!', data.message, 'error');
                 }
+            });
+            req.then(function (response) {
+                return _this.isLoading();
             });
         },
         updateSlider: function updateSlider(array) {
@@ -41730,7 +41841,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         swal('Erro!', response.data.message, 'error');
                     }
                 }).catch(function (error) {
-                    swal('Erro!', 'Please fill all the required fields.', 'error');
+                    swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
                 });
             }
         }
@@ -42067,6 +42178,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -42084,17 +42198,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetch: function fetch() {
             var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/banners').then(function (response) {
+            this.isHolding();
+
+            var req = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/banners').then(function (response) {
                 return response.data;
             }).then(function (data) {
                 _this.banners = data;
+            });
+            req.then(function (response) {
+                return _this.isHolding();
             });
         },
         remove: function remove(id) {
             var _this2 = this;
 
             swal({
-                title: "Are you sure?",
+                title: "Tem certeza?",
                 text: "Once deleted, you will not be able to recover this content!",
                 icon: "warning",
                 buttons: true,
@@ -42105,7 +42224,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         data: id
                     }).then(function (response) {
                         // success alert
-                        swal('Success!', 'Banner Deleted', 'success');
+                        swal('Successo!', response.data.message, 'success');
                         _this2.fetch();
                     });
                 } else {
@@ -42152,125 +42271,141 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm.banners[0] != null
-                        ? _c(
-                            "tbody",
-                            _vm._l(_vm.banners, function(banner, index) {
-                              return _c(
-                                "tr",
-                                { key: index, staticClass: "c-table__row" },
-                                [
-                                  _c("td", [
-                                    _vm._v(
-                                      "\n                                        #" +
-                                        _vm._s(banner.id) +
-                                        "\n                                    "
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    [
-                                      _c(
-                                        "router-link",
-                                        {
-                                          attrs: {
-                                            to:
-                                              "/admin/banners/edit/" + banner.id
-                                          }
-                                        },
-                                        [_vm._v(_vm._s(banner.title))]
+                      _c(
+                        "tbody",
+                        [
+                          this.$root.placeholders && _vm.banners.length === 0
+                            ? _c("tr", [
+                                _c(
+                                  "td",
+                                  { attrs: { colspan: "5" } },
+                                  [_c("v-placeholder")],
+                                  1
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          !this.$root.placeholders && _vm.banners.length === 0
+                            ? _c("tr", [
+                                _c("td", { attrs: { colspan: "5" } }, [
+                                  _c("div", { staticClass: "text-center" }, [
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("p", [
+                                      _vm._v("You have no banners created yet!")
+                                    ])
+                                  ])
+                                ])
+                              ])
+                            : _vm._l(_vm.banners, function(banner, index) {
+                                return _c(
+                                  "tr",
+                                  { key: index, staticClass: "c-table__row" },
+                                  [
+                                    _c("td", [
+                                      _vm._v(
+                                        "\n                                        #" +
+                                          _vm._s(banner.id) +
+                                          "\n                                    "
                                       )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c("td", [
+                                    ]),
+                                    _vm._v(" "),
                                     _c(
-                                      "div",
-                                      {
-                                        staticClass: "u-tag",
-                                        class: {
-                                          "u-tag--success":
-                                            banner.status == "1",
-                                          "u-tag--danger": banner.status == "0"
-                                        }
-                                      },
-                                      [
-                                        banner.status == 1
-                                          ? _c("span", [
-                                              _vm._v(
-                                                "\n                                                Active\n                                            "
-                                              )
-                                            ])
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        banner.status == 0
-                                          ? _c("span", [
-                                              _vm._v(
-                                                "\n                                                Inactive\n                                            "
-                                              )
-                                            ])
-                                          : _vm._e()
-                                      ]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", [_vm._v(_vm._s(banner.created_at))]),
-                                  _vm._v(" "),
-                                  _c("td", [
-                                    _c(
-                                      "div",
-                                      { staticClass: "float-right" },
+                                      "td",
                                       [
                                         _c(
                                           "router-link",
                                           {
-                                            staticClass:
-                                              "c-btn c-btn--text c-btn--small",
                                             attrs: {
                                               to:
                                                 "/admin/banners/edit/" +
                                                 banner.id
                                             }
                                           },
-                                          [_vm._v("Edit")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass:
-                                              "c-btn c-btn--danger c-btn--small",
-                                            on: {
-                                              click: function($event) {
-                                                _vm.remove(banner.id)
-                                              }
-                                            }
-                                          },
-                                          [_vm._v("Delete")]
+                                          [_vm._v(_vm._s(banner.title))]
                                         )
                                       ],
                                       1
-                                    )
-                                  ])
-                                ]
-                              )
-                            })
-                          )
-                        : _c("tbody", [
-                            _c("tr", [
-                              _c("td", { attrs: { colspan: "5" } }, [
-                                _c("div", { staticClass: "text-center" }, [
-                                  _c("br"),
-                                  _vm._v(" "),
-                                  _c("p", [
-                                    _vm._v("You have no pages created yet!")
-                                  ])
-                                ])
-                              ])
-                            ])
-                          ])
+                                    ),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "u-tag",
+                                          class: {
+                                            "u-tag--success":
+                                              banner.status == "1",
+                                            "u-tag--danger":
+                                              banner.status == "0"
+                                          }
+                                        },
+                                        [
+                                          banner.status == 1
+                                            ? _c("span", [
+                                                _vm._v(
+                                                  "\n                                                Active\n                                            "
+                                                )
+                                              ])
+                                            : _vm._e(),
+                                          _vm._v(" "),
+                                          banner.status == 0
+                                            ? _c("span", [
+                                                _vm._v(
+                                                  "\n                                                Inactive\n                                            "
+                                                )
+                                              ])
+                                            : _vm._e()
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(banner.created_at))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c(
+                                        "div",
+                                        { staticClass: "float-right" },
+                                        [
+                                          _c(
+                                            "router-link",
+                                            {
+                                              staticClass:
+                                                "c-btn c-btn--text c-btn--small",
+                                              attrs: {
+                                                to:
+                                                  "/admin/banners/edit/" +
+                                                  banner.id
+                                              }
+                                            },
+                                            [_vm._v("Edit")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "button",
+                                            {
+                                              staticClass:
+                                                "c-btn c-btn--danger c-btn--small",
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.remove(banner.id)
+                                                }
+                                              }
+                                            },
+                                            [_vm._v("Delete")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ])
+                                  ]
+                                )
+                              })
+                        ],
+                        2
+                      )
                     ])
                   ]),
                   _vm._v(" "),
@@ -42346,7 +42481,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -42414,7 +42549,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var req = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/banners/' + this.$route.params.id).then(function (response) {
                 return response.data;
             }).then(function (data) {
-                _this.banners = data[0];
+                if (data.success) {
+                    _this.banners = data.content[0];
+                } else {
+                    _this.$router.replace(data.redirect);
+                    swal('Erro!', data.message, 'error');
+                }
             });
 
             req.then(function (response) {
@@ -42433,10 +42573,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     image: this.banners.image
                 }).then(function (response) {
                     if (response.data.success) {
-                        swal('Sucesso!', 'Banner saved', 'success');
+                        swal('Sucesso!', response.data.message, 'success');
                         _this2.$router.push("/admin/banners");
                     } else {
-                        swal('Erro!', 'Banner not saved', 'error');
+                        swal('Erro!', response.data.message, 'error');
                     }
                 });
             } else {
@@ -42447,13 +42587,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     image: this.banners.image
                 }).then(function (response) {
                     if (response.data.success) {
-                        swal('Sucesso!', 'Banner saved', 'success');
+                        swal('Sucesso!', response.data.message, 'success');
                         _this2.$router.push("/admin/banners");
                     } else {
-                        swal('Erro!', 'Banner not saved', 'error');
+                        swal('Erro!', response.data.message, 'error');
                     }
                 }).catch(function (error) {
-                    swal('Erro!', 'Please fill all the required fields.', 'error');
+                    swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
                 });
             }
         }
@@ -42780,6 +42920,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -42789,8 +42933,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             removeId: '',
             files: [],
             image: {},
-            origin: window.location.origin + '/',
-            image_path: 'storage/images/',
             imageToPreview: ''
         };
     },
@@ -42802,18 +42944,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchFiles: function fetchFiles() {
             var _this = this;
 
+            this.isHolding();
+
             var req = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/files').then(function (response) {
                 return response.data;
             }).then(function (data) {
                 _this.files = data;
+            });
+
+            req.then(function (response) {
+                return _this.isHolding();
             });
         },
         removeFile: function removeFile(id) {
             var _this2 = this;
 
             swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this file!",
+                title: "Tem certeza?",
+                text: "Uma vez que elimine, não poderá recuperar!",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true
@@ -42823,7 +42971,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         data: id
                     }).then(function (response) {
                         // success alert
-                        swal('Success!', 'File Deleted', 'success');
+                        swal('Sucesso!', response.data.message, 'success');
                         _this2.fetchFiles();
                     });
                 } else {
@@ -42844,14 +42992,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/files/add', formData).then(function (response) {
                 if (response.data.success) {
-                    swal('Success!', 'File saved', 'success');
+                    swal('Sucesso!', response.data.message, 'success');
                     // reload files
                     _this3.fetchFiles();
                 } else {
-                    swal('Error!', 'File not saved, file too large [2MB Max]', 'error');
+                    swal('Erro!', response.data.message, 'error');
                 }
             }).catch(function () {
-                swal('Error!', 'File not sent', 'error');
+                swal('Erro!', response.data.message, 'error');
             });
         },
         imagePreview: function imagePreview(file) {
@@ -42890,88 +43038,106 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm.files[0] != null
-              ? _c(
-                  "tbody",
-                  _vm._l(_vm.files, function(file, index) {
-                    return _c(
-                      "tr",
-                      { key: index, staticClass: "c-table__row" },
-                      [
-                        _c("td", [_vm._v("#" + _vm._s(file.id))]),
-                        _vm._v(" "),
-                        _c("td", [
-                          file.name
-                            ? _c(
-                                "button",
-                                {
-                                  staticClass: "image-to-preview",
-                                  on: {
-                                    click: function($event) {
-                                      _vm.imagePreview(
-                                        _vm.origin + _vm.image_path + file.name
-                                      )
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("img", {
-                                    attrs: {
-                                      width: "50",
-                                      src:
-                                        _vm.origin + _vm.image_path + file.name,
-                                      alt: "dummy image"
-                                    }
-                                  })
-                                ]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(file.created_at))]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c("input", {
-                            staticClass: "c-form__input",
-                            attrs: { type: "text", disabled: "" },
-                            domProps: {
-                              value: _vm.origin + _vm.image_path + file.name
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "c-btn c-btn--danger c-btn--small",
-                              on: {
-                                click: function($event) {
-                                  _vm.removeFile(file.id)
-                                }
-                              }
-                            },
-                            [
-                              _c("i", {
-                                staticClass: "fas fa-trash u-icon-before"
-                              }),
-                              _vm._v(" delete")
-                            ]
-                          )
+            _c(
+              "tbody",
+              [
+                this.$root.placeholders && _vm.files.length === 0
+                  ? _c("tr", [
+                      _c(
+                        "td",
+                        { attrs: { colspan: "5" } },
+                        [_c("v-placeholder")],
+                        1
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                !this.$root.placeholders && _vm.files.length === 0
+                  ? _c("tr", [
+                      _c("td", { attrs: { colspan: "5" } }, [
+                        _c("div", { staticClass: "text-center" }, [
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("p", [_vm._v("You have no files saved yet!")])
                         ])
-                      ]
-                    )
-                  })
-                )
-              : _c("tbody", [
-                  _c("tr", [
-                    _c("td", { attrs: { colspan: "5" } }, [
-                      _c("div", { staticClass: "text-center" }, [
-                        _c("small", [_vm._v("You have no files saved yet!")])
                       ])
                     ])
-                  ])
-                ])
+                  : _vm._l(_vm.files, function(file, index) {
+                      return _c(
+                        "tr",
+                        { key: index, staticClass: "c-table__row" },
+                        [
+                          _c("td", [_vm._v("#" + _vm._s(file.id))]),
+                          _vm._v(" "),
+                          _c("td", [
+                            file.name
+                              ? _c(
+                                  "button",
+                                  {
+                                    staticClass: "image-to-preview",
+                                    on: {
+                                      click: function($event) {
+                                        _vm.imagePreview(
+                                          _vm.origin +
+                                            _vm.image_path +
+                                            file.name
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("img", {
+                                      attrs: {
+                                        width: "50",
+                                        src:
+                                          _vm.origin +
+                                          _vm.image_path +
+                                          file.name,
+                                        alt: file.name
+                                      }
+                                    })
+                                  ]
+                                )
+                              : _vm._e()
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(file.created_at))]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c("input", {
+                              staticClass: "c-form__input",
+                              attrs: { type: "text", disabled: "" },
+                              domProps: {
+                                value: _vm.origin + _vm.image_path + file.name
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "c-btn c-btn--danger c-btn--small",
+                                on: {
+                                  click: function($event) {
+                                    _vm.removeFile(file.id)
+                                  }
+                                }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "fas fa-trash u-icon-before"
+                                }),
+                                _vm._v(" Eliminar")
+                              ]
+                            )
+                          ])
+                        ]
+                      )
+                    })
+              ],
+              2
+            )
           ])
         ]),
         _vm._v(" "),
@@ -43454,14 +43620,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 } else swal('Erro!', 'Page not saved', 'error');
             }).catch(function (error) {
-                swal('Erro!', 'Please fill all the required fields.', 'error');
+                swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
             });
         },
         remove: function remove(id) {
             var _this4 = this;
 
             swal({
-                title: "Are you sure?",
+                title: "Tem certeza?",
                 text: "Once deleted, you will not be able to recover this content!",
                 icon: "warning",
                 buttons: true,
@@ -43472,7 +43638,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         data: id
                     }).then(function (response) {
                         // success alert
-                        swal('Success!', 'Menu Item Deleted', 'success');
+                        swal('Sucesso!', 'Menu Item Deleted', 'success');
                         _this4.fetchNavigation();
                     });
                 } else {
@@ -44232,6 +44398,149 @@ $(document).ready(function () {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 351 */,
+/* 352 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(353)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(355)
+/* template */
+var __vue_template__ = __webpack_require__(356)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\_v-placeholder.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-08bd9934", Component.options)
+  } else {
+    hotAPI.reload("data-v-08bd9934", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 353 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(354);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(8)("6d6bf8f2", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08bd9934\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./_v-placeholder.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08bd9934\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./_v-placeholder.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 354 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(5)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 355 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 356 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "c-placeholder" }, [
+      _c("div", { staticClass: "c-placeholder__background" }, [
+        _c("div", { staticClass: "c-placeholder__line" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "c-placeholder__line" })
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-08bd9934", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

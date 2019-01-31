@@ -15,8 +15,21 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody v-if="banners[0] != null">
-                                    <tr class="c-table__row" v-for="(banner,index) in banners" :key="index">
+                                <tbody>
+                                    <tr v-if="this.$root.placeholders && banners.length === 0">
+                                        <td colspan="5">
+                                            <v-placeholder />
+                                        </td>
+                                    </tr>
+                                    <tr v-if="!this.$root.placeholders && banners.length === 0">
+                                        <td colspan="5">
+                                            <div class="text-center">
+                                                <br>
+                                                <p>You have no banners created yet!</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr v-else class="c-table__row" v-for="(banner,index) in banners" :key="index">
                                         <td>
                                             #{{banner.id}}
                                         </td>
@@ -36,16 +49,6 @@
                                             <div class="float-right">
                                                 <router-link :to="'/admin/banners/edit/'+banner.id" class="c-btn c-btn--text c-btn--small">Edit</router-link>
                                                 <button class="c-btn c-btn--danger c-btn--small" @click="remove(banner.id)">Delete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tbody v-else>
-                                    <tr>
-                                        <td colspan="5">
-                                            <div class="text-center">
-                                                <br>
-                                                <p>You have no pages created yet!</p>
                                             </div>
                                         </td>
                                     </tr>
@@ -76,15 +79,18 @@
         },
         methods: {
             fetch() {
-                axios.get('/api/banners')
+                this.isHolding();
+
+                var req = axios.get('/api/banners')
                     .then(response => response.data)
                     .then(data => {
                         this.banners = data;
                     });
+                req.then( response => this.isHolding() );
             },
             remove(id) {
                 swal({
-                        title: "Are you sure?",
+                        title: "Tem certeza?",
                         text: "Once deleted, you will not be able to recover this content!",
                         icon: "warning",
                         buttons: true,
@@ -97,7 +103,7 @@
                                 })
                                 .then(response => {
                                     // success alert
-                                    swal('Success!', 'Banner Deleted', 'success');
+                                    swal('Successo!', response.data.message, 'success');
                                     this.fetch();
                                 })
                         } else {

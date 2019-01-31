@@ -1,7 +1,7 @@
 <template>
     <form @submit.prevent="saveData">
         <b-container fluid>
-            <!-- <returnComponent /> -->
+            <v-returnComponent />
             <b-row>
                 <b-col sm="9">
                     <div class="c-card">
@@ -124,7 +124,7 @@
                             }
                         })
                         .catch(error => {
-                            swal('Erro!', 'Please fill all the required fields.', 'error');
+                            swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
                         });
                 }
             }

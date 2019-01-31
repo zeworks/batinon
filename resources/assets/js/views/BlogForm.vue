@@ -68,7 +68,8 @@
         },
         methods: {
             fetchBlogs() {
-                axios.get('/api/blogs/' + this.$route.params.id)
+                this.isLoading();  
+                var req = axios.get('/api/blogs/' + this.$route.params.id)
                     .then(response => response.data)
                     .then(data => {
                         if (data.success) {
@@ -83,6 +84,7 @@
                             swal('Erro!', data.message, 'error');
                         }
                     });
+                req.then(response => this.isLoading());
             },
             updateSlider(array){
                 this.blogImages = array;
@@ -126,7 +128,7 @@
                             }
                         })
                         .catch(error => {
-                            swal('Erro!', 'Please fill all the required fields.', 'error');
+                            swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
                         });
                 }
             }

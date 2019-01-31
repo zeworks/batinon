@@ -1,0 +1,54 @@
+.c-placeholder {
+  $root-class: c-placeholder;
+
+  padding: 18px;
+  max-width: 100%;
+  margin: 0 auto .8rem;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.07);
+
+  &__background {
+    animation: placeHolderShimmer 1.5s infinite linear forwards;
+    animation-delay: 300ms;
+    background: #f6f7f9;
+    background-image: linear-gradient(
+      to right,
+      #f6f7f9 0%,
+      #e9ebee 20%,
+      #f6f7f9 40%,
+      #f6f7f9 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 104px;
+    height: 46px;
+    position: relative;
+  }
+
+    &__line {
+      background: #fff;
+      height: 6px;
+      left: 0;
+      position: absolute;
+      right: 0;
+    }
+
+    &__line:first-child {
+      height: 8px;
+      top: 19px;
+      width: 100%;
+    }
+
+    &__line:last-child {
+      left: 100%;
+      height: 46px;
+    }    
+
+  @keyframes placeHolderShimmer {
+    0% {
+      background-position: -900px 0;
+    }
+    100% {
+      background-position: 900px 0;
+    }
+  }
+}

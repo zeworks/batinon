@@ -164,12 +164,12 @@
                             swal('Erro!', 'Page not saved', 'error');
                     })
                     .catch(error => {
-                        swal('Erro!', 'Please fill all the required fields.', 'error');
+                        swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
                     });
             },
             remove(id) {
                 swal({
-                        title: "Are you sure?",
+                        title: "Tem certeza?",
                         text: "Once deleted, you will not be able to recover this content!",
                         icon: "warning",
                         buttons: true,
@@ -182,7 +182,7 @@
                                 })
                                 .then(response => {
                                     // success alert
-                                    swal('Success!', 'Menu Item Deleted', 'success');
+                                    swal('Sucesso!', 'Menu Item Deleted', 'success');
                                     this.fetchNavigation();
                                 })
                         } else {

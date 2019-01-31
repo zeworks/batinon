@@ -28,6 +28,7 @@ Vue.mixin({
             image_path: 'storage/images/',
             drawerActive: false,
             loading: false,
+            placeholders: false,
             showModal: false,
             showModalLibrary: false,
             showModalPreview: false,
@@ -62,13 +63,21 @@ Vue.mixin({
         },
         isLoading(){
             this.$root.loading = !this.$root.loading;
+        },
+        isHolding(){
+            this.$root.placeholders = !this.$root.placeholders;
         }
     },
     computed: {
         currentLink() {
             return new URL(location.href).pathname.split('/');
         }
-    }
+    },
+    watch:{
+        $route (to, from){
+            console.log(to, from);
+        }
+    } 
 })
 
 

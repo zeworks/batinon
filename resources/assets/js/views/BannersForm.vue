@@ -50,7 +50,12 @@
                 var req = axios.get('/api/banners/' + this.$route.params.id)
                     .then(response => response.data)
                     .then(data => {
-                        this.banners = data[0];
+                        if (data.success) {
+                            this.banners = data.content[0];
+                        } else {
+                            this.$router.replace(data.redirect);
+                            swal('Erro!', data.message, 'error');
+                        }
                     });
 
                 req.then(response => this.isLoading());
@@ -66,10 +71,10 @@
                         })
                         .then(response => {
                             if (response.data.success) {
-                                swal('Sucesso!', 'Banner saved', 'success');
+                                swal('Sucesso!', response.data.message, 'success');
                                 this.$router.push("/admin/banners");
                             } else {
-                                swal('Erro!', 'Banner not saved', 'error');
+                                swal('Erro!', response.data.message, 'error');
                             }
                         });
                 } else {
@@ -81,14 +86,14 @@
                         })
                         .then(response => {
                             if (response.data.success) {
-                                swal('Sucesso!', 'Banner saved', 'success');
+                                swal('Sucesso!', response.data.message, 'success');
                                 this.$router.push("/admin/banners");
                             } else {
-                                swal('Erro!', 'Banner not saved', 'error');
+                                swal('Erro!', response.data.message, 'error');
                             }
                         })
                         .catch(error => {
-                            swal('Erro!', 'Please fill all the required fields.', 'error');
+                            swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
                         });
                 }
             }

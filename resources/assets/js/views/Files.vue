@@ -13,26 +13,30 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody v-if="files[0] != null">
-                        <tr class="c-table__row" v-for="(file,index) in files" :key="index">
+                    <tbody>
+                        <tr v-if="this.$root.placeholders && files.length === 0">
+                            <td colspan="5">
+                                <v-placeholder />
+                            </td>
+                        </tr>
+                        <tr v-if="!this.$root.placeholders && files.length === 0">
+                            <td colspan="5">
+                                <div class="text-center">
+                                    <br>
+                                    <p>You have no files saved yet!</p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr v-else class="c-table__row" v-for="(file,index) in files" :key="index">
                             <td>#{{file.id}}</td>
                             <td>
                                 <button @click="imagePreview(origin+image_path+file.name)" class="image-to-preview" v-if="file.name">
-                                    <img width="50" :src="origin+image_path+file.name" alt="dummy image">
+                                    <img width="50" :src="origin+image_path+file.name" :alt="file.name">
                                 </button>
                             </td>
                             <td>{{file.created_at}}</td>
                             <td><input type="text" disabled  :value="origin+image_path+file.name" class="c-form__input"></td>
-                            <td><button class="c-btn c-btn--danger c-btn--small" @click="removeFile(file.id)"><i class="fas fa-trash u-icon-before"></i> delete</button></td>
-                        </tr>
-                    </tbody>
-                    <tbody v-else>
-                        <tr>
-                            <td colspan="5">
-                                <div class="text-center">
-                                    <small>You have no files saved yet!</small>
-                                </div>
-                            </td>
+                            <td><button class="c-btn c-btn--danger c-btn--small" @click="removeFile(file.id)"><i class="fas fa-trash u-icon-before"></i> Eliminar</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -105,8 +109,6 @@
                 removeId         : '',
                 files            : [],
                 image            : {},
-                origin           : window.location.origin+'/',
-                image_path       : 'storage/images/',
                 imageToPreview   : '',
             }
         },
@@ -115,18 +117,20 @@
         },
         methods: {
             fetchFiles(){
+                this.isHolding();
 
                 var req = axios.get('/api/files')
-                .then( response => response.data)
-                .then( data => {
-                    this.files = data;
-                });
+                    .then( response => response.data)
+                    .then( data => {
+                        this.files = data;
+                    });
 
+                req.then( response => this.isHolding() );
             },
             removeFile(id){
                 swal({
-                        title: "Are you sure?",
-                        text: "Once deleted, you will not be able to recover this file!",
+                        title: "Tem certeza?",
+                        text: "Uma vez que elimine, não poderá recuperar!",
                         icon: "warning",
                         buttons: true,
                         dangerMode: true,
@@ -138,7 +142,7 @@
                                 })
                                 .then(response => {
                                     // success alert
-                                    swal('Success!', 'File Deleted', 'success');
+                                    swal('Sucesso!', response.data.message, 'success');
                                     this.fetchFiles();
                                 })
                         } else {
@@ -158,14 +162,14 @@
                 axios.post('/api/files/add', formData)
                 .then(response => {
                     if(response.data.success){
-                        swal('Success!','File saved','success');
+                        swal('Sucesso!',response.data.message,'success');
                         // reload files
                         this.fetchFiles();
                     }else{
-                        swal('Error!','File not saved, file too large [2MB Max]','error');
+                        swal('Erro!',response.data.message,'error');
                     }
                 }).catch(function(){
-                    swal('Error!','File not sent','error');
+                    swal('Erro!',response.data.message,'error');
                 });
             },
             imagePreview(file){

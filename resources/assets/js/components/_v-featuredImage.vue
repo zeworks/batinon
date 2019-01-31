@@ -98,20 +98,20 @@
                 axios.post('/api/files/add', formData)
                     .then(response => {
                         if (response.data.success) {
-                            swal('Success!', response.data.message, 'success');
+                            swal('Sucesso!', response.data.message, 'success');
                             // reload files
                             this.fetchImages();
                         } else {
-                            swal('Error!', response.data.message, 'error');
+                            swal('Erro!', response.data.message, 'error');
                         }
                     }).catch(function () {
-                        swal('Error!', response.data.message, 'error');
+                        swal('Erro!', response.data.message, 'error');
                     });
             },
             // remove image
             removeImage(id) {
                 swal({
-                        title: "Are you sure?",
+                        title: "Tem certeza?",
                         text: "Once deleted, you will not be able to recover this imaginary file!",
                         icon: "warning",
                         buttons: true,
@@ -124,7 +124,7 @@
                                 })
                                 .then(response => {
                                     // success alert
-                                    swal('Success!', response.data.message, 'success');
+                                    swal('Sucesso!', response.data.message, 'success');
                                     this.fetchImages();
                                 })
                         } else {

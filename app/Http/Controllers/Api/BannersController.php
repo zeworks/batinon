@@ -46,10 +46,10 @@ class BannersController extends Controller
     
             Banners::create($data);
 
-            return ['success' => true, 'message' => 'Banner criado com sucesso!'];
+            return ['success' => true, 'message' => 'Banner guardado com sucesso!'];
 
         } catch (\Exception $e) {
-            return [ 'success' => false, 'message' => 'Banner não criado, algo correu mal!'];
+            return [ 'success' => false, 'message' => 'Banner não guardado, algo correu mal!'];
         }
     }
 
@@ -82,6 +82,6 @@ class BannersController extends Controller
     public function delete(Request $request){
         Banners::where('id',$request->data)->delete();
         
-        return ['success' => true];
+        return ['success' => true, 'message' => 'Banner eliminado com sucesso!'];
     }
 }

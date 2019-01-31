@@ -41,7 +41,7 @@
                     <h1>{{$detail->b_title}}</h1>
                     <small>{{$detail->created_at}}</small>
                     <br>
-                    <span>Posted by:
+                    <span>Postado por:
                         <strong>Diana Pampols</strong>
                     </span>
                     <br>
@@ -55,6 +55,7 @@
             <div class="col-sm-5">
             @isset($details[0]->files)
                 <div class="empty-space-20"></div>
+                @if (count($details[0]->files) > 1)
                 <div class="owl-carousel owl-theme product-carousel">
                     @foreach($details[0]->files as $file)
                         <div class="item" data-hash="{{$file->id}}">
@@ -71,6 +72,14 @@
                     </a>
                     @endforeach
                 </div>
+                @else 
+                    @foreach($details[0]->files as $file)
+                    <div class="bordered-image">
+                        <img class="img-responsive zoom-image" src="{{ Image::url(asset('storage/images/'.$file->file_name),720,480,array('crop','')) }}"
+                            alt="{{$file->file_name}}" data-zoom-image="{{ Image::url(asset('storage/images/'.$file->file_name),900,900,array('crop','')) }}">
+                    </div>
+                    @endforeach
+                @endif
             @endisset
             </div>
         </div>
