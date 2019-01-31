@@ -1,6 +1,5 @@
 @extends('layouts.default') @section('content')
-
-@if($banner[0]->image)
+@if(count($banner) > 0)
 <section>
     <div class="institutional-banner institutional-banner--masked">
         <div class="image-bg" style="background-image: url('<?=Image::url($banner[0]->image,1920,900)?>')">
