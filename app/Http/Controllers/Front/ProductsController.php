@@ -8,6 +8,6 @@ use App\Http\Controllers\Controller;
 class ProductsController extends Controller
 {
     public function index(){
-        return view('front.product');
+        return view('front.products');
     }
 }
