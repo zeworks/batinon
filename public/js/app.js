@@ -21355,7 +21355,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.mixin({
             placeholders: false,
             showModal: false,
             showModalLibrary: false,
-            showModalPreview: false
+            showModalPreview: false,
+            breadcrumbPath: ''
         };
     },
 
@@ -21399,9 +21400,12 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.mixin({
         }
     },
     watch: {
-        $route: function $route(to, from) {
-            console.log(to, from);
+        $route: function $route(to) {
+            this.breadcrumbPath = to.path.split('/');
         }
+    },
+    mounted: function mounted() {
+        this.breadcrumbPath = window.location.pathname.split('/');
     }
 });
 
@@ -24331,9 +24335,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
-        return {
-            breadcrumbList: []
-        };
+        return {};
     }
 });
 
@@ -24359,7 +24361,7 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _vm.currentLink[2]
+      this.$root.breadcrumbPath[2]
         ? _c(
             "li",
             { staticClass: "c-breadcrumb__item" },
@@ -24369,9 +24371,9 @@ var render = function() {
                 {
                   staticClass: "c-breadcrumb__link",
                   style: { display: "inline-block" },
-                  attrs: { to: "/admin/" + _vm.currentLink[2] }
+                  attrs: { to: "/admin/" + this.$root.breadcrumbPath[2] }
                 },
-                [_vm._v(_vm._s(_vm.currentLink[2]))]
+                [_vm._v(_vm._s(_vm.breadcrumbPath[2]))]
               ),
               _vm._v(" "),
               _c("i", {
@@ -24383,9 +24385,11 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm.currentLink[3]
+      _vm.breadcrumbPath[3]
         ? _c("li", { staticClass: "c-breadcrumb__item" }, [
-            _vm._v("\n            " + _vm._s(_vm.currentLink[3]) + "\n        ")
+            _vm._v(
+              "\n            " + _vm._s(_vm.breadcrumbPath[3]) + "\n        "
+            )
           ])
         : _vm._e()
     ])

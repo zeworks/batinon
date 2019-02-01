@@ -25,7 +25,7 @@
         <div class="swiper-button swiper-button-prev"></div>
     </div>
     @else
-    <div class="institutional-banner">
+    <div class="institutional-banner institutional-banner--masked">
         @foreach($banners as $banner)
         <div class="image-bg" style="background-image: url('<?=Image::url($banner->image,1920,900)?>')">
             <div class="wrapper-slide">

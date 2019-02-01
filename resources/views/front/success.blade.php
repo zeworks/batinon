@@ -1,6 +1,5 @@
 @extends('layouts.default') @section('content')
 <div class="empty-space-20"></div>
-<!-- SUCCESS -->
 <section>
     <div class="container">
         <div class="row">
@@ -20,5 +19,4 @@
         </div>
     </div>
 </section>
-<!-- /SUCCESS -->
 @endsection

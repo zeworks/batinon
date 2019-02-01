@@ -1,15 +1,12 @@
 @extends('layouts.default') @section('content')
-<!-- banner - large -->
+@if($page[0]->image)
 <section>
-    <div class="institutional-banner">
-        @foreach($page as $item)
-            <div class="image-bg" style="background-image: url('<?=Image::url($item->image,1920,900)?>')"></div>
-        @endforeach
+    <div class="institutional-banner institutional-banner--masked">
+        <div class="image-bg" style="background-image: url('<?=Image::url($page[0]->image,1920,900)?>')"></div>
     </div>
 </section>
-<!-- banner - large ends -->
+@endif
 <div class="empty-space-20"></div>
-<!-- breadcrumb -->
 <section>
     <div class="container">
         <div class="row">
@@ -28,8 +25,6 @@
         </div>
     </div>
 </section>
-<!-- /breadcrumb -->
-<!-- ABOUT -->
 @foreach($page as $block)
     @if($block->b_title)
     <section>
@@ -60,5 +55,4 @@
     </section>
     @endif
 @endforeach
-<!-- /ABOUT -->
 @endsection

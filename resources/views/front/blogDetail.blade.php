@@ -5,7 +5,6 @@
     </div>
 </section>
 <div class="empty-space-20"></div>
-<!-- breadcrumb -->
 <section>
     <div class="container">
         <div class="row">
@@ -27,8 +26,6 @@
         </div>
     </div>
 </section>
-<!-- /breadcrumb -->
-<!-- BLOG SECTION -->
 <div class="empty-space-80"></div>
 <section>
     <div class="container">
@@ -104,5 +101,4 @@
     </div>
 </section>
 <div class="empty-space-80"></div>
-<!-- BLOG SECTION-->
 @endsection

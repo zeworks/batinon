@@ -16,9 +16,7 @@
     </div>
 </section>
 @endif
-
 <div class="empty-space-20"></div>
-<!-- breadcrumb -->
 <section>
     <div class="container">
         <div class="row">
@@ -35,8 +33,6 @@
         </div>
     </div>
 </section>
-<!-- /breadcrumb -->
-<!-- BLOG SECTION -->
 <div class="empty-space-80"></div>
 <section>
     <div class="container">
@@ -61,5 +57,4 @@
         </div>
     </div>
 </section>
-<!-- BLOG SECTION-->
 @endsection

@@ -32,6 +32,7 @@ Vue.mixin({
             showModal: false,
             showModalLibrary: false,
             showModalPreview: false,
+            breadcrumbPath: ''
         }
     },
     methods: {
@@ -74,10 +75,13 @@ Vue.mixin({
         }
     },
     watch:{
-        $route (to, from){
-            console.log(to, from);
+        $route (to){
+            this.breadcrumbPath = to.path.split('/');
         }
-    } 
+    },
+    mounted(){
+        this.breadcrumbPath = window.location.pathname.split('/');
+    }
 })
 
 

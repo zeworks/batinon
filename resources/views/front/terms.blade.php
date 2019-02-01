@@ -1,5 +1,4 @@
 @extends('layouts.default') @section('content')
-<!-- banner - large -->
 <section>
     <div class="institutional-banner">
         @foreach($template as $templ)
@@ -7,9 +6,7 @@
         @endforeach
     </div>
 </section>
-<!-- banner - large ends -->
 <div class="empty-space-20"></div>
-<!-- breadcrumb -->
 <section>
     <div class="container">
         <div class="row">
@@ -29,11 +26,8 @@
         </div>
     </div>
 </section>
-<!-- /breadcrumb -->
-<!-- ABOUT -->
 <section>
     <div class="empty-space-80"></div>
    
 </section>
-<!-- /ABOUT -->
 @endsection
