@@ -5,8 +5,8 @@
                 <a href="/admin/home" class="c-breadcrumb__link">home</a>
                 <i class="fas fa-angle-right c-breadcrumb__icon u-icon-after"></i>
             </li>
-            <li v-if="this.$root.breadcrumbPath[2]" class="c-breadcrumb__item">
-                <router-link :style=" { display: 'inline-block' }" :to="'/admin/' + this.$root.breadcrumbPath[2]" class="c-breadcrumb__link">{{ breadcrumbPath[2] }}</router-link>
+            <li v-if="breadcrumbPath[2] && breadcrumbPath[2] !== 'home'" class="c-breadcrumb__item">
+                <router-link :style=" { display: 'inline-block' }" :to="'/admin/' + breadcrumbPath[2]" class="c-breadcrumb__link">{{ breadcrumbPath[2] }}</router-link>
                 <i class="fas fa-angle-right c-breadcrumb__icon u-icon-after"></i>
             </li>
             <li v-if="breadcrumbPath[3]" class="c-breadcrumb__item">

@@ -24361,7 +24361,7 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      this.$root.breadcrumbPath[2]
+      _vm.breadcrumbPath[2] && _vm.breadcrumbPath[2] !== "home"
         ? _c(
             "li",
             { staticClass: "c-breadcrumb__item" },
@@ -24371,7 +24371,7 @@ var render = function() {
                 {
                   staticClass: "c-breadcrumb__link",
                   style: { display: "inline-block" },
-                  attrs: { to: "/admin/" + this.$root.breadcrumbPath[2] }
+                  attrs: { to: "/admin/" + _vm.breadcrumbPath[2] }
                 },
                 [_vm._v(_vm._s(_vm.breadcrumbPath[2]))]
               ),
