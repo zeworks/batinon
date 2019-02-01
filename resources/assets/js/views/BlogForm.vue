@@ -1,8 +1,6 @@
 <template>
     <form @submit.prevent="saveData" enctype="multipart/form-data">
         <b-container fluid>
-            <!-- return component -->
-            <v-returnComponent />
             <b-row>
                 <b-col sm="9">
                     <div class="c-form">

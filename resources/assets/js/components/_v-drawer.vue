@@ -63,6 +63,12 @@
                         active: true
                     },
                     {
+                        title: 'Products',
+                        url: '/admin/products',
+                        icon: 'fas fa-hand-holding-usd',
+                        active: true
+                    },
+                    {
                         title: 'Files',
                         url: '/admin/files',
                         icon: 'fas fa-file-archive',

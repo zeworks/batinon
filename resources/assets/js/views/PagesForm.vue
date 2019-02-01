@@ -1,7 +1,6 @@
 <template>
     <form @submit.prevent="saveData">
         <b-container fluid>
-            <v-returnComponent />
             <b-row>
                 <b-col sm="9">
                     <div class="c-card">

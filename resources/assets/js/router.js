@@ -66,6 +66,18 @@ const router = new VueRouter({
             path: '/admin/navigation',
             component: require('@views/Navigation.vue')
         },
+        { // products
+            path: '/admin/products',
+            component: require('@views/Products.vue')
+        },
+        {
+            path: '/admin/products/add',
+            component: require('@views/ProductsForm.vue')
+        },
+        {
+            path: '/admin/products/edit/:id',
+            component: require('@views/ProductsForm.vue')
+        },
         {
             path: '*',
             component: require('@views/404.vue')
