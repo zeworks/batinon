@@ -22,7 +22,7 @@
                                 <small class="c-profile__item-subtitle">{{useremail}}</small>
                             </div>
                             <div class="c-profile__item">
-                                <a href="" class="c-profile__item-link">Profile</a>
+                                <router-link to="/admin/profile" class="c-profile__item-link">Profile</router-link>
                             </div>
                             <div class="c-profile__item">
                                 <a href="" class="c-profile__item-link">Settings</a>

@@ -79,6 +79,10 @@ const router = new VueRouter({
             component: require('@views/ProductsForm.vue')
         },
         {
+            path: '/admin/profile',
+            component: require('@views/Profile.vue')   
+        },
+        {
             path: '*',
             component: require('@views/404.vue')
         }

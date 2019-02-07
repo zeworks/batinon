@@ -13,9 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// active user
+Route::get('user','Api\UserController@index');
 
 //pages
 Route::get('pages','Api\PagesController@index');
