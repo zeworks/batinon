@@ -10,6 +10,6 @@ class UserController extends Controller
 {
     public function index()
     {
-        return response()->json(Auth::attempt());  
+        return response()->json('test');  
     }
 }

@@ -13,9 +13,9 @@
 
 // back end
 
-Route::auth();
+Auth::routes();
 
-Route::group(['middleware' => ['backend']], function() {
+Route::group(['middleware' => ['auth']], function() {
     Route::prefix('admin')->group(function(){
         Route::get('/{any}', 'Admin\SpaController@index')->where('any', '.*');
     });

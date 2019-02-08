@@ -13,9 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::auth();
-
-// active user
 Route::get('user','Api\UserController@index');
 
 //pages
