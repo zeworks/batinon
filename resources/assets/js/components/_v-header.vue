@@ -3,8 +3,7 @@
         <b-container fluid>
             <b-row>
                 <b-col sm="6">
-                    <button class="c-header__lineHeight float-left" @click="toggleDrawer" id="btn-menu"><i
-                            class="fas fa-bars u-color-dark"></i></button>
+                    <button class="c-header__lineHeight float-left" @click="toggleDrawer" id="btn-menu"><i class="fas fa-bars u-color-dark"></i></button>
                     <h4 class="float-left u-font-medium u-font-size-large c-header__lineHeight">
                         Batinon</h4>
                 </b-col>
@@ -62,7 +61,7 @@
             openProfileCard() {
                 this.isActive = !this.isActive;
             }
-        },
+        }
     }
 </script>
 

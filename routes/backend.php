@@ -11,11 +11,11 @@
 |
 */
 
-Auth::routes();
-
 // back end
 
-Route::group(['middleware' => ['auth']], function() {
+Route::auth();
+
+Route::group(['middleware' => ['backend']], function() {
     Route::prefix('admin')->group(function(){
         Route::get('/{any}', 'Admin\SpaController@index')->where('any', '.*');
     });

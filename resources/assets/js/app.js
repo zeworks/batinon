@@ -59,13 +59,13 @@ Vue.mixin({
                 return (slug != '' ? slug : '')
             }
         },
-        toggleDrawer(){
-            this.$root.drawerActive = !this.$root.drawerActive;    
+        toggleDrawer() {
+            this.$root.drawerActive = !this.$root.drawerActive;
         },
-        isLoading(){
+        isLoading() {
             this.$root.loading = !this.$root.loading;
         },
-        isHolding(){
+        isHolding() {
             this.$root.placeholders = !this.$root.placeholders;
         }
     },
@@ -74,17 +74,15 @@ Vue.mixin({
             return new URL(location.href).pathname.split('/');
         }
     },
-    watch:{
-        $route (to){
+    watch: {
+        $route(to) {
             this.breadcrumbPath = to.path.split('/');
         }
     },
-    mounted(){
+    mounted() {
         this.breadcrumbPath = window.location.pathname.split('/');
     }
 })
-
-
 
 var app = new Vue({
     el: '#app',

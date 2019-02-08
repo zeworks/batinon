@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function index(){
-        $user = Auth::user();
-        return $user;
+    public function index()
+    {
+        return response()->json(Auth::attempt());  
     }
 }
