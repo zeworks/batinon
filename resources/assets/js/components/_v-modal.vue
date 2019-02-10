@@ -1,6 +1,6 @@
 <template>
     <div class="modal-mask">
-        <div class="modal-wrapper">
+        <div class="modal-wrapper" :class="{ 'modal-wrapper--small' : this.small} ">
             <div class="modal-container">
 
                 <div class="modal-header">
@@ -27,6 +27,9 @@
 
 <script>
     export default {
+        props: {
+            small: Boolean
+        },
         data() {
             return {}
         }

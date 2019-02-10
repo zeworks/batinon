@@ -4,10 +4,10 @@
             <div class="c-profile">
                 <img :src="userImage" alt="profile image">
                 <span class="c-profile__name">
-                    {{ username }}
+                    {{ userName }}
                 </span>
                 <span class="c-profile__email">
-                    {{ useremail }}
+                    {{ userEmail }}
                 </span>
             </div>
             <hr>
@@ -32,11 +32,14 @@
 </template>
 
 <script>
+    import axios from 'axios'
+
     export default {
-        props: ['username', 'useremail'],
         data() {
             return {
                 userImage: '/logo.jpg',
+                userName: '',
+                userEmail: '',
                 navItems: [
                     {
                         title: 'Home',
@@ -82,6 +85,19 @@
                     }
                 ]
             }
+        },
+        mounted(){
+            this.getProfile()
+        },
+        methods: {
+            getProfile(){
+                axios.get('/api/user/' + window.user)
+                    .then( response => response.data)
+                    .then( data => {
+                        this.userName = data.data[0].name;
+                        this.userEmail = data.data[0].email;
+                    }); 
+            },
         }
     }
 </script>

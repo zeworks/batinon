@@ -90,9 +90,9 @@
             },
             remove(id) {
                 swal({
-                        title: "Tem certeza?",
+                        title: "You sure?",
                         text: "Once deleted, you will not be able to recover this content!",
-                        icon: "warning",
+                        icon: "info",
                         buttons: true,
                         dangerMode: true,
                     })

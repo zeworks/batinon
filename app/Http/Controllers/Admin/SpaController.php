@@ -9,6 +9,6 @@ class SpaController extends Controller
 {
     public function index()
     {
-        return view('layouts.app');
+        return view('layouts.app', ['user' => \Auth::user()->id]);
     }
 }

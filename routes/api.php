@@ -13,7 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('user','Api\UserController@index');
+//user
+Route::get('user/{id}','Api\UserController@index');
+Route::put('user','Api\UserController@update');
+Route::post('user/password','Api\UserController@validatePassword');
+Route::put('user/password','Api\UserController@updatePassword');
 
 //pages
 Route::get('pages','Api\PagesController@index');

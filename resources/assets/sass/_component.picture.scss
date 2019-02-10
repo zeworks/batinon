@@ -1,0 +1,62 @@
+.c-picture {
+    $root-class: c-picture;
+    $transition-duration: .3s;
+    $transition-type: ease;
+
+    max-width: 200px;
+    position: relative;
+
+    &:hover {
+        .#{$root-class}__change {
+            opacity: 1;
+        }
+    }
+
+    &__image {
+        max-width: 100%;
+
+        &--bg{
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 200px;
+        }
+    }
+
+    &__change {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        background-color: rgba($color: $dark, $alpha: 0.4);
+        transition: opacity $transition-duration $transition-type;
+    }
+
+        &__icon {
+            font-size: 30px;
+            color: $white;
+            text-shadow: 0 0 5px $dark;
+        }
+
+    /* modifiers */
+    &--shadow {
+        box-shadow: 0 0 7px 1px rgba($color: $dark, $alpha: 0.1);
+        transition: box-shadow $transition-duration $transition-type;
+        &:hover {
+            box-shadow: 0 0 14px 1px rgba($color: $dark, $alpha: 0.3);
+        }
+    }
+
+    &--bordered {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    &--circle {
+        border-radius: 100%;
+        overflow: hidden;
+        height: 200px;
+    }
+}

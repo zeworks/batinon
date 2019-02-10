@@ -12,7 +12,7 @@
     export default {
         methods: {
             goBack() {
-                window.history.go(-1);
+                window.location.href = '/admin/' + this.currentLink[2];
             }
         },
     }

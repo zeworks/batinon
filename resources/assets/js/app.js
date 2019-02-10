@@ -21,6 +21,14 @@ Vue.use(VueSwal)
 Vue.use(VueEditor)
 Vue.use(BootstrapVue)
 
+Vue.directive('focus', {
+    // When the bound element is inserted into the DOM...
+    inserted: function (el) {
+      // Focus the element
+      el.focus()
+    }
+})
+
 Vue.mixin({
     data() {
         return {
@@ -32,7 +40,7 @@ Vue.mixin({
             showModal: false,
             showModalLibrary: false,
             showModalPreview: false,
-            breadcrumbPath: ''
+            breadcrumbPath: '',
         }
     },
     methods: {

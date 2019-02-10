@@ -11,8 +11,8 @@ Vue.use(VueRouter)
 const router = new VueRouter({
     mode: 'history',
     linkActiveClass: 'is-active',
-    routes: [{
-        // home
+    routes: [
+        {// home
             path: '/admin/home',
             component: require('@views/Home.vue')
         },

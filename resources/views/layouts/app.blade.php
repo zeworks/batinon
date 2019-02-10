@@ -24,8 +24,8 @@
 <body class="@yield('body_class')">
     <div id="app">
         @auth
-        <v-header username="{{ Auth::user()->name }}" useremail="{{ Auth::user()->email }}" logout="{{ route('logout') }}"></v-header>
-        <v-drawer username="{{ Auth::user()->name }}" useremail="{{ Auth::user()->email }}"></v-drawer>
+        <v-header logout="{{ route('logout') }}"></v-header>
+        <v-drawer></v-drawer>
         @endauth
         <main>
             @auth
@@ -46,7 +46,11 @@
 
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    @auth
+    <script>
+        window.user = {!! json_encode($user); !!};
+    </script>
+    @endauth
 </body>
 
 </html>
