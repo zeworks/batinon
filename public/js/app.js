@@ -44335,7 +44335,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -44346,6 +44346,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -44363,7 +44364,21 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n  produtos\n")])
+  return _c(
+    "div",
+    [
+      _vm._v("\n  produtos\n  "),
+      _c(
+        "router-link",
+        {
+          staticClass: "c-btn c-btn--primary float-right",
+          attrs: { to: "/admin/products/add" }
+        },
+        [_vm._v("Create New")]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -44410,7 +44425,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -44427,8 +44442,58 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    computed: {
+        slug: function slug() {
+            var slug = this.suglifyTitle(this.product.name);
+            return slug;
+        }
+    },
+    data: function data() {
+        return {
+            product: [{
+                status: false,
+                name: '',
+                slug: ''
+            }]
+        };
+    }
+});
 
 /***/ }),
 /* 350 */
@@ -44438,7 +44503,139 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n  produtos form\n")])
+  return _c(
+    "form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.saveData($event)
+        }
+      }
+    },
+    [
+      _c(
+        "b-container",
+        { attrs: { fluid: "" } },
+        [
+          _c(
+            "b-row",
+            [
+              _c("b-col", { attrs: { sm: "9" } }, [
+                _c("div", { staticClass: "c-card" }, [
+                  _c(
+                    "div",
+                    { staticClass: "c-card__body" },
+                    [
+                      _c(
+                        "b-row",
+                        [
+                          _c("b-col", { attrs: { sm: "7" } }, [
+                            _c("div", { staticClass: "c-form" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "c-form__label",
+                                  attrs: { for: "title" }
+                                },
+                                [_vm._v("Product Name*")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.product.name,
+                                    expression: "product.name"
+                                  }
+                                ],
+                                staticClass: "c-form__input",
+                                attrs: {
+                                  type: "text",
+                                  id: "title",
+                                  name: "title"
+                                },
+                                domProps: { value: _vm.product.name },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.product,
+                                      "name",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("b-col", { attrs: { sm: "5" } }, [
+                            _c("div", { staticClass: "c-form" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "c-form__label",
+                                  attrs: { for: "slug" }
+                                },
+                                [_vm._v("Product Slug")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.slug,
+                                    expression: "slug"
+                                  }
+                                ],
+                                staticClass: "c-form__input",
+                                attrs: {
+                                  disabled: "",
+                                  type: "text",
+                                  id: "slug",
+                                  name: "slug",
+                                  slug: _vm.slug
+                                },
+                                domProps: { value: _vm.slug },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.slug = $event.target.value
+                                  }
+                                }
+                              })
+                            ])
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("br")
+              ]),
+              _vm._v(" "),
+              _c("b-col", { attrs: { sm: "3" } }, [
+                _c("div", { staticClass: "c-card" })
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
