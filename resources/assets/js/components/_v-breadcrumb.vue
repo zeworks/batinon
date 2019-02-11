@@ -2,7 +2,7 @@
     <b-container fluid>
         <ul class="c-breadcrumb u-unlist">
             <li class="c-breadcrumb__item">
-                <a href="/admin/home" class="c-breadcrumb__link">home</a>
+                <router-link to="/admin/home" class="c-breadcrumb__link">home</router-link>
                 <i class="fas fa-angle-right c-breadcrumb__icon u-icon-after"></i>
             </li>
             <li v-if="breadcrumbPath[2] && breadcrumbPath[2] !== 'home'" class="c-breadcrumb__item">

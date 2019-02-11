@@ -2,7 +2,7 @@
     <aside class="c-aside" @click="toggleDrawer" :class="{ 'is-active' : this.$root.drawerActive }">
         <div class="c-aside__content">
             <div class="c-profile">
-                <img :src="userImage" alt="profile image">
+                <img :src="batinonLogo" alt="profile image">
                 <span class="c-profile__name">
                     {{ userName }}
                 </span>
@@ -37,7 +37,7 @@
     export default {
         data() {
             return {
-                userImage: '/logo.jpg',
+                batinonLogo: '/logo.jpg',
                 userName: '',
                 userEmail: '',
                 navItems: [

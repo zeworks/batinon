@@ -11587,6 +11587,7 @@ button:focus {
 .c-picture {
   max-width: 200px;
   position: relative;
+  margin: 0 auto 10px;
   /* modifiers */
 }
 

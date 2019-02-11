@@ -3,14 +3,15 @@
         <form @submit.prevent="saveProfile">
             <!-- profile page -->
             <b-row>
-                <b-col md="3">
+                <b-col md="3" class="text-center">
                     <!-- ::picture component -->
                     <div class="c-picture c-picture--shadow c-picture--circle">
-                        <div class="c-picture__image--bg" :style="{ 'background-image' : 'url(' + (userImageBase64 ? userImageBase64 : origin + userImage) + ')'}"></div>
+                        <div class="c-picture__image--bg" :style="{ 'background-image' : 'url(' + (userImageBase64 ? userImageBase64 : origin + image_path + userImage) + ')'}"></div>
                         <!-- hidden input -->
                         <input type="file" id="picture" class="hidden" @change="changePicture($event)">
                         <button type="button" class="c-picture__change" @click="fileClick"><i class="fas fa-camera c-picture__icon"></i></button>
                     </div>
+                    <span class="u-color-grey-light">[2MB Max]</span>
                     <!-- ::picture component -->
                 </b-col>
                 <b-col md="9">
@@ -35,7 +36,6 @@
                         <input type="text" id="email" class="c-form__input" v-model="userEmail">
                     </div>
                     <br>
-                    <button type="button" class="c-btn c-btn--link" @click="cancelProfile">Cancel</button>
                     <button type="submit" class="c-btn c-btn--primary">Save</button>
                 </b-col>
             </b-row>
@@ -99,7 +99,7 @@
                     .then(data => {
                         this.userName = data.data[0].name;
                         this.userEmail = data.data[0].email;
-                        this.userImage = data.data[0].userImage;
+                        this.userImage = data.data[0].image;
                     });
                 req.then(response => this.isLoading());
             },
@@ -154,7 +154,7 @@
                     id: window.user,
                     name: this.userName,
                     email: this.userEmail,
-                    image: this.userImageBase64
+                    image: this.userImage.name
                 }).then(response => response.data)
                     .then(data => {
                         if (data.success) {
@@ -175,9 +175,6 @@
                             swal('Erro!', response.data.message, 'error');
                         });
                 }
-            },
-            cancelProfile() {
-                alert(23)
             },
             closeModal() {
                 this.showModal = false

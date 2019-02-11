@@ -24407,17 +24407,22 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("b-container", { attrs: { fluid: "" } }, [
     _c("ul", { staticClass: "c-breadcrumb u-unlist" }, [
-      _c("li", { staticClass: "c-breadcrumb__item" }, [
-        _c(
-          "a",
-          { staticClass: "c-breadcrumb__link", attrs: { href: "/admin/home" } },
-          [_vm._v("home")]
-        ),
-        _vm._v(" "),
-        _c("i", {
-          staticClass: "fas fa-angle-right c-breadcrumb__icon u-icon-after"
-        })
-      ]),
+      _c(
+        "li",
+        { staticClass: "c-breadcrumb__item" },
+        [
+          _c(
+            "router-link",
+            { staticClass: "c-breadcrumb__link", attrs: { to: "/admin/home" } },
+            [_vm._v("home")]
+          ),
+          _vm._v(" "),
+          _c("i", {
+            staticClass: "fas fa-angle-right c-breadcrumb__icon u-icon-after"
+          })
+        ],
+        1
+      ),
       _vm._v(" "),
       _vm.breadcrumbPath[2] && _vm.breadcrumbPath[2] !== "home"
         ? _c(
@@ -24601,7 +24606,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            userImage: '/logo.jpg',
+            batinonLogo: '/logo.jpg',
             userName: '',
             userEmail: '',
             navItems: [{
@@ -24678,7 +24683,7 @@ var render = function() {
     [
       _c("div", { staticClass: "c-aside__content" }, [
         _c("div", { staticClass: "c-profile" }, [
-          _c("img", { attrs: { src: _vm.userImage, alt: "profile image" } }),
+          _c("img", { attrs: { src: _vm.batinonLogo, alt: "profile image" } }),
           _vm._v(" "),
           _c("span", { staticClass: "c-profile__name" }, [
             _vm._v(
@@ -44604,7 +44609,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function (data) {
                 _this2.userName = data.data[0].name;
                 _this2.userEmail = data.data[0].email;
-                _this2.userImage = data.data[0].userImage;
+                _this2.userImage = data.data[0].image;
             });
             req.then(function (response) {
                 return _this2.isLoading();
@@ -44666,7 +44671,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: window.user,
                 name: this.userName,
                 email: this.userEmail,
-                image: this.userImageBase64
+                image: this.userImage.name
             }).then(function (response) {
                 return response.data;
             }).then(function (data) {
@@ -44686,9 +44691,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     swal('Erro!', response.data.message, 'error');
                 });
             }
-        },
-        cancelProfile: function cancelProfile() {
-            alert(23);
         },
         closeModal: function closeModal() {
             this.showModal = false;
@@ -44739,7 +44741,7 @@ var render = function() {
           _c(
             "b-row",
             [
-              _c("b-col", { attrs: { md: "3" } }, [
+              _c("b-col", { staticClass: "text-center", attrs: { md: "3" } }, [
                 _c(
                   "div",
                   {
@@ -44753,7 +44755,7 @@ var render = function() {
                           "url(" +
                           (_vm.userImageBase64
                             ? _vm.userImageBase64
-                            : _vm.origin + _vm.userImage) +
+                            : _vm.origin + _vm.image_path + _vm.userImage) +
                           ")"
                       }
                     }),
@@ -44782,7 +44784,11 @@ var render = function() {
                       ]
                     )
                   ]
-                )
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "u-color-grey-light" }, [
+                  _vm._v("[2MB Max]")
+                ])
               ]),
               _vm._v(" "),
               _c(
@@ -44896,16 +44902,6 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "c-btn c-btn--link",
-                      attrs: { type: "button" },
-                      on: { click: _vm.cancelProfile }
-                    },
-                    [_vm._v("Cancel")]
-                  ),
                   _vm._v(" "),
                   _c(
                     "button",

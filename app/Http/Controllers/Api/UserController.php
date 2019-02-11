@@ -74,18 +74,22 @@ class UserController extends Controller
      */
     public function update(Request $request){
         try {
-           
-            $data = [
-                "name" => $request->name,
-                "email" => $request->email,
-                "image" => $request->image,
-            ];
+            
+            if ($request->image) {
+                $image_extension = substr($request->image, strpos($request->image, ".") + 1);
+                $name_encoded = base64_encode($request->image).'.'.$image_extension;
+
+                $data['image'] = $name_encoded;
+            }
+
+            $data['name'] = $request->name;
+            $data['email'] = $request->email;
             
             User::where('id',$request->id)->update($data);
             
             return [ 'success' => true, 'message' => 'Profile updated with success!'];
         } catch (\Exception $e) {
-            return [ 'success' => false, 'message' => 'Erro, Something went wrong!'];
+            return [ 'success' => false, 'message' => $e];
         }
     }
 
