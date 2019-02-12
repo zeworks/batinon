@@ -6,7 +6,7 @@
                 <b-col md="3" class="text-center">
                     <!-- ::picture component -->
                     <div class="c-picture c-picture--shadow c-picture--circle">
-                        <div class="c-picture__image--bg" :style="{ 'background-image' : 'url(' + (userImageBase64 ? userImageBase64 : origin + image_path + userImage) + ')'}"></div>
+                        <div class="c-picture__image--bg" :style="[this.userImageBase64 ? { 'background-image' : 'url(' + this.userImageBase64 + ')' } : { 'background-image' : 'url(' + this.userImage + ')' }]"></div>
                         <!-- hidden input -->
                         <input type="file" id="picture" class="hidden" @change="changePicture($event)">
                         <button type="button" class="c-picture__change" @click="fileClick"><i class="fas fa-camera c-picture__icon"></i></button>
@@ -54,7 +54,7 @@
                 <div class="c-form" v-if="nextStep">
                     <label for="newPassword" class="c-form__label">New Password</label>
                     <input type="password" id="newPassword" class="c-form__input" v-focus v-model="newPassword"
-                        @keydown.enter="validateNewPassword">
+                        @keydown.enter="updatePassword">
                     <small class="u-color-error" v-if="error">{{errorMessage}}</small>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                 <div class="float-right">
                     <button type="button" @click="closeModal" class="c-btn c-btn--text">Cancel</button>
                     <button type="button" v-if="!nextStep" @click="validateActualPassword" class="c-btn c-btn--primary">Next</button>
-                    <button type="button" v-else @click="validateNewPassword" class="c-btn c-btn--primary">Update</button>
+                    <button type="button" v-else @click="updatePassword" class="c-btn c-btn--primary">Update</button>
                 </div>
             </div>
         </v-modal>
@@ -100,6 +100,9 @@
                         this.userName = data.data[0].name;
                         this.userEmail = data.data[0].email;
                         this.userImage = data.data[0].image;
+                        if(this.userImageBase64){
+                            alert(22);
+                        }
                     });
                 req.then(response => this.isLoading());
             },
@@ -118,7 +121,7 @@
                         }
                     })
             },
-            validateNewPassword() {
+            updatePassword() {
                 axios.put('/api/user/password', {
                         id: window.user,
                         password: this.newPassword
@@ -148,7 +151,7 @@
                     })
             },
             saveProfile() {
-                this.sendImage()
+                this.uploadImage()
                 
                 axios.put('/api/user', {
                     id: window.user,
@@ -164,7 +167,7 @@
                         }
                     })
             },
-            sendImage() {
+            uploadImage() {
                 if (this.userImageBase64) {
                     const formData = new FormData();
                     formData.append('image', this.userImage);

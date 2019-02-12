@@ -24946,8 +24946,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['item'],
     data: function data() {
         return {
-            origin: window.location.origin + '/',
-            image_path: 'storage/images/',
             images: [],
             image: {}
         };
@@ -44807,6 +44805,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.userName = data.data[0].name;
                 _this2.userEmail = data.data[0].email;
                 _this2.userImage = data.data[0].image;
+                if (_this2.userImageBase64) {
+                    alert(22);
+                }
             });
             req.then(function (response) {
                 return _this2.isLoading();
@@ -44830,7 +44831,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         },
-        validateNewPassword: function validateNewPassword() {
+        updatePassword: function updatePassword() {
             var _this4 = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/api/user/password', {
@@ -44862,7 +44863,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         saveProfile: function saveProfile() {
-            this.sendImage();
+            this.uploadImage();
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/api/user', {
                 id: window.user,
@@ -44879,7 +44880,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         },
-        sendImage: function sendImage() {
+        uploadImage: function uploadImage() {
             if (this.userImageBase64) {
                 var formData = new FormData();
                 formData.append('image', this.userImage);
@@ -44947,14 +44948,16 @@ var render = function() {
                   [
                     _c("div", {
                       staticClass: "c-picture__image--bg",
-                      style: {
-                        "background-image":
-                          "url(" +
-                          (_vm.userImageBase64
-                            ? _vm.userImageBase64
-                            : _vm.origin + _vm.image_path + _vm.userImage) +
-                          ")"
-                      }
+                      style: [
+                        this.userImageBase64
+                          ? {
+                              "background-image":
+                                "url(" + this.userImageBase64 + ")"
+                            }
+                          : {
+                              "background-image": "url(" + this.userImage + ")"
+                            }
+                      ]
                     }),
                     _vm._v(" "),
                     _c("input", {
@@ -45226,7 +45229,7 @@ var render = function() {
                           ) {
                             return null
                           }
-                          return _vm.validateNewPassword($event)
+                          return _vm.updatePassword($event)
                         },
                         input: function($event) {
                           if ($event.target.composing) {
@@ -45275,7 +45278,7 @@ var render = function() {
                       {
                         staticClass: "c-btn c-btn--primary",
                         attrs: { type: "button" },
-                        on: { click: _vm.validateNewPassword }
+                        on: { click: _vm.updatePassword }
                       },
                       [_vm._v("Update")]
                     )

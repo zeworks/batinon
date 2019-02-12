@@ -10,6 +10,6 @@ class Helpers {
     }
     
     public static function ValidateExistentSlug($slug, $table){
-        return $slug;
+        // return $slug + $table;
     }
 }

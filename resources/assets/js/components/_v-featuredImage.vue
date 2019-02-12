@@ -59,8 +59,6 @@
         props: ['item'],
         data() {
             return {
-                origin: window.location.origin + '/',
-                image_path: 'storage/images/',
                 images: [],
                 image: {},
             }
