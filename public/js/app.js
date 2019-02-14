@@ -24947,8 +24947,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             images: [],
-            image: {}
+            image: ''
         };
+    },
+    mounted: function mounted() {
+        this.image = this.item.image;
     },
 
     methods: {
@@ -24968,7 +24971,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         chooseImage: function chooseImage(fileName) {
             this.showModal = false; // hide the modal
-            this.item.image = fileName; // set the file choosed by the user
+            this.image = fileName; // set the file choosed by the user
+            this.$emit('featuredImage', fileName); // send to the parent;
         },
 
         // if the user wants to upload a new file...
@@ -25026,8 +25030,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         },
-        removeFeatured: function removeFeatured() {
-            this.item.image = null;
+        removeFeatured: function removeFeatured(featured) {
+            this.image = null;
+            this.$emit('featuredImage', ''); // send to the parent;
         }
     }
 });
@@ -25067,7 +25072,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("b-col", { attrs: { sm: "6" } }, [
-                _vm.item.image
+                _vm.image
                   ? _c(
                       "button",
                       {
@@ -25088,11 +25093,11 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "c-card__body" }, [
-        _vm.item.image
+        _vm.image.length > 0
           ? _c("div", [
               _c("img", {
                 staticClass: "u-img-responsive u-margin-bottom-s",
-                attrs: { src: _vm.item.image, alt: "" }
+                attrs: { src: _vm.image, alt: "" }
               })
             ])
           : _c("div", [
@@ -41350,6 +41355,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
                 });
             }
+        },
+        chooseImage: function chooseImage(image) {
+            this.page.image = image;
         }
     }
 });
@@ -41501,7 +41509,10 @@ var render = function() {
                     _vm._v(" "),
                     _c("hr"),
                     _vm._v(" "),
-                    _c("v-featuredImage", { attrs: { item: _vm.page } }),
+                    _c("v-featuredImage", {
+                      attrs: { item: _vm.page },
+                      on: { featuredImage: _vm.chooseImage }
+                    }),
                     _vm._v(" "),
                     _c("v-submitComponent", {
                       attrs: { id: _vm.$route.params.id }

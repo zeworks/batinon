@@ -47,7 +47,7 @@ class PagesController extends Controller
                 "image" => $request->image,
             ];
     
-            dd($this->validateExistentSlug($request->slug, Pages));
+            // dd($this->validateExistentSlug($request->slug, Pages));
             Pages::create($data);
 
             return [ 'success' => true, 'message' => 'Página guardada com sucesso!' ];

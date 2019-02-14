@@ -9,13 +9,13 @@
                     <button type="button" class="c-btn c-btn--text c-btn--small" @click="fetchImages">Choose Image</button>
                 </b-col>
                 <b-col sm="6">
-                    <button v-if="item.image" type="button" class="c-btn c-btn--danger c-btn--small float-right" @click="removeFeatured">Remove</button>
+                    <button v-if="image" type="button" @click="removeFeatured" class="c-btn c-btn--danger c-btn--small float-right">Remove</button>
                 </b-col>
             </b-row>
         </div>
         <div class="c-card__body">
-            <div v-if="item.image">
-                <img :src="item.image" alt class="u-img-responsive u-margin-bottom-s">
+            <div v-if="image.length > 0">
+                <img :src="image" alt class="u-img-responsive u-margin-bottom-s">
             </div>
             <div v-else>
                 <img src="/placeholder.jpg" alt class="u-img-responsive u-margin-bottom-s">
@@ -60,8 +60,11 @@
         data() {
             return {
                 images: [],
-                image: {},
+                image: '',
             }
+        },
+        mounted(){         
+            this.image = this.item.image
         },
         methods: {
             fetchImages() {
@@ -76,7 +79,8 @@
             },
             chooseImage(fileName) {
                 this.showModal = false; // hide the modal
-                this.item.image = fileName; // set the file choosed by the user
+                this.image = fileName; // set the file choosed by the user
+                this.$emit('featuredImage', fileName) // send to the parent;
             },
             // if the user wants to upload a new file...
             fileClick() {
@@ -89,7 +93,6 @@
             },
             // save the image
             uploadImage() {
-
                 const formData = new FormData();
                 formData.append('image', this.image);
 
@@ -130,8 +133,9 @@
                         }
                     });
             },
-            removeFeatured() {
-                this.item.image = null;
+            removeFeatured(featured) {
+                this.image = null;
+                this.$emit('featuredImage', '') // send to the parent;
             }
         }
     }

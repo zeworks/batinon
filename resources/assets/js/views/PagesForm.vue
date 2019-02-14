@@ -29,7 +29,7 @@
                     <div class="c-card">
                         <v-statusComponent :item="page" />
                         <hr>
-                        <v-featuredImage :item="page" />
+                        <v-featuredImage @featuredImage="chooseImage" :item="page" />
                         <v-submitComponent :id="$route.params.id" />
                     </div>
                 </b-col>
@@ -126,6 +126,9 @@
                             swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
                         });
                 }
+            },
+            chooseImage(image) {
+                this.page.image = image;
             }
         }
     }
