@@ -9,12 +9,12 @@
                     <button type="button" class="c-btn c-btn--text c-btn--small" @click="fetchImages">Choose Image</button>
                 </b-col>
                 <b-col sm="6">
-                    <button v-if="image" type="button" @click="removeFeatured" class="c-btn c-btn--danger c-btn--small float-right">Remove</button>
+                    <button v-if="showRemoveButton" type="button" @click="removeFeatured" class="c-btn c-btn--danger c-btn--small float-right">Remove</button>
                 </b-col>
             </b-row>
         </div>
         <div class="c-card__body">
-            <div v-if="image.length > 0">
+            <div v-if="showRemoveButton">
                 <img :src="image" alt class="u-img-responsive u-margin-bottom-s">
             </div>
             <div v-else>
@@ -61,10 +61,8 @@
             return {
                 images: [],
                 image: '',
+                showRemoveButton: false
             }
-        },
-        mounted(){         
-            this.image = this.item.image
         },
         methods: {
             fetchImages() {
@@ -80,7 +78,8 @@
             chooseImage(fileName) {
                 this.showModal = false; // hide the modal
                 this.image = fileName; // set the file choosed by the user
-                this.$emit('featuredImage', fileName) // send to the parent;
+                this.showRemoveButton = true;
+                this.$emit('featuredImage', fileName)
             },
             // if the user wants to upload a new file...
             fileClick() {
@@ -134,10 +133,19 @@
                     });
             },
             removeFeatured(featured) {
-                this.image = null;
-                this.$emit('featuredImage', '') // send to the parent;
+                this.image = '';
+                this.showRemoveButton = false;
+                this.$emit('featuredImage', '')
+
             }
-        }
+        },
+        created(){ 
+            
+            if (this.$route.params.id && this.item) {
+                this.image = this.item
+                this.showRemoveButton = true
+            }
+        },
     }
 </script>
 

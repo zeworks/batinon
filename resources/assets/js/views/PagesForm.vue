@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="saveData">
-        <b-container fluid>
+        <b-container fluid v-if="contentLoaded">
             <b-row>
                 <b-col sm="9">
                     <div class="c-card">
@@ -29,7 +29,7 @@
                     <div class="c-card">
                         <v-statusComponent :item="page" />
                         <hr>
-                        <v-featuredImage @featuredImage="chooseImage" :item="page" />
+                        <v-featuredImage @featuredImage="chooseImage" :item="page.image" />
                         <v-submitComponent :id="$route.params.id" />
                     </div>
                 </b-col>
@@ -50,7 +50,7 @@
         },
         data() {
             return {
-                page: [{
+                page: {
                     status: false,
                     name: '',
                     slug: '',
@@ -58,7 +58,8 @@
                     b_summary: '',
                     b_description: '',
                     image: '',
-                }],
+                },
+                contentLoaded: false,
             }
         },
         created() {
@@ -80,6 +81,7 @@
                         }
                     });
                 req.then(response => this.isLoading());
+                req.then(response => this.contentLoaded = true);
             },
             saveData() {
                 if (this.$route.params.id > 0) {

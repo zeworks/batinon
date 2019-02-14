@@ -13,9 +13,7 @@ import BootstrapVue from 'bootstrap-vue'
 import router from './router'
 
 import 'vue-multiselect/dist/vue-multiselect.min.css'
-
-// home dashboard
-import DashboardComponent from '@components/DashboardComponent.vue'
+import axios from 'axios';
 
 Vue.use(VueSwal)
 Vue.use(VueEditor)
@@ -29,6 +27,7 @@ Vue.directive('focus', {
     }
 })
 
+
 Vue.mixin({
     data() {
         return {
@@ -41,6 +40,10 @@ Vue.mixin({
             showModalLibrary: false,
             showModalPreview: false,
             breadcrumbPath: '',
+            userImage: '/logo.jpg',
+            userName: '',
+            userEmail: '',
+            userImageBase64: '',
         }
     },
     methods: {
@@ -75,6 +78,20 @@ Vue.mixin({
         },
         isHolding() {
             this.$root.placeholders = !this.$root.placeholders;
+        },
+        getUserProfile() {
+            axios.get('/api/user/' + window.user)
+            .then(response => response.data)
+            .then(data => {
+                this.userName = data.data[0].name;
+                this.userEmail = data.data[0].email;
+
+                if(data.data[0].image === null){
+                    this.userImage = '/logo.jpg';
+                } else {
+                    this.userImage = this.origin + this.image_path + data.data[0].image;
+                }
+            });
         }
     },
     computed: {
@@ -95,7 +112,4 @@ Vue.mixin({
 var app = new Vue({
     el: '#app',
     router,
-    components: {
-        DashboardComponent
-    }
 });

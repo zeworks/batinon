@@ -6,7 +6,7 @@
                 <b-col md="3" class="text-center">
                     <!-- ::picture component -->
                     <div class="c-picture c-picture--shadow c-picture--circle">
-                        <div class="c-picture__image--bg" :style="[this.userImageBase64 ? { 'background-image' : 'url(' + this.userImageBase64 + ')' } : { 'background-image' : 'url(' + this.userImage + ')' }]"></div>
+                        <div class="c-picture__image--bg" :style="[this.$root.userImageBase64 ? { 'background-image' : 'url(' + this.$root.userImageBase64 + ')' } : { 'background-image' : 'url(' + this.$root.userImage + ')' }]"></div>
                         <!-- hidden input -->
                         <input type="file" id="picture" class="hidden" @change="changePicture($event)">
                         <button type="button" class="c-picture__change" @click="fileClick"><i class="fas fa-camera c-picture__icon"></i></button>
@@ -76,36 +76,20 @@
     export default {
         data() {
             return {
-                userImage: '',
-                userImageBase64: '',
-                userName: '',
-                userEmail: '',
                 actualPassword: '',
                 newPassword: '',
                 error: false,
                 errorMessage: '',
                 nextStep: false,
-                imageChanged: false
+                contentLoaded: false,
+                userName: this.$root.userName,
+                userEmail: this.$root.userEmail,
             }
         },
         mounted() {
-            this.getProfile()
+            this.getUserProfile()
         },
         methods: {
-            getProfile() {
-                this.isLoading()
-                var req = axios.get('/api/user/' + window.user)
-                    .then(response => response.data)
-                    .then(data => {
-                        this.userName = data.data[0].name;
-                        this.userEmail = data.data[0].email;
-                        this.userImage = data.data[0].image;
-                        if(this.userImageBase64){
-                            alert(22);
-                        }
-                    });
-                req.then(response => this.isLoading());
-            },
             validateActualPassword() {
                 axios.post('/api/user/password', {
                         id: window.user,
@@ -157,20 +141,20 @@
                     id: window.user,
                     name: this.userName,
                     email: this.userEmail,
-                    image: this.userImage.name
+                    image: this.$root.userImage.name
                 }).then(response => response.data)
                     .then(data => {
                         if (data.success) {
-                            swal('Success!', data.message, 'success');
+                            swal('Success!', data.message, 'success')
                         } else {
-                            swal('Error!', data.message, 'error');
+                            swal('Error!', data.message, 'error')
                         }
                     })
             },
             uploadImage() {
-                if (this.userImageBase64) {
+                if (this.$root.userImageBase64) {
                     const formData = new FormData();
-                    formData.append('image', this.userImage);
+                    formData.append('image', this.$root.userImage);
 
                     axios.post('/api/files/add', formData)
                         .then(response => {
@@ -189,17 +173,16 @@
                 $('#picture').click();
             },
             changePicture(event) {
-                this.userImage = event.target.files[0];
-                this.userImageBase64 = event.target.files[0];
-                this.imageChanged = true;
+                this.$root.userImage = event.target.files[0];
+                this.$root.userImageBase64 = event.target.files[0];
 
                 var reader = new FileReader();
-                var _this = this
+                var _this = this.$root
                 reader.onloadend = function () {
                     _this.userImageBase64 = reader.result;
 
                 }
-                reader.readAsDataURL(this.userImageBase64);
+                reader.readAsDataURL(this.$root.userImageBase64);
             },
         }
     }

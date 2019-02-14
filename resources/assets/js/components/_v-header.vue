@@ -11,14 +11,14 @@
                     <div class="c-profile c-profile--header float-right">
                         <!-- profile -->
                         <button class="c-profile__btn" @click="openProfileCard">
-                            <img class="c-profile__img" :src="userImage" alt="profile image">
+                            <img class="c-profile__img" :src="[ this.$root.userImageBase64 ? this.$root.userImageBase64 : this.$root.userImage ]" alt="profile image">
                             <i class="fas fa-ellipsis-v c-profile__btn-icon u-color-dark"></i>
                         </button>
                         <!-- profile card -->
                         <div class="c-profile__card" :class="{ 'c-profile__card-active' : isActive}">
                             <div class="c-profile__item c-profile__item--disabled">
-                                <strong class="c-profile__item-title">{{userName}}</strong>
-                                <small class="c-profile__item-subtitle">{{userEmail}}</small>
+                                <strong class="c-profile__item-title">{{this.$root.userName}}</strong>
+                                <small class="c-profile__item-subtitle">{{this.$root.userEmail}}</small>
                             </div>
                             <div class="c-profile__item">
                                 <router-link to="/admin/profile" class="c-profile__item-link">Profile</router-link>
@@ -55,25 +55,12 @@
             return {
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 isActive: false,
-                userImage: '/user.png',
-                userLogo: '/logo.jpg',
-                userName: '',
-                userEmail: '',
             }
         },
         mounted(){
-            this.getProfile()
+            this.$root.getUserProfile()
         },
         methods: {
-            getProfile(){
-                axios.get('/api/user/' + window.user)
-                    .then( response => response.data)
-                    .then( data => {
-                        this.userName = data.data[0].name;
-                        this.userEmail = data.data[0].email;
-                        this.userPassword = data.data[0].password;
-                    }); 
-            },
             openProfileCard() {
                 this.isActive = !this.isActive;
             }

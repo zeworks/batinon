@@ -19,12 +19,6 @@ const router = new VueRouter({
         { // pages
             path: '/admin/pages',
             component: require('@views/Pages.vue'),
-            meta: {
-                breadcrumb: [{
-                    name: 'Pages',
-                    link: '/admin/pages'
-                }]
-            }
         },
         {
             path: '/admin/pages/add',

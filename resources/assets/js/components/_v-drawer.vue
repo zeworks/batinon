@@ -4,10 +4,10 @@
             <div class="c-profile">
                 <img :src="batinonLogo" alt="profile image">
                 <span class="c-profile__name">
-                    {{ userName }}
+                    {{ this.$root.userName }}
                 </span>
                 <span class="c-profile__email">
-                    {{ userEmail }}
+                    {{ this.$root.userEmail }}
                 </span>
             </div>
             <hr>
@@ -38,8 +38,6 @@
         data() {
             return {
                 batinonLogo: '/logo.jpg',
-                userName: '',
-                userEmail: '',
                 navItems: [
                     {
                         title: 'Home',
@@ -87,17 +85,7 @@
             }
         },
         mounted(){
-            this.getProfile()
-        },
-        methods: {
-            getProfile(){
-                axios.get('/api/user/' + window.user)
-                    .then( response => response.data)
-                    .then( data => {
-                        this.userName = data.data[0].name;
-                        this.userEmail = data.data[0].email;
-                    }); 
-            },
+            this.$root.getUserProfile()
         }
     }
 </script>

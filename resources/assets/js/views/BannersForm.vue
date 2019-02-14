@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="saveData">
-        <b-container fluid>
+        <b-container fluid v-if="contentLoaded">
             <b-row>
                 <b-col sm="9">
                     <div class="c-form">
@@ -16,7 +16,7 @@
                     <div class="c-card">
                         <v-statusComponent :item="banners" />
                         <hr>
-                        <v-featuredImage :item="banners" />
+                        <v-featuredImage @featuredImage="chooseImage" :item="banners.image" />
                         <v-submitComponent :id="$route.params.id" />
                     </div>
                 </b-col>
@@ -37,6 +37,7 @@
                     summary: '',
                     image: '',
                 }],
+                contentLoaded: false
             }
         },
         created() {
@@ -59,6 +60,8 @@
                     });
 
                 req.then(response => this.isLoading());
+                req.then(response => this.contentLoaded = true);
+
             },
             saveData() {
                 if (this.$route.params.id > 0) {
@@ -96,6 +99,9 @@
                             swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
                         });
                 }
+            },
+            chooseImage(image) {
+                this.banners.image = image;
             }
         }
     }

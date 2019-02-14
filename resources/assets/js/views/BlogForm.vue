@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="saveData" enctype="multipart/form-data">
-        <b-container fluid>
+        <b-container fluid v-if="contentLoaded">
             <b-row>
                 <b-col sm="9">
                     <div class="c-form">
@@ -26,7 +26,7 @@
                     <div class="c-card">
                         <v-statusComponent :item="blog" />
                         <hr>
-                        <v-featuredImage :item="blog" />
+                        <v-featuredImage @featuredImage="chooseImage" :item="blog.image" />
                         <v-submitComponent :id="$route.params.id" />
                     </div>
                 </b-col>
@@ -50,7 +50,8 @@
                     b_description: '',
                     image: '',
                 }],
-                blogImages: []
+                blogImages: [],
+                contentLoaded: false,
             }
         },
         created() {
@@ -83,6 +84,8 @@
                         }
                     });
                 req.then(response => this.isLoading());
+                req.then(response => this.contentLoaded = true);
+
             },
             updateSlider(array){
                 this.blogImages = array;
@@ -129,6 +132,9 @@
                             swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
                         });
                 }
+            },
+            chooseImage(image) {
+                this.blog.image = image;
             }
         }
     }
