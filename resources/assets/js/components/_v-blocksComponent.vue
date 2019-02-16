@@ -21,7 +21,7 @@
                         <div class="c-card__body">
                             <div class="c-form">
                                 <label class="c-form__label" for="block_title">Title*</label>
-                                <input type="text" id="block_title" name="block_title" class="c-form__input" v-model="item.b_title">
+                                <input type="text" id="block_title" class="c-form__input" v-model="item.b_title">
                             </div>
                         </div>
                     </div>
@@ -29,12 +29,12 @@
                         <div class="c-card__body">
                             <div class="c-form">
                                 <label for="block_summary" class="c-form__label">Summary</label>
-                                <vueEditor id="block_summary" name="block_summary" v-model="item.b_summary"></vueEditor>
+                                <vueEditor id="block_summary" v-model="item.b_summary"></vueEditor>
                             </div>
                             <div class="c-form">
                                 <br>
                                 <label for="block_description" class="c-form__label">Description</label>
-                                <vueEditor id="block_description" name="block_description" v-model="item.b_description"></vueEditor>
+                                <vueEditor id="block_description" v-model="item.b_description"></vueEditor>
                             </div>
                         </div>
                     </div>

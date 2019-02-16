@@ -62,9 +62,11 @@
                 contentLoaded: false,
             }
         },
-        created() {
+        mounted() {
             if (this.$route.params.id) {
                 this.fetchPages();
+            } else {
+                this.contentLoaded = true
             }
         },
         methods: {

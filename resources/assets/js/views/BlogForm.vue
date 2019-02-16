@@ -54,9 +54,11 @@
                 contentLoaded: false,
             }
         },
-        created() {
+        mounted() {
             if (this.$route.params.id) {
                 this.fetchBlogs();
+            } else {
+                this.contentLoaded = true
             }
         },
         computed: {

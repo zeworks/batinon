@@ -21351,8 +21351,8 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(85);
-__webpack_require__(364);
-module.exports = __webpack_require__(365);
+__webpack_require__(361);
+module.exports = __webpack_require__(362);
 
 
 /***/ }),
@@ -24052,11 +24052,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "c-form__input",
-                      attrs: {
-                        type: "text",
-                        id: "block_title",
-                        name: "block_title"
-                      },
+                      attrs: { type: "text", id: "block_title" },
                       domProps: { value: _vm.item.b_title },
                       on: {
                         input: function($event) {
@@ -24094,7 +24090,7 @@ var render = function() {
                       ),
                       _vm._v(" "),
                       _c("vueEditor", {
-                        attrs: { id: "block_summary", name: "block_summary" },
+                        attrs: { id: "block_summary" },
                         model: {
                           value: _vm.item.b_summary,
                           callback: function($$v) {
@@ -24123,10 +24119,7 @@ var render = function() {
                       ),
                       _vm._v(" "),
                       _c("vueEditor", {
-                        attrs: {
-                          id: "block_description",
-                          name: "block_description"
-                        },
+                        attrs: { id: "block_description" },
                         model: {
                           value: _vm.item.b_description,
                           callback: function($$v) {
@@ -41285,9 +41278,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             contentLoaded: false
         };
     },
-    created: function created() {
+    mounted: function mounted() {
         if (this.$route.params.id) {
             this.fetchPages();
+        } else {
+            this.contentLoaded = true;
         }
     },
 
@@ -41961,9 +41956,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             contentLoaded: false
         };
     },
-    created: function created() {
+    mounted: function mounted() {
         if (this.$route.params.id) {
             this.fetchBlogs();
+        } else {
+            this.contentLoaded = true;
         }
     },
 
@@ -42693,7 +42690,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -42748,9 +42745,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             contentLoaded: false
         };
     },
-    created: function created() {
+    mounted: function mounted() {
         if (this.$route.params.id) {
             this.fetch();
+        } else {
+            this.contentLoaded = true;
         }
     },
 
@@ -45510,10 +45509,7 @@ exports.push([module.i, "fieldset[disabled] .multiselect{pointer-events:none}.mu
 
 
 /***/ }),
-/* 361 */,
-/* 362 */,
-/* 363 */,
-/* 364 */
+/* 361 */
 /***/ (function(module, exports) {
 
 var onInit = function onInit() {
@@ -45545,7 +45541,7 @@ $(document).ready(function () {
 });
 
 /***/ }),
-/* 365 */
+/* 362 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
