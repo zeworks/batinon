@@ -8,10 +8,6 @@
                     <p>
                         Menus, or link lists, help your customers navigate around your online store.
                     </p>
-                    <p>
-                        You can also create nested menus to display drop-down menus, and group products or pages
-                        together.
-                    </p>
                 </blockquote>
             </b-col>
             <b-col sm="6" offset-md="1" md="6">
@@ -23,30 +19,27 @@
                             <thead class="c-table__header">
                                 <tr>
                                     <th>Title</th>
-                                    <th>Menu Items</th>
+                                    <th>Menu Pages</th>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody v-if="navigation[0] != null">
+                            <tbody>
                                 <tr v-for="(nav,index) in navigation" :key="index" class="c-table__row">
                                     <td>{{nav.title}}</td>
                                     <td>
-                                        <div v-for="(navItem,index) in navigationItem" :key="index" v-if="navItem.parent_id == nav.id">
-                                            {{navItem.name}}
-                                        </div>
+                                        <template v-if="navigationItem.length">
+                                            <div v-for="(navItem,index) in navigationItem" :key="index">
+                                                <div v-if="navItem.parent_id === nav.id">
+                                                    {{navItem.title}}
+                                                </div>
+                                            </div>
+                                        </template>
+                                        <template v-else>
+                                            <small class="u-color-grey u-text-transform-uppercase">no content yet!</small>
+                                        </template>
                                     </td>
                                     <td>
-                                        <button class="c-btn c-btn--primary" @click="edit(nav.id)"><i class="fas fa-edit"></i></button>
-                                        <button class="c-btn c-btn--text" @click="remove(nav.id)"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody v-else>
-                                <tr>
-                                    <td colspan="3">
-                                        <div class="text-center">
-                                            <small>You have no menu items yet!</small>
-                                        </div>
+                                        <button class="c-btn c-btn--link" @click="openModal(nav.id)"><i class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -58,14 +51,9 @@
                 </div>
             </b-col>
         </b-row>
-        <v-modal v-if="showModal && !editId">
-            <h3 slot="header" class="f-subtitle">Add new navigation</h3>
+        <v-modal v-if="showModal">
+            <h3 slot="header" class="f-subtitle">Edit navigation</h3>
             <div slot="body">
-                <div class="c-form">
-                    <label for="menu_title" class="c-form__label">Title*</label>
-                    <input required type="text" id="menu_title" v-model="navigation.title" placeholder="ex: menu, footer menu, etc."
-                        name="menu_title" class="c-form__input">
-                </div>
                 <h5>Menu item</h5>
                 <label class="typo__label">Page name</label>
                 <multiselect v-model="value" tag-placeholder="Add this as new tag" placeholder="Search or add a tag"
@@ -74,29 +62,12 @@
             <div slot="footer">
                 <div class="float-right">
                     <button type="button" @click="showModal = false" class="c-btn c-btn--text">Cancel</button>
-                    <button type="button" @click="saveData" class="c-btn c-btn--primary">Save</button>
-                </div>
-            </div>
-        </v-modal>
-        <v-modal v-if="showModal && editId">
-            <h3 slot="header" class="f-subtitle">Edit navigation</h3>
-            <div slot="body" v-for="(nav,index) in navigation" :key="index">
-                <div class="c-form" >
-                    <label for="menu_title" class="c-form__label">Title*</label>
-                    <input required type="text" id="menu_title" v-model="nav.title" placeholder="ex: menu, footer menu, etc."
-                        name="menu_title" class="c-form__input">
-                </div>
-                <h5>Menu item</h5>
-                <label class="typo__label">Page name</label>
-                <div v-for="(navItem,index) in navigationItem" :key="index" v-if="navItem.parent_id == nav.id">
-                    <multiselect v-model="navItem.title" tag-placeholder="Add this as new tag" placeholder="Search or add a tag"
-                        :options="options" :multiple="true" :taggable="true" label="title" track-by="title"></multiselect>
-                </div>
-            </div>
-            <div slot="footer">
-                <div class="float-right">
-                    <button type="button" @click="showModal = false" class="c-btn c-btn--text">Cancel</button>
-                    <button type="button" @click="saveData" class="c-btn c-btn--primary">Save</button>
+                    <template v-if="newItem">
+                        <button type="button" @click="insertData" class="c-btn c-btn--primary">Save</button>
+                    </template>
+                    <template v-else>
+                        <button type="button" @click="editData" class="c-btn c-btn--primary">Save</button>
+                    </template>
                 </div>
             </div>
         </v-modal>
@@ -113,20 +84,16 @@
         },
         data() {
             return {
-                editId: null,
                 value: [],
                 options: {},
-                navigation: {
-                    title: '',
-                },
-                navigationItem: {
-                    name: '',
-                    url: '',
-                }
+                navigation: [],
+                navigationItem: [],
+                navSelected: {},
+                newItem: false
             }
         },
-        created() {
-            this.fetchNavigation();
+        mounted() {
+            this.fetchNavigationTable();
             this.fetchPages();
         },
         methods: {
@@ -137,7 +104,7 @@
                         this.options = data;
                     });
             },
-            fetchNavigation() {
+            fetchNavigationTable() {
                 axios.get('/api/navigation')
                     .then(response => response.data)
                     .then(data => {
@@ -145,20 +112,25 @@
                         this.navigationItem = data.navigationItems;
                     });
             },
-            saveData() {
-                axios.post('/api/navigation/add', {
-                        menu_title: this.navigation.title,
-                        navigation_item: this.value,
+            getNavigationItems() {
+                axios.get('/api/navigation/' + this.navSelected.menuType)
+                .then(response => response.data)
+                .then(data => {
+                    this.value = data.navigationItems
+                    if(!this.value.length > 0){
+                        this.newItem = true
+                    }
+                });
+            },
+            insertData() {
+                axios.post('/api/navigation/', {
+                        items: this.value,
+                        menu: this.navSelected.menuType
                     })
                     .then(response => {
+                        console.log(response);
                         if (response.data.success) {
                             // success
-                            if (response.data.returnId) {
-                                swal('Sucesso!', 'Page saved', 'success');
-                                this.showModal = false;
-                                this.fetchNavigation();
-                                this.value = [];
-                            }
 
                         } else
                             swal('Erro!', 'Page not saved', 'error');
@@ -167,38 +139,27 @@
                         swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
                     });
             },
-            remove(id) {
-                swal({
-                        title: "Tem certeza?",
-                        text: "Once deleted, you will not be able to recover this content!",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
+            editData() {
+                axios.put('/api/navigation', {
+                        items: this.value,
+                        menu: this.navSelected.menuType
                     })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            axios.post('/api/navigation/delete', {
-                                    data: id
-                                })
-                                .then(response => {
-                                    // success alert
-                                    swal('Sucesso!', 'Menu Item Deleted', 'success');
-                                    this.fetchNavigation();
-                                })
-                        } else {
-                            swal.close();
-                        }
+                    .then(response => {
+                        console.log(response);
+                        if (response.data.success) {
+                            // success
+
+                        } else
+                            swal('Erro!', 'Page not saved', 'error');
+                    })
+                    .catch(error => {
+                        swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
                     });
             },
-            edit(id) {
+            openModal(id) {
                 this.showModal = true;
-                this.editId = id;
-                // axios.get('/api/navigation/edit/' + id)
-                //     .then(response => response.data)
-                //     .then(data => {
-                //         this.navigation = data.navigations;
-                //         this.navigationItem = data.navigationItems;
-                //     });
+                this.navSelected.menuType = id;
+                this.getNavigationItems();
             }
         }
     }

@@ -43664,7 +43664,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -43755,35 +43755,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -43794,20 +43765,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            editId: null,
             value: [],
             options: {},
-            navigation: {
-                title: ''
-            },
-            navigationItem: {
-                name: '',
-                url: ''
-            }
+            navigation: [],
+            navigationItem: [],
+            navSelected: {},
+            newItem: false
         };
     },
-    created: function created() {
-        this.fetchNavigation();
+    mounted: function mounted() {
+        this.fetchNavigationTable();
         this.fetchPages();
     },
 
@@ -43821,7 +43788,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.options = data;
             });
         },
-        fetchNavigation: function fetchNavigation() {
+        fetchNavigationTable: function fetchNavigationTable() {
             var _this2 = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/navigation').then(function (response) {
@@ -43831,58 +43798,50 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.navigationItem = data.navigationItems;
             });
         },
-        saveData: function saveData() {
+        getNavigationItems: function getNavigationItems() {
             var _this3 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/navigation/add', {
-                menu_title: this.navigation.title,
-                navigation_item: this.value
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/navigation/' + this.navSelected.menuType).then(function (response) {
+                return response.data;
+            }).then(function (data) {
+                _this3.value = data.navigationItems;
+                if (!_this3.value.length > 0) {
+                    _this3.newItem = true;
+                }
+            });
+        },
+        insertData: function insertData() {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/navigation/', {
+                items: this.value,
+                menu: this.navSelected.menuType
             }).then(function (response) {
+                console.log(response);
                 if (response.data.success) {
                     // success
-                    if (response.data.returnId) {
-                        swal('Sucesso!', 'Page saved', 'success');
-                        _this3.showModal = false;
-                        _this3.fetchNavigation();
-                        _this3.value = [];
-                    }
+
                 } else swal('Erro!', 'Page not saved', 'error');
             }).catch(function (error) {
                 swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
             });
         },
-        remove: function remove(id) {
-            var _this4 = this;
+        editData: function editData() {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/api/navigation', {
+                items: this.value,
+                menu: this.navSelected.menuType
+            }).then(function (response) {
+                console.log(response);
+                if (response.data.success) {
+                    // success
 
-            swal({
-                title: "Tem certeza?",
-                text: "Once deleted, you will not be able to recover this content!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true
-            }).then(function (willDelete) {
-                if (willDelete) {
-                    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/navigation/delete', {
-                        data: id
-                    }).then(function (response) {
-                        // success alert
-                        swal('Sucesso!', 'Menu Item Deleted', 'success');
-                        _this4.fetchNavigation();
-                    });
-                } else {
-                    swal.close();
-                }
+                } else swal('Erro!', 'Page not saved', 'error');
+            }).catch(function (error) {
+                swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
             });
         },
-        edit: function edit(id) {
+        openModal: function openModal(id) {
             this.showModal = true;
-            this.editId = id;
-            // axios.get('/api/navigation/edit/' + id)
-            //     .then(response => response.data)
-            //     .then(data => {
-            //         this.navigation = data.navigations;
-            //         this.navigationItem = data.navigationItems;
-            //     });
+            this.navSelected.menuType = id;
+            this.getNavigationItems();
         }
     }
 });
@@ -43918,12 +43877,6 @@ var render = function() {
                 _vm._v(
                   "\n                    Menus, or link lists, help your customers navigate around your online store.\n                "
                 )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "\n                    You can also create nested menus to display drop-down menus, and group products or pages\n                    together.\n                "
-                )
               ])
             ])
           ]),
@@ -43940,82 +43893,73 @@ var render = function() {
                     _c("tr", [
                       _c("th", [_vm._v("Title")]),
                       _vm._v(" "),
-                      _c("th", [_vm._v("Menu Items")]),
+                      _c("th", [_vm._v("Menu Pages")]),
                       _vm._v(" "),
                       _c("th")
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm.navigation[0] != null
-                    ? _c(
-                        "tbody",
-                        _vm._l(_vm.navigation, function(nav, index) {
-                          return _c(
-                            "tr",
-                            { key: index, staticClass: "c-table__row" },
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.navigation, function(nav, index) {
+                      return _c(
+                        "tr",
+                        { key: index, staticClass: "c-table__row" },
+                        [
+                          _c("td", [_vm._v(_vm._s(nav.title))]),
+                          _vm._v(" "),
+                          _c(
+                            "td",
                             [
-                              _c("td", [_vm._v(_vm._s(nav.title))]),
-                              _vm._v(" "),
-                              _c(
-                                "td",
-                                _vm._l(_vm.navigationItem, function(
-                                  navItem,
-                                  index
-                                ) {
-                                  return navItem.parent_id == nav.id
-                                    ? _c("div", { key: index }, [
-                                        _vm._v(
-                                          "\n                                        " +
-                                            _vm._s(navItem.name) +
-                                            "\n                                    "
-                                        )
-                                      ])
-                                    : _vm._e()
-                                })
-                              ),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "c-btn c-btn--primary",
-                                    on: {
-                                      click: function($event) {
-                                        _vm.edit(nav.id)
-                                      }
-                                    }
-                                  },
-                                  [_c("i", { staticClass: "fas fa-edit" })]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "c-btn c-btn--text",
-                                    on: {
-                                      click: function($event) {
-                                        _vm.remove(nav.id)
-                                      }
-                                    }
-                                  },
-                                  [_c("i", { staticClass: "fas fa-trash" })]
-                                )
-                              ])
-                            ]
-                          )
-                        })
-                      )
-                    : _c("tbody", [
-                        _c("tr", [
-                          _c("td", { attrs: { colspan: "3" } }, [
-                            _c("div", { staticClass: "text-center" }, [
-                              _c("small", [
-                                _vm._v("You have no menu items yet!")
-                              ])
-                            ])
+                              _vm.navigationItem.length
+                                ? _vm._l(_vm.navigationItem, function(
+                                    navItem,
+                                    index
+                                  ) {
+                                    return _c("div", { key: index }, [
+                                      navItem.parent_id === nav.id
+                                        ? _c("div", [
+                                            _vm._v(
+                                              "\n                                                " +
+                                                _vm._s(navItem.title) +
+                                                "\n                                            "
+                                            )
+                                          ])
+                                        : _vm._e()
+                                    ])
+                                  })
+                                : [
+                                    _c(
+                                      "small",
+                                      {
+                                        staticClass:
+                                          "u-color-grey u-text-transform-uppercase"
+                                      },
+                                      [_vm._v("no content yet!")]
+                                    )
+                                  ]
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "c-btn c-btn--link",
+                                on: {
+                                  click: function($event) {
+                                    _vm.openModal(nav.id)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-edit" })]
+                            )
                           ])
-                        ])
-                      ])
+                        ]
+                      )
+                    })
+                  )
                 ])
               ]),
               _vm._v(" "),
@@ -44039,7 +43983,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.showModal && !_vm.editId
+      _vm.showModal
         ? _c("v-modal", [
             _c(
               "h3",
@@ -44048,52 +43992,13 @@ var render = function() {
                 attrs: { slot: "header" },
                 slot: "header"
               },
-              [_vm._v("Add new navigation")]
+              [_vm._v("Edit navigation")]
             ),
             _vm._v(" "),
             _c(
               "div",
               { attrs: { slot: "body" }, slot: "body" },
               [
-                _c("div", { staticClass: "c-form" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "c-form__label",
-                      attrs: { for: "menu_title" }
-                    },
-                    [_vm._v("Title*")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.navigation.title,
-                        expression: "navigation.title"
-                      }
-                    ],
-                    staticClass: "c-form__input",
-                    attrs: {
-                      required: "",
-                      type: "text",
-                      id: "menu_title",
-                      placeholder: "ex: menu, footer menu, etc.",
-                      name: "menu_title"
-                    },
-                    domProps: { value: _vm.navigation.title },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.navigation, "title", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
                 _c("h5", [_vm._v("Menu item")]),
                 _vm._v(" "),
                 _c("label", { staticClass: "typo__label" }, [
@@ -44123,135 +44028,10 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
-              _c("div", { staticClass: "float-right" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "c-btn c-btn--text",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        _vm.showModal = false
-                      }
-                    }
-                  },
-                  [_vm._v("Cancel")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "c-btn c-btn--primary",
-                    attrs: { type: "button" },
-                    on: { click: _vm.saveData }
-                  },
-                  [_vm._v("Save")]
-                )
-              ])
-            ])
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.showModal && _vm.editId
-        ? _c(
-            "v-modal",
-            [
               _c(
-                "h3",
-                {
-                  staticClass: "f-subtitle",
-                  attrs: { slot: "header" },
-                  slot: "header"
-                },
-                [_vm._v("Edit navigation")]
-              ),
-              _vm._v(" "),
-              _vm._l(_vm.navigation, function(nav, index) {
-                return _c(
-                  "div",
-                  { key: index, attrs: { slot: "body" }, slot: "body" },
-                  [
-                    _c("div", { staticClass: "c-form" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "c-form__label",
-                          attrs: { for: "menu_title" }
-                        },
-                        [_vm._v("Title*")]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: nav.title,
-                            expression: "nav.title"
-                          }
-                        ],
-                        staticClass: "c-form__input",
-                        attrs: {
-                          required: "",
-                          type: "text",
-                          id: "menu_title",
-                          placeholder: "ex: menu, footer menu, etc.",
-                          name: "menu_title"
-                        },
-                        domProps: { value: nav.title },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(nav, "title", $event.target.value)
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("h5", [_vm._v("Menu item")]),
-                    _vm._v(" "),
-                    _c("label", { staticClass: "typo__label" }, [
-                      _vm._v("Page name")
-                    ]),
-                    _vm._v(" "),
-                    _vm._l(_vm.navigationItem, function(navItem, index) {
-                      return navItem.parent_id == nav.id
-                        ? _c(
-                            "div",
-                            { key: index },
-                            [
-                              _c("multiselect", {
-                                attrs: {
-                                  "tag-placeholder": "Add this as new tag",
-                                  placeholder: "Search or add a tag",
-                                  options: _vm.options,
-                                  multiple: true,
-                                  taggable: true,
-                                  label: "title",
-                                  "track-by": "title"
-                                },
-                                model: {
-                                  value: navItem.title,
-                                  callback: function($$v) {
-                                    _vm.$set(navItem, "title", $$v)
-                                  },
-                                  expression: "navItem.title"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        : _vm._e()
-                    })
-                  ],
-                  2
-                )
-              }),
-              _vm._v(" "),
-              _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
-                _c("div", { staticClass: "float-right" }, [
+                "div",
+                { staticClass: "float-right" },
+                [
                   _c(
                     "button",
                     {
@@ -44266,20 +44046,34 @@ var render = function() {
                     [_vm._v("Cancel")]
                   ),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "c-btn c-btn--primary",
-                      attrs: { type: "button" },
-                      on: { click: _vm.saveData }
-                    },
-                    [_vm._v("Save")]
-                  )
-                ])
-              ])
-            ],
-            2
-          )
+                  _vm.newItem
+                    ? [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "c-btn c-btn--primary",
+                            attrs: { type: "button" },
+                            on: { click: _vm.insertData }
+                          },
+                          [_vm._v("Save")]
+                        )
+                      ]
+                    : [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "c-btn c-btn--primary",
+                            attrs: { type: "button" },
+                            on: { click: _vm.editData }
+                          },
+                          [_vm._v("Save")]
+                        )
+                      ]
+                ],
+                2
+              )
+            ])
+          ])
         : _vm._e()
     ],
     1

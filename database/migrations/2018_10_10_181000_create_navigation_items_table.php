@@ -16,8 +16,8 @@ class CreateNavigationItemsTable extends Migration
         Schema::create('navigation_items', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('parent_id')->default(0);
-            $table->string('name',500);
-            $table->string('url',500);
+            $table->string('title',500);
+            $table->string('slug',500);
             $table->timestamps();
         });
     }

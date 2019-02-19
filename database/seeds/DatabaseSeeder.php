@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UsersTableSeeder::class);
         $this->call(SettingsTableSeeder::class);
-        // $this->call(TemplateTypeTableSeeder::class);
+        $this->call(NavigationTableSeeder::class);
     }
 }
 
@@ -53,19 +53,23 @@ class SettingsTableSeeder extends Seeder
     }
 }
 
-// class TemplateTypeTableSeeder extends Seeder
-// {
-//     /**
-//      * Run the database seeds.
-//      *
-//      * @return void
-//      */
-//     public function run()
-//     {
-//         DB::table('Templates')->insert(
-//             [
-//                 ['template_name' => 'institucional'],['template_name' => 'produtos'],['template_name' => 'blog'],['template_name' => 'contactos']
-//             ]
-//         );
-//     }
-// }
+class NavigationTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $nav = [
+            ['title' => 'Main Menu'],
+            ['title' => 'Footer Menu']
+        ];
+        
+        foreach ($nav as $key => $navItem) {
+            DB::table('navigations')->insert($navItem);    
+        }
+        
+    }
+}
