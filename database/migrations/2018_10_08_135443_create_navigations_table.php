@@ -16,6 +16,7 @@ class CreateNavigationsTable extends Migration
         Schema::create('navigations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title',500);
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

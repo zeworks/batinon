@@ -46,8 +46,7 @@ Route::post('banners/edit/{id}','Api\BannersController@edit');
 Route::post('banners/delete','Api\BannersController@delete');
 
 //navigation
-Route::get('navigation','Api\NavigationController@index');
-Route::post('navigation/add','Api\NavigationController@add');
-Route::get('navigation/{id}','Api\NavigationController@get');
-Route::put('navigation','Api\NavigationController@edit');
-Route::post('navigation/delete','Api\NavigationController@delete');
+Route::get('navigation','Api\NavigationController@indexAction');
+Route::post('navigation/add','Api\NavigationController@addAction');
+Route::get('navigation/{id}','Api\NavigationController@getAction');
+Route::put('navigation/edit','Api\NavigationController@editAction');

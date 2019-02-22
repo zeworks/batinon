@@ -13,6 +13,7 @@ class BlogController extends Controller
     // INDEX
     public function index(){
         $blogs = Blog::get();
+
         return $blogs;
     }
 

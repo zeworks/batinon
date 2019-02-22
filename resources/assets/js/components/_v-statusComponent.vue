@@ -6,7 +6,7 @@
         </div>
         <div class="c-form">
             <label class="c-form__checkbox c-form__checkbox--toggle">
-                <input type="checkbox" class="c-form__input" name="status" v-model="item.status" true-value="1"
+                <input type="checkbox" @change="changeStatus" class="c-form__input" name="status" v-model="item.status" true-value="1"
                     false-value="0">
                 <span class="c-form__checkbox-indicator"></span>
             </label>
@@ -19,6 +19,11 @@
         props: ['item'],
         data() {
             return {}
+        },
+        methods: {
+            changeStatus(){
+                this.$emit('changeStatus', this.item.status)
+            }
         }
     }
 </script>

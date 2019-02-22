@@ -21,32 +21,28 @@
                                     <th>Title</th>
                                     <th>Menu Pages</th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="(nav,index) in navigation" :key="index" class="c-table__row">
                                     <td>{{nav.title}}</td>
                                     <td>
-                                        <template v-if="navigationItem.length">
-                                            <div v-for="(navItem,index) in navigationItem" :key="index">
-                                                <div v-if="navItem.parent_id === nav.id">
-                                                    {{navItem.title}}
-                                                </div>
+                                        <div v-for="(navItem,index) in navigationItem" :key="index">
+                                            <div v-if="navItem.parent_id === nav.id">
+                                                {{navItem.title}}
                                             </div>
-                                        </template>
-                                        <template v-else>
-                                            <small class="u-color-grey u-text-transform-uppercase">no content yet!</small>
-                                        </template>
+                                        </div>
+                                    </td>
+                                    <td width="10">
+                                        <button class="c-btn c-btn--link" @click="openModal(nav.id)"><i class="fas fa-edit"></i></button>
                                     </td>
                                     <td>
-                                        <button class="c-btn c-btn--link" @click="openModal(nav.id)"><i class="fas fa-edit"></i></button>
+                                        <v-statusComponent @changeStatus="editStatus" :item="nav" />
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                    <div class="c-card__footer clearfix">
-                        <button class="c-btn c-btn--primary float-right" @click="showModal = true">Add new</button>
                     </div>
                 </div>
             </b-col>
@@ -54,7 +50,6 @@
         <v-modal v-if="showModal">
             <h3 slot="header" class="f-subtitle">Edit navigation</h3>
             <div slot="body">
-                <h5>Menu item</h5>
                 <label class="typo__label">Page name</label>
                 <multiselect v-model="value" tag-placeholder="Add this as new tag" placeholder="Search or add a tag"
                     :options="options" :multiple="true" :taggable="true" label="title" track-by="title"></multiselect>
@@ -89,7 +84,8 @@
                 navigation: [],
                 navigationItem: [],
                 navSelected: {},
-                newItem: false
+                newItem: false,
+                navStatus: []
             }
         },
         mounted() {
@@ -112,59 +108,72 @@
                         this.navigationItem = data.navigationItems;
                     });
             },
-            getNavigationItems() {
+            getSelected() {
                 axios.get('/api/navigation/' + this.navSelected.menuType)
-                .then(response => response.data)
-                .then(data => {
-                    this.value = data.navigationItems
-                    if(!this.value.length > 0){
-                        this.newItem = true
-                    }
-                });
+                    .then(response => response.data)
+                    .then(data => {
+                        this.value = data.navigationItems
+                        if (!this.value.length > 0) {
+                            this.newItem = true
+                        }
+                    });
             },
             insertData() {
-                axios.post('/api/navigation/', {
+                axios.post('/api/navigation/add', {
                         items: this.value,
                         menu: this.navSelected.menuType
                     })
                     .then(response => {
-                        console.log(response);
                         if (response.data.success) {
-                            // success
-
-                        } else
-                            swal('Erro!', 'Page not saved', 'error');
+                            swal('Sucesso!', response.data.message, 'success');
+                            this.showModal = false
+                            this.fetchNavigationTable();
+                            this.newItem = false;
+                        } else {
+                            swal('Erro!', response.data.message, 'error');
+                        }
                     })
                     .catch(error => {
-                        swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
+                        swal('Erro!', response.data.message, 'error');
                     });
             },
             editData() {
-                axios.put('/api/navigation', {
+                axios.put('/api/navigation/edit', {
                         items: this.value,
                         menu: this.navSelected.menuType
                     })
                     .then(response => {
-                        console.log(response);
                         if (response.data.success) {
-                            // success
-
-                        } else
-                            swal('Erro!', 'Page not saved', 'error');
+                            swal('Sucesso!', response.data.message, 'success');
+                            this.showModal = false
+                            this.fetchNavigationTable();
+                            this.newItem = false;
+                        } else {
+                            swal('Erro!', response.data.message, 'error');
+                        }
                     })
                     .catch(error => {
-                        swal('Erro!', 'Por favor, preenche todos os campos obrigatórios.', 'error');
+                        swal('Erro!', response.data.message, 'error');
                     });
+            },
+            editStatus() {
+                this.navStatus = []
+
+                for (let index = 0; index < this.navigation.length; index++) {
+                    this.navStatus.push({
+                        id: this.navigation[index].id,
+                        status: this.navigation[index].status
+                    })
+                }
+                
+                axios.put('/api/navigation/edit', { status: this.navStatus })
+                    
             },
             openModal(id) {
                 this.showModal = true;
                 this.navSelected.menuType = id;
-                this.getNavigationItems();
+                this.getSelected();
             }
         }
     }
 </script>
-
-<style scoped>
-
-</style>

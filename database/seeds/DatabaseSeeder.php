@@ -63,8 +63,8 @@ class NavigationTableSeeder extends Seeder
     public function run()
     {
         $nav = [
-            ['title' => 'Main Menu'],
-            ['title' => 'Footer Menu']
+            ['title' => 'Main Menu', 'status' => 1],
+            ['title' => 'Footer Menu', 'status' => 0]
         ];
         
         foreach ($nav as $key => $navItem) {

@@ -9,55 +9,85 @@ use App\NavigationItem;
 
 class NavigationController extends Controller
 {
+    /**
+     * 
+     * Index Function to display navigation menu's to the BO
+     */
+    public function indexAction(){
+        $requestNavigation = Navigation::get();
+        $requestNavigationItems = NavigationItem::get();
 
-    public function index(){
-        $navigations = Navigation::get();
-        $navigationItems = NavigationItem::get();
-        return ['navigations' => $navigations, 'navigationItems' => $navigationItems];
+        return ['navigations' => $requestNavigation, 'navigationItems' => $requestNavigationItems];
     }
 
-    public function add(Request $request){
-        foreach ($request->items as $key => $value) {
-          $menuItems = [
-              "title" => $request->items[$key]['title'],
-              "slug"  => $request->items[$key]['slug'],
-              "parent_id" => $request->menu
-          ];
-          $navItem = NavigationItem::create($menuItems);
-        }
-        return ['success' => true];
-    }
+    /**
+     * Add Function
+     * @var {$request}
+     */
+    public function addAction(Request $request){
 
-    public function get($id){
-        $navigations = Navigation::where('id',$id)->get();
-        $navigationItems = NavigationItem::where('parent_id',$id)->get();
+        try {
+            foreach ($request->items as $key => $value) {
 
-        if(!count($navigationItems) > 1) {
-            $navigationItems = NavigationItem::get();
+                $data = [
+                    "title" => $request->items[$key]['title'],
+                    "slug"  => $request->items[$key]['slug'],
+                    "parent_id" => $request->menu
+                ];
+                
+                $requestCreateApi = NavigationItem::create($data);
+            }
+    
+            if($requestCreateApi) {
+                return ['success' => true, 'message' => __('notifications.add_success') ];
+            } else {
+                return ['success' => false, 'message' => __('notifications.add_error') ];
+            }
+        } catch (\Throwable $th) {
+            return ['success' => false, 'message' => __('notifications.error_info') ];
         }
         
-        return ['navigations' => $navigations, 'navigationItems' => $navigationItems];
     }
 
-    public function edit(Request $request){
-        foreach ($request->items as $key => $value) {
-            $menuItems = [
-                "title" => $request->items[$key]['title'],
-                "slug"  => $request->items[$key]['slug'],
-            ];
+    public function getAction($id){
+        $requestNavigation = Navigation::where('id',$id)->get();
+        $requestNavigationItems = NavigationItem::where('parent_id',$id)->get();
 
-          $navItem = NavigationItem::where('parent_id',$request->menu)->update($menuItems);
+        if(!count($requestNavigationItems) > 1) {
+            $requestNavigationItems = NavigationItem::get();
         }
-
-        return ['success' => true];
+        
+        return ['navigations' => $requestNavigation, 'navigationItems' => $requestNavigationItems];
     }
 
-    public function delete(Request $request){
+    public function editAction(Request $request){
 
-        NavigationItem::where('parent_id', $request->data)->delete();
+        if (isset($request->status) && count($request->status) > 1) {
+            foreach ($request->status as $key => $status) {
+    
+                $data = [
+                    "status" => $status['status'],
+                ];
+                
+                $requestEditApi = Navigation::where('id', $status['id'])->update($data);
+            }
+        } else {
+            NavigationItem::where('parent_id', $request->menu)->delete();
+    
+            foreach ($request->items as $key => $value) {
+    
+                $data = [
+                    "title" => $request->items[$key]['title'],
+                    "slug"  => $request->items[$key]['slug'],
+                    "parent_id" => $request->menu
+                ];
+                
+                $requestEditApi = NavigationItem::create($data);
+            }
+    
+            return ['success' => true, 'message' => __('notifications.edit_success') ];
+        }
+            
+    }
 
-        Navigation::where('id',$request->data)->delete();
-
-        return ['success' => true];
-	}
 }

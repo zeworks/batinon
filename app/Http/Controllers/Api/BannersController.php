@@ -13,6 +13,7 @@ class BannersController extends Controller
     // INDEX
     public function index(){
         $banners = Banners::get();
+        
         return $banners;
     }
 

@@ -17,6 +17,11 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth:backend']], function() {
     Route::prefix('admin')->group(function(){
+
+        // set the default language to the BO
+        App::setlocale('pt');
+
+        // routes
         Route::get('/{any}', 'Admin\SpaController@index')->where('any', '.*');
     });
 });
