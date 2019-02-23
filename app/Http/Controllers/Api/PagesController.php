@@ -12,7 +12,7 @@ class PagesController extends Controller
 {
     // INDEX
     public function index(){
-        $pages = Pages::get(['id','title','slug','status','created_at']);
+        $pages = Pages::get(['id','title','slug','order','status','created_at']);
 
         return $pages;
     }
@@ -46,6 +46,8 @@ class PagesController extends Controller
                 "b_description" => $request->b_description,
                 "b_image" => $request->b_image,
                 "image" => $request->image,
+                "order" => $request->order,
+                "position" => $request->position,
             ];
     
             // dd($this->validateExistentSlug($request->slug, Pages));
@@ -77,6 +79,8 @@ class PagesController extends Controller
                 "b_description" => $request->b_description,
                 "b_image" => $request->b_image,
                 "image" => $request->image,
+                "order" => $request->order,
+                "position" => $request->position,
             ];
     
             $update = Pages::where('id',$request->id)->update($data);

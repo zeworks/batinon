@@ -22,14 +22,23 @@ Route::get('/{slug}', 'Front\PagesController@getPage');
 Route::post('subscribe','Front\SubscribersController@index');
 
 
-// templates
+// menus
 View::composer(['*'], function($view){
-    $urls = App\Pages::get()->where("status",1);
+    $menus = App\Navigation::where("status",1)->get();
+
+    $view->with("menus", $menus);
+});
+
+// pages
+View::composer(['*'], function($view){
+    $urls = App\Pages::where("status",1)->orderBy('order', 'ASC')->get();
+
     $view->with("urls",$urls);
 });
 
 // settings
 View::composer(['*'], function($view){
     $settings = App\Settings::get();
+
     $view->with("settings",$settings);
 });

@@ -44,6 +44,7 @@ Vue.mixin({
             userName: '',
             userEmail: '',
             userImageBase64: '',
+            access_token: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
         }
     },
     methods: {

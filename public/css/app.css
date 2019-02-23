@@ -11189,19 +11189,57 @@ button:focus {
 }
 
 .c-form__input::-webkit-input-placeholder {
-  color: #616161;
+  color: #d1d1d1;
 }
 
 .c-form__input:-moz-placeholder {
-  color: #616161;
+  color: #d1d1d1;
 }
 
 .c-form__input::-moz-placeholder {
-  color: #616161;
+  color: #d1d1d1;
 }
 
 .c-form__input:-ms-input-placeholder {
-  color: #616161;
+  color: #d1d1d1;
+}
+
+.c-form__select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #d1d1d1;
+  line-height: 40px;
+  color: #34495e;
+  outline: none;
+  display: inline-block;
+  width: 100%;
+  resize: vertical;
+  margin: 5px 0;
+  -webkit-transition: -webkit-box-shadow .2s ease;
+  transition: -webkit-box-shadow .2s ease;
+  transition: box-shadow .2s ease;
+  transition: box-shadow .2s ease, -webkit-box-shadow .2s ease;
+}
+
+.c-form__select:focus {
+  -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.c-form__select::-webkit-input-placeholder {
+  color: #d1d1d1;
+}
+
+.c-form__select:-moz-placeholder {
+  color: #d1d1d1;
+}
+
+.c-form__select::-moz-placeholder {
+  color: #d1d1d1;
+}
+
+.c-form__select:-ms-input-placeholder {
+  color: #d1d1d1;
 }
 
 .c-form__label {
@@ -11352,6 +11390,34 @@ button:focus {
 
 .c-form__checkbox--radio .c-form__input:checked ~ .c-form__checkbox-indicator:after {
   background-color: rgba(24, 103, 192, 0.8);
+}
+
+.c-form__info {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  color: #616161;
+  margin: 5px 0;
+  display: block;
+}
+
+.c-form__info--icon {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  margin: 0 5px;
+  border: 1px solid #616161;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  float: left;
+}
+
+.c-form__info--icon::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .c-form--search {

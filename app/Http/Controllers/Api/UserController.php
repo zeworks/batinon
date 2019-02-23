@@ -13,8 +13,10 @@ class UserController extends Controller
      * 
      * Returns the details of the user
      */
-    public function index($id){
-        $user = User::where('id',$id)->get(['id','name','email','image']);
+    public function index(Request $request){
+
+        $user = User::where('id', $request->id)->get(['id','name','email','image']);
+
         if (!count($user)) {
             return [ 'success' => false, 'message' => 'No valid user'];
         } else {

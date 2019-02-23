@@ -50,3 +50,7 @@ Route::get('navigation','Api\NavigationController@indexAction');
 Route::post('navigation/add','Api\NavigationController@addAction');
 Route::get('navigation/{id}','Api\NavigationController@getAction');
 Route::put('navigation/edit','Api\NavigationController@editAction');
+
+//settings
+Route::get('settings','Api\SettingsController@indexAction');
+Route::put('settings','Api\SettingsController@updateAction');

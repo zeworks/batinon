@@ -28,7 +28,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Diana Pampols',
+            'name' => 'User Name',
             'email' => 'admin@admin.pt',
             'password' => Hash::make('admin'),
         ]);
@@ -45,10 +45,10 @@ class SettingsTableSeeder extends Seeder
     public function run()
     {
         DB::table('settings')->insert([
-            'website_name' => 'Just For you',
-            'website_account_email' => 'info@justforyou.pt',
-            'website_legal_name' => 'Just For You',
-            'website_desc' => 'Just For You',
+            'website_name' => 'My website Name',
+            'website_account_email' => 'info@website.pt',
+            'website_legal_name' => 'Website',
+            'website_desc' => 'Website',
         ]);
     }
 }

@@ -11,6 +11,7 @@
                                     <th>Page Title</th>
                                     <th>Page Slug</th>
                                     <th>Status</th>
+                                    <th>Order</th>
                                     <th>Date</th>
                                     <th></th>
                                 </tr>
@@ -45,6 +46,7 @@
                                             </span>
                                         </div>
                                     </td>
+                                    <td>{{page.order}}</td>
                                     <td>{{page.created_at}}</td>
                                     <td>
                                         <div class="float-right">

@@ -20,7 +20,28 @@
         }
 
         @include placeholder {
-            color: $grey;
+            color: $grey-light;
+        }
+    }
+
+    &__select {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid $grey-light;
+        line-height: 40px;
+        color: $dark;
+        outline: none;
+        display: inline-block;
+        width: 100%;
+        resize: vertical;
+        margin: 5px 0;
+        transition: box-shadow .2s ease;
+        &:focus{
+            box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        @include placeholder {
+            color: $grey-light;
         }
     }
 
@@ -167,6 +188,31 @@
             
         }
 
+    }
+
+    &__info {
+        @include font-size(13);
+        color: $grey;
+        margin: 5px 0;
+        display: block;
+
+        &--icon {
+            @include font-size(13);
+            margin: 0 5px;
+            border: 1px solid $grey;
+            border-radius: 100%;
+            width: 20px;
+            height: 20px;
+            position: relative;
+            float: left;
+
+            &::before{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+        }
     }
 
     &--search {

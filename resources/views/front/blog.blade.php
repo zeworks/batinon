@@ -1,4 +1,8 @@
-@extends('layouts.default') @section('content')
+@extends('layouts.default') 
+
+@section('page_title', '- Blog')
+
+@section('content')
 @if(count($banner) > 0)
 <section>
     <div class="institutional-banner institutional-banner--masked">

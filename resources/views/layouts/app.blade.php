@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('favicon-180x180.png') }}"/>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('favicon-180x180.png') }}" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- app title -->
@@ -45,10 +45,11 @@
     </div>
 
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
     <script src="{{ asset('js/app.js') }}" defer></script>
     @auth
     <script>
-        window.user = {!! json_encode($user); !!};
+        window.user = JSON.parse('{{$user}}');
     </script>
     @endauth
 </body>

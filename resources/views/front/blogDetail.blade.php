@@ -1,4 +1,8 @@
-@extends('layouts.default') @section('content')
+@extends('layouts.default') 
+
+@section('page_title', '- '. $details[0]->b_title)
+
+@section('content')
 <section>
     <div class="institutional-banner institutional-banner--masked">
         <div class="image-bg" style="background-image: url('<?=Image::url($details[0]->image,1920,900)?>')"></div>

@@ -1,4 +1,8 @@
-@extends('layouts.default') @section('content')
+@extends('layouts.default') 
+
+@section('page_title', '- '. $page[0]->title)
+
+@section('content')
 @if($page[0]->image)
 <section>
     <div class="institutional-banner institutional-banner--masked">

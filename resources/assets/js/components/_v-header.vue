@@ -5,7 +5,7 @@
                 <b-col sm="6">
                     <button class="c-header__lineHeight float-left" @click="toggleDrawer" id="btn-menu"><i class="fas fa-bars u-color-dark"></i></button>
                     <h4 class="float-left u-font-medium u-font-size-large c-header__lineHeight">
-                        Batinon</h4>
+                        Batinon v1</h4>
                 </b-col>
                 <b-col sm="6" class="clearfix">
                     <div class="c-profile c-profile--header float-right">
@@ -24,11 +24,11 @@
                                 <router-link to="/admin/profile" class="c-profile__item-link">Profile</router-link>
                             </div>
                             <div class="c-profile__item">
-                                <a href="" class="c-profile__item-link">Settings</a>
+                                <router-link to="/admin/settings" class="c-profile__item-link">Settings</router-link>
                             </div>
                             <div class="c-profile__item">
                                 <form :action="logout" method="POST">
-                                    <input type="hidden" name="_token" :value="csrf">
+                                    <input type="hidden" name="_token" :value="this.$root.access_token">
                                     <button class="c-btn c-btn--link c-btn--padding-0 c-btn--lineheight-0">logout</button>
                                 </form>
                             </div>
@@ -53,7 +53,6 @@
         props: ['logout'],
         data() {
             return {
-                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 isActive: false,
             }
         },

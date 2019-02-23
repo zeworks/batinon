@@ -23,6 +23,8 @@ class CreatePagesTable extends Migration
             $table->longtext('b_description')->nullable();
             $table->string('b_image',500)->nullable();
             $table->integer('status')->default(0);
+            $table->integer('order')->default(0);
+            $table->integer('position')->default(1);
             $table->timestamps();
         });
     }

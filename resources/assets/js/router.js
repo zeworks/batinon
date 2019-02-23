@@ -77,6 +77,10 @@ const router = new VueRouter({
             component: require('@views/Profile.vue')   
         },
         {
+            path: '/admin/settings',
+            component: require('@views/Settings.vue')   
+        },
+        {
             path: '*',
             component: require('@views/404.vue')
         }
