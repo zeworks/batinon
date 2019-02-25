@@ -10,7 +10,9 @@ class Helpers {
     }
     
     public static function ValidateExistentSlug($slug, $table){
-        // return $slug + $table;
+        $validate = DB::table($table)->where('slug', $slug)->get();
+        
+        return $validate;
     }
 
     public static function Store(){
