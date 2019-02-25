@@ -21,7 +21,7 @@ return [
     // FAIL NOTIFICATIONS
     'add_error' => 'Ocorreu um erro ao adicionar!',
     'edit_error' => 'Ocorreu um erro ao editar!',
-    'remove_error' => 'Ocorreu um erro ao eliminar',
+    'remove_error' => 'Ocorreu um erro ao eliminar!',
 
     // GLOBAL NOTIFICATIONS
     'error_info' => 'Ups, Algo correu mal!',
