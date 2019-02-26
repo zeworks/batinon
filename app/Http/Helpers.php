@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 class Helpers {
 
@@ -10,7 +11,9 @@ class Helpers {
     }
     
     public static function ValidateExistentSlug($slug, $table){
-        // return $slug + $table;
+        $validate = DB::table($table)->where('slug', $slug)->get();
+        
+        return $validate;
     }
 
     public static function Store(){

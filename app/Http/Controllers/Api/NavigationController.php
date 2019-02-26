@@ -12,7 +12,7 @@ class NavigationController extends Controller
      * 
      * Index Function to display navigation menu's to the BO
      */
-    public function indexAction(Request $request){
+    public function indexAction(){
         $requestNavigation = Navigation::get();
 
         return ['navigations' => $requestNavigation];

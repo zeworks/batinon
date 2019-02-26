@@ -24,7 +24,7 @@ class BannersController extends Controller
         if (Helpers::ValidateExistent($banner) > 0) {
             return [ 'success' => true, 'content' => $banner];
         } else {
-            return [ 'success' => false, 'message' => 'Esta página não existe!', 'redirect' => '/admin/banners'];
+            return [ 'success' => false, 'message' => __('banners.banners_not_exist'), 'redirect' => '/admin/banners'];
         }
     }
 
@@ -47,10 +47,10 @@ class BannersController extends Controller
     
             Banners::create($data);
 
-            return ['success' => true, 'message' => 'Banner guardado com sucesso!'];
+            return ['success' => true, 'message' => __('notifications.add_success')];
 
         } catch (\Exception $e) {
-            return [ 'success' => false, 'message' => 'Banner não guardado, algo correu mal!'];
+            return [ 'success' => false, 'message' => __('notifications.edit_error')];
         }
     }
 
@@ -73,16 +73,16 @@ class BannersController extends Controller
     
             Banners::where('id',$request->id)->update($data);
             
-            return [ 'success' => true, 'message' => 'Banner editado com sucesso!'];
+            return [ 'success' => true, 'message' => __('notifications.edit_success')];
 
         } catch (\Exception $e) {
-            return [ 'success' => false, 'message' => 'Banner não editado, algo correu mal!'];
+            return [ 'success' => false, 'message' => __('notifications.edit_error')];
         }
     }
 
     public function delete(Request $request){
         Banners::where('id',$request->data)->delete();
         
-        return ['success' => true, 'message' => 'Banner eliminado com sucesso!'];
+        return ['success' => true, 'message' => __('notifications.remove_success')];
     }
 }
