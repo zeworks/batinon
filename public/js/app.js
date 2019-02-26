@@ -44052,7 +44052,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -44070,8 +44070,81 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            products: []
+        };
+    },
+    mounted: function mounted() {
+        this.fetch();
+    },
+
+    methods: {}
+});
 
 /***/ }),
 /* 343 */
@@ -44082,16 +44155,186 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "b-container",
+    { attrs: { fluid: "" } },
     [
-      _vm._v("\n  produtos\n  "),
       _c(
-        "router-link",
-        {
-          staticClass: "c-btn c-btn--primary float-right",
-          attrs: { to: "/admin/products/add" }
-        },
-        [_vm._v("Create New")]
+        "b-row",
+        [
+          _c("b-col", { attrs: { sm: "12" } }, [
+            _c("div", { staticClass: "c-card" }, [
+              _c("div", { staticClass: "c-card__body" }, [
+                _c("table", { staticClass: "c-table no-margin" }, [
+                  _c("thead", { staticClass: "c-table__header" }, [
+                    _c("tr", [
+                      _c("th", [_vm._v("ID")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Title")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Slug")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Status")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Date")]),
+                      _vm._v(" "),
+                      _c("th")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    [
+                      this.$root.placeholders && _vm.products.length === 0
+                        ? _c("tr", [
+                            _c(
+                              "td",
+                              { attrs: { colspan: "5" } },
+                              [_c("v-placeholder")],
+                              1
+                            )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      !this.$root.placeholders && _vm.products.length === 0
+                        ? _c("tr", [
+                            _c("td", { attrs: { colspan: "5" } }, [
+                              _c("div", { staticClass: "text-center" }, [
+                                _c("br"),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _vm._v("You have no products created yet!")
+                                ])
+                              ])
+                            ])
+                          ])
+                        : _vm._l(_vm.products, function(product, index) {
+                            return _c(
+                              "tr",
+                              { key: index, staticClass: "c-table__row" },
+                              [
+                                _c("td", [
+                                  _vm._v(
+                                    "\n                                    #" +
+                                      _vm._s(product.id) +
+                                      "\n                                "
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  [
+                                    _c(
+                                      "router-link",
+                                      {
+                                        attrs: {
+                                          to:
+                                            "/admin/products/edit/" + product.id
+                                        }
+                                      },
+                                      [_vm._v(_vm._s(product.title))]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(product.slug))]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "u-tag",
+                                      class: {
+                                        "u-tag--success": product.status == "1",
+                                        "u-tag--danger": product.status == "0"
+                                      }
+                                    },
+                                    [
+                                      product.status == 1
+                                        ? _c("span", [
+                                            _vm._v(
+                                              "\n                                            Active\n                                        "
+                                            )
+                                          ])
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      product.status == 0
+                                        ? _c("span", [
+                                            _vm._v(
+                                              "\n                                            Inactive\n                                        "
+                                            )
+                                          ])
+                                        : _vm._e()
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(product.created_at))]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "div",
+                                    { staticClass: "float-right" },
+                                    [
+                                      _c(
+                                        "router-link",
+                                        {
+                                          staticClass:
+                                            "c-btn c-btn--text c-btn--small",
+                                          attrs: {
+                                            to:
+                                              "/admin/products/edit/" +
+                                              product.id
+                                          }
+                                        },
+                                        [_vm._v("Edit")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "c-btn c-btn--danger c-btn--small",
+                                          on: {
+                                            click: function($event) {
+                                              _vm.remove(product.id)
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("Delete")]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ])
+                              ]
+                            )
+                          })
+                    ],
+                    2
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "c-card__footer clearfix" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "c-btn c-btn--primary float-right",
+                      attrs: { to: "/admin/products/add" }
+                    },
+                    [_vm._v("Create New")]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ],
+        1
       )
     ],
     1
