@@ -69,16 +69,18 @@
 
 <script>
     export default {
-        data(){
+        data() {
             return {
                 products: []
             }
         },
-        mounted(){
+        mounted() {
             this.fetch();
         },
         methods: {
-            
+            fetch() {
+
+            }
         }
     }
 </script>

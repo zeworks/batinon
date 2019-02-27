@@ -11,7 +11,8 @@ class Helpers {
     }
     
     public static function ValidateExistentSlug($slug, $table){
-        $validate = DB::table($table)->where('slug', $slug)->get();
+
+        // $validate = App\$table::where('slug', $slug)->get();
         
         return $validate;
     }

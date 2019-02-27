@@ -31,6 +31,7 @@ class PagesController extends Controller
     public function add(Request $request){
 
         try {
+
             if($request->status == ''){
                 $status = 0;
             }else{
