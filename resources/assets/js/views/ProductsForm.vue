@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="saveData">
+    <form @submit.prevent="save">
         <b-container fluid>
             <b-row>
                 <b-col sm="9">
@@ -23,14 +23,15 @@
                         </div>
                     </div>
                     <br>
-                    <!-- <v-blocksComponent :item="page" :title="'Page Blocks'" /> -->
+                    <v-blocksComponent :item="product" :title="'Product Blocks'" />
+                    <v-slider @updateSlider="updateSlider" :item="productImages" />
                 </b-col>
                 <b-col sm="3">
                     <div class="c-card">
-                        <!-- <v-statusComponent :item="page" />
+                        <v-statusComponent :item="product" />
                         <hr>
-                        <v-featuredImage :item="page" />
-                        <v-submitComponent :id="$route.params.id" /> -->
+                        <v-featuredImage :item="product" />
+                        <v-submitComponent :id="$route.params.id" />
                     </div>
                 </b-col>
             </b-row>
@@ -53,8 +54,17 @@
                     name: '',
                     slug: '',
                 }],
+                productImages: new Array()
             }
         },
+        methods: {
+            updateSlider(array){
+                this.productImages = array;
+            },
+            save(){
+                console.log('saving...');
+            }
+        }
     }
 </script>
 

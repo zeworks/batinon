@@ -44387,7 +44387,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -44398,6 +44398,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -44452,8 +44453,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 status: false,
                 name: '',
                 slug: ''
-            }]
+            }],
+            productImages: new Array()
         };
+    },
+
+    methods: {
+        updateSlider: function updateSlider(array) {
+            this.productImages = array;
+        },
+        save: function save() {
+            console.log('saving...');
+        }
     }
 });
 
@@ -44471,7 +44482,7 @@ var render = function() {
       on: {
         submit: function($event) {
           $event.preventDefault()
-          return _vm.saveData($event)
+          return _vm.save($event)
         }
       }
     },
@@ -44483,111 +44494,140 @@ var render = function() {
           _c(
             "b-row",
             [
-              _c("b-col", { attrs: { sm: "9" } }, [
-                _c("div", { staticClass: "c-card" }, [
-                  _c(
-                    "div",
-                    { staticClass: "c-card__body" },
-                    [
-                      _c(
-                        "b-row",
-                        [
-                          _c("b-col", { attrs: { sm: "7" } }, [
-                            _c("div", { staticClass: "c-form" }, [
-                              _c(
-                                "label",
-                                {
-                                  staticClass: "c-form__label",
-                                  attrs: { for: "title" }
-                                },
-                                [_vm._v("Product Name*")]
-                              ),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
+              _c(
+                "b-col",
+                { attrs: { sm: "9" } },
+                [
+                  _c("div", { staticClass: "c-card" }, [
+                    _c(
+                      "div",
+                      { staticClass: "c-card__body" },
+                      [
+                        _c(
+                          "b-row",
+                          [
+                            _c("b-col", { attrs: { sm: "7" } }, [
+                              _c("div", { staticClass: "c-form" }, [
+                                _c(
+                                  "label",
                                   {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.product.name,
-                                    expression: "product.name"
-                                  }
-                                ],
-                                staticClass: "c-form__input",
-                                attrs: {
-                                  type: "text",
-                                  id: "title",
-                                  name: "title"
-                                },
-                                domProps: { value: _vm.product.name },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
+                                    staticClass: "c-form__label",
+                                    attrs: { for: "title" }
+                                  },
+                                  [_vm._v("Product Name*")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.product.name,
+                                      expression: "product.name"
                                     }
-                                    _vm.$set(
-                                      _vm.product,
-                                      "name",
-                                      $event.target.value
-                                    )
+                                  ],
+                                  staticClass: "c-form__input",
+                                  attrs: {
+                                    type: "text",
+                                    id: "title",
+                                    name: "title"
+                                  },
+                                  domProps: { value: _vm.product.name },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.product,
+                                        "name",
+                                        $event.target.value
+                                      )
+                                    }
                                   }
-                                }
-                              })
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("b-col", { attrs: { sm: "5" } }, [
-                            _c("div", { staticClass: "c-form" }, [
-                              _c(
-                                "label",
-                                {
-                                  staticClass: "c-form__label",
-                                  attrs: { for: "slug" }
-                                },
-                                [_vm._v("Product Slug")]
-                              ),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
+                                })
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("b-col", { attrs: { sm: "5" } }, [
+                              _c("div", { staticClass: "c-form" }, [
+                                _c(
+                                  "label",
                                   {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.slug,
-                                    expression: "slug"
-                                  }
-                                ],
-                                staticClass: "c-form__input",
-                                attrs: {
-                                  disabled: "",
-                                  type: "text",
-                                  id: "slug",
-                                  name: "slug",
-                                  slug: _vm.slug
-                                },
-                                domProps: { value: _vm.slug },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
+                                    staticClass: "c-form__label",
+                                    attrs: { for: "slug" }
+                                  },
+                                  [_vm._v("Product Slug")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.slug,
+                                      expression: "slug"
                                     }
-                                    _vm.slug = $event.target.value
+                                  ],
+                                  staticClass: "c-form__input",
+                                  attrs: {
+                                    disabled: "",
+                                    type: "text",
+                                    id: "slug",
+                                    name: "slug",
+                                    slug: _vm.slug
+                                  },
+                                  domProps: { value: _vm.slug },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.slug = $event.target.value
+                                    }
                                   }
-                                }
-                              })
+                                })
+                              ])
                             ])
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c("br")
-              ]),
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("v-blocksComponent", {
+                    attrs: { item: _vm.product, title: "Product Blocks" }
+                  }),
+                  _vm._v(" "),
+                  _c("v-slider", {
+                    attrs: { item: _vm.productImages },
+                    on: { updateSlider: _vm.updateSlider }
+                  })
+                ],
+                1
+              ),
               _vm._v(" "),
               _c("b-col", { attrs: { sm: "3" } }, [
-                _c("div", { staticClass: "c-card" })
+                _c(
+                  "div",
+                  { staticClass: "c-card" },
+                  [
+                    _c("v-statusComponent", { attrs: { item: _vm.product } }),
+                    _vm._v(" "),
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c("v-featuredImage", { attrs: { item: _vm.product } }),
+                    _vm._v(" "),
+                    _c("v-submitComponent", {
+                      attrs: { id: _vm.$route.params.id }
+                    })
+                  ],
+                  1
+                )
               ])
             ],
             1
