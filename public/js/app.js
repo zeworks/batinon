@@ -24020,7 +24020,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("\n                    Image\n                ")]
+              [_vm._v("\n                    Single Image\n                ")]
             )
           ]),
           _vm._v(" "),
@@ -24149,7 +24149,7 @@ var render = function() {
                     { staticClass: "c-form" },
                     [
                       _c("label", { staticClass: "c-form__label" }, [
-                        _vm._v("Image")
+                        _vm._v("Single Image")
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "c-form__help" }, [
@@ -26229,16 +26229,18 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("br"),
+      _c("label", { staticClass: "c-form__label" }, [
+        _vm._v("Multiple Images")
+      ]),
       _vm._v(" "),
-      _c("h4", { staticClass: "f-subtitle u-margin--top-bottom-s" }, [
-        _vm._v("Slide Images")
+      _c("p", { staticClass: "c-form__help" }, [
+        _vm._v("Choose wich image you want to display into this block")
       ]),
       _vm._v(" "),
       _c(
         "button",
         {
-          staticClass: "c-btn c-btn--default u-margin--top-bottom-s",
+          staticClass: "c-btn c-btn--primary",
           attrs: { type: "button" },
           on: { click: _vm.fetchImages }
         },
@@ -42118,6 +42120,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -42261,81 +42270,95 @@ var render = function() {
                     "b-col",
                     { attrs: { sm: "9" } },
                     [
-                      _c("div", { staticClass: "c-form" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "c-form__label",
-                            attrs: { for: "slug" }
-                          },
-                          [_vm._v("Blog Slug")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.slug,
-                              expression: "slug"
-                            }
-                          ],
-                          staticClass: "c-form__input",
-                          attrs: {
-                            disabled: "",
-                            type: "text",
-                            id: "slug",
-                            name: "slug",
-                            slug: _vm.slug
-                          },
-                          domProps: { value: _vm.slug },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.slug = $event.target.value
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "c-form" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "c-form__label",
-                            attrs: { for: "block_title" }
-                          },
-                          [_vm._v("Title*")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.blog.b_title,
-                              expression: "blog.b_title"
-                            }
-                          ],
-                          staticClass: "c-form__input",
-                          attrs: {
-                            type: "text",
-                            id: "block_title",
-                            name: "block_title"
-                          },
-                          domProps: { value: _vm.blog.b_title },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.blog, "b_title", $event.target.value)
-                            }
-                          }
-                        })
-                      ]),
+                      _c(
+                        "b-row",
+                        [
+                          _c("b-col", { attrs: { sm: "6" } }, [
+                            _c("div", { staticClass: "c-form" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "c-form__label",
+                                  attrs: { for: "block_title" }
+                                },
+                                [_vm._v("Title*")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.blog.b_title,
+                                    expression: "blog.b_title"
+                                  }
+                                ],
+                                staticClass: "c-form__input",
+                                attrs: {
+                                  type: "text",
+                                  id: "block_title",
+                                  name: "block_title"
+                                },
+                                domProps: { value: _vm.blog.b_title },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.blog,
+                                      "b_title",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("b-col", { attrs: { sm: "6" } }, [
+                            _c("div", { staticClass: "c-form" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "c-form__label",
+                                  attrs: { for: "slug" }
+                                },
+                                [_vm._v("Blog Slug")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.slug,
+                                    expression: "slug"
+                                  }
+                                ],
+                                staticClass: "c-form__input",
+                                attrs: {
+                                  disabled: "",
+                                  type: "text",
+                                  id: "slug",
+                                  name: "slug",
+                                  slug: _vm.slug
+                                },
+                                domProps: { value: _vm.slug },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.slug = $event.target.value
+                                  }
+                                }
+                              })
+                            ])
+                          ])
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -42398,6 +42421,8 @@ var render = function() {
                         ],
                         1
                       ),
+                      _vm._v(" "),
+                      _c("br"),
                       _vm._v(" "),
                       _c("v-slider", {
                         attrs: { item: _vm.blogImages },

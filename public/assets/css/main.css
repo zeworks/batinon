@@ -6053,3 +6053,7 @@ footer h4 {
 }
 
 .jssocials-share-link{ border-radius: 100% }
+
+main img {
+  max-width: 100%;
+}

@@ -1,9 +1,9 @@
 <template>
     <div>
-        <br>
-        <h4 class="f-subtitle u-margin--top-bottom-s">Slide Images</h4>
         <!-- button to choose new images -->
-		<button type="button" class="c-btn c-btn--default u-margin--top-bottom-s" @click="fetchImages">Choose Images</button>
+        <label class="c-form__label">Multiple Images</label>
+        <p class="c-form__help">Choose wich image you want to display into this block</p>
+		<button type="button" class="c-btn c-btn--primary" @click="fetchImages">Choose Images</button>
         <!-- row of slider items -->
         <b-row v-if="item">
             <b-col sm="3" v-for="(image,index) in item" :key="index">

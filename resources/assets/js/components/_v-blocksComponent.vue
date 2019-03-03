@@ -13,7 +13,7 @@
                         Details
                     </button>
                     <button type="button" class="c-tab__item" :class="{ 'is-active' : tabActive === 3 }" @click="tabActive = 3">
-                        Image
+                        Single Image
                     </button>
                 </div>
                 <div class="c-tab__body">
@@ -41,7 +41,7 @@
                     <div class="c-tab__body-item" :class="{ 'is-active' : tabActive === 3 }">
                         <div class="c-card__body">
                             <div class="c-form">
-                                <label class="c-form__label">Image</label>
+                                <label class="c-form__label">Single Image</label>
                                 <p class="c-form__help">Choose wich image you want to display into this block</p>
                                 <b-row>
                                     <b-col sm="4" v-if="item.b_image">

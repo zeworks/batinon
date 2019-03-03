@@ -36,8 +36,10 @@
         <div class="container">
             <div class="row">
                 @isset($block->b_image)
-                <div class="col-sm-6 col-md-5">
+                <div class="col-xs-12">
                     <h1>{{$block->b_title}}</h1>
+                </div>
+                <div class="col-sm-6 col-md-5">
                     {!! $block->b_summary !!}    
                     {!! $block->b_description !!}    
                 </div>
@@ -47,8 +49,10 @@
                     </div>
                 </div>
                 @else
-                <div class=" text-center col-sm-12 col-md-8 col-md-offset-2">
+                <div class="col-xs-12 text-center">
                     <h1>{{$block->b_title}}</h1>
+                </div>
+                <div class="text-center col-sm-12 col-md-8 col-md-offset-2">
                     {!! $block->b_summary !!}    
                     {!! $block->b_description !!}    
                 </div>

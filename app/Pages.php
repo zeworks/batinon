@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Files;
 
 class Pages extends Model
 {
@@ -18,4 +19,8 @@ class Pages extends Model
         'order',
         'position'
     ];  
+
+    public function Files(){
+        return $this->hasMany('App\PagesImages','page_id','id');
+    }
 }

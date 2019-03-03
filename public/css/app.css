@@ -11463,18 +11463,13 @@ button:focus {
 
 .c-tab__tabs {
   border-bottom: 1px solid #d1d1d1;
-}
-
-.c-tab__tabs::after {
-  content: '';
-  width: 100%;
-  display: block;
-  clear: both;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c-tab__item {
   padding: 10px 20px;
-  max-width: 150px;
   width: 100%;
   text-align: center;
   background-color: transparent;
