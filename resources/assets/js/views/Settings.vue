@@ -166,6 +166,15 @@
                                     </div>
                                 </b-col>
                             </b-row>
+                            <hr>
+                            <b-row>
+                                <b-col sm="12">
+                                    <div class="c-form">
+                                        <label for="website_recaptcha" class="c-form__label">Recaptcha Key</label>
+                                        <input type="text" id="website_recaptcha" class="c-form__input" placeholder="your website recaptcha key" v-model="settings[0].website_recaptcha">
+                                    </div>
+                                </b-col>
+                            </b-row>
                             <!-- END NETWORK -->
                             <button @click="save" class="c-btn c-btn--primary float-right">Save</button>
                             <div class="clearfix"></div>
