@@ -10747,7 +10747,7 @@ a.text-dark:focus {
   z-index: 2;
   opacity: 0;
   visibility: hidden;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .c-aside__content {
@@ -10987,8 +10987,8 @@ button:focus {
   display: block;
   height: 60px;
   background-color: #fff;
-  -webkit-box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-          box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.12);
+          box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
 .c-header__logo {
@@ -11214,7 +11214,7 @@ button:focus {
   display: inline-block;
   width: 100%;
   resize: vertical;
-  margin: 5px 0;
+  margin: 0;
   -webkit-transition: -webkit-box-shadow .2s ease;
   transition: -webkit-box-shadow .2s ease;
   transition: box-shadow .2s ease;
@@ -11523,7 +11523,7 @@ button:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
   -webkit-transition: opacity .3s ease;
   transition: opacity .3s ease;
   -webkit-backface-visibility: hidden;
