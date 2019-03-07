@@ -18,7 +18,7 @@ class UserController extends Controller
         $user = User::where('id', $request->id)->get(['id','name','email','image']);
 
         if (!count($user)) {
-            return [ 'success' => false, 'message' => 'No valid user'];
+            return [ 'success' => false, 'message' => __('profile.profile_invalid')];
         } else {
             return [ 'success' => true, 'data' => $user];
         }
@@ -36,7 +36,7 @@ class UserController extends Controller
             $validCredentials = Hash::check($request->password, $user->password);
 
             if (!$validCredentials) {
-                return [ 'success' => false, 'message' => 'Invalid Password'];
+                return [ 'success' => false, 'message' => __('profile.profile_password_invalid')];
             } else {
                 return [ 'success' => true];
             }
@@ -57,13 +57,13 @@ class UserController extends Controller
             $validCredentials = Hash::check($request->password, $user->password);
 
             if ($validCredentials) {
-                return [ 'success' => false, 'message' => 'Your new password, cannot be the same as your old password!'];
+                return [ 'success' => false, 'message' => __('profile.profile_password_error_match')];
             } else {
                 $data = ['password' => Hash::make($request->password)];
 
                 User::where('id',$request->id)->update($data);
 
-                return [ 'success' => true, 'message' => 'Password updated with success!'];
+                return [ 'success' => true, 'message' => __('profile.profile_password_update_success')];
             }
         } else {
             return [ 'success' => false];
@@ -89,7 +89,7 @@ class UserController extends Controller
             
             User::where('id',$request->id)->update($data);
             
-            return [ 'success' => true, 'message' => 'Profile updated with success!'];
+            return [ 'success' => true, 'message' => __('profile.profile_update_success')];
         } catch (\Exception $e) {
             return [ 'success' => false, 'message' => $e];
         }
