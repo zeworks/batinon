@@ -5,6 +5,6 @@
 
 # License
 
-<MIT | http://teste>
+[MIT](https://opensource.org/licenses/MIT)
 
 Copyright (c) 2019-present, Jose Nogueira
