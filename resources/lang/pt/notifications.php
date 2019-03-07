@@ -14,15 +14,16 @@ return [
     */
 
     // SUCCESS NOTIFICATIONS
-    'add_success' => 'Adicionado com sucesso!',
-    'edit_success' => 'Editado com sucesso!',
-    'remove_success' => 'Removido com sucesso!',
+    'add_success'       => 'Adicionado com sucesso!',
+    'edit_success'      => 'Editado com sucesso!',
+    'remove_success'    => 'Removido com sucesso!',
 
     // FAIL NOTIFICATIONS
-    'add_error' => 'Ocorreu um erro ao adicionar!',
-    'edit_error' => 'Ocorreu um erro ao editar!',
-    'remove_error' => 'Ocorreu um erro ao eliminar!',
+    'add_error'         => 'Ocorreu um erro ao adicionar!',
+    'edit_error'        => 'Ocorreu um erro ao editar!',
+    'remove_error'      => 'Ocorreu um erro ao eliminar!',
 
     // GLOBAL NOTIFICATIONS
-    'error_info' => 'Ups, Algo correu mal!',
+    'error_info'        => 'Ups, Algo correu mal!',
+    'no_info'           => 'Este conteúdo não existe!',
 ];
