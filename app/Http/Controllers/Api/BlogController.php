@@ -24,7 +24,7 @@ class BlogController extends Controller
         if (Helpers::ValidateExistent($blog) > 0) {
             return [ 'success' => true, 'content' => $blog];
         } else {
-            return [ 'success' => false, 'message' => 'Esta página não existe!', 'redirect' => '/admin/blog'];
+            return [ 'success' => false, 'message' => __('notifications.no_info'), 'redirect' => '/admin/blog'];
         }
     }
 
@@ -34,7 +34,7 @@ class BlogController extends Controller
 
         $this->deleteBlogImages($request->data);
         
-        return ['success' => true, 'message' => 'Blog eliminado com sucesso!'];
+        return ['success' => true, 'message' => __('notifications.remove_success')];
     }
     
     public function add(Request $request){
@@ -69,10 +69,10 @@ class BlogController extends Controller
                 ]);
             }
 
-            return [ 'success' => true, 'message' => 'Blog guardado com sucesso!'];
+            return [ 'success' => true, 'message' => __('notifications.add_success')];
 
         } catch (\Exception $e) {
-            return [ 'success' => false, 'message' => 'Blog não guardado, algo correu mal!'];
+            return [ 'success' => false, 'message' => __('notifications.error_info')];
         }
     }
 
@@ -107,10 +107,10 @@ class BlogController extends Controller
                 ]);
             }
 
-            return [ 'success' => true, 'message' => 'Blog editado com sucesso!'];
+            return [ 'success' => true, 'message' => __('notifications.edit_success')];
 
         } catch (\Exception $e) {
-            return [ 'success' => false, 'message' => 'Blog não editado, algo correu mal!'];
+            return [ 'success' => false, 'message' => __('notifications.error_info')];
         }
     }
 
