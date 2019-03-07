@@ -22,26 +22,6 @@ class BlogController extends Controller
 
     /**
      * 
-     * Function to fetch the blogs from the DB to display.
-     */
-    public static function fetchBlogs(){
-        $blogs = Blog::where('status', 1)->get();
-
-        return $blogs;
-    }
-
-    /**
-     * 
-     * Function to get the banner from the main page blog.
-     */
-    public static function getBlogPageBanner(){
-        $blogBanner = Pages::where('slug', 'blog')->get();
-
-        return $blogBanner;
-    }
-
-    /**
-     * 
      * Function to get the blog detail
      */
     public function getBlog($slug){
@@ -58,7 +38,7 @@ class BlogController extends Controller
      * 
      * Function to validate the slug on the url
      */
-    public function validateSlug($slug){
+    function validateSlug($slug){
         
         $details = Blog::where('slug', $slug)->with('Files')->get();
 
@@ -67,5 +47,25 @@ class BlogController extends Controller
         } else {
             return null;            
         }
+    }
+    
+    /**
+     * 
+     * Function to fetch the blogs from the DB to display.
+     */
+    function fetchBlogs(){
+        $blogs = Blog::where('status', 1)->get();
+
+        return $blogs;
+    }
+
+    /**
+     * 
+     * Function to get the banner from the main page blog.
+     */
+    function getBlogPageBanner(){
+        $blogBanner = Pages::where('slug', 'blog')->get();
+
+        return $blogBanner;
     }
 }
