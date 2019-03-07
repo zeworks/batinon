@@ -7,4 +7,4 @@
 
 [MIT](https://opensource.org/licenses/MIT)
 
-Copyright (©) 2019-present, Jose Nogueira
+Copyright (c) 2019-present, Jose Nogueira
