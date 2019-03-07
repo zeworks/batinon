@@ -31,7 +31,7 @@ class FilesController extends Controller
                 if($this->ValidateExistImage($name_encoded)){
                     $image->storeAs('public/images', $name_encoded);
                 } else {
-                    return ['success' => false, 'message' => 'Este ficheiro já existe!'];
+                    return ['success' => false, 'message' => __('files.files_exist')];
                 }
     
             }
@@ -43,10 +43,10 @@ class FilesController extends Controller
                 $image->name = $name_encoded;
                 $image->save();
                 
-                return ['success' => true, 'message' => 'Ficheiro enviado com sucesso!'];
+                return ['success' => true, 'message' => __('notifications.add_success')];
             }
         } catch (\Exception $e) {
-			return ['success' => false, 'message' => 'Ficheiro não guardado, demasiado grande [2MB Max]'];
+			return ['success' => false, 'message' => __('files.files_size_large')];
         }
     }
     
@@ -58,8 +58,9 @@ class FilesController extends Controller
             $file->delete();
         }
         
-        return ['success' => true, 'message' => 'Ficheiro eliminado com sucesso!'];
+        return ['success' => true, 'message' => __('notifications.remove_success')];
     }
+    
     /***
      * 
      * VALIDATION OF IMAGE IF EXISTS OR NOT
