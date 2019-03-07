@@ -24,7 +24,7 @@ class PagesController extends Controller
         if (Helpers::ValidateExistent($page) > 0) {
             return [ 'success' => true, 'content' => $page];
         } else {
-            return [ 'success' => false, 'message' => 'Esta página não existe!', 'redirect' => '/admin/pages'];
+            return [ 'success' => false, 'message' => __('notifications.no_info'), 'redirect' => '/admin/pages'];
         }
     }
 
@@ -51,13 +51,12 @@ class PagesController extends Controller
                 "position" => $request->position,
             ];
     
-            // dd($this->validateExistentSlug($request->slug, Pages));
             Pages::create($data);
 
-            return [ 'success' => true, 'message' => 'Página guardada com sucesso!' ];
+            return [ 'success' => true, 'message' => __('notifications.add_success') ];
 
         } catch (\Exception $e) {
-            return [ 'success' => false, 'message' => 'Página não guardada, algo correu mal!'];
+            return [ 'success' => false, 'message' => __('notifications.error_info')];
         }
     }
 
@@ -86,16 +85,16 @@ class PagesController extends Controller
     
             $update = Pages::where('id',$request->id)->update($data);
     
-            return ['success' => true, 'message' => 'Página editada com sucesso!'];
+            return ['success' => true, 'message' => __('notifications.edit_success')];
 
         } catch (\Exception $e) {
-            return [ 'success' => false, 'message' => 'Página não editado, algo correu mal!'];
+            return [ 'success' => false, 'message' => __('notifications.error_info')];
         }
     }
 
     public function delete(Request $request){
         Pages::where('id',$request->data)->delete();
         
-        return ['success' => true, 'message' => 'Página eliminada com sucesso!'];
+        return ['success' => true, 'message' => __('notifications.remove_success')];
     }
 }
