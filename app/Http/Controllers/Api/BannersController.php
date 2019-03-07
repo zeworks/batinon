@@ -24,7 +24,7 @@ class BannersController extends Controller
         if (Helpers::ValidateExistent($banner) > 0) {
             return [ 'success' => true, 'content' => $banner];
         } else {
-            return [ 'success' => false, 'message' => __('banners.banners_not_exist'), 'redirect' => '/admin/banners'];
+            return [ 'success' => false, 'message' => __('notifications.no_info'), 'redirect' => '/admin/banners'];
         }
     }
 
