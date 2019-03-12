@@ -98,9 +98,7 @@
                     })
                     .then((willDelete) => {
                         if (willDelete) {
-                            axios.post('/api/banners/delete', {
-                                    data: id
-                                })
+                            axios.delete('/api/banners/delete/' + id)
                                 .then(response => {
                                     // success alert
                                     swal('Successo!', response.data.message, 'success');

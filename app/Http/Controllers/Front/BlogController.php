@@ -28,7 +28,7 @@ class BlogController extends Controller
         $details = $this->validateSlug($slug);
 
         if($details === null) {
-            return view('front.error');
+            return redirect('404');
         } else {
             return view('front.blogDetail', compact('details'));
         }

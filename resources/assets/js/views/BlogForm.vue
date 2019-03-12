@@ -3,31 +3,35 @@
         <b-container fluid v-if="contentLoaded">
             <b-row>
                 <b-col sm="9">
-                    <b-row>
-                        <b-col sm="6">
+                    <div class="c-card">
+                        <div class="c-card__body">
+                            <b-row>
+                                <b-col sm="6">
+                                    <div class="c-form">
+                                        <label class="c-form__label" for="block_title">Title*</label>
+                                        <input type="text" id="block_title" name="block_title" class="c-form__input" v-model="blog.b_title">
+                                    </div>
+                                </b-col>
+                                <b-col sm="6">
+                                    <div class="c-form">
+                                        <label for="slug" class="c-form__label">Blog Slug</label>
+                                        <input disabled type="text" id="slug" name="slug" class="c-form__input" :slug="slug" v-model="slug">
+                                    </div>
+                                </b-col>
+                            </b-row>
                             <div class="c-form">
-                                <label class="c-form__label" for="block_title">Title*</label>
-                                <input type="text" id="block_title" name="block_title" class="c-form__input" v-model="blog.b_title">
+                                <label for="block_summary" class="c-form__label">Summary</label>
+                                <vueEditor id="block_summary" name="block_summary" v-model="blog.b_summary"></vueEditor>
                             </div>
-                        </b-col>
-                        <b-col sm="6">
                             <div class="c-form">
-                                <label for="slug" class="c-form__label">Blog Slug</label>
-                                <input disabled type="text" id="slug" name="slug" class="c-form__input" :slug="slug" v-model="slug">
+                                <br>
+                                <label for="block_description" class="c-form__label">Description</label>
+                                <vueEditor id="block_description" name="block_description" v-model="blog.b_description"></vueEditor>
                             </div>
-                        </b-col>
-                    </b-row>
-                    <div class="c-form">
-                        <label for="block_summary" class="c-form__label">Summary</label>
-                        <vueEditor id="block_summary" name="block_summary" v-model="blog.b_summary"></vueEditor>
+                            <br>
+                            <v-slider @updateSlider="updateSlider" :item="blogImages" />
+                        </div>
                     </div>
-                    <div class="c-form">
-                        <br>
-                        <label for="block_description" class="c-form__label">Description</label>
-                        <vueEditor id="block_description" name="block_description" v-model="blog.b_description"></vueEditor>
-                    </div>
-                    <br>
-                    <v-slider @updateSlider="updateSlider" :item="blogImages" />
                 </b-col>
                 <b-col sm="3">
                     <div class="c-card">
@@ -101,7 +105,7 @@
             },
             saveData() {
                 if (this.$route.params.id > 0) {
-                    axios.post('/api/blogs/edit/' + this.$route.params.id, {
+                    axios.put('/api/blogs/edit/' + this.$route.params.id, {
                             id: this.$route.params.id,
                             status: this.blog.status,
                             slug: this.suglifyTitle(this.blog.b_title),

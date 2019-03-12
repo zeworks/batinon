@@ -81,7 +81,7 @@ class BannersController extends Controller
     }
 
     public function delete(Request $request){
-        Banners::where('id',$request->data)->delete();
+        Banners::where('id',$request->id)->delete();
         
         return ['success' => true, 'message' => __('notifications.remove_success')];
     }

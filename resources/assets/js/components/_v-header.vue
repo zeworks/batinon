@@ -3,8 +3,8 @@
         <b-container fluid>
             <b-row>
                 <b-col sm="6">
-                    <button class="c-header__lineHeight float-left" @click="toggleDrawer" id="btn-menu"><i class="fas fa-bars u-color-dark"></i></button>
-                    <h4 class="float-left u-font-medium u-font-size-large c-header__lineHeight">
+                    <button class="c-header__lineHeight float-left" @click="toggleDrawer" id="btn-menu"><i class="fas fa-bars u-color-white"></i></button>
+                    <h4 class="float-left u-font-medium u-font-size-large u-color-white c-header__lineHeight">
                         Batinon v1</h4>
                 </b-col>
                 <b-col sm="6" class="clearfix">
@@ -12,7 +12,7 @@
                         <!-- profile -->
                         <button class="c-profile__btn" @click="openProfileCard">
                             <img class="c-profile__img" :src="[ this.$root.userImageBase64 ? this.$root.userImageBase64 : this.$root.userImage ]" alt="profile image">
-                            <i class="fas fa-ellipsis-v c-profile__btn-icon u-color-dark"></i>
+                            <i class="fas fa-ellipsis-v c-profile__btn-icon u-color-white"></i>
                         </button>
                         <!-- profile card -->
                         <div class="c-profile__card" :class="{ 'c-profile__card-active' : isActive}">
@@ -34,12 +34,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="float-right">
+                    <!-- <div class="float-right"> -->
                         <!-- tasks -->
-                        <button class="c-header__item c-header__lineHeight"><i class="fas fa-flag u-color-dark"></i></button>
+                        <!-- <button class="c-header__item c-header__lineHeight"><i class="fas fa-flag u-color-dark"></i></button> -->
                         <!-- notification -->
-                        <button class="c-header__item c-header__lineHeight"><i class="fas fa-bell u-color-dark"></i></button>
-                    </div>
+                        <!-- <button class="c-header__item c-header__lineHeight"><i class="fas fa-bell u-color-dark"></i></button> -->
+                    <!-- </div> -->
                 </b-col>
             </b-row>
         </b-container>

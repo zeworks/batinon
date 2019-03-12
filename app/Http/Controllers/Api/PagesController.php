@@ -93,7 +93,7 @@ class PagesController extends Controller
     }
 
     public function delete(Request $request){
-        Pages::where('id',$request->data)->delete();
+        Pages::where('id',$request->id)->delete();
         
         return ['success' => true, 'message' => __('notifications.remove_success')];
     }

@@ -109,7 +109,7 @@
             },
             saveData() {
                 if (this.$route.params.id > 0) {
-                    axios.post('/api/pages/edit/' + this.$route.params.id, {
+                    axios.put('/api/pages/edit/' + this.$route.params.id, {
                             id: this.$route.params.id,
                             title: this.page.title,
                             status: this.page.status,

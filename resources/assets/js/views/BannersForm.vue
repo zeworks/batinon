@@ -67,7 +67,7 @@
             },
             saveData() {
                 if (this.$route.params.id > 0) {
-                    axios.post('/api/banners/edit/' + this.$route.params.id, {
+                    axios.put('/api/banners/edit/' + this.$route.params.id, {
                             id: this.$route.params.id,
                             title: this.banners.title,
                             status: this.banners.status,

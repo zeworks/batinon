@@ -23,27 +23,27 @@ Route::put('user/password','Api\UserController@updatePassword');
 Route::get('pages','Api\PagesController@index');
 Route::post('pages/add','Api\PagesController@add');
 Route::get('pages/{id}','Api\PagesController@get');
-Route::post('pages/edit/{id}','Api\PagesController@editPage');
-Route::post('pages/delete','Api\PagesController@delete');
+Route::put('pages/edit/{id}','Api\PagesController@editPage');
+Route::delete('pages/delete/{id}','Api\PagesController@delete');
 
 //files
 Route::get('files','Api\FilesController@index');
 Route::post('files/add','Api\FilesController@add');
-Route::post('files/delete','Api\FilesController@delete');
+Route::delete('files/delete/{id}','Api\FilesController@delete');
 
 //blogs
 Route::get('blogs','Api\BlogController@index');
 Route::post('blogs/add','Api\BlogController@add');
 Route::get('blogs/{id}','Api\BlogController@get');
-Route::post('blogs/edit/{id}','Api\BlogController@editBlog');
-Route::post('blogs/delete','Api\BlogController@delete');
+Route::put('blogs/edit/{id}','Api\BlogController@editBlog');
+Route::delete('blogs/delete/{id}','Api\BlogController@delete');
 
 //banners
 Route::get('banners','Api\BannersController@index');
 Route::post('banners/add','Api\BannersController@add');
 Route::get('banners/{id}','Api\BannersController@get');
-Route::post('banners/edit/{id}','Api\BannersController@edit');
-Route::post('banners/delete','Api\BannersController@delete');
+Route::put('banners/edit/{id}','Api\BannersController@edit');
+Route::delete('banners/delete/{id}','Api\BannersController@delete');
 
 //navigation
 Route::get('navigation','Api\NavigationController@indexAction');
@@ -53,6 +53,7 @@ Route::put('navigation/edit','Api\NavigationController@editAction');
 
 //products
 Route::get('products','Api\ProductsController@indexAction');
+Route::post('products','Api\ProductsController@addAction');
 
 //settings
 Route::get('settings','Api\SettingsController@indexAction');

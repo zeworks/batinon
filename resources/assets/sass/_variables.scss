@@ -14,21 +14,21 @@ $blue-grey : #37474f;
 $grey : #616161;
 $grey-light : #d1d1d1;
 
-$primary: #1867c0;
-$secondary: #e57373;
-$accent: #9c27b0;
-$danger: #f44336;
-$warning: #ffeb3b;
-$info: #2196f3;
+$primary: #2196f3;
+$secondary: #3f51b5;
+$accent: #607d8b;
+$error: #f44336;
+$warning: #ff9800;
+$info: #009688;
 $success: #4caf50;
 
 $colors : (
-  primary: "#1867c0",
-  secondary: "#e57373",
-  accent: "#9c27b0",
+  primary: "#2196f3",
+  secondary: "#3f51b5",
+  accent: "#607d8b",
   error: "#f44336",
-  warning: "#ffeb3b",
-  info: "#2196f3",
+  warning: "#ff9800",
+  info: "#009688",
   success: "#4caf50",
   white: "#fff",
   white-light: "#fafafa",
@@ -47,12 +47,12 @@ $asideMaxWidth: 300px;
 $asideColor: $white;
 
 // NAV
-$navColor: $white;
+$navColor: $primary;
 // _ITEM
 $navItemColor: $white;
 // _LINK
 $navLinkTextColor: $dark;
-$navLinkColorHover: #3700B3;
+$navLinkColorHover: $secondary;
 
 $headerHeight: 60px;
 

@@ -96,9 +96,7 @@
                     })
                     .then((willDelete) => {
                         if (willDelete) {
-                            axios.post('/api/blogs/delete', {
-                                    data: id
-                                })
+                            axios.delete('/api/blogs/delete/' + id)
                                 .then(response => {
                                     // success alert
                                     swal('Sucesso!', 'Blog post Deleted', 'success');

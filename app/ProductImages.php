@@ -13,4 +13,3 @@ class ProductImages extends Model
         return $this->belongsTo('App\Files', 'file_name', 'id');
     }
 }
-

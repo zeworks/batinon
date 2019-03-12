@@ -22,8 +22,9 @@ class ProductsController extends Controller
      * 
      * Add Product to API
      */
-    public function addAction(){
-
+    public function addAction(Request $request){
+        print_r($request);
+        die;
     }
 
     /**

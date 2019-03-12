@@ -10,13 +10,13 @@ class PagesController extends Controller
     public function getPage($slug){
         $page = $this->fetchPage($slug);
         if($page === null) {
-            return view('front.error');
+            return redirect('404');
         } else {
             return view('front.institucional', compact('page'));
         }
     }
 
-    public static function fetchPage($slug){
+    function fetchPage($slug){
         $page = Pages::where('slug',$slug)->get();
 
         if(count($page) > 0){
@@ -24,5 +24,9 @@ class PagesController extends Controller
         } else {
             return null;            
         }
+    }
+
+    public function errorAction(){
+        return view('front.error');
     }
 }
