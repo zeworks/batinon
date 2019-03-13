@@ -26,4 +26,5 @@ return [
     // GLOBAL NOTIFICATIONS
     'error_info'        => 'Ups, Algo correu mal!',
     'no_info'           => 'Este conteúdo não existe!',
+    'error_fields'      => 'Falta preencher os campos obrigatórios!',
 ];

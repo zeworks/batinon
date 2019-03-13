@@ -24973,11 +24973,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['item'],
+    props: {
+        item: String,
+        required: Boolean
+    },
     data: function data() {
         return {
             images: [],
@@ -25093,7 +25097,8 @@ var render = function() {
         { staticClass: "c-card__body clearfix" },
         [
           _c("div", { staticClass: "f-subtitle u-margin-bottom-s" }, [
-            _vm._v("\n            Featured Image\n        ")
+            _vm._v("\n            Featured Image\n            "),
+            _vm.required ? _c("span", [_vm._v("*")]) : _vm._e()
           ]),
           _vm._v(" "),
           _c(
@@ -45223,7 +45228,7 @@ var render = function() {
                         _c("hr"),
                         _vm._v(" "),
                         _c("v-featuredImage", {
-                          attrs: { item: _vm.product.image },
+                          attrs: { required: "", item: _vm.product.image },
                           on: { featuredImage: _vm.chooseFeaturedImage }
                         }),
                         _vm._v(" "),

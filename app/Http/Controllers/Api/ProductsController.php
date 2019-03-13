@@ -50,10 +50,16 @@ class ProductsController extends Controller
                     ]);
                 }
             }
-
+            
             return [ 'success' => true, 'message' => __('notifications.add_success') ];
-
+            
         } catch (\Throwable $th) {
+            
+            // validation to title and image, the only required
+            if (!isset($request->product['title']) || !isset($request->product['image'])) {
+                return [ 'success' => false, 'message' => __('notifications.error_fields') ];
+            }
+
             return [ 'success' => false, 'message' => __('notifications.error_info')];            
         }
     }
@@ -81,6 +87,12 @@ class ProductsController extends Controller
             return ['success' => true, 'message' => __('notifications.edit_success')];
 
         } catch (\Exception $e) {
+
+            // validation to title and image, the only required
+            if (!isset($request->product['title']) || !isset($request->product['image'])) {
+                return [ 'success' => false, 'message' => __('notifications.error_fields') ];
+            }
+            
             return [ 'success' => false, 'message' => __('notifications.error_info')];
         }
     }

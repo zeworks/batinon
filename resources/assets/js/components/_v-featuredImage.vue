@@ -3,6 +3,7 @@
         <div class="c-card__body clearfix">
             <div class="f-subtitle u-margin-bottom-s">
                 Featured Image
+                <span v-if="required">*</span>
             </div>
             <b-row>
                 <b-col sm="6">
@@ -56,7 +57,10 @@
     import axios from 'axios';
 
     export default {
-        props: ['item'],
+        props: {
+            item: String,
+            required: Boolean
+        },
         data() {
             return {
                 images: [],

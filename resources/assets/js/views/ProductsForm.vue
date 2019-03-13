@@ -88,7 +88,7 @@
                             </b-col>
                         </b-row>
                         <hr>
-                        <v-featuredImage @featuredImage="chooseFeaturedImage" :item="product.image" />
+                        <v-featuredImage required @featuredImage="chooseFeaturedImage" :item="product.image" />
                         <v-submitComponent :id="$route.params.id" />
                     </div>
                 </b-col>
