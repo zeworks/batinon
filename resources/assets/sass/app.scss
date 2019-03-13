@@ -178,3 +178,10 @@ code {
         text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
     }	
 }
+
+.vc-chrome {
+    width: 50% !important;
+    @include media(xs){
+        width: 100% !important;
+    }
+}
