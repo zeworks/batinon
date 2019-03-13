@@ -53,7 +53,10 @@ Route::put('navigation/edit','Api\NavigationController@editAction');
 
 //products
 Route::get('products','Api\ProductsController@indexAction');
-Route::post('products','Api\ProductsController@addAction');
+Route::post('products/add','Api\ProductsController@addAction');
+Route::get('products/{id}','Api\ProductsController@getAction');
+Route::put('products/edit/{id}','Api\ProductsController@editAction');
+Route::delete('products/delete/{id}','Api\ProductsController@deleteAction');
 
 //settings
 Route::get('settings','Api\SettingsController@indexAction');

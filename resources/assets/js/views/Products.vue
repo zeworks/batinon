@@ -68,6 +68,8 @@
 </template>
 
 <script>
+    import axios from 'axios'
+
     export default {
         data() {
             return {
@@ -75,11 +77,39 @@
             }
         },
         mounted() {
-            this.fetch();
+            this.fetchData();
         },
         methods: {
-            fetch() {
+            async fetchData() {
+                this.isHolding();
 
+                await axios.get('/api/products')
+                    .then(response => response.data)
+                    .then(data => {
+                        this.products = data;
+                    })
+                    .then(response => this.isHolding())
+            },
+            remove(id) {
+                swal({
+                        title: "Tem certeza?",
+                        text: "Once deleted, you will not be able to recover this content!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            axios.delete('/api/products/delete/' + id)
+                                .then(response => {
+                                    // success alert
+                                    swal('Sucesso!', response.data.message, 'success');
+                                    this.fetchData();
+                                })
+                        } else {
+                            swal.close();
+                        }
+                    });
             }
         }
     }

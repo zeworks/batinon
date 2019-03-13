@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="save">
-        <b-container fluid>
+        <b-container fluid v-if="contentLoaded">
             <b-row>
                 <b-col sm="9">
                     <div class="c-card">
@@ -9,7 +9,7 @@
                                 <b-col sm="7">
                                     <div class="c-form">
                                         <label for="title" class="c-form__label">Product Name*</label>
-                                        <input type="text" id="title" name="title" class="c-form__input" v-model="product.name">
+                                        <input type="text" id="title" name="title" class="c-form__input" v-model="product.title">
                                     </div>
                                 </b-col>
                                 <b-col sm="5">
@@ -19,14 +19,12 @@
                                             v-model="slug">
                                     </div>
                                 </b-col>
-                                <b-col sm="12" md="6">
+                                <b-col sm="12">
                                     <div class="c-form">
                                         <br>
                                         <label for="description" class="c-form__label">Description</label>
                                         <vueEditor id="description" name="description" v-model="product.description"></vueEditor>
                                     </div>
-                                </b-col>
-                                <b-col sm="12" md="6">
                                     <div class="c-form">
                                         <br>
                                         <label for="details" class="c-form__label">Details</label>
@@ -90,7 +88,7 @@
                             </b-col>
                         </b-row>
                         <hr>
-                        <v-featuredImage :item="product" />
+                        <v-featuredImage @featuredImage="chooseFeaturedImage" :item="product.image" />
                         <v-submitComponent :id="$route.params.id" />
                     </div>
                 </b-col>
@@ -103,55 +101,95 @@
     import {
         Chrome
     } from 'vue-color'
+    import axios from 'axios'
+
     export default {
         components: {
             'chrome-picker': Chrome
         },
         computed: {
             slug() {
-                var slug = this.suglifyTitle(this.product.name);
+                var slug = this.suglifyTitle(this.product.title);
+                this.product.slug = slug;
                 return slug;
             }
         },
         data() {
             return {
+                contentLoaded: false,
                 product: {},
                 productImages: new Array(),
-                colors: {
-                    hex: '#194d33',
-                    hsl: {
-                        h: 150,
-                        s: 0.5,
-                        l: 0.2,
-                        a: 1
-                    },
-                    hsv: {
-                        h: 150,
-                        s: 0.66,
-                        v: 0.30,
-                        a: 1
-                    },
-                    rgba: {
-                        r: 25,
-                        g: 77,
-                        b: 51,
-                        a: 1
-                    },
-                    a: 1
-                }
+                colors: {},
+                id: this.$route.params.id || 0 // used when edit.
             }
         },
         methods: {
             updateSlider(array) {
                 this.productImages = array;
             },
+            chooseFeaturedImage(image) {
+                this.product.image = image
+            },
+            /**
+             * save data in API
+             */
             save() {
-                console.log('saving...');
+                if (this.id) {
+                    axios.put('/api/products/edit/' + this.id, {
+                        product: this.product,
+                        productImages: this.productImages
+                    })
+                    .then(response => {
+                        if (response.data.success) {
+                            swal('Sucesso!', response.data.message, 'success');
+                            this.$router.push("/admin/products");
+                        } else {
+                            swal('Erro!', response.data.message, 'error');
+                        }
+                    })
+                } else {
+                    axios.post('/api/products/add', {
+                        product: this.product,
+                        productImages: this.productImages
+                    })
+                    .then(response => {
+                        if (response.data.success) {
+                            swal('Sucesso!', response.data.message, 'success');
+                            this.$router.push("/admin/products");
+                        } else {
+                            swal('Erro!', response.data.message, 'error');
+                        }
+                    })
+                }
+            },
+            /**
+             * fetch data only to when edit
+             */
+            async fetchData() {
+                this.isLoading()
+                await axios.get('/api/products/' + this.id)
+                    .then(response => {
+                        if (response.data.success) {
+                            let array = response.data.files;
+                            
+                            this.product = response.data.content[0]
+                            array.forEach(element => {
+                                this.productImages.push(element.file_name);
+                            });
+                        } else {
+                            this.$router.replace(response.data.redirect);
+                            swal('Erro!', response.data.message, 'error');
+                        }
+                    })
+                    .then(response => this.isLoading())
+                    .then(response => this.contentLoaded = true);
             }
+        },
+        mounted() {
+            // check if is editing
+            if (this.id) {
+                this.fetchData()
+            } else this.contentLoaded = true
         }
     }
 </script>
-
-<style>
-
-</style>

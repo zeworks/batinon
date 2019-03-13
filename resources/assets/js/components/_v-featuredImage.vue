@@ -140,7 +140,6 @@
             }
         },
         created(){ 
-            
             if (this.$route.params.id && this.item) {
                 this.image = this.item
                 this.showRemoveButton = true
