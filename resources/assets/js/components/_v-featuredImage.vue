@@ -135,10 +135,9 @@
                     });
             },
             removeFeatured(featured) {
-                this.image = '';
-                this.showRemoveButton = false;
+                this.image = ''
+                this.showRemoveButton = false
                 this.$emit('featuredImage', '')
-
             }
         },
         created(){ 

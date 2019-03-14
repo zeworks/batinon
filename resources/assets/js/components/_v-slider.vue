@@ -111,9 +111,7 @@
                     })
                     .then((willDelete) => {
                         if (willDelete) {
-                            axios.post('/api/files/delete', {
-                                    data: id
-                                })
+                            axios.delete('/api/files/delete/' + id)
                                 .then(response => {
                                     // success alert
                                     swal('Sucesso!', response.data.message, 'success');
