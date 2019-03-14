@@ -51,7 +51,7 @@ class FilesController extends Controller
     }
     
 	public function delete(Request $request){
-        $files = Files::where('id',$request->data)->get();
+        $files = Files::where('id',$request->id)->get();
 
         foreach ($files as $file) {
             Storage::delete('public/images/'.$file->name);
