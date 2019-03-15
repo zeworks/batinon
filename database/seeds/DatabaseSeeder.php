@@ -70,6 +70,25 @@ class NavigationTableSeeder extends Seeder
         foreach ($nav as $key => $navItem) {
             DB::table('navigations')->insert($navItem);    
         }
+    }
+}
+
+class PagesTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $pages = [
+            ['title' => 'Blog', 'slug' => 'blog', 'b_title' => 'blog'],
+            ['title' => 'Produtos', 'slug' => 'produtos', 'b_title' => 'produtos'],
+        ];
         
+        foreach ($pages as $key => $item) {
+            DB::table('pages')->insert($item);
+        }
     }
 }
