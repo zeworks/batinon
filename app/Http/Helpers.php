@@ -22,10 +22,4 @@ class Helpers {
         
         return $validate;
     }
-
-    public static function Store(){
-        $store = false;
-        
-        return $store;
-    }
 }
