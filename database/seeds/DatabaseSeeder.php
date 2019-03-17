@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(SettingsTableSeeder::class);
         $this->call(NavigationTableSeeder::class);
+        $this->call(PagesTableSeeder::class);
     }
 }
 
@@ -83,8 +84,8 @@ class PagesTableSeeder extends Seeder
     public function run()
     {
         $pages = [
-            ['title' => 'Blog', 'slug' => 'blog', 'b_title' => 'blog'],
-            ['title' => 'Produtos', 'slug' => 'produtos', 'b_title' => 'produtos'],
+            ['title' => 'Blog', 'slug' => 'blog', 'b_title' => 'blog', 'editable' => 0],
+            ['title' => 'Produtos', 'slug' => 'produtos', 'b_title' => 'produtos', 'editable' => 0],
         ];
         
         foreach ($pages as $key => $item) {

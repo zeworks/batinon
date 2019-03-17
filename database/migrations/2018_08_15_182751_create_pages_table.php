@@ -25,6 +25,7 @@ class CreatePagesTable extends Migration
             $table->integer('status')->default(0);
             $table->integer('order')->default(0);
             $table->integer('position')->default(1);
+            $table->integer('editable')->default(1);
             $table->timestamps();
         });
     }

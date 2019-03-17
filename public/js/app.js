@@ -41053,19 +41053,21 @@ var render = function() {
                                         [_vm._v("Edit")]
                                       ),
                                       _vm._v(" "),
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass:
-                                            "c-btn c-btn--danger c-btn--small",
-                                          on: {
-                                            click: function($event) {
-                                              _vm.remove(page.id)
-                                            }
-                                          }
-                                        },
-                                        [_vm._v("Delete")]
-                                      )
+                                      page.editable
+                                        ? _c(
+                                            "button",
+                                            {
+                                              staticClass:
+                                                "c-btn c-btn--danger c-btn--small",
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.remove(page.id)
+                                                }
+                                              }
+                                            },
+                                            [_vm._v("Delete")]
+                                          )
+                                        : _vm._e()
                                     ],
                                     1
                                   )
