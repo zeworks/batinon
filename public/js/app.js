@@ -45215,6 +45215,11 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -45465,6 +45470,49 @@ var render = function() {
                                 ]),
                                 _vm._v(" "),
                                 _c("b-col", { attrs: { sm: "12" } }, [
+                                  _c("div", { staticClass: "c-form" }, [
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "c-form__label",
+                                        attrs: { for: "category" }
+                                      },
+                                      [_vm._v("Categoria")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.product.category,
+                                          expression: "product.category"
+                                        }
+                                      ],
+                                      staticClass: "c-form__input",
+                                      attrs: {
+                                        type: "text",
+                                        id: "category",
+                                        name: "category"
+                                      },
+                                      domProps: { value: _vm.product.category },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.product,
+                                            "category",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]),
+                                  _vm._v(" "),
                                   _c(
                                     "div",
                                     { staticClass: "c-form" },

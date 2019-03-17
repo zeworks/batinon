@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('title',500);
             $table->string('slug',500);
+            $table->string('category',500);
             $table->longtext('details')->nullable();
             $table->longtext('description')->nullable();
             $table->integer('status')->default(0);

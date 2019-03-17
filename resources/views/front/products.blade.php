@@ -33,15 +33,15 @@
                         <img class="img-responsive" src="<?=Image::url($product->image,1920,900)?>" alt="">
                     </a>
                     <a href="produtos/{{$product->slug}}" title="{{$product->title}}">
-                        <span class="product-card__category">Category Product</span>
-                        <h4 class="product-card__title">Product Name</h4>
+                        <span class="product-card__category">{{$product->category}}</span>
+                        <h4 class="product-card__title">{{$product->title}}</h4>
                     </a>
                     @if($settings[0]->website_mode_store == '1')
                     <span class="product-card__price">10€</span>
                     <span class="product-card__oldprice">19€</span>
                     @endif
                     <div class="clearfix"></div>
-                    <a href="product.php" class="btn btn-primary">Visualizar</a>
+                    <a href="produtos/{{$product->slug}}" class="btn btn-primary">Visualizar</a>
                 </div>
             </div>
             @endforeach
