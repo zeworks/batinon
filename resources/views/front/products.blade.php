@@ -1,7 +1,7 @@
 @extends('layouts.default') @section('content')
 <section>
     <div class="institutional-banner institutional-banner--masked">
-        <div class="image-bg" style="background-image: url(https://dummyimage.com/1920x900/f2f2f2/000)"></div>
+        <div class="image-bg" style="background-image: url('<?=Image::url($banner[0]->image,1920,900)?>')"></div>
     </div>
 </section>
 <div class="empty-space-20"></div>
@@ -25,14 +25,14 @@
 <section>
     <div class="container">
         <div class="row matchheight">
-        {{$products}}
             <!-- loop from here -->
+            @foreach($products as $product)
             <div class="col-sm-6 col-md-4 col-lg-3" data-mh="product-item">
                 <div class="product-card">
-                    <a href="product.php" title="product title">
-                        <img class="img-responsive" src="https://dummyimage.com/345x345/f2f2f2/000" alt="">
+                    <a href="produtos/{{$product->slug}}" title="{{$product->title}}">
+                        <img class="img-responsive" src="<?=Image::url($product->image,1920,900)?>" alt="">
                     </a>
-                    <a href="product.php" title="product title">
+                    <a href="produtos/{{$product->slug}}" title="{{$product->title}}">
                         <span class="product-card__category">Category Product</span>
                         <h4 class="product-card__title">Product Name</h4>
                     </a>
@@ -44,6 +44,7 @@
                     <a href="product.php" class="btn btn-primary">Visualizar</a>
                 </div>
             </div>
+            @endforeach
             <!-- end loop -->
         </div>
     </div>
