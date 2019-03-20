@@ -22,7 +22,7 @@
                                 <b-col sm="12">
                                     <div class="c-form">
                                         <br>
-                                        <label for="category" class="c-form__label">Categoria</label>
+                                        <label for="category" class="c-form__label">Categoria*</label>
                                         <input type="text" id="category" name="category" class="c-form__input" v-model="product.category">
                                     </div>
                                     <div class="c-form">

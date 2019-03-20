@@ -37,26 +37,34 @@ class ProductsController extends Controller
      * Add Product to API
      */
     public function addAction(Request $request){
+       
         try {
-            //code...
-            $getProductId = Products::create($request->product)->id;
 
-            if (is_array($request->productImages)) {
-                // create images
-                foreach($request->productImages as $images){
-                    ProductImages::create([
-                        "product_id" => $getProductId,
-                        "file_name" => $images
-                    ]);
+            $valid = Helpers::validateExistentSlug($request->product['slug'], "\\App\\Products");
+
+            if(!count($valid)) {
+
+                $getProductId = Products::create($request->product)->id;
+
+                if (is_array($request->productImages)) {
+                    // create images
+                    foreach($request->productImages as $images){
+                        ProductImages::create([
+                            "product_id" => $getProductId,
+                            "file_name" => $images
+                        ]);
+                    }
                 }
+                
+                return [ 'success' => true, 'message' => __('notifications.add_success') ];
+            } else {
+                // existe
+                return [ 'success' => false, 'message' => __('notifications.slug_exist')];
+                die;
             }
-            
-            return [ 'success' => true, 'message' => __('notifications.add_success') ];
-            
         } catch (\Throwable $th) {
-            
             // validation to title and image, the only required
-            if (!isset($request->product['title']) || !isset($request->product['image'])) {
+            if (!isset($request->product['title']) || !isset($request->product['image']) || !isset($request->product['category'])) {
                 return [ 'success' => false, 'message' => __('notifications.error_fields') ];
             }
 
@@ -104,7 +112,7 @@ class ProductsController extends Controller
         } catch (\Exception $e) {
 
             // validation to title and image, the only required
-            if (!isset($request->product['title']) || !isset($request->product['image'])) {
+            if (!isset($request->product['title']) || !isset($request->product['image']) || !isset($request->product['category'])) {
                 return [ 'success' => false, 'message' => __('notifications.error_fields') ];
             }
             

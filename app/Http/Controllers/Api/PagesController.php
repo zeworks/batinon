@@ -29,34 +29,43 @@ class PagesController extends Controller
     }
 
     public function add(Request $request){
-
+        
         try {
+            
+            $valid = Helpers::validateExistentSlug($request->slug, "\\App\\Pages");
 
-            if($request->status == ''){
-                $status = 0;
-            }else{
-                $status = $request->status;
+            if(!count($valid)) {
+                // nao existe
+                if($request->status == ''){
+                    $status = 0;
+                }else{
+                    $status = $request->status;
+                }
+        
+                $data = [
+                    "title" => $request->title,
+                    "slug" => $request->slug,
+                    "status" => $status,
+                    "b_title" => $request->b_title,
+                    "b_summary" => $request->b_summary,
+                    "b_description" => $request->b_description,
+                    "b_image" => $request->b_image,
+                    "image" => $request->image,
+                    "order" => $request->order,
+                    "position" => $request->position,
+                ];
+        
+                Pages::create($data);
+    
+                return [ 'success' => true, 'message' => __('notifications.add_success') ];
+            } else {
+                // existe
+                return [ 'success' => false, 'message' => __('notifications.slug_exist')];
+                die;
             }
-    
-            $data = [
-                "title" => $request->title,
-                "slug" => $request->slug,
-                "status" => $status,
-                "b_title" => $request->b_title,
-                "b_summary" => $request->b_summary,
-                "b_description" => $request->b_description,
-                "b_image" => $request->b_image,
-                "image" => $request->image,
-                "order" => $request->order,
-                "position" => $request->position,
-            ];
-    
-            Pages::create($data);
-
-            return [ 'success' => true, 'message' => __('notifications.add_success') ];
-
         } catch (\Exception $e) {
             return [ 'success' => false, 'message' => __('notifications.error_info')];
+            die;
         }
     }
 

@@ -17,7 +17,7 @@ class Helpers {
     * use mode: $valid = validateExistentSlug('abc/sxpto', "\\App\\Models\\Page");
     *
     */
-    public function validateExistentSlug($slug, $model){
+    public static function validateExistentSlug($slug, $model){
         $validate = $model::where('slug', $slug)->get();        
         
         return $validate;

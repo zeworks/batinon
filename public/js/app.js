@@ -42332,7 +42332,7 @@ var render = function() {
                         _c("hr"),
                         _vm._v(" "),
                         _c("v-featuredImage", {
-                          attrs: { item: _vm.blog.image },
+                          attrs: { required: "", item: _vm.blog.image },
                           on: { featuredImage: _vm.chooseImage }
                         }),
                         _vm._v(" "),
@@ -45505,7 +45505,7 @@ var render = function() {
                                         staticClass: "c-form__label",
                                         attrs: { for: "category" }
                                       },
-                                      [_vm._v("Categoria")]
+                                      [_vm._v("Categoria*")]
                                     ),
                                     _vm._v(" "),
                                     _c("input", {

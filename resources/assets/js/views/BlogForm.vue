@@ -37,7 +37,7 @@
                     <div class="c-card">
                         <v-statusComponent :item="blog" />
                         <hr>
-                        <v-featuredImage @featuredImage="chooseImage" :item="blog.image" />
+                        <v-featuredImage required @featuredImage="chooseImage" :item="blog.image" />
                         <v-submitComponent :id="$route.params.id" />
                     </div>
                 </b-col>

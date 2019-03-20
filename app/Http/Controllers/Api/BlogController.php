@@ -40,37 +40,46 @@ class BlogController extends Controller
     public function add(Request $request){
         
         try {
-            if($request->status == ''){
-                $status = 0;
-            }else{
-                $status = $request->status;
-            }
-    
-            $data = [
-                "slug" => $request->slug,
-                "status" => $status,
-                "b_title" => $request->b_title,
-                "b_summary" => $request->b_summary,
-                "b_description" => $request->b_description,
-                "image" => $request->image,
-            ];
-    
-    
-            $id = Blog::create($data)->id;
-    
-            if($request->multiple_images){
-                $this->deleteBlogImages($request->id);
-            }
-    
-            foreach($request->multiple_images as $images){
-                BlogImages::create([
-                    "blog_id" => $id,
-                    "file_name" => $images
-                ]);
-            }
 
-            return [ 'success' => true, 'message' => __('notifications.add_success')];
+            $valid = Helpers::validateExistentSlug($request->slug, "\\App\\Blog");
 
+            if(!count($valid)) {
+
+                if($request->status == ''){
+                    $status = 0;
+                }else{
+                    $status = $request->status;
+                }
+        
+                $data = [
+                    "slug" => $request->slug,
+                    "status" => $status,
+                    "b_title" => $request->b_title,
+                    "b_summary" => $request->b_summary,
+                    "b_description" => $request->b_description,
+                    "image" => $request->image,
+                ];
+        
+        
+                $id = Blog::create($data)->id;
+        
+                if($request->multiple_images){
+                    $this->deleteBlogImages($request->id);
+                }
+        
+                foreach($request->multiple_images as $images){
+                    BlogImages::create([
+                        "blog_id" => $id,
+                        "file_name" => $images
+                    ]);
+                }
+    
+                return [ 'success' => true, 'message' => __('notifications.add_success')];
+            } else {
+                // existe
+                return [ 'success' => false, 'message' => __('notifications.slug_exist')];
+                die;
+            }
         } catch (\Exception $e) {
             return [ 'success' => false, 'message' => __('notifications.error_info')];
         }

@@ -27,4 +27,5 @@ return [
     'error_info'        => 'Ups, Algo correu mal!',
     'no_info'           => 'Este conteúdo não existe!',
     'error_fields'      => 'Falta preencher os campos obrigatórios!',
+    'slug_exist'        => 'Este slug já existe!',
 ];
