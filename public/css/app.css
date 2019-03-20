@@ -11707,6 +11707,23 @@ button:focus {
   height: 200px;
 }
 
+.c-colors {
+  position: relative;
+}
+
+.c-colors--rounded {
+  padding: 0;
+  margin: 0;
+}
+
+.c-colors--rounded .c-colors__item {
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  margin: 5px;
+}
+
 /* Components end */
 
 /* Fonts */
@@ -11989,12 +12006,6 @@ code {
 }
 
 .vc-chrome {
-  width: 50% !important;
-}
-
-@media (max-width: 767px) {
-  .vc-chrome {
-    width: 100% !important;
-  }
+  width: 100% !important;
 }
 

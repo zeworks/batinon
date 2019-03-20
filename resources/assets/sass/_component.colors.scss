@@ -1,0 +1,18 @@
+.c-colors {
+    $root-class: c-colors;
+
+	position: relative;
+	// modifier
+	&--rounded {
+		padding: 0;
+		margin: 0;
+		
+		.#{$root-class}__item {
+			border-radius: 100%;
+			width: 40px;
+			height: 40px;
+			display: inline-block;
+			margin: 5px;
+		}
+	}
+}

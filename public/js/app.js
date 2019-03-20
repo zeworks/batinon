@@ -45220,6 +45220,15 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -45241,6 +45250,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             product: {},
             productImages: new Array(),
             colors: {},
+            colorsArray: [],
             id: this.$route.params.id || 0 // used when edit.
         };
     },
@@ -45262,7 +45272,8 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             if (this.id) {
                 __WEBPACK_IMPORTED_MODULE_2_axios___default.a.put('/api/products/edit/' + this.id, {
                     product: this.product,
-                    productImages: this.productImages
+                    productImages: this.productImages,
+                    colors: this.colorsArray
                 }).then(function (response) {
                     if (response.data.success) {
                         swal('Sucesso!', response.data.message, 'success');
@@ -45274,7 +45285,8 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             } else {
                 __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/api/products/add', {
                     product: this.product,
-                    productImages: this.productImages
+                    productImages: this.productImages,
+                    colors: this.colorsArray
                 }).then(function (response) {
                     if (response.data.success) {
                         swal('Sucesso!', response.data.message, 'success');
@@ -45301,10 +45313,16 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                 _context.next = 3;
                                 return __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('/api/products/' + this.id).then(function (response) {
                                     if (response.data.success) {
-                                        var array = response.data.files;
+                                        var filesArray = response.data.files;
+                                        var colorsJSON = response.data.content[0]['colors'];
 
                                         _this2.product = response.data.content[0];
-                                        array.forEach(function (element) {
+
+                                        if (colorsJSON) {
+                                            _this2.colorsArray = JSON.parse(colorsJSON);
+                                        }
+
+                                        filesArray.forEach(function (element) {
                                             _this2.productImages.push(element.file_name);
                                         });
                                     } else {
@@ -45330,7 +45348,15 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             }
 
             return fetchData;
-        }()
+        }(),
+        addColor: function addColor() {
+            if (this.colors.hex) {
+                this.colorsArray.push(this.colors.hex);
+            }
+        },
+        removeColor: function removeColor(index) {
+            this.$delete(this.colorsArray, index);
+        }
     },
     mounted: function mounted() {
         // check if is editing
@@ -45697,7 +45723,7 @@ var render = function() {
                                                 staticClass: "c-form__label",
                                                 attrs: { for: "product_size" }
                                               },
-                                              [_vm._v("Product Reference")]
+                                              [_vm._v("Product Size")]
                                             ),
                                             _vm._v(" "),
                                             _c("input", {
@@ -45738,7 +45764,7 @@ var render = function() {
                                         _vm._v(" "),
                                         _c(
                                           "b-col",
-                                          { attrs: { sm: "12" } },
+                                          { attrs: { sm: "6" } },
                                           [
                                             _c(
                                               "span",
@@ -45757,10 +45783,62 @@ var render = function() {
                                                 },
                                                 expression: "colors"
                                               }
-                                            })
+                                            }),
+                                            _vm._v(" "),
+                                            _c("br"),
+                                            _vm._v(" "),
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass:
+                                                  "c-btn c-btn--primary float-right",
+                                                attrs: { type: "button" },
+                                                on: { click: _vm.addColor }
+                                              },
+                                              [_vm._v("Add Color")]
+                                            )
                                           ],
                                           1
-                                        )
+                                        ),
+                                        _vm._v(" "),
+                                        _c("b-col", { attrs: { sm: "6" } }, [
+                                          _c(
+                                            "ul",
+                                            {
+                                              staticClass: "c-colors--rounded"
+                                            },
+                                            _vm._l(_vm.colorsArray, function(
+                                              item,
+                                              index
+                                            ) {
+                                              return _c(
+                                                "li",
+                                                {
+                                                  key: index,
+                                                  staticClass: "c-colors__item",
+                                                  style: {
+                                                    backgroundColor: item
+                                                  },
+                                                  attrs: { title: "remove" }
+                                                },
+                                                [
+                                                  _c("button", {
+                                                    style: {
+                                                      width: "100%",
+                                                      height: "100%"
+                                                    },
+                                                    attrs: { type: "button" },
+                                                    on: {
+                                                      click: function($event) {
+                                                        _vm.removeColor(index)
+                                                      }
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            })
+                                          )
+                                        ])
                                       ],
                                       1
                                     )

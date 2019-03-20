@@ -18,6 +18,35 @@ class ProductsController extends Controller
 
     /**
      * 
+     * Function to get the product detail
+     */
+    public function getProduct($slug){
+        $details = $this->validateSlug($slug);
+
+        if($details === null) {
+            return redirect('404');
+        } else {
+            return view('front.productDetail', compact('details'));
+        }
+    }
+
+    /**
+     * 
+     * Function to validate the slug on the url
+     */
+    function validateSlug($slug){
+        
+        $details = Products::where('slug', $slug)->with('Files')->get();
+
+        if(count($details) > 0){
+            return $details;
+        } else {
+            return null;            
+        }
+    }
+
+    /**
+     * 
      * Function to fetch the products from the DB to display.
      */
     function fetchProducts(){

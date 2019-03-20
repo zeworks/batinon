@@ -14,6 +14,7 @@
 // front get
 Route::get('/', 'Front\HomeController@index');
 Route::get('/produtos', 'Front\ProductsController@index');
+Route::get('/produtos/{slug}', 'Front\ProductsController@getProduct');
 Route::get('/blog', 'Front\BlogController@index');
 Route::get('/blog/{slug}', 'Front\BlogController@getBlog');
 Route::get('/404','Front\PagesController@errorAction');

@@ -28,6 +28,7 @@
 @import 'component.modal';
 @import 'component.placeholder';
 @import 'component.picture';
+@import 'component.colors';
 /* Components end */
 
 /* Fonts */
@@ -180,8 +181,5 @@ code {
 }
 
 .vc-chrome {
-    width: 50% !important;
-    @include media(xs){
-        width: 100% !important;
-    }
+    width: 100% !important;
 }

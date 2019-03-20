@@ -2,8 +2,8 @@
 <!-- banner - large -->
 <section>
     <div class="institutional-banner">
-        @foreach($products as $product)
-        <div class="image-bg" style="background-image: url('{{ asset('storage/images/'.$product->featured_image) }}')"></div>
+        @foreach($details as $detail)
+        <div class="image-bg" style="background-image: url('<?=Image::url($detail->image,1920,900)?>')"></div>
         @endforeach
     </div>
 </section>
@@ -22,8 +22,8 @@
                         <a href="{{ url('produtos')}}" title="Produtos">Produtos</a>
                     </li>
                     <li>
-                        @foreach($products as $product)
-                        <a href="{{ $product -> slug }}" title="{{ $product -> title }}">{{ $product -> title }}</a>
+                        @foreach($details as $detail)
+                        <a href="{{ $detail->slug }}" title="{{ $detail->title }}">{{ $detail->title }}</a>
                         @endforeach
                     </li>
                 </ul>
@@ -39,59 +39,67 @@
         <div class="row">
             <!-- image and details -->
             <div class="col-sm-6">
-                @isset($images)
-                <div class="owl-carousel owl-theme product-carousel">
-                    @foreach($images as $key => $image)
-                    <div class="item" data-hash="{{$image->id}}">
-                        <img class="img-responsive zoom-image" src="{{ Image::url(asset('storage/images/image_temp/'.$images[$key]['images']->image_name),750,500,array('crop','')) }}"
-                            alt="" data-zoom-image="{{ Image::url(asset('storage/images/image_temp/'.$images[$key]['images']->image_name),900,900,array('crop','')) }}">
+                @isset($details[0]->files)
+                    <div class="empty-space-20"></div>
+                    @if (count($details[0]->files) > 1)
+                    <div class="owl-carousel owl-theme product-carousel">
+                        @foreach($details[0]->files as $file)
+                            <div class="item" data-hash="{{$file->id}}">
+                                <img class="img-responsive zoom-image" src="{{ Image::url(asset('storage/images/'.$file->file_name),720,480,array('crop','')) }}"
+                                    alt="" data-zoom-image="{{ Image::url(asset('storage/images/'.$file->file_name),900,900,array('crop','')) }}">
+                            </div>
+                        @endforeach
                     </div>
-                    @endforeach
-                </div>
-                <div class="product-carousel-thumbs">
-                    @foreach($images as $key => $image)
-                    <a href="#{{$image->id}}">
-                        <img class="img-responsive" src="{{ Image::url(asset('storage/images/image_temp/'.$images[$key]['images']->image_name),100,100,array('crop','')) }}"
-                            alt="">
-                    </a>
-                    @endforeach
-                </div>
+                    <div class="product-carousel-thumbs">
+                        @foreach($details[0]->files as $file)
+                        <a href="#{{$file->id}}">
+                            <img class="img-responsive" src="{{ Image::url(asset('storage/images/'.$file->file_name),100,100,array('crop','')) }}"
+                                alt="">
+                        </a>
+                        @endforeach
+                    </div>
+                    @else 
+                        @foreach($details[0]->files as $file)
+                        <div class="bordered-image">
+                            <img class="img-responsive zoom-image" src="{{ Image::url(asset('storage/images/'.$file->file_name),720,480,array('crop','')) }}"
+                                alt="{{$file->file_name}}" data-zoom-image="{{ Image::url(asset('storage/images/'.$file->file_name),900,900,array('crop','')) }}">
+                        </div>
+                        @endforeach
+                    @endif
                 @endisset
             </div>
             <!-- product description -->
             <div class="col-sm-6 col-lg-5 col-lg-offset-1">
                 <!-- se no BO estiver como NOVO: -->
-                @foreach($products as $product) @if($product->new_product)
-                <span class="product-detail__tag">novo</span>
-                @endif
-                <h1>{{ $product->title }}</h1>
-                @if($settings[0]->website_mode_store == 'on')
-                <span class="product-card__category">{{ $product->title }}</span>
-                @endif
-                <div class="product-detail__rating">
-                    <!-- product reference -->
-                    <p>Referência: {{ $product->reference }}</p>
-                </div>
+                @foreach($details as $product) 
+                    @if($product->highlight)
+                        <span class="product-detail__tag">novo</span>
+                    @endif
+                    <h1>{{ $product->title }}</h1>
+                    @if($settings[0]->website_mode_store == 1)
+                        <span class="product-card__category">{{ $product->category }}</span>
+                    @endif
+                    @if($product->reference)
+                    <div class="product-detail__rating">
+                        <!-- product reference -->
+                        <p>Referência: {{ $product->reference }}</p>
+                    </div>
+                    @endif
                 <div class="product-detail__desc">
                     {!! $product->description !!}
                     <div class="product-available__items">
                         <h4>Cores disponivéis</h4>
                         <input type="hidden" id="color_available">
                         <div class="available__items">
-                            <?php
-                            
-                                $colors_array = explode(",", $product->colors); // explode the "array"
-                                $count = count($colors_array) - 1; // -1 because there is a , on the final.
-
-                                for ($i=0; $i < $count; $i++) { 
-                                    echo "<button type='button' class='item' data-color=".$colors_array[$i]."></button>";
+                            <?php 
+                                foreach(json_decode($product->colors) as $color) {
+                                    echo "<button type='button' class='item' data-color=".$color."></button>";
                                 }
-                                
                             ?>
                         </div>
                     </div>
                 </div>
-                @if($settings[0]->website_mode_store == 'on')
+                @if($settings[0]->website_mode_store == 1)
                 <div class="product-detail__price">
                     <span class="price">10€</span>
                     <span class="old-price">19€</span>
@@ -186,7 +194,7 @@
                         </span>
                         <span class="item-selected"></span>
                         <a href="#details" class="tabs__btn selected" title>Detalhes</a>
-                        @if($settings[0]->website_mode_store == 'on')
+                        @if($settings[0]->website_mode_store == 1)
                         <a href="#mpagamento" class="tabs__btn" title>Métodos de Pagamento</a>
                         <a href="#way_delivery" class="tabs__btn" title>Métodos de Entrega</a>
                         @endif
@@ -196,7 +204,7 @@
                     </div>
                     <div class="tabs__body">
                         <div id="details" class="tabs__body_item">
-                            @foreach($products as $product)
+                            @foreach($details as $product)
                             <h4>REF:: {{ $product->reference }}</h4>
                             <div>
                                 {!! $product->details !!}
@@ -206,7 +214,7 @@
                             </div>
                             @endforeach
                         </div>
-                        @if($settings[0]->website_mode_store == 'on')
+                        @if($settings[0]->website_mode_store == 1)
                         <div id="mpagamento" class="tabs__body_item">
                             <!-- <ul class="payment-methods--cart">
                                 <li>
@@ -266,48 +274,6 @@
 </section>
 <!-- /TABS -->
 <div class="empty-space-80"></div>
-<!-- RELATED PRODUCTS -->
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h2 class="text-center">Produtos Relacionados</h2>
-                <div class="empty-space-80"></div>
-                <div class="row matchheight">
-                    @foreach($allproducts as $products)
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" data-mh="product-item">
-                        <div class="product-card">
-                            <a href="{{ $products->slug}}" title="{{ $products->slug}}">
-                                <img class="img-responsive" src="{{ Image::url(asset('storage/images/'.$products->featured_image),345,345,array('crop','')) }}"
-                                    alt="">
-                            </a>
-                            <a href="{{ $products->slug}}" title="{{ $products->slug}}">
-                                @if($settings[0]->website_mode_store == 'on')
-                                <span class="product-card__category">Category Product</span>
-                                @endif
-                                <h4 class="product-card__title">{{ $products->title }}</h4>
-                            </a>
-                            @if($settings[0]->website_mode_store == 'on')
-                            <span class="product-card__price">10€</span>
-                            <span class="product-card__oldprice">19€</span>
-                            @endif
-                            <div class="product-card__smalltext">
-                                {!! $products->description !!}
-                            </div>
-                            <div class="clearfix"></div>
-                            <a href="{{ $products->slug}}" class="btn btn-primary btn-block">Visualizar</a>
-                            @if($settings[0]->website_mode_store == 'on')
-                            <button type="button" class="btn btn-primary buy-item">Comprar</button>
-                            @endif
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- /RELATED PRODUCTS -->
 <div class="empty-space-80"></div>
 <!-- COMMENTS -->
 <section>
@@ -339,32 +305,4 @@
 </section>
 <!-- /COMMENTS -->
 <div class="empty-space-80"></div>
-@if($settings[0]->website_mode_store == 'on')
-<div class="float-bar">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4 text-left">
-                <h3>Nome do Produto s s ss ss ss s ss ss</h3>
-            </div>
-            <div class="col-sm-3 text-center">
-                <div class="product-detail__price">
-                    <span class="price">10€</span>
-                    <span class="old-price">19€</span>
-                    <span class="discount-date">
-                        -10% até 19/07/2018
-                    </span>
-                </div>
-            </div>
-            <div class="col-sm-5 text-center">
-                <div class="clearfix"></div>
-                <form action="" method="post" class="cart-qty cart-qty--large clearfix">
-                    <button class="cart-qty__btn qty-less" type="button">-</button>
-                    <input type="text" name="cart_quant" class="cart-qty__input" value="1">
-                    <button class="cart-qty__btn qty-plus" type="button">+</button>
-                </form>
-                <button type="submit" class="btn btn-primary buy-item">Adicionar ao carrinho</button>
-            </div>
-        </div>
-    </div>
-</div>
-@endif @endsection
+ @endsection

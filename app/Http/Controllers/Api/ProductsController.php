@@ -83,6 +83,21 @@ class ProductsController extends Controller
                     ]);
                 }
             }
+
+            if (is_array($request->colors)) {
+                $product = Products::find($id);
+
+                if($product) {
+                    $colors = array();
+                    foreach($request->colors as $item){
+                        $colors[] = $item;
+                    }
+                    $product->colors = json_encode($colors);
+                    $product->save();
+                }
+                
+            }
+
     
             return ['success' => true, 'message' => __('notifications.edit_success')];
 

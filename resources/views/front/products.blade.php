@@ -36,7 +36,7 @@
                         <span class="product-card__category">{{$product->category}}</span>
                         <h4 class="product-card__title">{{$product->title}}</h4>
                     </a>
-                    @if($settings[0]->website_mode_store == '1')
+                    @if($settings[0]->website_mode_store == 1)
                     <span class="product-card__price">10€</span>
                     <span class="product-card__oldprice">19€</span>
                     @endif

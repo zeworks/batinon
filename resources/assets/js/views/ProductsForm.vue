@@ -56,14 +56,23 @@
                                         </b-col>
                                         <b-col sm="4">
                                             <div class="c-form">
-                                                <label for="product_size" class="c-form__label">Product Reference</label>
+                                                <label for="product_size" class="c-form__label">Product Size</label>
                                                 <input type="text" id="product_size" name="product_size" class="c-form__input"
                                                     v-model="product.product_size">
                                             </div>
                                         </b-col>
-                                        <b-col sm="12">
+                                        <b-col sm="6">
                                             <span class="c-form__label u-margin-bottom-s">Product Colors</span>
                                             <chrome-picker v-model="colors" />
+                                            <br />
+                                            <button class="c-btn c-btn--primary float-right" @click="addColor" type="button">Add Color</button> 
+                                        </b-col>
+                                        <b-col sm="6">
+                                            <ul class="c-colors--rounded">
+                                                <li class="c-colors__item" title="remove" :style="{ backgroundColor : item}" v-for="(item, index) in colorsArray" :key="index" >
+                                                    <button :style="{ width: '100%', height: '100%' }" type="button" @click="removeColor(index)"></button>
+                                                </li>
+                                            </ul>
                                         </b-col>
                                     </b-row>
                                 </b-col>
@@ -125,6 +134,7 @@
                 product: {},
                 productImages: new Array(),
                 colors: {},
+                colorsArray: [],
                 id: this.$route.params.id || 0 // used when edit.
             }
         },
@@ -142,7 +152,8 @@
                 if (this.id) {
                     axios.put('/api/products/edit/' + this.id, {
                         product: this.product,
-                        productImages: this.productImages
+                        productImages: this.productImages,
+                        colors: this.colorsArray,
                     })
                     .then(response => {
                         if (response.data.success) {
@@ -155,7 +166,8 @@
                 } else {
                     axios.post('/api/products/add', {
                         product: this.product,
-                        productImages: this.productImages
+                        productImages: this.productImages,
+                        colors: this.colorsArray,
                     })
                     .then(response => {
                         if (response.data.success) {
@@ -175,12 +187,19 @@
                 await axios.get('/api/products/' + this.id)
                     .then(response => {
                         if (response.data.success) {
-                            let array = response.data.files;
+                            const filesArray = response.data.files;
+                            const colorsJSON = response.data.content[0]['colors'];
                             
                             this.product = response.data.content[0]
-                            array.forEach(element => {
+
+                            if (colorsJSON) {
+                                this.colorsArray = JSON.parse(colorsJSON);
+                            }
+
+                            filesArray.forEach(element => {
                                 this.productImages.push(element.file_name);
                             });
+
                         } else {
                             this.$router.replace(response.data.redirect);
                             swal('Erro!', response.data.message, 'error');
@@ -188,6 +207,14 @@
                     })
                     .then(response => this.isLoading())
                     .then(response => this.contentLoaded = true);
+            },
+            addColor() {
+                if (this.colors.hex) {
+                    this.colorsArray.push(this.colors.hex);
+                }
+            },
+            removeColor(index) {
+                this.$delete(this.colorsArray, index)
             }
         },
         mounted() {
