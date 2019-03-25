@@ -22,7 +22,10 @@ class DatabaseSeeder extends Seeder
     
     function cleanStorage()
     {
-        Storage::delete('public/images/');
+        $dir = 'public/images/';
+        $files = Storage::allFiles($dir);
+        
+        Storage::delete($files);
     }
 }
 
