@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,6 +17,12 @@ class DatabaseSeeder extends Seeder
         $this->call(SettingsTableSeeder::class);
         $this->call(NavigationTableSeeder::class);
         $this->call(PagesTableSeeder::class);
+        $this->cleanStorage();
+    }
+    
+    function cleanStorage()
+    {
+        Storage::delete('public/images/');
     }
 }
 
