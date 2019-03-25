@@ -5,18 +5,22 @@ namespace App\Http\Controllers\Front;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Banners;
+use App\Blog;
 
 class HomeController extends Controller
 {
-    function index(){
-        // get banners from homepage
-        $banners = $this->getBanners();
-        return view("front.homepage", compact('banners'));
+    public function index(){
+        // get all data to homepage
+        $data = $this->getHomeData();
+        
+        return view("front.homepage", compact('data'));
     }
-
-    public static function getBanners(){
-        $banners = Banners::where('status', 1)->get();
-
-        return $banners;
+    
+    function getHomeData() {
+        return response()
+               ->json([
+                   'banners' => Banners::where('status', 1)->get(),
+                   'articles' => Blog::where('status', 1)->limit(4)->get()
+               ]);
     }
 }
