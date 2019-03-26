@@ -12,15 +12,19 @@ class HomeController extends Controller
     public function index(){
         // get all data to homepage
         $data = $this->getHomeData();
-        
+
         return view("front.homepage", compact('data'));
     }
     
     function getHomeData() {
-        return response()
-               ->json([
-                   'banners' => Banners::where('status', 1)->get(),
-                   'articles' => Blog::where('status', 1)->limit(4)->get()
-               ]);
+        $limitArticles = 4;
+        
+        $banners = Banners::where('status', 1)->get();
+        $articles = Blog::where('status', 1)->limit($limitArticles)->get();
+        
+        return [
+            'banners' => $banners,
+            'articles' => $articles
+        ];
     }
 }

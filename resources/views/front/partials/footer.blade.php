@@ -28,7 +28,7 @@
                 </small>
                 <form action="{{url('subscribe')}}" method="post" class="form validate-form inputs--inline clearfix">
                     <div class="form-field">
-                        <input type="email" class="required-email form-control" placeholder="email@mail.com" name="email_newsletter"
+                        <input type="email" class="required-email form-control" placeholder="exemplo@email.com" name="email_newsletter"
                             id="email_newsletter">
                     </div>
                     @csrf
