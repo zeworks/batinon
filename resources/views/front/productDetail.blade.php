@@ -87,6 +87,7 @@
                     @endif
                 <div class="product-detail__desc">
                     {!! $product->description !!}
+                    @if($product->colors)
                     <div class="product-available__items">
                         <h4>Cores disponivéis</h4>
                         <input type="hidden" id="color_available">
@@ -98,6 +99,7 @@
                             ?>
                         </div>
                     </div>
+                    @endif
                 </div>
                 @if($settings[0]->website_mode_store == 1)
                 <div class="product-detail__price">

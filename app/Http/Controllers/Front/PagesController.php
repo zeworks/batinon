@@ -9,7 +9,8 @@ class PagesController extends Controller
 {
     public function getPage($slug){
         $page = $this->fetchPage($slug);
-        if($page === null) {
+        
+        if($page === null || $page[0]->status === 0) {
             return redirect('404');
         } else {
             return view('front.institucional', compact('page'));

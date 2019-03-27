@@ -1,7 +1,7 @@
 @extends('layouts.default') @section('content')
 <section>
     <div class="institutional-banner institutional-banner--masked">
-        <div class="image-bg" style="background-image: url('<?=Image::url($banner[0]->image,1920,900)?>')"></div>
+        <div class="image-bg" style="background-image: url('<?=Image::url($data['product'][0]->image,1920,900)?>')"></div>
     </div>
 </section>
 <div class="empty-space-20"></div>
@@ -26,7 +26,7 @@
     <div class="container">
         <div class="row matchheight">
             <!-- loop from here -->
-            @foreach($products as $product)
+            @foreach($data['products'] as $product)
             <div class="col-sm-6 col-md-4 col-lg-3" data-mh="product-item">
                 <div class="product-card">
                     <a href="produtos/{{$product->slug}}" title="{{$product->title}}">

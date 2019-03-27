@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Helpers;
 use App\Blog;
 use App\Pages;
 
@@ -14,10 +15,13 @@ class BlogController extends Controller
      * Function to the main page, /blog
      */
     public function index(){
-        $blogs = $this->fetchBlogs();
-        $banner = $this->getBlogPageBanner();
+        $data = $this->getBlogData();
 
-        return view("front.blog", compact('blogs','banner'));
+        if(Helpers::validateActivePage($data['page'][0])) {
+            return view("front.blog", compact('data'));
+        } else {
+            return redirect('404');
+        }
     }
 
     /**
@@ -27,7 +31,7 @@ class BlogController extends Controller
     public function getBlog($slug){
         $details = $this->validateSlug($slug);
 
-        if($details === null) {
+        if($details == null || $details[0]->status === 0) {
             return redirect('404');
         } else {
             return view('front.blogDetail', compact('details'));
@@ -48,24 +52,14 @@ class BlogController extends Controller
             return null;            
         }
     }
-    
-    /**
-     * 
-     * Function to fetch the blogs from the DB to display.
-     */
-    function fetchBlogs(){
+
+    function getBlogData(){
+        $blogPage = Pages::where('slug', 'blog')->get();
         $blogs = Blog::where('status', 1)->get();
-
-        return $blogs;
-    }
-
-    /**
-     * 
-     * Function to get the banner from the main page blog.
-     */
-    function getBlogPageBanner(){
-        $blogBanner = Pages::where('slug', 'blog')->get();
-
-        return $blogBanner;
+        
+        return [
+            'page' => $blogPage,
+            'articles' => $blogs
+        ];
     }
 }

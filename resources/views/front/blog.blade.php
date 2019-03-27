@@ -3,15 +3,15 @@
 @section('page_title', '- Blog')
 
 @section('content')
-@if(count($banner) > 0)
+@if(count($data['page']) > 0)
 <section>
     <div class="institutional-banner institutional-banner--masked">
-        <div class="image-bg" style="background-image: url('<?=Image::url($banner[0]->image,1920,900)?>')">
+        <div class="image-bg" style="background-image: url('<?=Image::url($data['page'][0]->image,1920,900)?>')">
             <div class="wrapper-slide">
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6">
-                            <strong>{{ $banner[0]->title }}</strong>
+                            <strong>{{ $data['page'][0]->title }}</strong>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
 <section>
     <div class="container">
         <div class="row">
-            @foreach($blogs as $blog)
+            @foreach($data['articles'] as $blog)
             <div class="col-sm-6">
                 <article class="post-article">
                     <a href="{{ url('blog').'/'.$blog->slug }}" title="{{$blog->b_title}}">

@@ -6,14 +6,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Products;
 use App\Pages;
+use Helpers;
 
 class ProductsController extends Controller
 {
     public function index(){
-        $products = $this->fetchProducts();
-        $banner = $this->getProductPageBanner();
+        $data = $this->getProductData();
 
-        return view('front.products', compact('products','banner'));
+        if(Helpers::validateActivePage($data['product'][0])) {
+            return view("front.products", compact('data'));
+        } else {
+            return redirect('404');
+        }
     }
 
     /**
@@ -23,7 +27,7 @@ class ProductsController extends Controller
     public function getProduct($slug){
         $details = $this->validateSlug($slug);
 
-        if($details === null) {
+        if($details === null || $details[0]->status === 0) {
             return redirect('404');
         } else {
             return view('front.productDetail', compact('details'));
@@ -45,23 +49,13 @@ class ProductsController extends Controller
         }
     }
 
-    /**
-     * 
-     * Function to fetch the products from the DB to display.
-     */
-    function fetchProducts(){
+    function getProductData(){
         $products = Products::where('status', 1)->get();
-
-        return $products;
-    }
-
-    /**
-     * 
-     * Function to get the banner from the main page products.
-     */
-    function getProductPageBanner(){
         $productBanner = Pages::where('slug', 'produtos')->get();
 
-        return $productBanner;
+        return [
+            'products' => $products,
+            'product' => $productBanner
+        ];
     }
 }

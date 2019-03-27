@@ -22,4 +22,10 @@ class Helpers {
         
         return $validate;
     }
+
+    public static function validateActivePage($page) {
+        if ($page->status === 1) {
+            return true;
+        }
+    }
 }
