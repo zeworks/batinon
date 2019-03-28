@@ -10977,6 +10977,26 @@ button:focus {
   border-top: 1px solid #d1d1d1;
 }
 
+.c-card--chart {
+  min-height: 130px;
+}
+
+.c-card--chart * {
+  width: 100% !important;
+}
+
+.c-card--chart .c-card__title {
+  font-size: 22px;
+  font-size: 1.375rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.c-card--chart .c-card__value {
+  font-size: 30px;
+  font-size: 1.875rem;
+}
+
 .c-header {
   /* default styles */
   display: block;

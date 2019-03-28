@@ -19,4 +19,20 @@
     &__footer{
         border-top: 1px solid $grey-light;
     }
+
+    &--chart {
+        min-height: 130px;
+
+        * { width: 100% !important;}
+
+        .#{$class}__title {
+            @include font-size(22);
+            @include font-bold;
+            text-transform: uppercase;
+        }
+
+        .#{$class}__value {
+            @include font-size(30);
+        }
+    }
 }

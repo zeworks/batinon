@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('dashboard', 'Api\DashboardController@index');
+
 //user
 Route::get('user/{id}','Api\UserController@index');
 Route::put('user','Api\UserController@update');
