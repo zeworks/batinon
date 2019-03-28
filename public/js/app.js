@@ -40692,7 +40692,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -40753,8 +40753,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetch: function fetch() {
             var _this2 = this;
 
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/api/dashboard').then(function (res) {
+            this.isLoading();
+
+            var req = __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/api/dashboard').then(function (res) {
                 _this2.$set(_this2.$data, 'cards', res.data.cards);
+            });
+
+            req.then(function (res) {
+                _this2.isLoading();
             });
         }
     },
@@ -44130,39 +44136,41 @@ var render = function() {
             "b-row",
             _vm._l(_vm.cards, function(card, key) {
               return _c("b-col", { key: key, attrs: { sm: "12", md: "4" } }, [
-                _c("div", { staticClass: "c-card c-card--chart" }, [
-                  _c("div", { staticClass: "c-card__body" }, [
-                    _c("h5", { staticClass: "c-card__title" }, [
-                      _vm._v(_vm._s(card.title))
-                    ]),
-                    _vm._v(" "),
-                    card.type === "value"
-                      ? _c("div", { staticClass: "c-card__value" }, [
-                          _vm._v(_vm._s(card.value))
-                        ])
-                      : _c(
-                          "div",
-                          { staticClass: "c-card__value--chart" },
-                          [
-                            _c(
-                              "la-cartesian",
-                              { attrs: { height: 60, data: card.value } },
+                _vm.cards.length
+                  ? _c("div", { staticClass: "c-card c-card--chart" }, [
+                      _c("div", { staticClass: "c-card__body" }, [
+                        _c("h5", { staticClass: "c-card__title" }, [
+                          _vm._v(_vm._s(card.title))
+                        ]),
+                        _vm._v(" "),
+                        card.type === "value"
+                          ? _c("div", { staticClass: "c-card__value" }, [
+                              _vm._v(_vm._s(card.value))
+                            ])
+                          : _c(
+                              "div",
+                              { staticClass: "c-card__value--chart" },
                               [
-                                _c("la-area", {
-                                  attrs: {
-                                    color: card.color,
-                                    animated: "",
-                                    prop: "value"
-                                  }
-                                })
+                                _c(
+                                  "la-cartesian",
+                                  { attrs: { height: 60, data: card.value } },
+                                  [
+                                    _c("la-area", {
+                                      attrs: {
+                                        color: card.color,
+                                        animated: "",
+                                        prop: "value"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
                               ],
                               1
                             )
-                          ],
-                          1
-                        )
-                  ])
-                ])
+                      ])
+                    ])
+                  : _vm._e()
               ])
             })
           )

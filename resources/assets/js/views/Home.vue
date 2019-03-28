@@ -6,7 +6,7 @@
             </h2>
             <b-row>
                 <b-col sm="12" md="4" :key="key" v-for="(card, key) in cards">
-                    <div class="c-card c-card--chart">
+                    <div class="c-card c-card--chart" v-if="cards.length">
                         <div class="c-card__body">
                             <h5 class="c-card__title">{{card.title}}</h5>
                             <div class="c-card__value" v-if="card.type ==='value'">{{card.value}}</div>
@@ -43,10 +43,16 @@
         },
         methods: {
             fetch() {
-                axios.get('/api/dashboard')
+				this.isLoading();
+				
+				let req = axios.get('/api/dashboard')
                     .then((res) => {
                         this.$set(this.$data, 'cards', res.data.cards)
-                    })
+					});
+
+				req.then(res => {
+                    this.isLoading()
+                });
             }
         },
         data() {
