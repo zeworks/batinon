@@ -12,19 +12,24 @@ class DashboardController extends Controller
 {
     public function index(){
 
+         /**
+         * 
+         * Chart type
+         */
+        // type => chart
+        // value => (query)
+        // color => (#color)
+
         $cards = [
             [
                 'title' => 'Subscribers',
                 'type' => 'value',
-                'value' => Subscribers::count()
+                'value' => Subscribers::count(),
             ],
             [
                 'title' => 'Blog Actives',
                 'type' => 'value',
-                'value' => Blog::where('status', 1)->count()
-                //'type' => 'chart',
-                //'color' => '#2196f3',
-    			//'value' => $this->getChart(Blog::where('status', 1), 'created_at')
+    			'value' => $this->BlogDashboard()
             ]
         ];
 
@@ -56,5 +61,18 @@ class DashboardController extends Controller
         return collect(array_values($all))->map(function($item) {
             return ['value' => $item];
     	});
+    }
+
+
+    function BlogDashboard(){
+        
+        $validateData = Blog::where('status', 1)->first();
+        
+        if($validateData) {
+            return Blog::where('status', 1)->count();
+            //return $this->getChart(Blog::where('status', 1), 'created_at');
+        }
+
+        return 0;
     }
 }

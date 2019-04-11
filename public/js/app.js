@@ -40692,7 +40692,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -40740,6 +40740,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         LaCartesian: __WEBPACK_IMPORTED_MODULE_0_laue__["b" /* Cartesian */],
         LaArea: __WEBPACK_IMPORTED_MODULE_0_laue__["a" /* Area */]
     },
+    data: function data() {
+        return {
+            cards: [],
+            interval: 50000
+        };
+    },
     mounted: function mounted() {
         var _this = this;
 
@@ -40753,22 +40759,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetch: function fetch() {
             var _this2 = this;
 
-            this.isLoading();
-
-            var req = __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/api/dashboard').then(function (res) {
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/api/dashboard').then(function (res) {
                 _this2.$set(_this2.$data, 'cards', res.data.cards);
             });
-
-            req.then(function (res) {
-                _this2.isLoading();
-            });
         }
-    },
-    data: function data() {
-        return {
-            cards: [],
-            interval: 50000
-        };
     }
 });
 

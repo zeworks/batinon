@@ -35,7 +35,13 @@
             LaCartesian: Cartesian,
             LaArea: Area
         },
-        mounted() {
+        data() {
+            return {
+                cards: [],
+                interval: 50000,
+            }
+        },
+        mounted() {            
             this.fetch();
             setInterval(() => {
                 this.fetch();
@@ -43,22 +49,10 @@
         },
         methods: {
             fetch() {
-				this.isLoading();
-				
-				let req = axios.get('/api/dashboard')
+                axios.get('/api/dashboard')
                     .then((res) => {
                         this.$set(this.$data, 'cards', res.data.cards)
 					});
-
-				req.then(res => {
-                    this.isLoading()
-                });
-            }
-        },
-        data() {
-            return {
-                cards: [],
-                interval: 50000,
             }
         }
     }
